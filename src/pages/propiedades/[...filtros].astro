@@ -1,0 +1,66 @@
+---
+import "../../styles/global.css";
+import Layout from '../../layouts/Layout.astro'
+import propiedades from '../../data/propiedades.json'
+import Property from '../../components/Property.jsx'
+import Map from '../../components/Map.jsx'
+
+export async function getStaticPaths() {
+	const base = [{ params: { filtros: undefined } }]
+
+	const porOperacion = [...new Set(propiedades.map(p => p.operacion))]
+		.map(operacion => ({ params: { filtros: operacion } }))
+
+	const porTipo = [...new Set(propiedades.map(p => `${p.operacion}/${p.tipo}`))]
+		.map(ruta => ({ params: { filtros: ruta } }))
+
+	return [...base, ...porOperacion, ...porTipo]
+}
+
+// Parsear segmentos
+const segmentos = Astro.params.filtros?.split('/') ?? []
+const [operacion, tipo] = segmentos
+
+// Filtrar
+const resultados = propiedades.filter(p => {
+	if (operacion && tipo) return p.operacion === operacion && p.tipo === tipo
+	if (operacion) return p.operacion === operacion
+	return true
+})
+
+// SEO dinámico
+const titulo = tipo
+	? `${tipo} en ${operacion}`
+	: operacion
+	? `Propiedades en ${operacion}`
+	: 'Todas las propiedades'
+---
+
+<!-- <script> -->
+	<!-- const params = new URLSearchParams(window.location.search) -->
+	<!-- const precioMax = params.get('precioMax') -->
+	<!-- const banos = params.get('banos') -->
+	<!-- const orden = params.get('orden') -->
+
+	<!-- // Filtrás el listado ya renderizado o usás un componente React -->
+<!-- </script> -->
+
+<!-- <head> (para evitar contenido duplicado) -->
+	<!-- <link rel="canonical" href={`https://tusitio.com/propiedades/${operacion}/${tipo}`} /> -->
+<!-- </head> -->
+
+<Layout title={titulo}>
+	<section class="min-h-screen lg:px-20 py-20">
+		<h1>{titulo}</h1>
+		<p>{resultados.length} propiedades encontradas</p>
+
+<!-- 		<div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+			{resultados.map(p => (
+				<Property client:load p={p} />
+			))}
+		</div> -->
+
+		<Map client:only="react" />
+
+	</section>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Carousel from './CarouselDefault.jsx'
+
+const slides = [
+	{
+		title: "Precio correcto desde el inicio Análisis de mercado para evitar meses publicados sin resultados."
+	},
+	{
+		title: "Exposición de calidad: Fotos, presentación y canales pensados para atraer compradores reales."
+	},
+	{
+		title: "Acompañamiento constante y comunicación clara en cada etapa, sin vueltas."
+	},
+	{
+		title: "Red de contactos profesionales Contamos con una red activa de colegas y especialistas en distintas zonas. Esto nos permite ampliar el alcance, detectar oportunidades y conectar con compradores o vendedores potenciales más rápido. No trabajamos solos, trabajamos conectados."
+	},
+	{
+		title: ""
+	},
+	{
+		title: ""
+	}
+]
+---
+
+
+<section class="px-10 lg:px-40 pt-40 py-20 relative -mt-20 relative flex flex-col gap-4 bg-white">
+
+		<!-- bg-red-200 -->
+	<div class="h-40 w-full absolute top-0 left-0
+		bg-gradient-to-b from-[#f3f3f3] to-white
+	"/>
+
+	<p class="opacity-[.6] text-[1.2rem]">¿Por qué elegirnos?</p>
+	<h2 class="text-4xl">No solo publicamos propiedades. <br> Nos enfocamos en diseñar una estrategia pensada <br> para vender bien.</h2>
+	<h3 class="text-2xl opacity-[.6]">Como trabajamos y hacemos realidad<br> tu búsqueda inmobiliaria.</h3>
+
+	<div class="flex justify-between">
+		
+		<img src="/properties-ilustration.png" alt="" class="max-w-[450px]">
+
+		<div class="lg:pt-10 overflow-hidden">
+			<h4 class="text-3xl">Cada propiedad tiene un plan. su ubicación, perfil de comprador ideal, valor real del mercado y objetivos del propietario.</h4>
+			<Carousel client:load data={slides} id={2} />
+		</div>
+
+		<!-- content -->
+
+	</div>
+
+
+</section>

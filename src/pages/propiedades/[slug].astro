@@ -1,0 +1,69 @@
+---
+import "../../styles/global.css";
+import Layout from '../../layouts/Layout.astro'
+import propiedades from '../../data/propiedades.json'
+
+export async function getStaticPaths() {
+	return propiedades
+		// .filter(p => p.activa) (preguntar ¿no es mejor dejar las fichas aun de las propiedades inactivas por seo abarcar mas publico?)
+		.map(p => ({
+			params: { slug: p.slug },
+			props: { propiedad: p }
+		}))
+}
+
+const { propiedad: p } = Astro.props
+
+const whatsappMsg = encodeURIComponent(`Hola, me interesa la propiedad: ${p.titulo} - ${Astro.url}`)
+const whatsappUrl = `https://wa.me/${p.whatsapp}?text=${whatsappMsg}`
+
+// SEO
+const metaTitulo = `${p.titulo} en ${p.operacion} | TuInmobiliaria`
+const metaDesc = `${p.tipo} en ${p.operacion} en ${p.direccion}. ${p.ambientes} ambientes, ${p.superficie_cubierta}m². Precio: ${p.moneda} ${p.precio.toLocaleString()}`
+---
+
+<Layout title={metaTitulo} description={metaDesc}>
+	<section class="lg:px-40 py-20">
+		
+		<!-- Galería -->
+		<div class="galeria">
+			{p.imagenes.map((img, i) => (
+				<img src={img} alt={`${p.titulo} - foto ${i + 1}`} />
+			))}
+		</div>
+
+		<!-- Datos básicos -->
+		<h1>{p.titulo}</h1>
+		<p>{p.direccion}</p>
+		<p>{p.moneda} {p.precio.toLocaleString()}</p>
+
+		<ul>
+			<li>{p.ambientes} ambientes</li>
+			<li>{p.habitaciones} habitaciones</li>
+			<li>{p.banos} baños</li>
+			<li>{p.superficie_cubierta}m² cubiertos</li>
+			<li>{p.superficie_total}m² totales</li>
+		</ul>
+
+		<!-- Descripción -->
+		<p>{p.descripcion}</p>
+
+		<!-- Características -->
+		<ul>
+			{p.caracteristicas.map(c => <li>{c}</li>)}
+		</ul>
+
+		<!-- Mapa -->
+		<iframe
+			src={`https://maps.google.com/maps?q=${p.lat},${p.lng}&z=15&output=embed`}
+			width="100%"
+			height="400"
+			loading="lazy"
+		/>
+
+		<!-- WhatsApp -->
+		<a href={whatsappUrl} target="_blank">
+			Consultar por WhatsApp
+		</a>
+	</section>
+</Layout>

@@ -1,0 +1,196 @@
+---
+import "../styles/global.css";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Properties from '../components/Properties.astro';
+import Services from '../components/Services.astro';
+import Pasos from '../components/Pasos.astro';
+import Localities from '../components/Localities.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<Layout>
+
+	<!-- 1. Sections -->
+
+	<Hero />
+	<Properties />
+	<Services />
+	<Pasos />
+	<Localities />
+	<WhyChoose />
+
+<!-- 	<section class="px-10 lg:px-40 py-20 flex gap-5 bg-white">
+		<div class="flex flex-1 flex-col gap-5">
+			<h2 class="text-4xl">¿Querés vender tu propiedad? <br>
+			Te asesoramos para hacerlo <br>bien desde el inicio</h2>
+			<p class="text-xl opacity-[.6]">
+				Buscas o vendes una propiedad, hablemos y vemos tu caso. Entendemos que este es un paso importante en tu vida. 
+				Nuestro equipo está comprometido en hacer que este proceso sea lo más sencillo y exitoso posible para ti. 
+				Ya sea que estés vendiendo tu casa, departamento, terreno o cualquier otro tipo de propiedad, estamos aquí para brindarte el apoyo que necesitas.
+			</p>
+
+			<a href="#" class="bg-black px-6 py-4 text-white w-fit rounded-[12px]">Solicitar asesoramiento</a>
+		</div>
+
+		<div class="flex-1">
+			<img src="/pasos-1.jpg" alt="" class="w-full rounded-4xl">
+		</div>
+	</section> -->
+
+	<!-- <FAQ /> -->
+
+</Layout>
+
+<!-- 		<main>
+
+			<section className="flex flex-col gap-5 px-10 bg-[#fff5ebff] pt-10">
+
+				<div className="flex flex-col gap-5">
+					<h1 className="font-bold text-3xl">Encuentra tu proximo hogar en <span className="text-[#e48957ff]">Córdoba</span></h1>
+					<h2 className="">Venta y alquiler de casas, departamentos y terrenos exclusivos en las mejores zonas.</h2>
+
+					<SearchProperties />
+					{/* Filtros (precio, dormitorios, baños, etc. ) segun estadisticas* */}
+
+					<a href="#" className="w-fit">Quiero vender/asesorarme</a>
+
+					<div className="flex gap-5">
+						<p><span className="">+10</span> años de experiencia en el mercado</p>
+						<p>Asesoramiento <span className="">100%</span> personalizado</p>
+					</div>
+				</div>
+				<div className="flex items-center justify-center">
+					<img src="./Hero.webp" className="max-h-[300px] max-w-[300px]"></img>
+				</div>
+			</section>
+
+			<section className="h-[100vh] items-center justify-center flex flex-col gap-10">
+
+				<div>
+					<span>Explora</span>
+					<h2>Nuestras propiedades más destacadas</h2>
+					<h3> ?? </h3>
+					<button>Explora más</button>
+				</div>
+
+				{/*carousel component*/}
+					<Property />
+					{/*<buttons></buttons>*/}
+					{/*precio, m², habitaciones*/}
+				{/*carousel component*/}
+			</section>
+
+			{/*
+
+			{/*<secxtion>*/}
+				{/* TE ACOMPAÑAMOS EN CADA ETAPA DEL PROCESO */}
+				{/*<h2>Como trabajamos y hacemos realidad tu búsqueda inmobiliaria</h2>*/}
+				{/*<h3>En HomeSilva, entendemos que comprar o vender una propeidad es uno de los pasos más importantes de tu vida. Nuestro objetivo es hacer este proceso lo mas transparente, sencillo y exitoso posible. Para ello, seguimos un proceso claro y bien definido, desde laprimera consulta hsta la entrega de llaves.</h3>*/}
+
+				{/*1. La Primera Charla: Entendemos tus Necesidades:
+					Nos reunimos o realizamos una llamada para entender a fondo lo que buscas: que tipo de propeidad te interesa, en qué zona, cual es tu presupuesto y qué plazos manejas. Si eres propietarios, evaluamos tu inmueble, analizamos el mercado y definimos el mejor precio de venta. 
+					----Esta etapa es clave para que nuestro ttrabajo sea 100% enfocado en tus objetivos
+				*/}
+
+				{/* 2. Búsqueda y Selección: El Match Perfecto:
+					Una vez que tenemos tu perfil claro, activamos nuestra red de contactos y base de datos. Te presentamos un catálogo de propiedades que realmente se ajustan a lo que necesitas. Ahorrándote tiempo y la frustración de ver inmuebles que no cumplen tus expectativas. Si eres vendedor, tu propiedad se promocionará de manera estratégica a compradores calificados.
+					Negociación: Te asesoramos para lograr el mejor acuerdo posible. 
+				*/}
+
+				{/* 3. Las Visitas: Vive la Experiencia
+					El proceso culmina en la notaria. Te acompañamos durante la firma de la escritura y la entrega de llaves. En este momento, la transaccion se formaliza y nuestra mision se completa. incluso despues de la firma, seguimos a tu disposicion para cualquier consulta.
+				*/}
+			{/*</section>*/}
+
+			{/*<section>*/}
+				{/* grid barrios/localidades */}
+				{/*<h2></h2>*/}
+				{/*<h3></h3>*/}
+				{/*<propertyGrid />*/}
+			{/*</section>*/}
+
+			{/*<section>*/}
+				{/*Quiero vender mi propiedad*/}
+				{/*<span>¿Por qué elegirnos?</span>*/}
+				{/*<h2>Beneficios de vender con nosotros</h2>*/}
+				{/*
+					Entendemos que vender una propiedad es un paso importante en tu vida. Nuestro equipo está comprometido en hacer que este proceso sea lo más sencillo y exitoso posible para ti. Ya sea que estés vendiendo tu casa, departamento, terreno o cualquier otro tipo de propiedad, estamos aquí para brindarte el apoyo que necesitas.
+					¡Contáctanos hoy mismo! para programar una consulta gratuita y sin compromiso.
+				*/}
+
+				{/*proceso explicardo*/}
+				{/* testimonios */}
+				{/*red de compradores, tasación gratuita, publicidad online, asesoramiento legal, etc.*/}
+
+				{/* etiquetas [x] numeros de clientes, [x] numeros de asociaciones, [x] numero de propiedades*/}
+
+				{/*formulario parar solicitar tasación gratuita*/}
+				{/* CTA solicita tu sacaion sin costo*/}
+			{/*</section>*/}
+
+			{/*<section>*/}
+				{/*<h2>Sobre nosotros</h2>*/}
+				{/*
+					Contamos con un equipo de expertos y profesionales certificados que está altamente capacitado y cuenta con una vasta experiencia en el mercado. Con un conocimiento profundo de las tendencias actuales y una visión a futuro, podemos ofrecerte propiedades que se ajusten perfectamente a tus preferencias y estilo de vida.
+					Esta colaboración nos permite brindarte un acceso amplio a oportunidades únicas en el mercado inmobiliario. Nos enorgullece poder colaborar con estos profesionales apasionados que comparten nuestra dedicación a la excelencia en el servicio al cliente y a la satisfacción.
+				*/}
+				{/*presenta a tu equipo, inluye fotos descripciones de quienes son. los usuarios prefieren 
+				hacer negocios con personas no con empresas */}
+			{/*</section>*/}
+
+			{/*<section>*/}
+				{/*<h2>Ultimos Articulos del Blog</h2>*/}
+				{/* Mustra los posr mas recientes para guiar al trafico organico al blog */}
+			{/*</section>*/}
+
+			{/*<section>*/}
+				{/*<h2>Preguntas frecuentes</h2>*/}
+				{/*¿Cuánto cuesta escriturar?*/}
+				{/*¿Cuánto tarda una venta?*/}
+				{/*¿Qué impuestos debo pagar?*/}
+			{/*</section> */}
+
+			{/*<section>*/}
+				{/* Contactanos (pagina aparte) */}
+				{/* formulario simple y reutilizable (componente) */}
+				{/* mapa y datos de contacto */}
+				{/* whatsapp flotante */}
+			{/*</section>*/}
+
+		</main>
+	);
+}
+
+// 1. ulrs limpias y jerarquicas
+// 2. meta titles y descriptions optimizadas
+// 3. carga rapida y mobile friendly
+// 4. breadcrumbs para mejor navegacion
+// 5. implementar datos estructurados para propiedades y faq
+
+// URLs amigables => propiedad-[nombre]-[ubicacion]-[codigo] / /propiedades/venta/casa-3-dormitorios-barrio-x
+// H1 [tipo de propiedad] en [barrio] - [direccion]
+// descriocion bien escrito y unico incluyendo caracteristicas clave. se puede utilizar palabras clve de cola larga.
+// palabras clave locales
+// google maps embebido
+// informacion descargable en PDF (opcional)
+//  ficha tecnica precios, m2, habitaciones, baños, antiguedad, etc.
+// cta visibles contactar, agendar visita, consultar precio.
+// datis estructurados de schema.org => google entienda que es una propiedad
+
+// SECCION DE BARRIOS/COMUNIDADES (Landing page de localidades) fundamental para el seo local y el trafico organico
+// ls busquedas como "apartamentos en venta en [barrio de laciudad] son de al ta intencion y una menor competencia"
+// contenido: descripcion del barrio, historia, estilo de vida, datos demograficos. 
+// sevicios cercanos: escuelas, hospitales, transporte publico, parques.
+
+// mercado inmobiliarios local: precios promedio por metro cuadrado. tendencias, tipo de propiedades. 
+// propiedades disponibles en esa zona, un listado, filtrado de las propeidades que tienes en ese barrio.
+
+// blog (contenido organico) motor de crecimiento (permite posicionarte como experto y atraer trafico de personas
+// que no buscan una propiedad directamente)
+// contenido: guias para compradores/vendedores, "guia para comprar tu primera casa", "como preparar 
+// tu casa para la venta".
+// Tendencias del mercado: "analisis de precios en el mercado inmobiliario de [ciudad]", 
+// Guias de vida: "ls mejores zonas para vivir con niños", "los barrios mas seguros".
+// Consejos y trucos: "errores comunes al comprar una propiedad", "como negociar el precio de una casa". -->

@@ -1,0 +1,73 @@
+---
+const inputs = [
+	{
+		label: "Nombre y Apellido",
+		name: "nombre",
+		type: "text",
+		// placeholder: "Ej: Juan Pérez",
+		required: true
+	},
+	{
+		label: "Correo electrónico",
+		name: "email",
+		type: "email",
+		// placeholder: "Ej: juan@gmail.com",
+		required: false
+	},
+	{
+		label: "Télefono / WhatsApp",
+		name: "telefono",
+		type: "tel",
+		// placeholder: "+54 9...",
+		required: true
+	},
+	{
+		label: "Mensaje",
+		name: "mensaje",
+		type: "textarea",
+		// placeholder: "Contanos tu consulta sobre la propiedad...",
+		required: false
+	}
+]
+---
+
+<form action="#" method="POST" class="flex flex-col gap-4 max-w-md">
+			{inputs.map(item => (
+				<div key={item.name} class="flex flex-col gap-1 relative">
+					{item.type !== "textarea" ? (
+						<input 
+							type={item.type} 
+							id={item.name} 
+							name={item.name} 
+							required={item.required}
+							placeholder=" "
+							class="peer bg-white w-full focus:outline-none pb-2 pt-6 px-4"
+						/>
+					) : (
+						<textarea 
+							name={item.name} 
+							id={item.name} 
+							required={item.required} 
+							placeholder=" "
+							rows={4}
+							class="peer pb-2 pt-6 px-4 bg-white max-h-[100px] w-full focus:outline-none"
+						/>
+					)}
+
+					<label 
+						htmlFor={item.name} 
+						class="
+							absolute left-4 top-4 text-gray-500 text-sm transition-all duration-200
+							peer-focus:top-2
+							peer-focus:text-xs
+							peer-focus:text-black
+							peer-not-placeholder-shown:top-2
+							peer-not-placeholder-shown:text-xs
+						"
+					>{item.label}</label>
+				</div>
+			))}
+
+			<button type="submit" class="bg-black text-white p-3 rounded w-fit">Enviar consulta</button>
+
+		</form>

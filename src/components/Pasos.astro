@@ -1,0 +1,60 @@
+---
+
+const pasos = [
+	{
+		title: "La primera charla:",
+		description: "Nos reunimos o realizamos una llamada para entender a fondo lo que buscas: ",
+		// que tipo de propeidad te interesa, en qué zona, cual es tu presupuesto y qué plazos manejas. Si eres propietarios, evaluamos tu inmueble, analizamos el mercado y definimos el mejor precio de venta. ",
+		url: '/pasos-1.jpg'
+	},
+	{
+		title: "Búsqueda y selección: El match perfecto:",
+		description: "Una vez que tenemos tu perfil claro, activamos nuestra red de contactos y base de datos. ",
+		// Te presentamos un catálogo de propiedades que realmente se ajustan a lo que necesitas. Ahorrándote tiempo y la frustración de ver inmuebles que no cumplen tus expectativas. Si eres vendedor, tu propiedad se promocionará de manera estratégica a compradores calificados.",
+		url: '/pasos-1.jpg'
+	},
+	{
+		title: "Las visitas: Vive la Experiencia",
+		description: "El proceso culmina en la notaria. Te acompañamos durante la firma de la escritura y la entrega de llaves. ",
+		// En este momento, la transaccion se formaliza y nuestra mision se completa. incluso despues de la firma, seguimos a tu disposicion para cualquier consulta.",
+		url: '/pasos-1.jpg'
+	}
+]
+
+---
+
+	<!-- bg-gradient-to-b from-[#eee] from-0% via-white via-10% to-white -->
+<section class="relative
+	-mt-25
+	pt-40
+	pb-20
+	bg-white
+" style={{ containerType: "inline-size" }}>
+
+	<div class="absolute top-0 left-0 w-full h-30
+		bg-gradient-to-b from-[#eee] from-0% to-white
+	"></div>
+
+	<p style={{fontSize: "7.1cqw"}} class="text-center opacity-[.05] leading-none mb-10 font-bold">TE ACOMPAÑAMOS EN <br> CADA ETAPA DEL PROCESO</p>
+
+	<h2 class="lg:text-4xl lg:px-40">Como trabajamos y hacemos <br>realidad tu búsqueda <br>inmobiliaria</h2>
+
+	<ul class="lg:px-40 flex flex-wrap justify-between gap-10 mt-10">
+		{pasos.map((item,i) => (
+			<li key={i} class="lg:max-w-[300px] flex flex-col gap-4">
+				<span class="text-5xl font-bold text-[#eeaa69ff]">0{i+1}</span>
+				<h3 class="font-[600] text-2xl">{item.title}</h3>
+				<p class="opacity-[.6] text-lg" >{item.description}</p>
+
+				<img src={item.url} alt="" class="w-full h-[250px] object-cover rounded-[40px]" />
+			</li>
+		))}
+	</ul>
+
+	<p style={{fontSize: "1.4cqw"}} class="lg:px-40 opacity-[.6] text-center mt-10">
+		En Home Silva, entendemos que comprar o vender una propiedad<br> es uno de los pasos más 
+		importantes de tu vida.
+		Nuestro objetivo es hacer este proceso lo mas <br> transparente, sencillo y exitoso posible. 
+	</p>
+
+</section>

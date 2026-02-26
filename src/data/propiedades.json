@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"slug": "casa-en-palermo",
+		"titulo": "Casa amplia en Palermo",
+		"operacion": "venta",
+		"tipo": "casas",
+		"precio": 150000,
+		"moneda": "USD",
+		"superficie_total": 220,
+		"superficie_cubierta": 180,
+		"ambientes": 4,
+		"habitaciones": 3,
+		"banos": 2,
+		"descripcion": "Hermosa casa con jardín en el corazón de Palermo...",
+		"direccion": "Thames 1234, Palermo, Buenos Aires",
+		"lat": -34.5885,
+		"lng": -58.4317,
+		"caracteristicas": ["cochera", "pileta", "quincho", "jardín"],
+		"imagenes": [
+			"https://res.cloudinary.com/tu-cuenta/image/upload/casa1-foto1.jpg",
+			"https://res.cloudinary.com/tu-cuenta/image/upload/casa1-foto2.jpg"
+		],
+		"whatsapp": "5491112345678",
+		"activa": true
+	},
+	{
+		"id": 2,
+		"slug": "casa-en-palermo",
+		"titulo": "Departamento amplia en Alta Córdoba",
+		"operacion": "alquiler",
+		"tipo": "casas",
+		"precio": 150000,
+		"moneda": "USD",
+		"superficie_total": 220,
+		"superficie_cubierta": 180,
+		"ambientes": 4,
+		"habitaciones": 3,
+		"banos": 2,
+		"descripcion": "Hermosa casa con jardín en el corazón de Palermo...",
+		"direccion": "Thames 1234, Palermo, Buenos Aires",
+		"lat": -34.5885,
+		"lng": -58.4317,
+		"caracteristicas": ["cochera", "pileta", "quincho", "jardín"],
+		"imagenes": [
+			"https://res.cloudinary.com/tu-cuenta/image/upload/casa1-foto1.jpg",
+			"https://res.cloudinary.com/tu-cuenta/image/upload/casa1-foto2.jpg"
+		],
+		"whatsapp": "5491112345678",
+		"activa": true
+	}
+]

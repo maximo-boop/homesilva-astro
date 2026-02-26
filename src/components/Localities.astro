@@ -1,0 +1,36 @@
+---
+const localidades = [
+	{
+		title: "Córdoba",
+		description: "Departamentos en Alquiler en Córdoba"
+	},
+	{
+		title: "Carlos Paz",
+		description: "Lotes en Venta en Carlos Paz"
+	},
+	{
+		title: "La Falda",
+		description: "Casas en Venta en La Falda"
+	}
+]
+---
+
+<section class="py-20 px-20 lg:px-40 flex flex-col gap-5">
+	<h2 class="text-4xl">Propiedades en Córdoba <br>y zonas destacadas</h2>
+	<h3 class="opacity-[.6] text-xl">Casas en Córdoba, Departamentos en Nueva Córdoba, <br>Lotes en Zona Norte, Inversiones en Villa Carlos Paz</h3>
+
+	<ul class="flex flex-wrap w-full gap-6">
+		{localidades.map((item,i) => (
+			<li key={i} class="flex-1 flex items-center bg-white w-fit rounded-4xl p-4 gap-4 hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] transition-shadow ease duration-500">
+				<img src='/example1.jpeg' alt="" class="w-25 h-25 rounded-3xl object-cover" >
+				<div>
+					<h2 class="text-xl z-9">{item.title}</h2>
+					<p class="opacity-[.6] z-9 mt-1">{item.description}</p>
+				</div>
+			</li>
+		))}
+	</ul>
+
+	<a href="#" class="lg:ml-auto">Ver más localidades</a>
+
+</section>

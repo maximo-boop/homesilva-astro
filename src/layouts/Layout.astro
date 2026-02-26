@@ -1,0 +1,78 @@
+---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<!-- title: "HomeSilva | Encuentra tu próximo hogar en Córdoba",
+	description: "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en Córdoba. Contáctanos para encontrar tu propiedad ideal.",
+	keywords: "Propiedades, inmuebles, inmobiliaria, casas, departamentos, terrenos, alquiler, Córdoba, casas en venta en Córdoba, venta y alquiler de propiedades, Argentina",
+	author: "Máximo Silva",
+	alternates: {
+		canonical: 'http://localhost:3000/'
+	},
+	openGraph: {
+		title: 'Compra y venta de propiedades | HomeSilva',
+		description: 'Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en los alrededores de la ciudad de Córdoba. Contáctanos para encontrar tu propiedad ideal.',
+		url: 'http://localhost:3000/',
+		// images: '/LOGO.png',
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true
+		}
+	}
+
+// Meta descripcion : ¿Querés comprar tu próximo hogar? ¡Con Mudafy ahora es más fácil! Descubrí la nueva forma de comprar tu propiedad.
+// Mudafy es una empresa inmobiliaria que facilita la compra de propiedades, ofreciendo una nueva forma de adquirir departamentos, casas y otros inmuebles. Su enfoque se centra en simplificar el proceso de compra, brindando una experiencia más accesible y eficiente para encontrar el próximo hogar. Aunque no hay reseñas ni calificaciones disponibles en la información proporcionada, su propuesta destaca en la facilidad y modernidad del servicio. Entre sus ventajas está la promesa de un método más sencillo para la compra de propiedades, aunque no se especifican servicios adicionales ni desventajas concretas.
+// Datos estructurados debajo de su busqueda:  
+// Departamentos en venta
+// Encontrá tu departamento entre más de 6218 opciones en venta con Mudafy. Asesoría personalizada, fotos de alta calidad, ¡y mucho más!
+// --
+// Capital Federal
+// Descubrí más de 4186 propiedades en venta en CABA y asesorate con expertos. ¡Encontrá tu próxima casa con Mudafy!
+// --
+// Simulador créditos hipotecarios
+// Con nuestra calculadora de créditos hipotecarios UVA vas a poder estimar el monto del préstamo al que podrías acceder y el valor de la cuota inicial según el banco.
+
+// Valor del m² en CABA
+// ¿Te gustaría calcular el precio* de tu propiedad? Desde Mudafy te acercamos
+	 -->
+
+<!doctype html>
+<html lang="es-AR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+		<meta name="generator" content={Astro.generator} />
+		<title>Home Silva - Compra y venta de propiedades en córdoba</title>
+	</head>
+	<body>
+
+		<Header />
+		<slot />
+		<Footer />
+
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		font-family: "Inter", sans-serif;
+/*		margin: 50px 50px;*/
+		background: #f3f3f3;
+/*		f3f6f8*/
+/*		margin: 0;*/
+/*		width: 100%;*/
+/*		height: 100%;*/
+	}
+
+	/*@media screen and (max-width: 367px) {
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+	@media screen and (min-width: 1024px) {*/
+</style>

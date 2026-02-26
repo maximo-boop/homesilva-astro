@@ -1,0 +1,60 @@
+---
+import SearchProperties from "./SearchProperties.jsx";
+// import Search from "./Search.astro";
+const data = [
+	{
+		value: "1200+",
+		description: "Properties Listed",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#402411ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-community"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8" /><path d="M13 7l0 .01" /><path d="M17 7l0 .01" /><path d="M17 11l0 .01" /><path d="M17 15l0 .01" /></svg>`
+	},
+	{
+		value: "950+",
+		description: "Happy Clients",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#402411ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>`
+	},
+	{
+		value: "100%",
+		description: "Awars Won",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#402411ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-award"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" /><path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" /><path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" /></svg>`
+	},
+	{
+		value: "15+",
+		description: "Years Experience",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#402411ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-stats"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" /><path d="M18 14v4h4" /><path d="M14 18a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M15 3v4" /><path d="M7 3v4" /><path d="M3 11h16" /></svg>`
+	}
+]
+---
+
+<section class="bg-white lg:px-40 pb-20 lg:pt-5">
+
+	<div class="bg-[var(--primary)] flex flex-col lg:flex-row gap-5 lg:rounded-[45px] max-w-[1200px] m-auto relative">
+
+		<div class="flex-1 flex flex-col gap-3 py-10 px-10 lg:px-0 lg:pl-20">
+			<h1 class="text-[2.3rem] font-extrabold leading-[2.7rem]">Encuentra tu proximo <br>hogar en <span class="text-[#eeaa69ff]">Córdoba</span></h1>
+			<h2 class="text-lg opacity-[.6]">Venta y alquiler de casas, departamentos y terrenos <br>exclusivos en las mejores zonas.</h2>
+
+			<SearchProperties client:load />
+			<a href="#" class="m-auto lg:m-0">Quiero vender/asesorarme</a>
+		</div>
+
+		<div class="flex-1 flex items-center justify-center relative overflow-hidden lg:rounded-[45px]">
+			<img src="/main-img.png" alt="" class="h-[90%] mr-30 z-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.2)]">
+			<img src="/main-img-card.png" alt="" class="w-[170px] absolute right-10 bottom-0 z-10">
+			<div class="absolute w-full top-0 bottom-0 -right-0 rounded-l-full bg-[#ffe9d3ff]"></div>
+		</div>
+
+	</div>
+
+	<div class="grid grid-cols-2 lg:grid-cols-4 mt-10 max-w-[1200px] m-auto">
+		{data.map(item => (
+			<div class="flex flex-col items-center gap-2 z-5">
+				<div class="bg-[var(--primary)] p-4 rounded-[18px] w-fit">
+					<span set:html={item.icon} />
+				</div>
+				<span class="font-extrabold">{item.value}</span>
+				<p class="opacity-[.6]">{item.description}</p>
+			</div>
+		))}
+	</div>
+	
+</section>

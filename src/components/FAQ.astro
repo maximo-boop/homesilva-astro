@@ -1,0 +1,34 @@
+---
+const faqs = [
+	{
+		pregunta: "¿Cómo puedo contactar a un asesor?",
+		respuesta: "Podés contactarnos a través del formulario de contacto."
+	},
+	{
+		pregunta: "¿Cuánto tarda el proceso de compra?",
+		respuesta: "El proceso generalmente tarda entre 30 y 60 días."
+	}
+]
+---
+
+<section class="text-center flex flex-col gap-5 lg:px-40 py-20">
+	<h2 class="text-4xl">¿Tienes alguna pregunta o inquietud?</h2>
+	<h3 class="text-xl opacity-[.6]">Te acompañamos en cada etapa del proceso</h3>
+
+	{faqs.map((faq) => (
+		<details class="text-start bg-white rounded-[20px]">
+			<summary class="flex items-center justify-between cursor-pointer text-[20px] focus:outline-none py-6 px-10">
+				{faq.pregunta}
+
+				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+					<path d="M12 5l0 14" />
+					<path d="M5 12l14 0" />
+				</svg>
+			</summary>
+
+			<p class="pb-6 pt-0 px-10">{faq.respuesta}</p>
+		</details>
+	))}
+
+</section>

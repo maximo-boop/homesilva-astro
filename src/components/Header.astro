@@ -1,0 +1,67 @@
+---
+import Logo from '../assets/Logo.astro'
+
+const links=[
+	{
+		title: "Inicio",
+		url: "/"
+	},
+	{
+		title: "Propiedades",
+		url: "/propiedades"
+	},
+	{
+		title: "Sobre nosotros",
+		url: "/sobre-nosotros"
+	},
+	{
+		title: "Contacto",
+		url: "/contacto"
+	}
+]
+---
+
+<header class="header sticky top-0 p-5 px-10 lg:px-40 bg-white z-20">
+
+	<nav class="lg:flex lg:items-center">
+
+		<!--LOGO -->
+		<div class="flex justify-between items-center flex-1">
+			<a href="/"><Logo /></a>
+
+			<input type="checkbox" class="lg:hidden" id='menu-toggle'>
+			<label for="menu-toggle" class="hamburger hidden">menu</label>
+		</div>
+
+		<!-- Navigation -->
+		<ul class="hidden nav flex flex-col lg:flex-row bg-white gap-10 mt-10 lg:mt-0">
+			{links.map((item,index) => (
+					<li>
+						<a href={item.url} class={`${index===3 ? "rounded-[10px] bg-black text-white py-3 px-6": ""}`}>{item.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+
+</header>
+
+<style>
+
+	.header:has(#menu-toggle:checked) .nav {
+		display: flex;
+	}
+	.header:has(#menu-toggle:checked){
+		height: 100vh;
+	}
+	
+	@media screen and (min-width: 1020px){
+		.nav {
+			display: flex;
+		}
+		.hamburger {
+			display: none;
+		}
+	}
+
+</style>
