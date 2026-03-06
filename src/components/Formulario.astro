@@ -29,45 +29,50 @@ const inputs = [
 		required: false
 	}
 ]
+
+const { ficha=false } = Astro.props
 ---
 
-<form action="#" method="POST" class="flex flex-col gap-4 max-w-md">
-			{inputs.map(item => (
-				<div key={item.name} class="flex flex-col gap-1 relative">
-					{item.type !== "textarea" ? (
-						<input 
-							type={item.type} 
-							id={item.name} 
-							name={item.name} 
-							required={item.required}
-							placeholder=" "
-							class="peer bg-white w-full focus:outline-none pb-2 pt-6 px-4"
-						/>
-					) : (
-						<textarea 
-							name={item.name} 
-							id={item.name} 
-							required={item.required} 
-							placeholder=" "
-							rows={4}
-							class="peer pb-2 pt-6 px-4 bg-white max-h-[100px] w-full focus:outline-none"
-						/>
-					)}
+<form action="#" method="POST" class="flex flex-col gap-4 max-w-md w-full">
+	{inputs.map(item => (
+		<div key={item.name} class="flex flex-col gap-1 relative">
+			{item.type !== "textarea" ? (
+				<input 
+					type={item.type} 
+					id={item.name} 
+					name={item.name} 
+					required={item.required}
+					placeholder=" "
+					class={`${ficha ? 'pt-[1.3rem] pb-[.3rem] text-sm' : 'pt-7 pb-2'} peer bg-white w-full focus:outline-none px-4 border border-[#ddd]`}
+				/>
+			) : (
+				<textarea 
+					name={item.name} 
+					id={item.name} 
+					required={item.required} 
+					placeholder=" "
+					rows={4}
+					class={`${ficha ? 'pt-[1.5rem] pb-[.25rem] text-sm' : 'pt-6 pb-2'} px-4 peer bg-white max-h-[100px] w-full focus:outline-none border border-[#ddd]`}
+				/>
+			)}
 
-					<label 
-						htmlFor={item.name} 
-						class="
-							absolute left-4 top-4 text-gray-500 text-sm transition-all duration-200
-							peer-focus:top-2
-							peer-focus:text-xs
-							peer-focus:text-black
-							peer-not-placeholder-shown:top-2
-							peer-not-placeholder-shown:text-xs
-						"
-					>{item.label}</label>
-				</div>
-			))}
+			<label 
+				htmlFor={item.name} 
+				class={` ${
+					item.type === 'textarea' ? (ficha ? 'top-[.8rem] peer-focus:top-[.6rem] peer-not-placeholder-shown:top-[.6rem]' : 'top-[1.1rem] peer-focus:top-[.6rem] peer-not-placeholder-shown:top-[.6rem]')
+					: 'top-[50%] -translate-y-[50%] peer-focus:top-[30%] peer-not-placeholder-shown:top-[30%]'}
+					absolute left-4  text-sm text-gray-500 transition-all duration-200
+					peer-focus:text-xs
+					peer-focus:text-black
+					peer-not-placeholder-shown:text-xs
+					pointer-events-none
+				`}
+			>{item.label}</label>
+		</div>
+	))}
 
-			<button type="submit" class="bg-black text-white p-3 rounded w-fit">Enviar consulta</button>
+	<button type="submit" class={`${ficha ? '' : 'w-fit'} bg-black text-white p-3 rounded-[12px]`}>Enviar consulta</button>
 
-		</form>
+</form>
+
+<!-- Hola, me interesa esta propiedad y quiero que me contacten para más información. Muchas gracias. -->

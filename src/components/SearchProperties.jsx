@@ -71,7 +71,7 @@ const SearchProperties = ({ values }) => {
 
 			<div className="flex">
 				{["Comprar", "Alquilar"].map((item,index) => (
-					<button key={index} onClick={() => handleChange("operacion", item)} className={`w-full lg:w-auto focus:outline-none transition-opacity duration-200 ease bg-white pb-2 pt-4 px-4 ${index===1 ? "rounded-tr-[18px]" : "rounded-tl-[18px]"} ${form.operacion === item ? "" : "opacity-[.6] cursor-pointer"}`}>{item}</button>
+					<button key={index} onClick={() => handleChange("operacion", item)} className={`w-full lg:w-auto focus:outline-none transition-opacity duration-200 ease bg-white pb-1 pt-4 px-4 rounded-t-[18px] ${form.operacion === item ? "" : "opacity-[.6] cursor-pointer"}`}>{item}</button>
 				))}
 			</div>
 
@@ -80,14 +80,16 @@ const SearchProperties = ({ values }) => {
 				{filters.map((item, i) => (
 						<div key={item.id} className={`flex flex-col relative ${item.id === 4 ? "hidden lg:flex" : ""}`}>
 
-							<button onClick={()=> openOptions(item.id)}  className="items-start cursor-pointer flex flex-col focus:outline-none lg:border-r lg:pr-2 lg:border-[#efefef]">
-								<div className="flex justify-betwee items-center gap-10">
+							{/* lg:border-r  lg:border-[#efefef] */}
+							<button onClick={()=> openOptions(item.id)}  className="items-start cursor-pointer flex flex-col focus:outline-none ">
+								<div className="flex justify-between items-center gap-10 w-full">
 									<div className="flex items-center gap-[5px]">
 										{/* item.icon */}
 										<h3 className="text-[.9rem] text-nowrap">{item.title}</h3>
 									</div>
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
 								</div>
+
 
 								<p className="opacity-[.6] truncate max-w-[140px]">{form[item.operation]}</p>
 							</button>
@@ -107,7 +109,7 @@ const SearchProperties = ({ values }) => {
 					))
 				}
 
-				<button type="submit" alt="buscar propiedades" className="cursor-pointer bg-[#402411ff] px-[16px] py-[12px] text-white rounded-[16px]">
+				<button type="submit" alt="buscar propiedades" className="cursor-pointer bg-[var(--cta)] px-[16px] py-[12px] text-white rounded-[16px]">
 					<p className="m-auto font-medium">
 						Buscar
 					</p>

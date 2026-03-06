@@ -1,69 +1,103 @@
 ---
-import "../../styles/global.css";
-import Layout from '../../layouts/Layout.astro'
-import propiedades from '../../data/propiedades.json'
+import "@/styles/global.css";
+import Layout from '@/layouts/Layout.astro'
+import propiedades from '@/data/propiedades.json'
+import Carousel from '@/components/CarouselThumbnails.jsx'
+import Form from '@/components/Formulario.astro'
 
 export async function getStaticPaths() {
 	return propiedades
-		// .filter(p => p.activa) (preguntar ¿no es mejor dejar las fichas aun de las propiedades inactivas por seo abarcar mas publico?)
-		.map(p => ({
-			params: { slug: p.slug },
-			props: { propiedad: p }
-		}))
+	// .filter(p => p.activa) (preguntar ¿no es mejor dejar las fichas aun de las propiedades inactivas por seo abarcar mas publico?)
+	.map(p => ({
+		params: { slug: p.slug },
+		props: { propiedad: p }
+	}))
 }
 
 const { propiedad: p } = Astro.props
 
-const whatsappMsg = encodeURIComponent(`Hola, me interesa la propiedad: ${p.titulo} - ${Astro.url}`)
-const whatsappUrl = `https://wa.me/${p.whatsapp}?text=${whatsappMsg}`
+// const whatsappMsg = encodeURIComponent(`Hola, me interesa la propiedad: ${p.titulo} - ${Astro.url}`)
 
 // SEO
 const metaTitulo = `${p.titulo} en ${p.operacion} | TuInmobiliaria`
-const metaDesc = `${p.tipo} en ${p.operacion} en ${p.direccion}. ${p.ambientes} ambientes, ${p.superficie_cubierta}m². Precio: ${p.moneda} ${p.precio.toLocaleString()}`
+const metaDesc = `${p.tipo} en ${p.operacion} en ${p.direccion}. ${p.ambientes} ambientes, ${p.superficie_cubierta}m². Precio: ${p.moneda} ${p.price.toLocaleString()}`
 ---
 
 <Layout title={metaTitulo} description={metaDesc}>
-	<section class="lg:px-40 py-20">
+	<main class="px-10 lg:px-40 py-20 flex gap-10">
 		
-		<!-- Galería -->
-		<div class="galeria">
-			{p.imagenes.map((img, i) => (
-				<img src={img} alt={`${p.titulo} - foto ${i + 1}`} />
-			))}
-		</div>
+		<article class="flex flex-col gap-5 flex-1">
+			
+			<section class="galeria"> <!-- Galería -->
+				<!-- {p.imagenes.map((img, i) => (
+					<img src={img} alt={`${p.titulo} - foto ${i + 1}`} class="w-full h-[250px]" />
+				))} -->
 
-		<!-- Datos básicos -->
-		<h1>{p.titulo}</h1>
-		<p>{p.direccion}</p>
-		<p>{p.moneda} {p.precio.toLocaleString()}</p>
+				<Carousel client:load id={1} data={p.imagenes} />
+			</section>
+			
+			<section> <!-- Datos básicos -->
+				<h1 class="text-4xl">{p.titulo}</h1>
+				<p class="opacity-[.6] text-2xl">{p.direccion}</p>
+				<p>{p.moneda} {p.price.toLocaleString()}</p>
+			</section>
 
-		<ul>
-			<li>{p.ambientes} ambientes</li>
-			<li>{p.habitaciones} habitaciones</li>
-			<li>{p.banos} baños</li>
-			<li>{p.superficie_cubierta}m² cubiertos</li>
-			<li>{p.superficie_total}m² totales</li>
-		</ul>
+			<section> <!-- Caracteristicas Principales -->
+				<h2 class="text-2xl">Caracteristicas Principales</h2>
+				<ul class>
+					{Object.entries(p.caracteristicas).map(([title,value]) => <li>{title} {value}</li>)}
+					<!-- <li>{p.ambientes} ambientes</li>
+					<li>{p.habitaciones} habitaciones</li>
+					<li>{p.banos} baños</li>
+					<li>{p.superficie_cubierta}m² cubiertos</li>
+					<li>{p.superficie_total}m² totales</li> -->
+				</ul>
+			</section>
 
-		<!-- Descripción -->
-		<p>{p.descripcion}</p>
+			<section> <!-- Descripción -->
+				<h2 class="text-2xl">Descripción</h2>
+				
+				<p>{p.descripcion}</p>
+			</section>
 
-		<!-- Características -->
-		<ul>
-			{p.caracteristicas.map(c => <li>{c}</li>)}
-		</ul>
+			<section> <!-- Caracteristicas Adicionales -->
+				<h2 class="text-2xl">Comodidades</h2>
+				<ul>{p.comodidades.map(item => (<li>{item}</li>))}</ul>
+			</section>
 
-		<!-- Mapa -->
-		<iframe
-			src={`https://maps.google.com/maps?q=${p.lat},${p.lng}&z=15&output=embed`}
-			width="100%"
-			height="400"
-			loading="lazy"
-		/>
+			<section> <!-- Mapa -->
+				<h2 class="text-2xl">Ubicación</h2>
+				
+				<iframe
+					src={`https://maps.google.com/maps?q=${p.lat},${p.lng}&z=15&output=embed`}
+					width="100%"
+					height="400"
+					loading="lazy"
+				/>
+			</section>
+		</article>
 
-		<!-- WhatsApp -->
-		<a href={whatsappUrl} target="_blank">
-			Consultar por WhatsApp
-		</a>
-	</section>
+		<aside class="hidden lg:flex max-w-xs flex-col gap-1 h-[82vh] bg-white py-10 px-7 rounded-l-[45px] sticky top-25 overflow-y-auto">
+			
+			<div class="flex justify-between items-center">
+				<p class="text-2xl font-bold">{p.moneda} {p.price}</p>
+				<p class="opacity-[.6]">Precio</p>
+			</div>
+			<h2 class="text-lg text-wrap">{p.titulo}</h2>
+			<p class="opacity-[.6] text-wrap">{p.direccion}</p>
+
+			<div>
+				{["1300 Sup", "2 Hab", "1 Baño"].map((item,i) => (
+					<span key={i} class='text-sm rounded-[8px]  font-[500]'>{item}</span>
+				))}
+			</div>
+
+			<div class="flex flex-col gap-2 border-top mt-4 border-t border-t-[#aaa] pt-4">
+				<p class="font-bold">Consultar por esta propiedad</p>
+				<Form ficha/>
+			</div>
+
+		</aside>
+
+	</main>
 </Layout>

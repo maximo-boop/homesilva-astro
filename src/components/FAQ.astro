@@ -11,13 +11,13 @@ const faqs = [
 ]
 ---
 
-<section class="text-center flex flex-col gap-5 lg:px-40 py-20">
-	<h2 class="text-4xl">¿Tienes alguna pregunta o inquietud?</h2>
-	<h3 class="text-xl opacity-[.6]">Te acompañamos en cada etapa del proceso</h3>
+<section class="text-center flex flex-col gap-5 px-10 lg:px-40 py-20">
+	<h2 class="text-2xl lg:text-4xl">¿Tienes alguna pregunta o inquietud?</h2>
+	<h3 class="lg:text-xl opacity-[.6]">Te acompañamos en cada etapa del proceso</h3>
 
 	{faqs.map((faq) => (
 		<details class="text-start bg-white rounded-[20px]">
-			<summary class="flex items-center justify-between cursor-pointer text-[20px] focus:outline-none py-6 px-10">
+			<summary class="flex items-center justify-between cursor-pointer lg:text-[20px] focus:outline-none py-6 px-10">
 				{faq.pregunta}
 
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -2,65 +2,75 @@
 import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro'
 import propiedades from '../../data/propiedades.json'
-import Property from '../../components/Property.jsx'
-import Map from '../../components/Map.jsx'
+import PropertiesFilters from '@/components/PropertiesFilters.jsx'
+import {toSlug, toPlural, toSingular } from '@/utils/utils.js'
 
-export async function getStaticPaths() {
-	const base = [{ params: { filtros: undefined } }]
+export function getStaticPaths() {
+	const paths = new Set();
 
-	const porOperacion = [...new Set(propiedades.map(p => p.operacion))]
-		.map(operacion => ({ params: { filtros: operacion } }))
+	propiedades.forEach(p => {
+		const operacion = p.operacion.toLowerCase();
+		const tipo = toPlural(p.tipo.toLowerCase());
+		const localidad = toSlug(p.localidad);
 
-	const porTipo = [...new Set(propiedades.map(p => `${p.operacion}/${p.tipo}`))]
-		.map(ruta => ({ params: { filtros: ruta } }))
+		paths.add(operacion);
+		paths.add(tipo);
+		paths.add(localidad);
+		// Dos segmentos
+		paths.add(`${operacion}/${tipo}`);
+		paths.add(`${operacion}/${localidad}`);
+		paths.add(`${tipo}/${localidad}`);
+		// Tres segmentos
+		paths.add(`${operacion}/${tipo}/${localidad}`);
+	});
 
-	return [...base, ...porOperacion, ...porTipo]
+	return [
+		{ params: { filtros: undefined } }, ...[...paths].map(path => ({ params: { filtros: path } }))
+	];
 }
 
-// Parsear segmentos
-const segmentos = Astro.params.filtros?.split('/') ?? []
-const [operacion, tipo] = segmentos
+const { filtros } = Astro.params;
+const segmentos = filtros?.split("/") ?? [];
 
-// Filtrar
-const resultados = propiedades.filter(p => {
-	if (operacion && tipo) return p.operacion === operacion && p.tipo === tipo
-	if (operacion) return p.operacion === operacion
-	return true
-})
+const resultado = propiedades.filter(p =>
+	segmentos.every(s =>
+		s === p.operacion.toLowerCase() ||
+		s === toPlural(p.tipo.toLowerCase()) ||
+		s === toSlug(p.localidad)
+	)
+);
+const titulo = ''
 
-// SEO dinámico
-const titulo = tipo
-	? `${tipo} en ${operacion}`
-	: operacion
-	? `Propiedades en ${operacion}`
-	: 'Todas las propiedades'
+console.log("resultado ABC", resultado);
+
 ---
 
-<!-- <script> -->
-	<!-- const params = new URLSearchParams(window.location.search) -->
-	<!-- const precioMax = params.get('precioMax') -->
-	<!-- const banos = params.get('banos') -->
-	<!-- const orden = params.get('orden') -->
-
-	<!-- // Filtrás el listado ya renderizado o usás un componente React -->
-<!-- </script> -->
-
-<!-- <head> (para evitar contenido duplicado) -->
+<!-- normalmente se utiliza canonical para evitar que google indexe convinaciones de query filtros que son muchas  -->
+<!-- pero porque??? -->
+<!-- y a donde debo apuntar dependiendo el filtro activo -->
+<!-- <head>  -->
 	<!-- <link rel="canonical" href={`https://tusitio.com/propiedades/${operacion}/${tipo}`} /> -->
 <!-- </head> -->
 
 <Layout title={titulo}>
-	<section class="min-h-screen lg:px-20 py-20">
-		<h1>{titulo}</h1>
-		<p>{resultados.length} propiedades encontradas</p>
+	<main class="max-w-[1400px] m-auto flex flex-col gap-4 pb-20">
 
-<!-- 		<div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
-			{resultados.map(p => (
-				<Property client:load p={p} />
-			))}
-		</div> -->
+<!-- 		<PropertiesFilters 
+			client:only 
+			titulo={titulo} 
+			params={parsearFiltros(Astro.params.filtros)}
 
-		<Map client:only="react" />
-
-	</section>
+			propiedadesPaginadas={resultados}
+			todasLasPropiedades={todos}
+		/> -->
+		<!-- <Map client:only="react" /> -->
+	</main>
 </Layout>
+
+<!-- <style>
+	
+	#filter-menu:checked + .submenu {
+		display: flex;
+	}
+
+</style> -->

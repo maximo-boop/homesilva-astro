@@ -1,19 +1,18 @@
 ---
-import "../styles/global.css";
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Properties from '../components/Properties.astro';
-import Services from '../components/Services.astro';
-import Pasos from '../components/Pasos.astro';
-import Localities from '../components/Localities.astro';
-import WhyChoose from '../components/WhyChoose.astro';
-import FAQ from '../components/FAQ.astro';
+import "@/styles/global.css";
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import Properties from '@/components/Properties.astro';
+import Services from '@/components/Services.astro';
+import Pasos from '@/components/Pasos.astro';
+import Localities from '@/components/Localities.astro';
+import WhyChoose from '@/components/WhyChoose.astro';
+import FAQ from '@/components/FAQ.astro';
 ---
 
 <Layout>
 
 	<!-- 1. Sections -->
-
 	<Hero />
 	<Properties />
 	<Services />
@@ -21,8 +20,8 @@ import FAQ from '../components/FAQ.astro';
 	<Localities />
 	<WhyChoose />
 
-<!-- 	<section class="px-10 lg:px-40 py-20 flex gap-5 bg-white">
-		<div class="flex flex-1 flex-col gap-5">
+	<section class="px-10 lg:px-40 py-20 flex gap-5 bg-white">
+			<div class="flex flex-1 flex-col gap-5">
 			<h2 class="text-4xl">¿Querés vender tu propiedad? <br>
 			Te asesoramos para hacerlo <br>bien desde el inicio</h2>
 			<p class="text-xl opacity-[.6]">
@@ -37,9 +36,9 @@ import FAQ from '../components/FAQ.astro';
 		<div class="flex-1">
 			<img src="/pasos-1.jpg" alt="" class="w-full rounded-4xl">
 		</div>
-	</section> -->
+	</section>
 
-	<!-- <FAQ /> -->
+	<FAQ />
 
 </Layout>
 

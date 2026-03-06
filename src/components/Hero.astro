@@ -27,9 +27,9 @@ const data = [
 
 <section class="bg-white lg:px-40 pb-20 lg:pt-5">
 
-	<div class="bg-[var(--primary)] flex flex-col lg:flex-row gap-5 lg:rounded-[45px] max-w-[1200px] m-auto relative">
+	<div class="bg-[var(--primaryColor)] flex flex-col lg:flex-row gap-5 lg:rounded-[45px] max-w-[1200px] m-auto relative ">
 
-		<div class="flex-1 flex flex-col gap-3 py-10 px-10 lg:px-0 lg:pl-20">
+		<div class="flex-1 flex flex-col gap-4 py-10 px-10 lg:px-0 lg:pl-20">
 			<h1 class="text-[2.3rem] font-extrabold leading-[2.7rem]">Encuentra tu proximo <br>hogar en <span class="text-[#eeaa69ff]">Córdoba</span></h1>
 			<h2 class="text-lg opacity-[.6]">Venta y alquiler de casas, departamentos y terrenos <br>exclusivos en las mejores zonas.</h2>
 
@@ -40,7 +40,7 @@ const data = [
 		<div class="flex-1 flex items-center justify-center relative overflow-hidden lg:rounded-[45px]">
 			<img src="/main-img.png" alt="" class="h-[90%] mr-30 z-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.2)]">
 			<img src="/main-img-card.png" alt="" class="w-[170px] absolute right-10 bottom-0 z-10">
-			<div class="absolute w-full top-0 bottom-0 -right-0 rounded-l-full bg-[#ffe9d3ff]"></div>
+			<div class="absolute w-full top-0 bottom-0 -right-0 rounded-t-full lg:rounded-t-none lg:rounded-l-full bg-[#ffe9d3ff]" />
 		</div>
 
 	</div>
@@ -48,7 +48,7 @@ const data = [
 	<div class="grid grid-cols-2 lg:grid-cols-4 mt-10 max-w-[1200px] m-auto">
 		{data.map(item => (
 			<div class="flex flex-col items-center gap-2 z-5">
-				<div class="bg-[var(--primary)] p-4 rounded-[18px] w-fit">
+				<div class="bg-[var(--primaryColor)] p-4 rounded-[18px] w-fit">
 					<span set:html={item.icon} />
 				</div>
 				<span class="font-extrabold">{item.value}</span>

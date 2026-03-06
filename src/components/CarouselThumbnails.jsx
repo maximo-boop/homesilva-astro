@@ -1,60 +1,26 @@
-'use client'
+  'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
-const categories = [
-	{
-		label: "Comprador",
-		services: [
-			{ 
-				title: "Búsqueda personalizada de propiedades",
-				description: "Ofrecemos un servicio de búsqueda personalizada, donde te ayudamos a encontrar la propiedad perfecta que se ajuste a tus necesidades y criterios específicos.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>,
-			},
-			{ 
-				// title: "Asesoría legal", 
-				title: "Servicios de negociación",
-				description: "Ofrecemos habilidades de negociación para obtener las mejores condiciones en las transacciones de compra o venta de propiedades.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>,
-			},
-			{ 
-				// title: "Gestión hipotecaria", 
-				title: "Asesoramiento en la compra y venta de propiedades",
-				description: "Brindamos asesoramiento y orientación profesional durante todo el proceso de compra o venta de una propiedad.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
-			},
-		],
-	},
-	{
-		label: "Vendedor",
-		services: [
-			{ 
-				// title: "Tasación profesional", 
-				title: "Evaluación y tasación de propiedades en Córdoba Capital",
-				description: "Ofrecemos servicios de evaluación y tasación de propiedades para determinar el valor justo de una propiedad o para tener una idea realista del precio de compra.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
-			},
-			{ 
-				// title: "Marketing inmobiliario", 
-				title: "Asistencia en trámites legales y financieros",
-				description: "Te proporcionamos asistencia en los trámites legales y financieros asociados con la compra o venta de una propiedad, asegurando una transacción sin problemas.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
-			},
-			{ 
-				// title: "Gestión de visitas",
-				title: "Gestión de visitas y exhibiciones de propiedades",
-				description: "Realizamos visitas a las propiedades para que puedas conocerlas en persona y tomar decisiones informadas.",
-				icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
-			},
-			// Si deseas mejorar el aspecto y el valor de una propiedad, ofrecemos servicios de diseño de interiores y remodelación.
-		],
-	},
-];
+const LabelButtons = ({cat, i, emblaApi, selected}) => (
+	<button
+		key={i}
+		className={`${i === selected ? "bg-white" : "cursor-pointer opacity-[.6]"} transition-bg transition-opacity duration-200 ease rounded-full focus:outline-none p-3 px-5 border-none`}
+		onClick={() => emblaApi?.scrollTo(i)}
+	>
+		{cat.label}
+	</button>
+)
 
-export default function CarouselThumbnails() {
+export default function CarouselThumbnails({ data, id=0 }) {
 	const [selected, setSelected] = useState(0);
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+	const [isAnimating, setIsAnimating] = useState(false);
+	const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
+		containScroll: 'keepSnaps',
+		dragFree: true
+	})
 
 	useEffect(() => {
 		if (!emblaApi) return;
@@ -67,39 +33,112 @@ export default function CarouselThumbnails() {
 		onSelect();
 	}, [emblaApi]);
 
-	return (
-		<div>
-			<div className="mb-10 m-auto bg-[#0000000a] rounded-full w-fit text-[#000]">
-				{categories.map((cat, i) => (
-					<button
-						key={i}
-						className={`${i === selected ? "bg-white" : "cursor-pointer opacity-[.6]"} transition-bg transition-opacity duration-200 ease rounded-full focus:outline-none p-3 px-5 border-none`}
-						onClick={() => emblaApi?.scrollTo(i)}
-					>
-						{cat.label}
-					</button>
-				))}
-			</div>
+	// useEffect(() => {
+	// 	const onScroll = () => setIsAnimating(true)
+	// 	const onSelect = () => setIsAnimating(false)
 
-			<div className="overflow-hidden" ref={emblaRef}>
-				<div className="flex -ml-[1rem]">
-					{categories.map((cat, i) => (
-					<div className="flex-[0_0_100%]" key={i}>
-						<div className="grid grid-cols-3 gap-[1rem]">
-							{cat.services.map((service, idx) => (
-								<div className="cursor-pointer text-start p-6 bg-white overflow-hidden font-[500] text-ellipsis rounded-[40px] flex flex-col gap-2 ml-[1rem]" key={idx}>
-									<div className='p-[9px] bg-[#f5f5f5] w-fit rounded-[12px]'>
-										{service.icon}
-									</div>
-									<h3 className="font-[500] text-[1.1rem]">{service.title}</h3>
-									<p className="opacity-[.6]">{service.description}</p>
-								</div>
-							))}
-						</div>
-					</div>
+	// 	emblaApi.on('scroll', onScroll)
+	// 	emblaApi.on('select', onSelect)
+
+	// 	return () => {
+	// 		emblaApi.off('scroll', onScroll)
+	// 		emblaApi.off('select', onSelect)
+	// 	}
+	// }, [emblaApi]);
+
+	const isEnabled = (n) => {
+		if(!emblaApi) return
+		return n===1 ? !emblaApi.canScrollPrev() : !emblaApi.canScrollNext()
+	}
+
+	const scrollPrev = useCallback(() => {
+		// if (!emblaApi.canScrollPrev()) return
+		if (emblaApi) emblaApi.scrollPrev()
+	}, [emblaApi])
+
+	const scrollNext = useCallback(() => {
+		// if (!emblaApi.canScrollNext()) return
+		if (emblaApi) emblaApi.scrollNext()
+	}, [emblaApi])
+
+	return (
+		<div className={`flex ${id===0 ? 'flex-col' : 'flex-col-reverse gap-2'}`}>
+
+			{/* thumbnails */}
+			<div ref={emblaThumbsRef}
+				className={`${id===0? 'mb-10 m-auto bg-[#0000000a] rounded-full w-fit text-[#000]' : 'overflow-hidden'}`}
+			>
+				<div className={`flex ${id===0 ? '' : 'gap-3'}`}>
+					{data.map((cat, i) => (
+						id===0? (
+							<LabelButtons cat={cat} i={i} emblaApi={emblaApi} selected={selected} />
+						) : (
+							<button
+								key={i}
+								className="h-[130px] flex-[0_0_24%] bg-white rounded-[40px] cursor-pointer"
+								onClick={() => emblaApi?.scrollTo(i)}
+							>
+							</button>
+						)
 					))}
 				</div>
 			</div>
+
+			{id!== 0 && (
+				<div className="flex justify-between items-center">
+					<h2>Fotos</h2>
+					<p className="opacity-[.6]">Ver todas</p>
+				</div>
+			)}
+
+			{/* contenido principal */}
+			<div className="overflow-hidden relative" ref={emblaRef}>
+				<div className={`flex ${id===0 ? '-ml-[1rem]' : ''} peer`}>
+
+					{data.map((cat, i) => (
+						id===0? (
+							<div className="flex-[0_0_100%]" key={i}>
+								<div className={`${id===0?'grid-cols-1 lg:grid-cols-3':'grid-cols-3'} grid  gap-[1rem]`}>
+									{cat.services.map((service, idx) => (
+										<div className="cursor-pointer text-start p-6 bg-white overflow-hidden font-[500] text-ellipsis rounded-[40px] flex flex-col gap-2 ml-[1rem]" key={idx}>
+
+											<div className='p-[9px] bg-[#f5f5f5] w-fit rounded-[12px]'>
+												<span dangerouslySetInnerHTML={{ __html: service.icon }} />
+											</div>
+											<h3 className="font-[500] text-[1.1rem]">{service.title}</h3>
+											<p className="opacity-[.6]">{service.description}</p>
+										</div>
+									))}
+								</div>
+							</div>
+						) : (
+							<div className="flex-[0_0_100%] min-h-[350px] bg-white rounded-[45px]" key={i} />
+						)
+					))}
+
+				</div>
+
+				{/* rows */}
+				{id===1 && (
+					<div className="peer-hover:opacity-100 opacity-0 hover:opacity-50 transition-opacity duration-300">
+					{[1,2].map(n => (
+						<button 
+						className={`${isEnabled(n) ? 'opacity-0' : 'cursor-pointer'} absolute top-[50%] -translate-y-[50%] shadow-[0_0_1rem_rgba(0,0,0,0.1)] focus:outline-none bg-white rounded-full p-2 z-5 ${n===1?'left-5' : 'right-5'}`} 
+						onClick={n===1?scrollPrev:scrollNext}>
+							<svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								{n===1 ? (
+										<path d="M15 6l-6 6l6 6" fill="none" />
+									) : (
+										<path d="M9 6l6 6l-6 6" fill="none" />
+								)}
+							</svg>
+						</button>
+					))}
+				</div>
+				)}
+			</div>
+
 		</div>
 	);
 }

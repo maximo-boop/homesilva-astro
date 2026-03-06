@@ -7,15 +7,31 @@ const links=[
 		url: "/"
 	},
 	{
-		title: "Propiedades",
-		url: "/propiedades"
+		title: "Comprar",
+		url: "/propiedades/venta",
+		childrens: [
+			{ title: "Casas en venta", url: "/propiedades/venta/casas" },
+			{ title: "Departamentos en venta", url: "/propiedades/venta/departamentos" },
+			{ title: "Terrenos en venta", url: "/propiedades/venta/terrenos" },
+			{ title: "PHs en venta", url: "/propiedades/venta/ph" }
+		]
+	},
+	{
+		title: "Alquilar",
+		url: "/propiedades/alquiler",
+		childrens: [
+			{ title: "Casas en alquiler",  url: "/propiedades/alquiler/casas" },
+			{ title: "Departamentos en alquiler", url: "/propiedades/alquiler/departamentos" },
+			{ title: "Terrenos en alquiler", url: "/propiedades/alquiler/terrenos" },
+			{ title: "PHs en alquiler", url: "/propiedades/alquiler/ph" }
+		]
 	},
 	{
 		title: "Sobre nosotros",
 		url: "/sobre-nosotros"
 	},
 	{
-		title: "Contacto",
+		title: "Contáctanos",
 		url: "/contacto"
 	}
 ]
@@ -30,17 +46,33 @@ const links=[
 			<a href="/"><Logo /></a>
 
 			<input type="checkbox" class="lg:hidden" id='menu-toggle'>
-			<label for="menu-toggle" class="hamburger hidden">menu</label>
+			<label for="menu-toggle" class="hamburger">menu</label>
 		</div>
 
 		<!-- Navigation -->
 		<ul class="hidden nav flex flex-col lg:flex-row bg-white gap-10 mt-10 lg:mt-0">
-			{links.map((item,index) => (
+			{links.map((item,i) => (
+				!item.childrens ? (
 					<li>
-						<a href={item.url} class={`${index===3 ? "rounded-[10px] bg-black text-white py-3 px-6": ""}`}>{item.title}</a>
+						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black text-white py-3 px-5": ""} flex lg:inline`}>{item.title}</a>
 					</li>
-				))
-			}
+				) : (
+					<li class="relative menu">
+						<div class="flex items-center gap-2 justify-between">
+							<a href={item.url}>{item.title}</a>
+							<input type="checkbox" id={item.title} />
+	      						<label for={item.title} class="cursor-pointer w-full lg:w-fit">
+								<svg xmlns="http://www.w3.org/2000/svg" class="ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+	      						</label>
+      						</div>
+      						<ul class="submenu lg:absolute flex-col gap-3 top-full left-0 bg-white text-nowrap pt-4 lg:p-4 rounded-[12px] min-w-full hidden">
+	      						{item.childrens.map(item => (
+								<li><a href={item.url} class="opacity-[.6] text-[.9rem]">{item.title}</a></li>
+	      						))}
+      						</ul>
+					</li>
+				)
+			))}
 		</ul>
 	</nav>
 
@@ -54,6 +86,24 @@ const links=[
 	.header:has(#menu-toggle:checked){
 		height: 100vh;
 	}
+
+	.header input {
+		pointer-events: none;
+		opacity: 0;
+		position: absolute;
+	}
+
+	.menu:has(input:checked) .submenu,
+	.menu:hover .submenu {
+		display: flex;
+	}
+
+	.header a {
+		transition: .2s color linear;
+	}
+	.header a:hover {
+		color: #e48957;
+	}
 	
 	@media screen and (min-width: 1020px){
 		.nav {
@@ -61,6 +111,9 @@ const links=[
 		}
 		.hamburger {
 			display: none;
+		}
+		.submenu {
+			box-shadow: 0 0 20px rgba(0,0,0,0.1);
 		}
 	}
 
