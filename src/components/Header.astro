@@ -1,5 +1,6 @@
 ---
-import Logo from '../assets/Logo.astro'
+import Logo from '/public/logo.astro'
+import Options from '@/components/Options.astro'
 
 const links=[
 	{
@@ -27,8 +28,8 @@ const links=[
 		]
 	},
 	{
-		title: "Sobre nosotros",
-		url: "/sobre-nosotros"
+		title: "Ver propiedades",
+		url: "/propiedades"
 	},
 	{
 		title: "Contáctanos",
@@ -37,40 +38,41 @@ const links=[
 ]
 ---
 
-<header class="header sticky top-0 p-5 px-10 lg:px-40 bg-white z-20">
+<header class="global-padding header sticky top-0 py-6 bg-white h-20 lg:h-22 z-100">
 
-	<nav class="lg:flex lg:items-center">
+	<nav class="lg:flex lg:items-center max-w-[1200px] mx-auto">
 
 		<!--LOGO -->
 		<div class="flex justify-between items-center flex-1">
-			<a href="/"><Logo /></a>
+			<a href="/" aria-label="Inicio - Ir al inicio">
+				<Logo />
+			</a>
 
-			<input type="checkbox" class="lg:hidden" id='menu-toggle'>
-			<label for="menu-toggle" class="hamburger">menu</label>
+			<input 
+				type="checkbox" 
+				class="lg:hidden" 
+				id='menu-toggle'
+				aria-label="Abrir menú de navegación"
+			>
+			<label for="menu-toggle" class="hamburger">
+				<span class="sr-only">Menú</span>
+				<svg id='close' class="hidden" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+					<path d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
+				</svg>
+				<svg id='open' xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+			</label>
 		</div>
 
 		<!-- Navigation -->
-		<ul class="hidden nav flex flex-col lg:flex-row bg-white gap-10 mt-10 lg:mt-0">
+		<ul class="hidden nav flex flex-col lg:flex-row bg-white gap-6 lg:gap-10 mt-10 lg:mt-0 lg:items-center">
 			{links.map((item,i) => (
 				!item.childrens ? (
 					<li>
-						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black text-white py-3 px-5": ""} flex lg:inline`}>{item.title}</a>
+						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black text-white py-3 px-5": "hover:text-[#e48957] transition-text ease duration-200"} flex lg:inline`}>{item.title}</a>
 					</li>
 				) : (
-					<li class="relative menu">
-						<div class="flex items-center gap-2 justify-between">
-							<a href={item.url}>{item.title}</a>
-							<input type="checkbox" id={item.title} />
-	      						<label for={item.title} class="cursor-pointer w-full lg:w-fit">
-								<svg xmlns="http://www.w3.org/2000/svg" class="ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
-	      						</label>
-      						</div>
-      						<ul class="submenu lg:absolute flex-col gap-3 top-full left-0 bg-white text-nowrap pt-4 lg:p-4 rounded-[12px] min-w-full hidden">
-	      						{item.childrens.map(item => (
-								<li><a href={item.url} class="opacity-[.6] text-[.9rem]">{item.title}</a></li>
-	      						))}
-      						</ul>
-					</li>
+					<Options item={item} />
 				)
 			))}
 		</ul>
@@ -87,22 +89,18 @@ const links=[
 		height: 100vh;
 	}
 
-	.header input {
+	.header:has(#menu-toggle:checked) #close {
+		display: inline;
+	}
+	.header:has(#menu-toggle:checked) #open {
+		display: none;
+	}
+
+
+	input {
 		pointer-events: none;
 		opacity: 0;
 		position: absolute;
-	}
-
-	.menu:has(input:checked) .submenu,
-	.menu:hover .submenu {
-		display: flex;
-	}
-
-	.header a {
-		transition: .2s color linear;
-	}
-	.header a:hover {
-		color: #e48957;
 	}
 	
 	@media screen and (min-width: 1020px){
@@ -111,9 +109,6 @@ const links=[
 		}
 		.hamburger {
 			display: none;
-		}
-		.submenu {
-			box-shadow: 0 0 20px rgba(0,0,0,0.1);
 		}
 	}
 

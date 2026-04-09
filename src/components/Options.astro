@@ -1,0 +1,59 @@
+---
+const {item, styles} = Astro.props
+---
+<li class={`relative menu z-10 ${styles ? 'w-full lg:flex lg:items-center lg:gap-4': 'lg:flex'}`}>
+	<div class={`flex items-center justify-between gap-2 ${styles ? 'lg:overflow-hidden rounded-[12px] lg:gap-0 bg-white w-full px-6 py-4 lg:p-0 text-nowrap lg:w-fit' : ''}`}>
+		<a href={item.url} class={`${styles? 'lg:py-4 lg:px-6 lg:hover:bg-[#fcfcfc] text-lg' : 'hover:text-[#e48957] duration-200 ease'}`}>{item.title}</a>
+		<input 
+			id={item.title} 
+			type="checkbox" 
+			class="dropdown-toggle" 
+			aria-label={`Abrir submenú de ${item.title}`}
+		/>
+		<label for={item.title} class="cursor-pointer w-full lg:w-fit" aria-haspopup='true' aria-controls={`submenu-${item.title}`}>
+			<span class="sr-only">Abrir submenú de {item.title}</span>
+			<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class={`ml-auto ${styles?'lg:hidden': ''}`} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+		</label>
+	</div>
+	<div class={`pt-2 ${styles? 'lg:pt-0' : ''}`}>
+		<ul role='listbox' id={`submenu-${item.title}`} class={`submenu rounded-[12px] ${styles ? 'absolute lg:shadow-none lg:static lg:flex lg:flex-row lg:py-0 lg:gap-4 lg:bg-transparent shadow-[0_0_20px_rgba(0,0,0,0.05)]' : 'lg:shadow-[0_0_10px_rgba(0,0,0,0.05)] lg:absolute top-full left-0'} hidden flex-col bg-white text-nowrap py-2 min-w-full`}>
+			<!-- rounded-[12px] -->
+			{item.childrens.map(c => (
+				<li class="w-full">
+					<a href={c.url} class={`${styles? 'lg:bg-white lg:text-base lg:py-4 lg:px-6 lg:rounded-[12px] hover:bg-[#fcfcfc]' : 'hover:bg-[#fafafa]'} text-[16px] py-2 px-4 flex w-full text-start`}>{c.title}</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</li>
+
+<style>
+
+	input {
+		pointer-events: none;
+		opacity: 0;
+		position: absolute;
+	}
+	.menu:has(input:checked) .submenu,
+	.menu:hover .submenu {
+		display: flex;
+	}
+
+	li {
+		list-style: none;
+	}
+
+</style>
+
+<script>
+	document.addEventListener('click', (e) => {
+		const checked = document.querySelector('.dropdown-toggle:checked');
+		if (!checked) return;
+
+		document.querySelectorAll('.menu').forEach(menu => {
+			if (!menu.contains(e.target)) {
+				menu.querySelector('.dropdown-toggle').checked = false;
+			}
+		});
+	});
+</script>

@@ -2,13 +2,19 @@
 import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
 import Formulario from '../components/Formulario.astro'
+import Ilustration from '/public/Form.astro'
 ---
 
 <Layout>
-	<section class="py-20 lg:px-40">
-		<h1>Contactanós</h1>
-
-		<Formulario />		
-
-	</section>
+	<main class="bg-white flex flex-col-reverse lg:flex-row-reverse px-5 items-center lg:items-start py-10 lg:px-35 gap-10">
+		<section class="flex flex-col flex-1 items-center justify-center">
+			<h1 class="text-2xl mb-5">Contactanós por propiedades en Córdoba y alrededores.</h1>
+			<h2 class="text-lg text-[#aaa]">Ya sea que estés buscando tu próxima casa o quieras vender la tuya, estamos aquí para hacerlo fácil y exitoso. ¡Cuéntanos tus necesidades!</h2>
+			<Ilustration />
+		</section>
+		<section class="flex flex-col flex-1 gap-5 lg:max-w-md">
+			<h2 class="text-2xl lg:flex font-bold">Contáctanos</h2>
+			<Formulario />		
+		</section>
+	</main>
 </Layout>

@@ -1,34 +1,156 @@
 ---
 const faqs = [
 	{
-		pregunta: "¿Cómo puedo contactar a un asesor?",
-		respuesta: "Podés contactarnos a través del formulario de contacto."
+		pregunta: "¿Cómo es el proceso para vender una propiedad?",
+		respuesta: "El proceso comienza con la tasación de la propiedad para definir un precio acorde al mercado, evitando que quede por debajo o por encima de su valor real. A partir de ahí, se trabaja la presentación (fotos, contenido y publicación) y se define una estrategia para generar interés y atraer consultas reales. Durante todo el proceso se realiza seguimiento de consultas y se acompaña hasta concretar la operación."
+	},
+	{
+		pregunta: "¿Cómo se define el precio de mi propiedad en Córdoba?",
+		respuesta: "El precio se define en base al mercado actual, analizando propiedades similares, ubicación y características. No se trata solo de estimar un valor, sino de encontrar un punto que permita generar interés real y avanzar en la venta sin demoras."
+	},
+	{
+		pregunta: "¿Cuánto tiempo tarda en venderse una propiedad?",
+		respuesta: "En promedio, una propiedad puede tardar alrededor de 90 días en venderse, siempre que el precio esté bien definido desde el inicio y la estrategia de publicación sea la adecuada. El tiempo puede variar según la ubicación, el tipo de propiedad y la demanda del mercado."
+	},
+	{
+		pregunta: "¿Qué necesito para publicar mi propiedad?",
+		respuesta: "Para publicar una propiedad es importante contar con la información básica como ubicación, superficie y prestaciones. También es recomendable tener la documentación disponible, como el título de propiedad, aunque no es necesario tener todo resuelto desde el inicio. A partir de ahí, se analiza cada caso y se realiza un informe para verificar el estado de la propiedad, asegurando una operación clara y segura para el comprador."
+	},
+	{
+		pregunta: "¿Trabajan con exclusividad o puedo publicar con otras inmobiliarias?",
+		respuesta: "Trabajamos de ambas formas: con exclusividad o con autorización de venta, según lo que mejor se adapte a cada propiedad. Con exclusividad, la propiedad se gestiona a través de un solo canal, lo que permite trabajar con una estrategia más clara y un seguimiento más ordenado. Con autorización, podés publicar la propiedad con otras inmobiliarias al mismo tiempo. Es una opción más flexible, aunque con menor control sobre cómo se presenta y se gestiona la publicación. En ambos casos, el objetivo es el mismo: lograr una venta bien trabajada y con consultas reales."
+	},
+	{
+		pregunta: "¿Qué incluye el servicio de comercialización?",
+		respuesta: "El servicio incluye la definición de una estrategia acorde a la propiedad y al mercado, junto con la producción de contenido profesional para su correcta presentación. Se trabaja con fotógrafos y material audiovisual pensado para su difusión en portales y redes sociales, buscando destacar la propiedad y generar mayor interés. Además, la propiedad se difunde tanto en canales propios como en una red de colegas, ampliando el alcance y las posibilidades de encontrar un comprador."
+	},
+	{
+		pregunta: "¿Quién está detrás de las operaciones?",
+		respuesta: 'Las operaciones están a cargo de Domingo Cayetano Silva, corredor público y martillero matriculado con habilitación en tres jurisdicciones (M.P. 045879 · 054237 · 013508). Esto nos habilita a operar como martillero público y martillero judicial, garantizando un proceso claro y seguro en cada etapa. Nos especializamos en la comercialización de todo tipo de inmuebles, administración de propiedades y acompañamiento completo desde la publicación hasta el cierre.'
+	},
+	{
+		pregunta: "¿Cobran comisión? ¿Cómo funciona?",
+		respuesta: "Sí, se cobran honorarios por la intermediación en la operación, los cuales están regulados por la ley del Colegio de Corredores y Martilleros de la provincia de Córdoba (Ley 7191). El detalle de los honorarios se acuerdan previamente y se abona una vez concretada la operación. Se busca que todo sea claro desde el inicio, sin costos ocultos."
+	},
+	{
+		pregunta: "¿Puedo publicar mi propiedad si no tengo todos los papeles?",
+		respuesta: "Sí, en muchos casos se puede avanzar aunque la documentación no esté completamente finalizada. Por ejemplo, si la propiedad está en proceso de sucesión o en trámite, se puede evaluar la situación y comenzar a trabajar la venta mientras se ordena la parte legal. Cada caso se analiza de forma particular, para asegurar que la operación pueda avanzar de manera segura y sin inconvenientes."
 	},
 	{
 		pregunta: "¿Cuánto tarda el proceso de compra?",
-		respuesta: "El proceso generalmente tarda entre 30 y 60 días."
+		respuesta: "El tiempo puede variar según cada operación, pero en general el proceso completo puede llevar entre 30 y 90 días. Depende de factores como la documentación, la forma de pago y los tiempos administrativos. Cuando todo está en orden, el proceso avanza de forma más ágil."
 	}
 ]
 ---
 
-<section class="text-center flex flex-col gap-5 px-10 lg:px-40 py-20">
-	<h2 class="text-2xl lg:text-4xl">¿Tienes alguna pregunta o inquietud?</h2>
-	<h3 class="lg:text-xl opacity-[.6]">Te acompañamos en cada etapa del proceso</h3>
+<section class="max-w-[1400px] mx-auto text-center flex flex-col gap-5 global-padding py-20">
+
+	<h2 class="text-[20px] lg:text-4xl">Preguntas frecuentes sobre <br class="hidden lg:inline">venta de propiedades en Córdoba</h2>
+	<p class="text-[18px] lg:text-2xl text-[#aaa] mb-5">Te acompañamos en cada etapa del proceso</p>
 
 	{faqs.map((faq) => (
 		<details class="text-start bg-white rounded-[20px]">
-			<summary class="flex items-center justify-between cursor-pointer lg:text-[20px] focus:outline-none py-6 px-10">
-				{faq.pregunta}
+			<summary class="flex items-center justify-between cursor-pointer lg:text-[20px] focus:outline-none py-6 px-5 lg:px-10">
+				<span class="flex-1">{faq.pregunta}</span>
 
-				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 					<path d="M12 5l0 14" />
 					<path d="M5 12l14 0" />
 				</svg>
 			</summary>
 
-			<p class="pb-6 pt-0 px-10">{faq.respuesta}</p>
+			<p class="pb-6 pt-0 px-5 lg:px-10 text-gray-500">{faq.respuesta}</p>
 		</details>
 	))}
 
 </section>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "¿Cómo es el proceso para vender una propiedad?",
+			"acceptedAnswer": {
+			"@type": "Answer",
+				"text": "El proceso comienza con la tasación de la propiedad para definir un precio acorde al mercado, evitando que quede por debajo o por encima de su valor real. A partir de ahí, se trabaja la presentación (fotos, contenido y publicación) y se define una estrategia para generar interés y atraer consultas reales. Durante todo el proceso se realiza seguimiento de consultas y se acompaña hasta concretar la operación."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Cómo se define el precio de mi propiedad en Córdoba?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "El precio se define en base al mercado actual, analizando propiedades similares, ubicación y características. No se trata solo de estimar un valor, sino de encontrar un punto que permita generar interés real y avanzar en la venta sin demoras."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Cuánto tiempo tarda en venderse una propiedad?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "En promedio, una propiedad puede tardar alrededor de 90 días en venderse, siempre que el precio esté bien definido desde el inicio y la estrategia de publicación sea la adecuada. El tiempo puede variar según la ubicación, el tipo de propiedad y la demanda del mercado."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Qué necesito para publicar mi propiedad?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Para publicar una propiedad es importante contar con la información básica como ubicación, superficie y prestaciones. También es recomendable tener la documentación disponible, como el título de propiedad, aunque no es necesario tener todo resuelto desde el inicio. A partir de ahí, se analiza cada caso y se realiza un informe para verificar el estado de la propiedad, asegurando una operación clara y segura para el comprador."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Trabajan con exclusividad o puedo publicar con otras inmobiliarias?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Trabajamos de ambas formas: con exclusividad o con autorización de venta, según lo que mejor se adapte a cada propiedad. Con exclusividad, la propiedad se gestiona a través de un solo canal, lo que permite trabajar con una estrategia más clara y un seguimiento más ordenado. Con autorización, podés publicar la propiedad con otras inmobiliarias al mismo tiempo. Es una opción más flexible, aunque con menor control sobre cómo se presenta y se gestiona la publicación. En ambos casos, el objetivo es el mismo: lograr una venta bien trabajada y con consultas reales."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Qué incluye el servicio de comercialización?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "El servicio incluye la definición de una estrategia acorde a la propiedad y al mercado, junto con la producción de contenido profesional para su correcta presentación. Se trabaja con fotógrafos y material audiovisual pensado para su difusión en portales y redes sociales, buscando destacar la propiedad y generar mayor interés. Además, la propiedad se difunde tanto en canales propios como en una red de colegas, ampliando el alcance y las posibilidades de encontrar un comprador."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Quién está detrás de las operaciones?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Las operaciones están acompañadas por un corredor público y martillero matriculado, garantizando un proceso profesional y seguro en cada etapa. Trabajamos con respaldo en distintas áreas, incluyendo corredor público, martillero público y martillero judicial, lo que permite abordar cada operación con una base sólida y ordenada. Nos especializamos en la comercialización de todo tipo de inmuebles, administración de propiedades y gestión completa de cada operación, desde la publicación hasta el cierre."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Cobran comisión? ¿Cómo funciona?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Sí, se cobran honorarios por la intermediación en la operación, los cuales están regulados por la ley del Colegio de Corredores y Martilleros de la provincia de Córdoba (Ley 7191). El detalle de los honorarios se acuerdan previamente y se abona una vez concretada la operación. Se busca que todo sea claro desde el inicio, sin costos ocultos."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Puedo publicar mi propiedad si no tengo todos los papeles?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Sí, en muchos casos se puede avanzar aunque la documentación no esté completamente finalizada. Por ejemplo, si la propiedad está en proceso de sucesión o en trámite, se puede evaluar la situación y comenzar a trabajar la venta mientras se ordena la parte legal. Cada caso se analiza de forma particular, para asegurar que la operación pueda avanzar de manera segura y sin inconvenientes."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Cuánto tarda el proceso de compra?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "El tiempo puede variar según cada operación, pero en general el proceso completo puede llevar entre 30 y 90 días. Depende de factores como la documentación, la forma de pago y los tiempos administrativos. Cuando todo está en orden, el proceso avanza de forma más ágil."
+			}
+		},
+	]
+}
+</script>

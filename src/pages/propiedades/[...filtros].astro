@@ -3,15 +3,19 @@ import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro'
 import propiedades from '../../data/propiedades.json'
 import PropertiesFilters from '@/components/PropertiesFilters.jsx'
-import {toSlug, toPlural, toSingular } from '@/utils/utils.js'
+import {EXCHANGE_RATE, buildTitle, toSlug, toPlural, toSingular } from '@/utils/utils.js'
+import ButtonFilter from '@/components/ButtonFilter.astro'
+import ButtonQueryFilter from '@/components/ButtonQueryFilter.jsx'
 
 export function getStaticPaths() {
 	const paths = new Set();
+	const paginadas = new Set();
+	const ITEMS_PER_PAGE = 12;
 
 	propiedades.forEach(p => {
-		const operacion = p.operacion.toLowerCase();
-		const tipo = toPlural(p.tipo.toLowerCase());
-		const localidad = toSlug(p.localidad);
+		const operacion = p.operation.toLowerCase();
+		const tipo = toPlural(p.type.toLowerCase());
+		const localidad = toSlug(p.locality);
 
 		paths.add(operacion);
 		paths.add(tipo);
@@ -24,53 +28,259 @@ export function getStaticPaths() {
 		paths.add(`${operacion}/${tipo}/${localidad}`);
 	});
 
+	for (const path of paths) {
+		const segmentos = path.split("/");
+
+		const count = propiedades.filter(p =>
+			segmentos.every(s =>
+			s === p.operation.toLowerCase() ||
+			s === toPlural(p.type.toLowerCase()) ||
+			s === toSlug(p.locality)
+			)
+		).length;
+
+		const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
+		for (let i = 2; i <= totalPages; i++) {
+			paginadas.add(`${path}/page/${i}`);
+		}
+	}
+
+	const totalPagesRaiz = Math.ceil(propiedades.length / ITEMS_PER_PAGE);
+	for (let i = 2; i <= totalPagesRaiz; i++) {
+		paginadas.add(`page/${i}`);
+	}
+
 	return [
-		{ params: { filtros: undefined } }, ...[...paths].map(path => ({ params: { filtros: path } }))
+		{ params: { filtros: undefined } }, 
+		...[...paths].map(path => ({ params: { filtros: path } })),
+		...[...paginadas].map(path => ({ params: { filtros: path } }))
 	];
 }
 
 const { filtros } = Astro.params;
 const segmentos = filtros?.split("/") ?? [];
+const pageIndex = segmentos.indexOf("page");
+const page = pageIndex !== -1 ? Number(segmentos[pageIndex + 1]) : 1;
+const filtrosReales = segmentos.filter((_, i) => pageIndex !== -1 ? (i !== pageIndex && i !== pageIndex + 1) : true);
 
-const resultado = propiedades.filter(p =>
-	segmentos.every(s =>
-		s === p.operacion.toLowerCase() ||
-		s === toPlural(p.tipo.toLowerCase()) ||
-		s === toSlug(p.localidad)
+const items = propiedades.filter(p =>
+	filtrosReales.every(s =>
+		s === p.operation.toLowerCase() ||
+		s === toPlural(p.type.toLowerCase()) ||
+		s === toSlug(p.locality)
 	)
 );
-const titulo = ''
 
-console.log("resultado ABC", resultado);
+const ITEMS_PER_PAGE = 12;
+const start = (page - 1) * ITEMS_PER_PAGE;
+const itemsPP = items.slice(start, start+ITEMS_PER_PAGE);
+const totalP = Math.ceil(items.length / ITEMS_PER_PAGE);
 
+const filters = [
+	{
+		id: 1,
+		title: "Operación",
+		slug: "operacion",
+		options: [...new Set(propiedades.map(p => p.operation))]
+	},
+	{
+		id: 2,
+		title: "Propiedad",
+		slug: "tipo",
+		options: [...new Set(propiedades.map(p => p.type))]
+	},
+	{
+		id: 3,
+		title: "Localidad",
+		slug: "localidad",
+		options: [...new Set(propiedades.map(p => p.locality))]
+	}
+]
+const queryFilters = [
+	{
+		id: 1,
+		title: "Habitaciones",
+		slug: "habitaciones",
+		options: [1,2,3,4,5]
+	},
+	{
+		id: 2,
+		title: "Baños",
+		slug: "banos",
+		options: [1,2,3,4]
+	},
+	{
+		id: 3,
+		title: "Precio máximo",
+		slug: 'precioMax',
+		options: [
+		{ label: '$50.000',     value: 50000 },
+		{ label: '$100.000',    value: 100000 },
+		{ label: '$500.000',    value: 500000 },
+		{ label: '$1.000.000',  value: 1000000 },
+		{ label: 'U$D 50.000',  value: 50000 * EXCHANGE_RATE.usdToArs },
+		{ label: 'U$D 100.000', value: 100000 * EXCHANGE_RATE.usdToArs },
+		{ label: 'U$D 150.000', value: 150000 * EXCHANGE_RATE.usdToArs },
+		{ label: 'U$D 200.000', value: 200000 * EXCHANGE_RATE.usdToArs },
+		]
+	},
+	{
+		id: 4,
+		title: "Precio mínimo",
+		slug: 'precioMin',
+		options: [
+		{ label: '$50.000',     value: 50000 },
+		{ label: '$100.000',    value: 100000 },
+		{ label: '$500.000',    value: 500000 },
+		{ label: '$1.000.000',  value: 1000000 },
+		{ label: 'U$D 50.000',  value: 50000 * EXCHANGE_RATE.usdToArs },
+		{ label: 'U$D 100.000', value: 100000 * EXCHANGE_RATE.usdToArs },
+		]
+	}
+]
+const urlParams = {
+	operacion: filtrosReales.find(s => filters[0].options.map(o => o.toLowerCase()).includes(s)),
+	tipo: filtrosReales.find(s => filters[1].options.map(o => toPlural(o.toLowerCase())).includes(s)),
+	localidad: filtrosReales.find(s => filters[2].options.map(o => toSlug(o.toLowerCase())).includes(s)),
+}
+// 
+const operacionLabel = urlParams.operacion 
+	? urlParams.operacion.charAt(0).toUpperCase() + urlParams.operacion.slice(1)
+	: null
+
+const tipoLabel = urlParams.tipo 
+	? toSingular(urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1))
+	: 'Propiedades en Venta y Alquiler en Córdoba y Sierras'
+
+const localidadLabel = urlParams.localidad
+	? propiedades.find(p => toSlug(p.locality) === urlParams.localidad)?.locality
+	: null
+const titulo = [tipoLabel, operacionLabel, localidadLabel]
+	.filter(Boolean)
+	.join(' en ') || 'Propiedades en Córdoba'
+	
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	"name": titulo,
+	"url": Astro.url.href,
+	"numberOfItems": items.length,
+	"itemListElement": itemsPP.map((p, i) => ({
+		"@type": "ListItem",
+		"position": (start + i + 1),
+		"url": `https://homesilva.com/propiedades/${p.slug}`,
+		"name": buildTitle(p),
+		"image": p.images[0] || "/og-default.jpg"
+	}))
+}
+const canonicalURL = page > 1
+  ? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page].join('/')}`
+  : `https://homesilva.com/propiedades/${filtrosReales.join('/')}`
+const prevURL = page > 2
+	? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page - 1].join('/')}`
+	: page === 2
+	? `https://homesilva.com/propiedades/${filtrosReales.join('/') || ''}`
+	: null
+const nextURL = page < totalP
+	? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page + 1].join('/')}`
+	: null
+
+const description = (() => {
+	if (tipoLabel && operacionLabel && localidadLabel) {
+	return `${tipoLabel}s en ${operacionLabel} en ${localidadLabel}. Encontrá las mejores opciones con HomeSilva, tu inmobiliaria en Córdoba.`
+	}
+	if (tipoLabel && operacionLabel) {
+	return `${tipoLabel}s en ${operacionLabel} en Córdoba. Consultá nuestra cartera de propiedades con HomeSilva.`
+	}
+	if (tipoLabel && localidadLabel) {
+	return `${tipoLabel}s en ${localidadLabel}, Córdoba. Encontrá tu próxima propiedad con HomeSilva.`
+	}
+	if (localidadLabel) {
+	return `Propiedades en ${localidadLabel}, Córdoba. Casas, departamentos y terrenos en venta y alquiler con HomeSilva.`
+	}
+	return `Propiedades en venta y alquiler en Córdoba. Casas, departamentos y terrenos en las mejores zonas con HomeSilva.`
+})()
 ---
+<Layout title={titulo} canonical={canonicalURL} description={description}>
+	<script 
+		type="application/ld+json" 
+		set:html={JSON.stringify(schema)} 
+		slot="head" 
+	/>
+	{prevURL && <link rel="prev" href={prevURL} slot="head" />}
+	{nextURL && <link rel="next" href={nextURL} slot="head" />}
 
-<!-- normalmente se utiliza canonical para evitar que google indexe convinaciones de query filtros que son muchas  -->
-<!-- pero porque??? -->
-<!-- y a donde debo apuntar dependiendo el filtro activo -->
-<!-- <head>  -->
-	<!-- <link rel="canonical" href={`https://tusitio.com/propiedades/${operacion}/${tipo}`} /> -->
-<!-- </head> -->
+	<main class="flex flex-col gap-4 pb-20">
 
-<Layout title={titulo}>
-	<main class="max-w-[1400px] m-auto flex flex-col gap-4 pb-20">
+		<section class="bg-[#fff] h-18 pt-2 sticky top-20 lg:top-22 z-10">
+			<div class="max-w-[1700px] px-5 md:px-16 lg:px-20 mx-auto h-12 mx-auto flex gap-2">
 
-<!-- 		<PropertiesFilters 
-			client:only 
+				<label class="border-gray-200 lg:hidden text-black py-3 px-4 border cursor-pointer hover:border-[#ffa361] duration-200 flex gap-2 focus:outline-none items-center bg-white rounded-full" for="filters">
+					Filtros
+
+					<svg xmlns="http://www.w3.org/2000/svg" class="" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227" />
+					</svg>
+				</label>
+				<input type="checkbox" name="filters" id="filters" class="peer absolute opacity-0 event-pointer-none">
+
+				<div class="
+					peer-checked:flex flex-col gap-4
+					pt-22
+					pb-10
+					h-full fixed top-0 left-0 w-full
+					bg-white 
+					overflow-y-auto
+					hidden
+					px-5
+					md:px-16
+
+					lg:pb-0
+					lg:px-0
+					lg:flex
+					lg:overflow-y-visible
+					lg:static
+					lg:h-12
+					lg:pt-0
+					lg:flex-row 
+				">
+
+					<label class="ml-auto lg:hidden" for="filters">CERRAR</label>
+
+					{filters.map(f => (
+						<ButtonFilter
+							key={f.id}
+							item={f}
+							urlParams={urlParams}
+						/>
+					))}
+
+					{queryFilters.map(f => (
+						<ButtonQueryFilter 
+							client:load
+							key={f.id}
+							item={f}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="max-w-[1700px] mx-auto flex w-full px-5 lg:px-20">
+			<h1>{titulo}</h1>
+		</section>
+
+		<PropertiesFilters 
+			client:load
 			titulo={titulo} 
-			params={parsearFiltros(Astro.params.filtros)}
+			params={segmentos}
+			items={items}
+			itemsPP={itemsPP}
+			currentURL={filtrosReales}
+			currentP={page}
+			totalP={totalP}
+		/>
 
-			propiedadesPaginadas={resultados}
-			todasLasPropiedades={todos}
-		/> -->
-		<!-- <Map client:only="react" /> -->
 	</main>
 </Layout>
-
-<!-- <style>
-	
-	#filter-menu:checked + .submenu {
-		display: flex;
-	}
-
-</style> -->

@@ -1,13 +1,34 @@
 ---
+// cards imagenes carouasel (ponter puntitos)
+
 import "@/styles/global.css";
 import Layout from '@/layouts/Layout.astro'
 import propiedades from '@/data/propiedades.json'
 import Carousel from '@/components/CarouselThumbnails.jsx'
+import CarouselDefault from '@/components/CarouselDefault.jsx'
 import Form from '@/components/Formulario.astro'
+import { buildTitle, buildDescription, formatPrice, distance, toSlug, toPlural } from '@/utils/utils.js'
+
+import SupCubierta from '@/assets/icons/SupCubierta.astro'
+import SupTotal from '@/assets/icons/SupTotal.astro'
+import Bath from '@/assets/icons/Bath.astro'
+import Bed from '@/assets/icons/Bed.astro'
+import Widget from '@/assets/icons/Widget.astro'
+import Check from '@/assets/icons/Check.astro'
+import Time from '@/assets/icons/Date.astro'
+import Garage from '@/assets/icons/Garage.astro'
+import Garden from '@/assets/icons/Garden.astro'
+import Air from '@/assets/icons/Air.astro'
+import Pool from '@/assets/icons/Pool.astro'
+import Pet from '@/assets/icons/Pet.astro'
+import Alarm from '@/assets/icons/Alarm.astro'
+import Water from '@/assets/icons/Water.astro'
+import Light from '@/assets/icons/Light.astro'
+import Wifi from '@/assets/icons/Wifi.astro'
+import Gas from '@/assets/icons/Gas.astro'
 
 export async function getStaticPaths() {
 	return propiedades
-	// .filter(p => p.activa) (preguntar ¿no es mejor dejar las fichas aun de las propiedades inactivas por seo abarcar mas publico?)
 	.map(p => ({
 		params: { slug: p.slug },
 		props: { propiedad: p }
@@ -16,88 +37,500 @@ export async function getStaticPaths() {
 
 const { propiedad: p } = Astro.props
 
-// const whatsappMsg = encodeURIComponent(`Hola, me interesa la propiedad: ${p.titulo} - ${Astro.url}`)
+const similares = propiedades.filter(c => {
+	if(c.id === p.id) return
+	const d = distance(p.position.lat, p.position.lng, c.position.lat, c.position.lng)
+	return d <= 5;
+}).filter(c => {
+	return (c.type === p.type && c.operation === p.operation)
+})
+const resSimilares = similares.map(c => ({
+	...c,
+	distance: distance(p.position.lat, p.position.lng, c.position.lat, c.position.lat)
+})).sort((a,b) => a.distance - b.distance)
 
-// SEO
-const metaTitulo = `${p.titulo} en ${p.operacion} | TuInmobiliaria`
-const metaDesc = `${p.tipo} en ${p.operacion} en ${p.direccion}. ${p.ambientes} ambientes, ${p.superficie_cubierta}m². Precio: ${p.moneda} ${p.price.toLocaleString()}`
+function buildPropertySEOAndSchema(p) {
+	const c = p.characteristics;
+	const monthsValid = p.operation.toLowerCase() === "alquiler" ? 3 : 6
+	const priceValidUntil = new Date()
+	priceValidUntil.setMonth(priceValidUntil.getMonth() + monthsValid)
+	const maybe = (key, value) => (value != null ? { [key]: value } : {});
+
+	function buildOffersBlock() {
+		const specs = [];
+
+		if (p.toPrice) {
+			specs.push({
+				"@type": "PriceSpecification",
+				minPrice: p.price,
+				maxPrice: p.toPrice,
+				priceCurrency: p.currency
+			});
+		}
+
+		if (p.expensas != null) {
+			specs.push({
+				"@type": "UnitPriceSpecification",
+				name: "Expensas",
+				price: p.expensas,
+				priceCurrency: p.currency
+			});
+		}
+
+		return {
+			"@type": "Offer",
+			...(!p.toPrice ? { price: p.price, priceCurrency: p.currency } : {}),
+			...(p.toPrice ? {
+				minPrice: p.price,
+				maxPrice: p.toPrice,
+				priceCurrency: p.currency
+			} : {}),
+			...(specs.length ? { priceSpecification: specs } : {}),
+			priceValidUntil: priceValidUntil.toISOString().split("T")[0],
+			availability: p.active
+				? "https://schema.org/InStock"
+				: "https://schema.org/SoldOut",
+			seller: {
+				"@type": "RealEstateAgent",
+				name: "HomeSilva",
+				url: "https://homesilva.com.ar",
+				logo: "https://homesilva.com.ar/logo.png"
+			}
+		};
+	}
+
+	function buildFloorSizeField() {
+		if (c.superficie_total == null) return {};
+
+		return {
+			floorSize: {
+				"@type": "QuantitativeValue",
+				...(c.superficie_total_max != null
+					? { minValue: c.superficie_total, maxValue: c.superficie_total_max }
+					: { value: c.superficie_total }
+				),
+				unitCode: "MTK"
+			}
+		};
+	}
+
+	function buildAdditionalProperties() {
+		const props = [];
+		const knownKeys = ["superficie_total", "superficie_cubierta", "ambientes", "dormitorios", "banos", "cochera", "antiguedad"];
+
+		if (c.superficie_cubierta != null)
+			props.push({ "@type": "PropertyValue", name: "Superficie Cubierta", value: c.superficie_cubierta, unitCode: "MTK" });
+
+		if (c.cochera != null)
+			props.push({ "@type": "PropertyValue", name: "Cocheras", value: c.cochera });
+
+		if (c.antiguedad != null)
+			props.push({ "@type": "PropertyValue", name: "Antigüedad", value: c.antiguedad, unitCode: "ANN" });
+
+		Object.entries(c).forEach(([key, val]) => {
+		if (!knownKeys.includes(key) && val != null)
+			props.push({ "@type": "PropertyValue", name: key, value: val });
+		});
+
+		const detalles = (p.detalles || []).filter(d => d?.trim());
+		if (detalles.length)
+			props.push({ "@type": "PropertyValue", name: "Detalles", value: detalles.join(", ") });
+
+		const services = (p.services || []).filter(s => s?.trim());
+		if (services.length)
+			props.push({ "@type": "PropertyValue", name: "Servicios", value: services.join(", ") });
+
+		return props.length ? { additionalProperty: props } : {};
+	}
+
+	const seo = {
+		title: `${buildTitle(p, true)} | HomeSilva`,
+		description: p.description !== "---" ? p.description : buildDescription(p),
+		canonical: `https://homesilva.com/propiedades/${p.slug}`,
+		ogImage: p.images[0] || "/og-default.jpg"
+	};
+	const filteredImages = p.images.filter(img => img);
+
+	const schema = {
+		"@context": "https://schema.org",
+		"@type": "RealEstateListing",
+		"name": buildTitle(p),
+		"description": seo.description,
+		"url": seo.canonical,
+		...(filteredImages.length ? { image: filteredImages } : {}),
+		...( p.publicated && p.publicated !== "0" ? { "datePosted": p.publicated } : {} ),
+		"offers": buildOffersBlock(),
+		"address": {
+			"@type": "PostalAddress",
+			...maybe("streetAddress", p.barrio ? `${p.direction}, ${p.barrio}` : p.direction),
+			"addressLocality": p.locality,
+			"addressRegion": "Córdoba",
+			"addressCountry": "AR"
+		},
+
+		...( p.position?.lat && p.position?.lng ? {
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": p.position.lat,
+				"longitude": p.position.lng
+			}
+		} : {} ),
+
+		...buildFloorSizeField(),
+		...maybe("numberOfRooms",          c.ambientes),
+		...maybe("numberOfBedrooms",       c.dormitorios),
+		...maybe("numberOfBathroomsTotal", c.banos),
+
+		...( p.operation.toLowerCase() === "alquiler" && p.leaseMonths ? {
+			"leaseLength": {
+				"@type": "QuantitativeValue",
+				"value": p.leaseMonths ?? 12,
+				"unitCode": "MON"
+			}
+		} : {} ),
+
+		...buildAdditionalProperties()
+	};
+
+	return { seo, schema };
+}
+
+const { seo, schema } = buildPropertySEOAndSchema(p);
+
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": "Inicio",
+			"item": "https://homesilva.com"
+		},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"name": "Propiedades",
+			"item": "https://homesilva.com/propiedades"
+		},
+		{
+			"@type": "ListItem",
+			"position": 3,
+			"name": p.operation,
+			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}`
+		},
+		{
+			"@type": "ListItem",
+			"position": 4,
+			"name": toPlural(p.type),
+			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}`
+		},
+		{
+			"@type": "ListItem",
+			"position": 5,
+			"name": p.locality,
+			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}/${toSlug(p.locality.toLowerCase())}`
+		}
+	]
+}
 ---
 
-<Layout title={metaTitulo} description={metaDesc}>
-	<main class="px-10 lg:px-40 py-20 flex gap-10">
+<Layout 
+	title={seo.title} 
+	description={seo.description}
+	canonical={seo.canonical}
+	image={seo.ogImage}
+	noindex={!p.active}
+	displayWhsp
+>
+
+	<script slot='head' type='application/ld+json' set:html={JSON.stringify(schema)} />
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+	<main>
+		<nav class="flex justify-between items-center global-padding max-w-[1500px] mx-auto gap-2">
+			<ol class="bg-[#fafafa] overflow-x-auto flex items-center py-5 lg:py-8 gap-2 text-sm truncate">
+				<li>
+					<a href="/">Inicio</a>
+				</li>
+				<li>
+					<a href="/propiedades">{`Propiedades`}</a>
+				</li>
+				<li>
+					<a href={`/propiedades/${p.operation.toLowerCase()}`}>{p.operation}</a>
+				</li>
+				<li>
+					<a class="capitalize" href={`/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}`}>{toPlural(p.type.toLowerCase())}</a>
+				</li>
+				<li>
+					<a href={`/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}/${toSlug(p.locality.toLowerCase())}`}>{p.locality}</a>
+				</li>
+			</ol>
+
+			<button aria-label={`Compartir propiedad ${buildTitle(p)}`} id="shared" class="bg-white cursor-pointer p-2 rounded-full border border-gray-200 flex items-center justify-center">
+				<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+				<path d="M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1" />
+				<path d="M12 14v-11" />
+				<path d="M9 6l3 -3l3 3" />
+				</svg>
+			</button>
+		</nav>
 		
-		<article class="flex flex-col gap-5 flex-1">
-			
-			<section class="galeria"> <!-- Galería -->
-				<!-- {p.imagenes.map((img, i) => (
-					<img src={img} alt={`${p.titulo} - foto ${i + 1}`} class="w-full h-[250px]" />
-				))} -->
+		<div class="max-w-[1500px] mx-auto pb-20 flex gap-10 global-padding">
+			<article class="flex flex-col gap-10 flex-1">
 
-				<Carousel client:load id={1} data={p.imagenes} />
+			<section>
+				<Carousel client:load id={1} data={p.images} alt={buildTitle(p)} />
 			</section>
 			
-			<section> <!-- Datos básicos -->
-				<h1 class="text-4xl">{p.titulo}</h1>
-				<p class="opacity-[.6] text-2xl">{p.direccion}</p>
-				<p>{p.moneda} {p.price.toLocaleString()}</p>
-			</section>
-
-			<section> <!-- Caracteristicas Principales -->
-				<h2 class="text-2xl">Caracteristicas Principales</h2>
-				<ul class>
-					{Object.entries(p.caracteristicas).map(([title,value]) => <li>{title} {value}</li>)}
-					<!-- <li>{p.ambientes} ambientes</li>
-					<li>{p.habitaciones} habitaciones</li>
-					<li>{p.banos} baños</li>
-					<li>{p.superficie_cubierta}m² cubiertos</li>
-					<li>{p.superficie_total}m² totales</li> -->
-				</ul>
-			</section>
-
-			<section> <!-- Descripción -->
-				<h2 class="text-2xl">Descripción</h2>
+			<section class="flex flex-col gap-2">
+				<h1 class="text-2xl lg:text-3xl font-semibold">{buildTitle(p)}</h1>
+				<h2 class="text-[#888] text-xl lg:text-2xl">{`${p.direction}, ${p.barrio}, ${p.locality}`}</h2>
+				<p class={`text-xl ${(p.toPrice||p.leaseMonths) ? '' : 'lg:hidden'}`}>
+					Precio {` ${p.toPrice ? 'desde ' : ''}${formatPrice(p.price, p.currency)}${p.toPrice ? ` hasta ${formatPrice(p.toPrice, p.currency)}` : ''}${p.operation === 'Alquiler' ? ' /mes' : ''}`}
+				</p>
 				
-				<p>{p.descripcion}</p>
+				{p.expensas && (<p class="text-[#888] text-sm lg:hidden">Expensas ${p.expensas}</p>)}
 			</section>
 
-			<section> <!-- Caracteristicas Adicionales -->
-				<h2 class="text-2xl">Comodidades</h2>
-				<ul>{p.comodidades.map(item => (<li>{item}</li>))}</ul>
+			<section class="flex flex-col gap-10">
+				<h2 class="text-[20px] lg:text-2xl font-semibold">Características Principales</h2>
+				<dl class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
+					{Object.entries(p.characteristics).map(([k,v], i) => (v!==null &&
+						<div class="">
+							<dt class="capitalize">
+								{
+									(i=== 0 || i===8) ? (<SupTotal w={30} />) : 
+									i=== 1 ? (<SupCubierta w={30} />) : 
+									i=== 2 ? (<Widget w={30} />) : 
+									i=== 3 ? (<Bed w={30} />) :
+									i=== 4 ? (<Bath w={30} />) : 
+									i=== 5 ? (<Garage w={30} />) : 
+									i=== 6 ? (<Time w={30} />) : null
+								}
+								{k.includes('_') ? `${k.split('_').join(' ')}` : k.toLowerCase() === 'banos' ? 'Baños' : `${k}`} 
+							</dt>
+							<dd class="text-[#888]">
+								{`${i===0 || i ===1 ? `${v}m²` : `${v}`}`}
+							</dd>
+						</div>
+					))}
+				</dl>
 			</section>
 
-			<section> <!-- Mapa -->
-				<h2 class="text-2xl">Ubicación</h2>
+			{p.detalles.length > 0 && (
+				<section class="flex flex-col gap-10">
+					<h2 class="text-[20px] lg:text-2xl font-semibold">Detalles de la propiedad</h2>
+					<ul class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
+						{p.detalles.map(d => (
+							<li>
+								{d.toLowerCase().includes('cochera') ? <Garage w={30} /> : 
+								(d.toLowerCase().includes('jardín')||d.toLowerCase().includes('patio')) ? <Garden w={30} /> : 
+								(d.toLowerCase().includes('aire')||d.toLowerCase().includes('calefacción')||d.toLowerCase().includes('calefactor')) ? <Air w={30} /> : 
+								(d.toLowerCase().includes('pileta')||d.toLowerCase().includes('piscina')) ? <Pool w={30} /> :
+								d.toLowerCase().includes('mascotas') ? <Pet w={30} /> :
+								<Check />}
+								{d}
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+
+			<section class="flex flex-col gap-5">
+				<h2 class="text-[20px] lg:text-2xl font-semibold">Descripción</h2>				
+				<input type="checkbox" id="desc-toggle" class="peer hidden">
+    
+				<p 
+					class="text-[#888] line-clamp-8 peer-checked:line-clamp-none transition-all" 
+					style="white-space: pre-line;"
+				>
+					{p.description !== '---' ? p.description : buildDescription(p)}
+				</p>
+
+				<label for="desc-toggle" 
+				class="peer-checked:hidden cursor-pointer w-fit hover:underline">
+					Ver descripción completa
+				</label>
+
+				<label for="desc-toggle" 
+				class="hidden peer-checked:block cursor-pointer w-fit hover:underline">
+					Ver menos
+				</label>
+			</section>
+
+			{p.services.length > 0 && (
+				<section class="flex flex-col gap-5">
+					<h2 class="text-[20px] lg:text-2xl font-semibold">Servicios</h2>
+					<ul class="grid grid-cols-2 lg:grid-cols-3 gap-5">
+						{p.services.map(s => s && (
+							<li>
+								{
+									s.toLowerCase().includes('agua') ? <Water w={25} /> :
+									s.toLowerCase().includes('luz') ? <Light w={25} /> :
+									s.toLowerCase().includes('alarma') ? <Alarm w={25} /> :
+									s.toLowerCase().includes('internet') ? <Wifi w={25} /> :
+									s.toLowerCase().includes('gas') ? <Gas w={25} /> :
+									<Check w={25} />
+								}
+								{s}
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+
+			<section class="flex flex-col gap-5">
+				<h2 class="text-[20px] lg:text-2xl font-semibold">Ubicación</h2>
+				<h3 class="text-[18px] lg:text-xl text-[#888]">{`${p.direction ? `${p.direction}, ` : ''}${p.locality}`}</h3>
 				
 				<iframe
-					src={`https://maps.google.com/maps?q=${p.lat},${p.lng}&z=15&output=embed`}
+					src={`https://maps.google.com/maps?q=${p.position.lat},${p.position.lng}&z=15&output=embed`}
 					width="100%"
-					height="400"
+					height="300"
 					loading="lazy"
+					class="rounded-[30px] lg:h-[400px]"
+					title={`Ubicación de ${buildTitle(p)}`}
+					tabindex="0"
 				/>
 			</section>
-		</article>
+			</article>
 
-		<aside class="hidden lg:flex max-w-xs flex-col gap-1 h-[82vh] bg-white py-10 px-7 rounded-l-[45px] sticky top-25 overflow-y-auto">
-			
-			<div class="flex justify-between items-center">
-				<p class="text-2xl font-bold">{p.moneda} {p.price}</p>
-				<p class="opacity-[.6]">Precio</p>
-			</div>
-			<h2 class="text-lg text-wrap">{p.titulo}</h2>
-			<p class="opacity-[.6] text-wrap">{p.direccion}</p>
+			<aside 
+				class="
+					bottom-0
+					left-0
+					right-0
+					fixed
 
-			<div>
-				{["1300 Sup", "2 Hab", "1 Baño"].map((item,i) => (
-					<span key={i} class='text-sm rounded-[8px]  font-[500]'>{item}</span>
-				))}
-			</div>
+					py-4
+					px-5
+					md:px-16
+					lg:px-7
+					lg:pt-7
+					lg:pb-5
 
-			<div class="flex flex-col gap-2 border-top mt-4 border-t border-t-[#aaa] pt-4">
-				<p class="font-bold">Consultar por esta propiedad</p>
-				<Form ficha/>
-			</div>
 
-		</aside>
+					lg:sticky 
+					lg:top-30
+					lg:flex 
+					lg:h-[80vh]
+					lg:max-w-xs
+					flex-col 
+					gap-1 
+					bg-white
+					lg:rounded-l-[32px]
+					overflow-y-auto
+					z-15
+				"
+			>
 
+				<div class="hidden lg:flex flex-col
+					mb-4 border-b border-b-[#ddd] pb-4  lg:gap-1
+				">
+					<div class="flex justify-between items-center gap-2">
+						<p class="text-2xl font-bold text-nowrap">{`${p.toPrice ? 'Desde ' : ''}${formatPrice(p.price, p.currency)}`}</p><p class="truncate text-[#888]">Precio</p>
+					</div>
+					{p.expensas && (<p class="text-[#888] text-sm">Expensas ${p.expensas}</p>)}
+					<h3 class="text-lg text-wrap">{`${p.type} en ${p.operation} en ${p.locality}`}</h3>
+					<p class="text-[#888] text-wrap">{`${p.direction}, ${p.barrio}`}</p>
+
+					<dl class="mt-2 flex flex-wrap gap-2">
+						{Object.entries(p.characteristics).map(([k, v], i) => {
+							const visibleIndexes = 
+								(p.type === 'Terreno' || p.type === 'Lote') ? [0, 1]
+								: (p.type === 'Local' || p.type === 'Oficina') ? [1, 2, 4]
+								: [1, 3, 4];
+
+							if (!visibleIndexes.includes(i) || v === null) return null;
+							const displayValue = (i === 0 || i === 1) ? `${v}m²` : `${v}`;
+
+							return (
+								<div key={k}>
+									<dt class="sr-only">
+										{k.includes('_') ? k.split('_').join(' ') : k}
+									</dt>
+									<dd class="flex items-center gap-1 bg-[var(--primaryColor)] w-fit text-[var(--cta)] py-[8px] px-3 rounded-[10px] font-semibold text-sm">
+										{
+											i=== 0 ? (<SupTotal w={18} />) : 
+											i=== 1 ? (<SupCubierta w={18} />) : 
+											i=== 2 ? (<Widget w={18} />) : 
+											i=== 3 ? (<Bed w={18} />) : (<Bath w={18} styles='col-span-2 place-self-center' />)
+										}
+
+										{displayValue}
+									</dd>
+								</div>
+							);
+						})}
+					</dl>
+
+				</div>
+
+				<label for="contactarme" id="open" class="rounded-[12px] text-md bg-black p-4 lg:hidden text-white block text-center ">Consultar</label>
+				<input type="checkbox" name="contactarme" id="contactarme" class="peer absolute lg:hidden pointer-event-none opacity-0" />
+
+				<div class="h-full gap-10 lg:gap-0 peer-checked:flex hidden lg:flex items-center pt-10 lg:pt-0 flex-col">
+					<div class="flex justify-between w-full mb-5">
+						<h2 class="font-bold text-lg lg:text-base">Consultar por esta propiedad</h2>
+						<label for="contactarme" id="close" class="lg:hidden text-black">
+							<span class="sr-only">Cerrar modal</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
+							</svg>
+						</label>
+					</div>
+					<Form titulo={`[${p.id}] ${buildTitle(p)}`} />
+				</div>
+			</aside>
+		</div>
+
+		{resSimilares.length && (
+			<section class="max-w-[1500px] mx-auto flex flex-col pb-20 gap-10 global-padding">
+				<h2 class="text-2xl">Propiedades relacionadas</h2>
+
+				<div class="max-w-full overflow-hidden">
+					<CarouselDefault client:load data={resSimilares} />
+				</div>
+			</section>
+		)}
 	</main>
+
 </Layout>
+
+<style>
+	aside:has(input:checked) {
+		top: 4.8rem;
+		border-radius: 0;
+	}
+	aside:has(input:checked) #open {
+		display: none;
+	}
+	aside:has(input:checked) #close {
+		display: flex;
+	}
+	ol a {
+		color: #2e6ff1aa;
+	}
+</style>
+
+<script>
+	const btn = document.getElementById('shared')
+	btn.addEventListener('click', async () => {
+		if(navigator.share){
+			try {
+				await navigator.share({
+					title: document.title,
+					url: window.location.href
+				})
+			} catch (err) {
+				console.log("err", err);
+			}
+		} else {
+			navigator.clipboard.writeText(window.location.href);
+			alert('Link copiado')
+		}
+	})
+</script>

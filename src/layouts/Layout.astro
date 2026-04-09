@@ -1,79 +1,131 @@
 ---
+import "@/styles/global.css";
+import '@fontsource-variable/inter';
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+const { title, description, image, canonical, displayWhsp, noindex } = Astro.props;
 ---
 
-<!-- title: "HomeSilva | Encuentra tu próximo hogar en Córdoba",
-	description: "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en Córdoba. Contáctanos para encontrar tu propiedad ideal.",
-	keywords: "Propiedades, inmuebles, inmobiliaria, casas, departamentos, terrenos, alquiler, Córdoba, casas en venta en Córdoba, venta y alquiler de propiedades, Argentina",
-	author: "Máximo Silva",
-	alternates: {
-		canonical: 'http://localhost:3000/'
-	},
-	openGraph: {
-		title: 'Compra y venta de propiedades | HomeSilva',
-		description: 'Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en los alrededores de la ciudad de Córdoba. Contáctanos para encontrar tu propiedad ideal.',
-		url: 'http://localhost:3000/',
-		// images: '/LOGO.png',
-	},
-	robots: {
-		index: true,
-		follow: true,
-		googleBot: {
-			index: true,
-			follow: true
-		}
-	}
-
-// Meta descripcion : ¿Querés comprar tu próximo hogar? ¡Con Mudafy ahora es más fácil! Descubrí la nueva forma de comprar tu propiedad.
-// Mudafy es una empresa inmobiliaria que facilita la compra de propiedades, ofreciendo una nueva forma de adquirir departamentos, casas y otros inmuebles. Su enfoque se centra en simplificar el proceso de compra, brindando una experiencia más accesible y eficiente para encontrar el próximo hogar. Aunque no hay reseñas ni calificaciones disponibles en la información proporcionada, su propuesta destaca en la facilidad y modernidad del servicio. Entre sus ventajas está la promesa de un método más sencillo para la compra de propiedades, aunque no se especifican servicios adicionales ni desventajas concretas.
-// Datos estructurados debajo de su busqueda:  
-// Departamentos en venta
-// Encontrá tu departamento entre más de 6218 opciones en venta con Mudafy. Asesoría personalizada, fotos de alta calidad, ¡y mucho más!
-// --
-// Capital Federal
-// Descubrí más de 4186 propiedades en venta en CABA y asesorate con expertos. ¡Encontrá tu próxima casa con Mudafy!
-// --
-// Simulador créditos hipotecarios
-// Con nuestra calculadora de créditos hipotecarios UVA vas a poder estimar el monto del préstamo al que podrías acceder y el valor de la cuota inicial según el banco.
-
-// Valor del m² en CABA
-// ¿Te gustaría calcular el precio* de tu propiedad? Desde Mudafy te acercamos
-	 -->
-
 <!doctype html>
-<html lang="es-AR">
+<html lang="es-AR" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="author" content="HomeSilva" />
+		<title>{title || 'Compra y venta de propiedades en Córdoba | HomeSilva'}</title>
+		<meta name="description" content={description || "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en la Provincia de Córdoba. Contáctanos para encontrar tu propiedad ideal."} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+		<link rel="preload" href="/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="canonical" href={canonical || Astro.url.href} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Home Silva - Compra y venta de propiedades en córdoba</title>
+		<!-- Open Graph -->
+		<meta property="og:title" content={title || 'Compra y venta de propiedades en Córdoba | HomeSilva'} />
+		<meta property="og:description" content={description || "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en la Provincia de Córdoba. Contáctanos para encontrar tu propiedad ideal."} />
+		<meta property="og:image" content={image || '/og-default.jpg'} />
+		<meta property="og:type" content='website' />
+		<meta property="og:url" content={canonical || Astro.url.href} />
+		<meta property="og:locale" content="es_AR" />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<slot name="head" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": ["RealEstateAgent", "LocalBusiness"],
+				"name": "HomeSilva",
+				"url": "https://homesilva.com.ar",
+				"logo": "https://homesilva.com.ar/logo.png",
+				"telephone": "+5493517062465",
+				"email": "contacto@homesilva.com",
+				"priceRange": "USD 10.000 - USD 220.000",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Roque Sáenz Peña 171",
+					"addressLocality": "Valle Hermoso",
+					"addressRegion": "Córdoba",
+					"addressCountry": "AR"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": -31.129446,
+					"longitude": -64.483255
+				},
+				"employee": {
+					"@type": "Person",
+					"name": "Domingo Cayetano Silva",
+					"jobTitle": "Corredor Inmobiliario Matriculado",
+					"hasCredential": "M.P. 045879 - 054237 - 013508"
+				},
+				"openingHoursSpecification": {
+					"@type": "OpeningHoursSpecification",
+					"dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+					"opens": "09:00",
+					"closes": "21:00"
+				},
+				"areaServed": [
+					{ "@type": "City", "name": "Córdoba", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" }},
+					{ "@type": "AdministrativeArea", "name": "Sierras de Córdoba" },
+					{ "@type": "City", "name": "Valle Hermoso", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "Villa Giardino", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "Tantí", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "La Falda", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "Cosquín", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "Villa Carlos Paz", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "La Cumbre", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } },
+					{ "@type": "City", "name": "Huerta Grande", "containedInPlace": { "@type": "State", "name": "Córdoba, Argentina" } }
+				],
+				"description": "Servicios inmobiliarios de compra y venta de propiedades en Córdoba y Sierras de Córdoba."
+			}
+		</script>
 	</head>
 	<body>
 
 		<Header />
 		<slot />
+		<a href="https://wa.me/5493517062465" aria-label="Contactar con un corredor inmobiliario por WhatsApp" target="_blank" class={`${displayWhsp ? 'hidden lg:inline' : ''} flex items-center justify-center whsp fixed right-5 bottom-5 lg:bottom-10 lg:right-10 bg-green-400 rounded-[100%_100%_50%_100%] w-fit p-4 shadow-[0_0_10px_rgba(0,0,0,0.15)] hover:bg-green-500 transition-bg ease duration-150`}>
+			<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg>
+		</a>
 		<Footer />
 
 	</body>
 </html>
 
 <style>
+
+	html {
+		overflow-x: hidden;
+	}
+
 	html,
 	body {
-		font-family: "Inter", sans-serif;
-/*		margin: 50px 50px;*/
-		background: #f3f3f3;
-/*		#f3f3f3*/
-/*		f3f6f8*/
-/*		margin: 0;*/
-/*		width: 100%;*/
-/*		height: 100%;*/
+		font-family: "Inter Variable", sans-serif;
+		background: #f9f9f9;
+	}
+	.whsp {
+		transform: translate(0, 200%);
+		animation: whsp-entry .6s cubic-bezier(.34, 1.56,.64,1) forwards;
+		animation-delay: .75s;
+		z-index: 90;
+	}
+
+	@keyframes whsp-entry {
+		from {
+			transform: translate(0, 100%);
+			scale: .8;
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+			transform: translate(0, 0);
+			scale: 1;
+		}
 	}
 
 	/*@media screen and (max-width: 367px) {
 	@media screen and (min-width: 768px) and (max-width: 1023px) {
 	@media screen and (min-width: 1024px) {*/
 </style>
+

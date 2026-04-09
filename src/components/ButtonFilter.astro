@@ -1,0 +1,96 @@
+---
+import {toSlug, toPlural} from '@/utils/utils.js'
+const { item, urlParams} = Astro.props;
+
+function buildFilteredPath(filterType, newValue) {
+	const current = {...urlParams}
+
+	if (current[filterType] === newValue) {
+		delete current[filterType];
+	} else {
+		current[filterType] = newValue;
+	}
+
+	const parts = [
+		current.operacion,
+		current.tipo,
+		current.localidad,
+	].filter(Boolean);
+
+	return '/propiedades/' + parts.join('/');
+}
+
+const result = item.options
+	.find(o => toSlug(o.toLowerCase()) === urlParams[item.slug]) || item.title;
+---
+
+<!-- lg:gap? -->
+<div class="relative flex flex-col gap-5 lg:flex-row lg:w-fit" data-dropdown>
+	<label 
+		for={item.title}
+		class={`
+			${urlParams[item.slug] ? 'border-[#ffa361]' : 'border-gray-200'} 
+			text-black 
+			text-lg
+			lg:text-base
+			lg:py-3 
+			lg:px-4 
+			lg:border 
+			cursor-pointer 
+			capitalize
+			lg:hover:border-[#ffa361] duration-200 flex gap-2 focus:outline-none items-center bg-white rounded-full
+		`}
+	>{result}</label>
+
+	<input type='checkbox' name={item.title} id={item.title}
+		class="peer absolute pointer-events-none opacity-0"
+	/>
+
+	<ul class='
+		peer-checked:flex 
+		w-[300px] 
+		lg:hidden
+		flex
+		lg:absolute 
+		left-0 
+		top-full 
+		gap-2
+		border-gray-200 
+		lg:p-6 
+		gap-2 flex-wrap mt-1 bg-white text-nowrap rounded-[12px] 
+		lg:shadow-[0_0_10px_rgba(0,0,255,0.05)]
+	'>
+		{item.options.map((o, i) =>  {
+			const key = 
+			item.id === 1 ? o.toLowerCase() :
+			item.id=== 2 ? toPlural(o.toLowerCase()) :
+			toSlug(o.toLowerCase())
+
+			const theSame = urlParams[item.slug] === key;
+
+			const url = buildFilteredPath(item.slug, key)
+			return (
+				<li key={i} class="">
+					<a 
+						href={url}
+						class={`${theSame ? 'border-[#ffa361]' : 'border-gray-200'} text-[1rem] flex hover:border-[#ffa361] w-fit duration-200 border rounded-full p-2 px-3 cursor-pointer focus:outline-none`}
+					>
+						{o}
+					</a>
+				</li>
+			)}
+		)}
+	</ul>
+</div>
+
+
+<script>
+	document.addEventListener('click', (e) => {
+		document.querySelectorAll('[data-dropdown]').forEach((container) => {
+			const checkbox = container.querySelector('input[type="checkbox"]')
+			if (!container.contains(e.target)) {
+				checkbox.checked = false
+			}
+		})
+	})
+</script>

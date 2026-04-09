@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const enlaces = [
+	{title: "Casas en venta", a: "/propiedades/venta/casas"},
+	{title: "Terrenos", a: "/propiedades/terrenos"},
+	{title: "Alquileres", a: "/propiedades/alquileres"},
+	{title: "Córdoba Capital", a: "/propiedades/cordoba"},
+	{title: "Contactar a un asesor", a: "/contacto"}
+]
+---
+
+<Layout>
+	<main class="bg-white pb-20 min-h-screen flex flex-col justify-center gap-5 global-padding">
+		<section class="text-center flex flex-col gap-5">
+			<img src="/404.png" loading="eager" fetchpriority="high" width="450" hight="450" alt="Ilustración de error 404 con persona sosteniendo llaves en una propiedad" class="w-full lg:max-w-[450px] mx-auto object-contain" />
+			<h1 class="text-4xl font-bold">Página no encontrada, pero no te vayas. <br class="hidden lg:inline">Tu próximo hogar sigue aquí</h1>
+			<p class="text-lg text-gray-500">La propiedad que buscas puede haber cambiado de enlace, <br class="hidden lg:inline">estar fuera de catálogo o simplemente haberse vendido.</p>
+		</section>
+
+		<a href="/propiedades" class="mx-auto flex w-fit bg-black text-white py-4 px-6 rounded-[12px]">Ver propiedades disponibles</a>
+
+		<nav class="flex flex-col gap-5 w-fit mx-auto text-center">
+			<h3>Accesos rápidos</h3>
+			<ul class="flex gap-5 flex-wrap justify-center">
+				{enlaces.map(a => (
+					<li>
+						<a href={a.a} class="hover:bg-[#efefef] font-medium flex text-nowrap px-6 py-4 w-fit rounded-[12px] text-sm bg-[#f6f6f6]">{a.title}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+	</main>
+</Layout>
