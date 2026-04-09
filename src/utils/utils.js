@@ -1,7 +1,7 @@
 const PLURALES = {
 	'casa': 'casas',
 	'hostel': 'hostels',
-	'cabaña': 'cabañas',
+	'cabaña': 'cabanas',
 	'departamento': 'departamentos',
 	'terreno': 'terrenos',
 	'local': 'locales',

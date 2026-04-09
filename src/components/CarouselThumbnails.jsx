@@ -27,7 +27,10 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 		dragFree: true
 	})
 	const [imgSelected, setImgSelected] = useState(null)
-	// const [index, setIndex] = useState(0)
+	const [imgErrors, setImgErrors] = useState({});
+	const handleImgError = (i) => {
+		setImgErrors(prev => ({ ...prev, [i]: true }));
+	};
 
 	useEffect(() => {
 		if (!emblaApi) return;
@@ -73,7 +76,18 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 								className="h-[100px] lg:h-[150px] flex-[0_0_auto] bg-white rounded-[30px] lg:rounded-[40px] overflow-hidden cursor-pointer"
 								onClick={() => emblaApi?.scrollTo(i)}
 							>
-								<img src={cat} loading='lazy' fetchpriority={'auto'} className="w-[100px] lg:w-[150px] h-full object-cover" />
+								{imgErrors[i] ? (
+										<div className="w-[100px] lg:w-[150px] h-full bg-gray-200 flex items-center justify-center text-xs text-wrap">
+											<span className="text-gray-500">Imagen no disponible</span>
+										</div>
+									) : (
+									<img
+										src={cat}
+										loading='lazy'
+										className="w-[100px] lg:w-[150px] h-full object-cover"
+										onError={() => handleImgError(i)}
+									/>
+								)}
 							</button>
 						)
 					))}
@@ -92,7 +106,6 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 				</div>
 			)}
 
-			{/* contenido principal */}
 			<div className={`overflow-hidden relative ${id===1? 'rounded-[45px]' : ''}`} ref={emblaRef}>
 				<div className={`flex ${id===0 ? '-ml-[1rem]' : ''} peer`}>
 
@@ -114,21 +127,31 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 							<button 
 								key={i}
 								type="button"
-								aria-label="Expandir la imagen actual"
+								aria-label={`Deslizar hasta la imagen ${i+1}`}
 								onClick={()=> setImgSelected(i)}
 								className="flex-[0_0_100%] min-h-[250px] lg:min-h-[400px] bg-white cursor-pointer" 
 							>
-								<img src={cat} className="h-[250px] lg:h-[400px] w-full object-cover"
-									alt={`${alt} - foto ${i+1}`}
-									loading={i===0 ? 'eager' : 'lazy'}
-									fetchpriority={i === 0 ? 'high' : 'auto'}
-								 />
+								{imgErrors[i] ? (
+									<div className="h-[250px] lg:h-[400px] w-full flex items-center justify-center bg-gray-200 text-wrap">
+										<span className="text-gray-500">Imagen no disponible</span>
+									</div>
+									) : (
+									<img
+										src={cat}
+										className="h-[250px] lg:h-[400px] w-full object-cover"
+										alt={`${alt} - foto ${i+1}`}
+										width="150"
+										height="150"
+										loading={i===0 ? 'eager' : 'lazy'}
+										fetchpriority={i === 0 ? 'high' : 'auto'}
+										onError={() => handleImgError(i)}
+									/>
+								)}
 							</button>
 						)
 					))}
 				</div>
 
-				{/* rows */}
 				{id===1 && (
 					<div className="peer-hover:opacity-100 opacity-0 hover:opacity-50 transition-opacity duration-300">
 					{[1,2].map(n => (
@@ -171,7 +194,6 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 						</p>
 					</div>
 				)}
-
 			</div>
 
 			{imgSelected!== null && (
