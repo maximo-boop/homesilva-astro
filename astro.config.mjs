@@ -5,10 +5,13 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path'
 import sitemap from '@astrojs/sitemap'
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://homesilva.com.ar',
-	integrations: [
+    site: 'https://homesilva.com.ar',
+
+    integrations: [
 		react(),
 		sitemap({
 			filter: (page) => new URL(page).search === '',
@@ -32,14 +35,17 @@ export default defineConfig({
 			}
 		})
 	],
-	vite: {
+
+    vite: {
 		plugins: [tailwindcss()],
 		resolve: {
 			alias: {
 				'@': path.resolve('./src')
 			}
 		}
-	}
+	},
+
+    adapter: cloudflare()
 });
 
 function esSegmentoReservado(seg) {
