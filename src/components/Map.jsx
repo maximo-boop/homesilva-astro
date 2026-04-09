@@ -1,13 +1,25 @@
 "use client";
-import {lazy} from 'React';
-const module = await import('react-leaflet')
-const { MapContainer, TileLayer, Marker, Popup, Tooltip } = module;
+import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 
 export default function map({items, set}) {
-	if (typeof window === 'undefined') return (
-		<></>
-	)
+	 const [Components, setComponents] = useState(null);
+
+  useEffect(() => {
+    import("react-leaflet").then((mod) => {
+      setComponents({
+        MapContainer: mod.MapContainer,
+        TileLayer: mod.TileLayer,
+        Popup: mod.Popup,
+      });
+    });
+  }, []);
+
+  if (!Components) return (
+    <div className="h-full w-full bg-gray-100 animate-pulse lg:rounded-[30px]" />
+  );
+
+  const { MapContainer, TileLayer, Popup } = Components;
 
 	return (
 		<MapContainer

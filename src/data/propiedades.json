@@ -1,9 +1,9 @@
 [
 	{
 		"id": 1,
-		"slug": "T-1",
+		"slug": "terreno-en-venta-villa-valde-verde-tanti",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Tanti",
@@ -13,7 +13,7 @@
 		"price": 12000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -43,9 +43,9 @@
 	},
 	{
 		"id": 2,
-		"slug": "T-2",
+		"slug": "terreno-en-venta-villa-valde-verde-tanti-2",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Tanti",
@@ -55,7 +55,7 @@
 		"price": 7000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -79,9 +79,9 @@
 	},
 	{
 		"id": 3,
-		"slug": "T-3",
+		"slug": "terreno-en-venta-villa-valde-verde-tanti-3",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Tanti",
@@ -91,7 +91,7 @@
 		"price": 9000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -115,9 +115,9 @@
 	},
 	{
 		"id": 4,
-		"slug": "T-4",
+		"slug": "terreno-en-venta-los-chanares-tanti",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Tanti",
@@ -127,7 +127,7 @@
 		"price": 10000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3669740,
 			"lng": -64.5662400
@@ -150,7 +150,7 @@
 	},
 	{
 		"id": 5,
-		"slug": "T-5",
+		"slug": "lote-en-venta-cerro-sonado-los-chanares",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -162,7 +162,7 @@
 		"price": 25000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3707462,
 			"lng": -64.5527213
@@ -199,9 +199,9 @@
 	},
 	{
 		"id": 6,
-		"slug": "A-A",
+		"slug": "hotel-en-venta-villa-los-angeles-valle-hermoso",
 		"active": true,
-		"featured": false,
+		"featured": true,
 		"operation": "Venta",
 		"type": "Hotel",
 		"locality": "Valle Hermoso",
@@ -211,7 +211,7 @@
 		"price": 220000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.126304, 
 			"lng": -64.482596
@@ -257,7 +257,7 @@
 	},
 	{
 		"id": 7,
-		"slug": "A-D",
+		"slug": "hostel-en-alquiler-general-paz-cordoba",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -269,7 +269,7 @@
 		"price": 380000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.4130343,
 			"lng": -64.1723662
@@ -297,7 +297,7 @@
 	},
 	{
 		"id": 8,
-		"slug": "L-9",
+		"slug": "lote-en-venta-santa-teresa-valle-hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -309,7 +309,7 @@
 		"price": 12000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1153757,
 			"lng": -64.478353
@@ -337,7 +337,7 @@
 	},
 	{
 		"id": 9,
-		"slug": "L-9a",
+		"slug": "lote-edificado-en-venta-santa-teresa-valle-hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -349,7 +349,7 @@
 		"price": 23000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1153757,
 			"lng": -64.478353
@@ -377,7 +377,7 @@
 	},
 	{
 		"id": 10, 
-		"slug": "L-7",
+		"slug": "lotes-en-venta-villa-yacohana-valle-hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -390,7 +390,7 @@
 		"toPrice":  30000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.137023099999997,
 			"lng": -64.48517269999999
@@ -409,13 +409,16 @@
 		"detalles": ["Escritura real"],
 		"services": ["Luz", "Agua"],
 		"images": [
-			"/solo planos pdf",
-			"/solo planos pdf"
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-yacohana-valle-hermoso-10/01.png",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-yacohana-valle-hermoso-10/02.png",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-yacohana-valle-hermoso-10/03.png",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-yacohana-valle-hermoso-10/04.png",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-yacohana-valle-hermoso-10/05.png"
 		]
 	},
 	{
 		"id": 11,
-		"slug": "casa-esquina-doble-ingreso",
+		"slug": "casa-en-venta-zona-centro-valle-hermoso",
 		"active": true,
 		"featured": true,
 		"operation": "Venta",
@@ -427,7 +430,7 @@
 		"price": 130000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1209181,
 			"lng": -64.4802152
@@ -450,9 +453,9 @@
 	},
 	{
 		"id": 12,
-		"slug": "A-11",
+		"slug": "complejo-cabanas-en-venta-villa-los-angeles-valle-hermoso",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Cabaña",
 		"locality": "Valle Hermoso",
@@ -462,7 +465,7 @@
 		"price": 60000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1292646,
 			"lng": -64.4828454
@@ -497,9 +500,9 @@
 	},
 	{
 		"id": 13,
-		"slug": "T-13",
+		"slug": "terreno-en-venta-general-pueyrredon-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Córdoba",
@@ -509,7 +512,7 @@
 		"price": 20000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.464707,
 			"lng": -64.147839
@@ -533,9 +536,9 @@
 	},
 	{
 		"id": 14,
-		"slug": "T-14",
+		"slug": "casa-en-venta-patricios-oeste-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -545,7 +548,7 @@
 		"price": 50000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3674339,
 			"lng": -64.1473682
@@ -575,9 +578,9 @@
 	},
 	{
 		"id": 15,
-		"slug": "T-15",
+		"slug": "casa-en-venta-bellavista-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -587,7 +590,7 @@
 		"price": 80000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.4305462,
 			"lng": -64.2022805
@@ -610,9 +613,9 @@
 	},
 	{
 		"id": 16,
-		"slug": "T-16",
+		"slug": "casa-en-venta-sargento-cabral-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -622,7 +625,7 @@
 		"price": 55000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.3765726,
 			"lng": -64.1927963
@@ -658,9 +661,9 @@
 	},
 	{
 		"id": 17,
-		"slug": "T-17",
+		"slug": "casa-en-venta-alto-alberdi-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -670,7 +673,7 @@
 		"price": 75000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.405644,
 			"lng": -64.223053
@@ -711,9 +714,9 @@
 	},
 	{
 		"id": 18,
-		"slug": "T-18",
+		"slug": "local-en-venta-paseo-san-francisco-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Local",
 		"locality": "Córdoba",
@@ -723,7 +726,7 @@
 		"price": 10000,
 		"expensas": 32000,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.416657,
 			"lng": -64.188041
@@ -747,9 +750,9 @@
 	},
 	{
 		"id": 19,
-		"slug": "T-19",
+		"slug": "departamento-en-venta-barrio-centro-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Departamento",
 		"locality": "Córdoba",
@@ -759,7 +762,7 @@
 		"price": 55000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.4136983,
 			"lng": -64.1786497
@@ -788,9 +791,9 @@
 	},
 	{
 		"id": 20,
-		"slug": "T-20",
+		"slug": "lote-en-venta-el-zorro-los-chanares",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Lote",
 		"locality": "Los Chañares",
@@ -800,7 +803,7 @@
 		"price": 13000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1230464,
 			"lng": -64.4907008
@@ -823,9 +826,9 @@
 	},
 	{
 		"id": 21,
-		"slug": "T-21",
+		"slug": "lote-en-venta-el-zorro-los-chanares-2",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Lote",
 		"locality": "Los Chañares",
@@ -835,7 +838,7 @@
 		"price": 7000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.1230464,
 			"lng": -64.4907008
@@ -858,9 +861,9 @@
 	},
 	{
 		"id": 22,
-		"slug": "T-22",
+		"slug": "casa-en-venta-villa-libertador-cordoba",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -870,7 +873,7 @@
 		"price": 75000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.4707358,
 			"lng": -64.2227864
@@ -939,9 +942,9 @@
 	},
 	{
 		"id": 23,
-		"slug": "T-23",
+		"slug": "cabanas-en-alquiler-casa-grande",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Alquiler",
 		"type": "Cabaña",
 		"locality": "Casa Grande",
@@ -953,7 +956,7 @@
 		"currency": "ARS",
 		"expensas": null,
 		"leaseMonths": 3,
-		"publicated": "0",
+		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.177408,
 			"lng": -64.4778757

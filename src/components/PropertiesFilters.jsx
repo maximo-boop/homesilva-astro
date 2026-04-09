@@ -139,6 +139,11 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 	const visibleItems = !filtrosActivos 
 	? sortedItems 
 	: sortedItems.slice((currentPage - 1) * ITEMS_PER_PAGE,currentPage * ITEMS_PER_PAGE)
+	const mapItems = useMemo(() => 
+		items
+		.filter(p => p.position?.lat && p.position?.lng)
+		.map(({ id, slug, position, price, currency }) => ({ id, slug, position, price, currency }))
+		, [items])
 
 	return (
 		<section className="max-w-[1700px] mx-auto w-full flex flex-col gap-5">
@@ -184,7 +189,7 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 				</div>
 			</div>
 
-			<div className="flex flex-col gap-10 px-5 lg:px-20">
+			<div className="flex flex-col gap-10 px-7 lg:px-20">
 
 				<div className="flex gap-10 min-h-screen">
 					<div className={`h-min flex-1 gap-10 items-start 
@@ -210,7 +215,7 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 								</div>
 							</div>
 						}>			
-							<Map items={visibleItems} set={setDisplayMap} />
+							<Map items={mapItems} set={setDisplayMap} />
 						</Suspense>
 					</aside>
 				</div>

@@ -64,7 +64,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 				<div className={`flex ${id===0 ? '' : 'gap-3'}`}>
 					{data.map((cat, i) => (
 						id===0? (
-							<LabelButtons cat={cat} i={i} emblaApi={emblaApi} selected={selected} />
+							<LabelButtons key={i} cat={cat} i={i} emblaApi={emblaApi} selected={selected} />
 						) : (
 							<button
 								type="button"
@@ -133,6 +133,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 					<div className="peer-hover:opacity-100 opacity-0 hover:opacity-50 transition-opacity duration-300">
 					{[1,2].map(n => (
 						<button 
+							key={n}
 							type="button"
 							aria-label={`${n===1 ? 'Retroceder' : 'Avanzar'} en el slider`}
 							onClick={n===1?scrollPrev:scrollNext}
