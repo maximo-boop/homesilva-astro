@@ -147,7 +147,7 @@ function buildPropertySEOAndSchema(p) {
 		title: `${buildTitle(p, true)} | HomeSilva`,
 		description: p.description !== "---" ? p.description : buildDescription(p),
 		canonical: `https://homesilva.com.ar/propiedades/${p.slug}`,
-		ogImage: p.images[0] || "https://www.homesilva.com.ar/og-default.jpg"
+		ogImage: p.images[0] || "https://homesilva.com.ar/og-default.jpg"
 	};
 	const filteredImages = p.images.filter(img => img);
 
