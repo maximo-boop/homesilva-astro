@@ -16,7 +16,7 @@ const {item, styles} = Astro.props
 		</label>
 	</div>
 	<div class={`pt-2 ${styles? 'lg:pt-0' : ''}`}>
-		<ul role='listbox' id={`submenu-${item.title}`} class={`submenu rounded-[12px] ${styles ? 'absolute lg:shadow-none lg:static lg:flex lg:flex-row lg:py-0 lg:gap-4 lg:bg-transparent shadow-[0_0_20px_rgba(0,0,0,0.05)]' : 'lg:shadow-[0_0_10px_rgba(0,0,0,0.05)] lg:absolute top-full left-0'} hidden flex-col bg-white text-nowrap py-2 min-w-full`}>
+		<ul id={`submenu-${item.title}`} class={`submenu rounded-[12px] ${styles ? 'absolute lg:shadow-none lg:static lg:flex lg:flex-row lg:py-0 lg:gap-4 lg:bg-transparent shadow-[0_0_20px_rgba(0,0,0,0.05)]' : 'lg:shadow-[0_0_10px_rgba(0,0,0,0.05)] lg:absolute top-full left-0'} hidden flex-col bg-white text-nowrap py-2 min-w-full`}>
 			<!-- rounded-[12px] -->
 			{item.childrens.map(c => (
 				<li class="w-full">

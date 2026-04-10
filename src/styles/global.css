@@ -7,8 +7,15 @@
 	--fs-h1: 3rem;
 	--fs-h2: 2.25rem;	
 	--fs-h3: 1.875rem;	
-	--radius: 0.625rem;	
+	--radius: 0.625rem;
+}
 
+@font-face {
+	font-family: 'Inter Variable';
+	src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
 }
 
 .mi-popup .leaflet-popup {

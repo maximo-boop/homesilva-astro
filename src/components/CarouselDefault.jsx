@@ -61,18 +61,18 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 									alt={`${alt} - foto ${i+1}`}
 									loading={i===0 ? 'eager' : 'lazy'}
 									fetchPriority={i === 0 ? 'high' : 'auto'}
-									class="object-contain w-full h-full"
+									className="object-contain w-full h-full"
 								/>
 							</div>
 						) : (
-							<ul class="flex-[0_0_100%] lg:flex-[0_0_40%] grid grid-cols-1 grid-rows-2 gap-10" key={i}>
+							<ul className="flex-[0_0_100%] lg:flex-[0_0_40%] grid grid-cols-1 grid-rows-2 gap-10" key={i}>
 								{item.map((sub, ind) => (
-									<li class="flex" key={ind}>
+									<li className="flex" key={ind}>
 										<a href={`/propiedades/${sub.operation.toLowerCase()}/${toPlural(sub.type.toLowerCase())}/${toSlug(sub.locality.toLowerCase())}`} alt={`${sub.operation} de ${toPlural(sub.type.toLowerCase())} en la zona de ${sub.locality}`}
-											class="w-full flex-1 flex items-center group bg-white rounded-[32px] hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] transition-shadow ease duration-200"
+											className="w-full flex-1 flex items-center group bg-white rounded-[32px] hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] transition-shadow ease duration-200"
 										>
 
-										<div class="overflow-hidden 
+										<div className="overflow-hidden 
 											h-full
 											min-w-[135px] 
 											max-w-[135px] 
@@ -95,18 +95,18 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 												height="150"
 												loading={(i===0||i===1||i===2||i===3) ? 'eager' : 'lazy'}
 												fetchPriority={(i===0||i===1||i===2||i===3) ? 'high' : 'auto'}
-												class="bg-[#fafafa] h-full w-full group-hover:scale-[1.2] transition-scale duration-500 ease object-cover "
+												className="bg-[#fafafa] h-full w-full group-hover:scale-[1.2] transition-scale duration-500 ease object-cover "
 											/>
-											<div class="absolute bg-[rgba(0,0,0,0.1)] w-full h-full" />
+											<div className="absolute bg-[rgba(0,0,0,0.1)] w-full h-full" />
 										</div>
-										<div class="p-4 lg:p-6 flex flex-col flex-1">
-											<div class="flex justify-between items-center">
-												<h2 class="text-xl z-9 font-[600]">{sub.locality}</h2>
-												<svg class="mb-auto" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
+										<div className="p-4 lg:p-6 flex flex-col flex-1">
+											<div className="flex justify-between items-center">
+												<h2 className="text-xl z-9 font-[600]">{sub.locality}</h2>
+												<svg className="mb-auto" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
 											</div>
 
 											<div>
-												<p class="text-[#aaa] z-9 mt-1">{`${sub.operation} de ${toPlural(sub.type.toLowerCase())} en la localidad de ${sub.locality}`}</p>
+												<p className="text-[#aaa] z-9 mt-1">{`${sub.operation} de ${toPlural(sub.type.toLowerCase())} en la localidad de ${sub.locality}`}</p>
 											</div>
 										</div>
 										</a>

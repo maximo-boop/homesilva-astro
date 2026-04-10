@@ -1,6 +1,5 @@
 ---
 import "@/styles/global.css";
-import '@fontsource-variable/inter';
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 const { title, description, image, canonical, displayWhsp, noindex } = Astro.props;
@@ -16,6 +15,7 @@ const { title, description, image, canonical, displayWhsp, noindex } = Astro.pro
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-WCTZJPGH');</script>
 		<!-- End Google Tag Manager -->
+		<link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 		<meta name="google-site-verification" content="S6m5SHxH881aog6vt2eLfbKNrTjpdaKe-SZW4Iu0DfU" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -25,7 +25,6 @@ const { title, description, image, canonical, displayWhsp, noindex } = Astro.pro
 		<title>{title || 'Compra y venta de propiedades en Córdoba | HomeSilva'}</title>
 		<meta name="description" content={description || "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en la Provincia de Córdoba. Contáctanos para encontrar tu propiedad ideal."} />
 		<link rel="icon" type="image/svg+xml" href="https://homesilva.com.ar/favicon.svg" />
-		<link rel="preload" href="/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="canonical" href={canonical || Astro.url.href} />
 		<meta name="generator" content={Astro.generator} />
 		<!-- Open Graph -->
