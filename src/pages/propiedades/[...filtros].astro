@@ -168,21 +168,21 @@ const schema = {
 	"itemListElement": itemsPP.map((p, i) => ({
 		"@type": "ListItem",
 		"position": (start + i + 1),
-		"url": `https://homesilva.com/propiedades/${p.slug}`,
+		"url": `https://homesilva.com.ar/propiedades/${p.slug}`,
 		"name": buildTitle(p),
-		"image": p.images[0] || "/og-default.jpg"
+		"image": p.images[0] || "https://www.homesilva.com.ar/og-default.jpg"
 	}))
 }
 const canonicalURL = page > 1
-  ? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page].join('/')}`
-  : `https://homesilva.com/propiedades/${filtrosReales.join('/')}`
+  ? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page].join('/')}`
+  : `https://homesilva.com.ar/propiedades/${filtrosReales.join('/')}`
 const prevURL = page > 2
-	? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page - 1].join('/')}`
+	? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page - 1].join('/')}`
 	: page === 2
-	? `https://homesilva.com/propiedades/${filtrosReales.join('/') || ''}`
+	? `https://homesilva.com.ar/propiedades/${filtrosReales.join('/') || ''}`
 	: null
 const nextURL = page < totalP
-	? `https://homesilva.com/propiedades/${[...filtrosReales, 'page', page + 1].join('/')}`
+	? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page + 1].join('/')}`
 	: null
 
 const description = (() => {

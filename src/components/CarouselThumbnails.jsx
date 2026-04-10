@@ -77,15 +77,19 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 								onClick={() => emblaApi?.scrollTo(i)}
 							>
 								{imgErrors[i] ? (
-										<div className="w-[100px] lg:w-[150px] h-full bg-gray-200 flex items-center justify-center text-xs text-wrap">
-											<span className="text-gray-500">Imagen no disponible</span>
-										</div>
-									) : (
+									<div className="w-[100px] lg:w-[150px] h-full bg-gray-200 text-xs text-wrap">
+										<span className="text-gray-500">Imagen no disponible</span>
+									</div>
+								) : (
 									<img
 										src={cat}
 										loading='lazy'
+										fetchpriority='auto'
 										className="w-[100px] lg:w-[150px] h-full object-cover"
 										onError={() => handleImgError(i)}
+										alt={`${alt} - foto ${i+1}`}
+										width="100"
+										height="100"
 									/>
 								)}
 							</button>
@@ -129,10 +133,10 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 								type="button"
 								aria-label={`Deslizar hasta la imagen ${i+1}`}
 								onClick={()=> setImgSelected(i)}
-								className="flex-[0_0_100%] min-h-[250px] lg:min-h-[400px] bg-white cursor-pointer" 
+								className="flex-[0_0_100%] min-h-[300px] lg:min-h-[400px] bg-white cursor-pointer" 
 							>
 								{imgErrors[i] ? (
-									<div className="h-[250px] lg:h-[400px] w-full flex items-center justify-center bg-gray-200 text-wrap">
+									<div className="h-[250px] lg:h-[400px] w-full bg-gray-200 text-wrap">
 										<span className="text-gray-500">Imagen no disponible</span>
 									</div>
 									) : (
@@ -177,7 +181,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 
 				{id===1 && (
 					<div className="absolute bottom-5 right-5 lg:bottom-10 lg:right-10 flex items-center gap-5">
-						<p className="bg-[#000a] text-sm p-2 text-white rounded-[12px] flex items-center gap-2">
+							<p className="bg-[#000a] text-sm p-2 text-white rounded-[12px] flex items-center gap-2">
 							{`${selected+1}/${data.length}`}
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
 								<g clip-path="url(#clip0_4418_9254)">
@@ -199,8 +203,19 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 			{imgSelected!== null && (
 				<div className="fixed top-0 left-0 bg-[rgba(0,0,0,0.5)] z-100 h-screen w-screen flex items-center justify-center">
 
-					<div className="bg-red-100 h-[80%] w-[80%] overflow-hidden z-30">
-						<Carousel data={data} id={4} startIndex={imgSelected} alt={alt} />
+					<div className="bg-red-100 h-[90%] w-[90%] overflow-hidden z-30 relative">
+						<Carousel data={data} id={4} startIndex={imgSelected} alt={alt} closeModal={()=> setImgSelected(null)} />
+						<button 
+							type="button"
+							aria-label="Cerrar modal de imagenes"
+							onClick={() => setImgSelected(null)} 
+							className="absolute top-5 right-5 z-20 cursor-pointer" 
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
+							</svg>
+						</button>
 					</div>
 					<button 
 						type="button"

@@ -146,8 +146,8 @@ function buildPropertySEOAndSchema(p) {
 	const seo = {
 		title: `${buildTitle(p, true)} | HomeSilva`,
 		description: p.description !== "---" ? p.description : buildDescription(p),
-		canonical: `https://homesilva.com/propiedades/${p.slug}`,
-		ogImage: p.images[0] || "/og-default.jpg"
+		canonical: `https://homesilva.com.ar/propiedades/${p.slug}`,
+		ogImage: p.images[0] || "https://www.homesilva.com.ar/og-default.jpg"
 	};
 	const filteredImages = p.images.filter(img => img);
 
@@ -205,31 +205,31 @@ const breadcrumbSchema = {
 			"@type": "ListItem",
 			"position": 1,
 			"name": "Inicio",
-			"item": "https://homesilva.com"
+			"item": "https://homesilva.com.ar"
 		},
 		{
 			"@type": "ListItem",
 			"position": 2,
 			"name": "Propiedades",
-			"item": "https://homesilva.com/propiedades"
+			"item": "https://homesilva.com.ar/propiedades"
 		},
 		{
 			"@type": "ListItem",
 			"position": 3,
 			"name": p.operation,
-			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}`
+			"item": `https://homesilva.com.ar/propiedades/${p.operation.toLowerCase()}`
 		},
 		{
 			"@type": "ListItem",
 			"position": 4,
 			"name": toPlural(p.type),
-			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}`
+			"item": `https://homesilva.com.ar/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}`
 		},
 		{
 			"@type": "ListItem",
 			"position": 5,
 			"name": p.locality,
-			"item": `https://homesilva.com/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}/${toSlug(p.locality.toLowerCase())}`
+			"item": `https://homesilva.com.ar/propiedades/${p.operation.toLowerCase()}/${toPlural(p.type.toLowerCase())}/${toSlug(p.locality.toLowerCase())}`
 		}
 	]
 }
@@ -403,16 +403,16 @@ const breadcrumbSchema = {
 					left-0
 					right-0
 					fixed
+					lg:sticky 
 
-					py-4
+					py-[14px]
+
 					px-5
 					md:px-16
 					lg:px-7
 					lg:pt-7
 					lg:pb-5
 
-
-					lg:sticky 
 					lg:top-30
 					lg:flex 
 					lg:h-[80vh]
@@ -421,7 +421,7 @@ const breadcrumbSchema = {
 					gap-1 
 					bg-white
 					lg:rounded-l-[32px]
-					overflow-y-auto
+					lg:overflow-y-auto
 					z-15
 				"
 			>
@@ -487,7 +487,7 @@ const breadcrumbSchema = {
 			</aside>
 		</div>
 
-		{resSimilares.length && (
+		{resSimilares.length > 0 && (
 			<section class="max-w-[1500px] mx-auto flex flex-col pb-20 gap-10 global-padding">
 				<h2 class="text-2xl">Propiedades relacionadas</h2>
 
