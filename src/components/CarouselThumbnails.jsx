@@ -203,7 +203,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 			{imgSelected!== null && (
 				<div className="fixed top-0 left-0 bg-[rgba(0,0,0,0.5)] z-100 h-screen w-screen flex items-center justify-center">
 
-					<div className="bg-red-100 h-[90%] w-[90%] overflow-hidden z-30 relative">
+					<div className="bg-red-100 lg:h-[90%] lg:w-[90%] w-full h-full overflow-hidden z-30 relative">
 						<Carousel data={data} id={4} startIndex={imgSelected} alt={alt} closeModal={()=> setImgSelected(null)} />
 						<button 
 							type="button"

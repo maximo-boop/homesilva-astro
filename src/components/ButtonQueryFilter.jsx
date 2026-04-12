@@ -1,31 +1,33 @@
 'use client'
-import React, {useState, useRef, useEffect} from 'react'
-import {toSlug, toPlural, setQuerys} from '@/utils/utils.js'
+import React, { useState, useRef, useEffect } from 'react'
+import { toSlug, toPlural, setQuerys } from '@/utils/utils.js'
 
 const ButtonQueryFilter = ({ item }) => {
-	if (typeof window === 'undefined') return
-	
-	const [view, setView] = useState(false);
-	const buttonRef = useRef(null)
-	const params = new URLSearchParams(window.location.search)
-	const active = params.get(item.slug)
+  const [view, setView] = useState(false)
+  const [active, setActive] = useState(null)  // null en SSR
+  const buttonRef = useRef(null)
 
-	const selectOption = (slug, option) => {
-		const value = typeof option === 'object' ? option.value : option
-		setQuerys(slug, value)
-		setView(false)
-	}
+  useEffect(() => {
+    // Solo se ejecuta en el cliente
+    const params = new URLSearchParams(window.location.search)
+    setActive(params.get(item.slug))
+  }, [item.slug])
 
-	useEffect(() => {
-		function handleClick(event){
-			if(buttonRef.current && !buttonRef.current.contains(event.target)){
-				setView(false)
-			}
-		}
+  const selectOption = (slug, option) => {
+    const value = typeof option === 'object' ? option.value : option
+    setQuerys(slug, value)
+    setView(false)
+  }
 
-		document.addEventListener("mousedown", handleClick);
-		return ()=> document.removeEventListener("mousedown", handleClick)
-	}, [])
+  useEffect(() => {
+    function handleClick(event) {
+      if (buttonRef.current && !buttonRef.current.contains(event.target)) {
+        setView(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
 
 	return (
 		<div className="relative flex flex-col lg:flex-row " ref={buttonRef}>

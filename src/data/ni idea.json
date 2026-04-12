@@ -1,12 +1,80 @@
-
-// t-1 / t-2 / t-3 / t-4 / t-5 / A-D / L-9 / T-20 / T-21
-
 // -->
 // -->
 // -->
 // id 7: => (son 300 lotes podemos partir a la mitad para el precio o es un caso especial)
 // id 7: => loteo en venta desde xm2 en [barrio]
 
+	{
+		"id": 25,
+		"slug": "lotes-en-venta-unquillo",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Lote",
+		"locality": "Unquillo",
+		"barrio": null,
+		"direction": null,
+		"description": "Se venden dos lotes apareados en Unquillo. Lote amarillo de 800m2 y lote rojo de 1500m2.",
+		"price": null,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-10-11",
+		"position": {
+			"lat": 0,
+			"lng": 0
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": [""],
+		"images": [
+			"https://ik.imagekit.io/homesilva/cabaña-en-mapuches-casa-grande-23/01.jpg"
+		]
+	}, // check (sin ubicacion) foto
+	{
+		"id": 27,
+		"slug": "terreno-en-venta-la-cuesta",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "La Cuesta",
+		"barrio": null,
+		"direction": null,
+		"description": "Terreno plano de 850m2 en la Cuesta. Incluye anteproyecto.",
+		"price": 170000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-10-11",
+		"position": {
+			"lat": 0,
+			"lng": 0
+		},
+		"characteristics": {
+			"superficie_total": 850,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": [""],
+		"images": [
+			"https://ik.imagekit.io/homesilva/cabaña-en-mapuches-casa-grande-23/01.jpg"
+		]
+	}, // check (sin ubicacion) 
 
-
-
+	

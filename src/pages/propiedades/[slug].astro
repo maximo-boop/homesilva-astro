@@ -286,7 +286,7 @@ const breadcrumbSchema = {
 			
 			<section class="flex flex-col gap-2">
 				<h1 class="text-2xl lg:text-3xl font-semibold">{buildTitle(p)}</h1>
-				<h2 class="text-[#888] text-xl lg:text-2xl">{`${p.direction}, ${p.barrio}, ${p.locality}`}</h2>
+				<h2 class="text-[#888] text-xl lg:text-2xl">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}, ${p.locality}`}</h2>
 				<p class={`text-xl ${(p.toPrice||p.leaseMonths) ? '' : 'lg:hidden'}`}>
 					Precio {` ${p.toPrice ? 'desde ' : ''}${formatPrice(p.price, p.currency)}${p.toPrice ? ` hasta ${formatPrice(p.toPrice, p.currency)}` : ''}${p.operation === 'Alquiler' ? ' /mes' : ''}`}
 				</p>
@@ -434,7 +434,7 @@ const breadcrumbSchema = {
 					</div>
 					{p.expensas && (<p class="text-[#888] text-sm">Expensas ${p.expensas}</p>)}
 					<h3 class="text-lg text-wrap">{`${p.type} en ${p.operation} en ${p.locality}`}</h3>
-					<p class="text-[#888] text-wrap">{`${p.direction}, ${p.barrio}`}</p>
+					<p class="text-[#888] text-wrap">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}`}</p>
 
 					<dl class="mt-2 flex flex-wrap gap-2">
 						{Object.entries(p.characteristics).map(([k, v], i) => {
