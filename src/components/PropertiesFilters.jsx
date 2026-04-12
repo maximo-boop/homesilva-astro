@@ -155,7 +155,7 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 					<ButtonSort 
 						item={{
 							id: 1, 
-							title: sorts.find(s => s.slug===orderBy)?.title || 'Sin orden', 
+							title: sorts.find(s => s.slug===orderBy)?.title || 'Ordenar', 
 							options: [...sorts] 
 						}}
 						set={setOrderBy}

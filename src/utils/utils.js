@@ -18,6 +18,7 @@ export const toSlug = (str="") => {
 	.toLowerCase()
 	.normalize('NFD')                    		// descompone acentos
 	.replace(/[\u0300-\u036f]/g, '')     // elimina acentos
+	.replace(/,/g, "")               		// comas
 	.replace(/\s+/g, '-')               		// espacios → guiones
 	.trim()
 }

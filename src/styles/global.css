@@ -18,35 +18,10 @@
 	font-display: swap;
 }
 
-.mi-popup .leaflet-popup {
-	padding: 0;
-}
-.mi-popup .leaflet-popup-content-wrapper { 
-	padding: 0;
-	margin: -12px 0;
-	background: none;
-	box-shadow: none;
-}
-.mi-popup .leaflet-popup-content {
-	padding: 0;
-	margin: 13px 0;
-}
-
 .leaflet-pane {
 	z-index: 0;
 }
 
-.leaflet-popup-tip-container .leaflet-popup-tip {
-	box-shadow: 0 0 20px rgba(0,0,0,0.2);
-}
-.mi-popup .leaflet-popup-content-wrapper a {
-	color: #000;
-	transition: .3s color ease;
-}
-.mi-popup:hover .leaflet-popup-content-wrapper a {
-/*	background: #f6f6f6;*/
-	color: #e48957;
-}
 .global-padding {
 	@apply px-5 md:px-16 lg:px-24 xl:px-35;
 }
