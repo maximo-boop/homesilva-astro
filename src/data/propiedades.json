@@ -727,6 +727,7 @@
 		"price": 10000,
 		"expensas": 32000,
 		"currency": "USD",
+		"expensasCurrency": "ARS",
 		"publicated": "2026-10-04",
 		"position": {
 			"lat": -31.416657,
@@ -1012,7 +1013,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-10-11",
+		"publicated": "2026-11-04",
 		"position": {
 			"lat": -31.4652287,
 			"lng": -64.2988842
@@ -1056,7 +1057,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-10-11",
+		"publicated": "2026-11-04",
 		"position": {
 			"lat": -31.3520691,
 			"lng": -64.1455978
@@ -1092,7 +1093,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-10-11",
+		"publicated": "2026-11-04",
 		"position": {
 			"lat": -31.3893158,
 			"lng": -64.260784
@@ -1155,7 +1156,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-10-11",
+		"publicated": "2026-11-04",
 		"position": {
 			"lat": 25.9431972,
 			"lng": -80.1206128
@@ -1204,6 +1205,155 @@
 			"https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/30.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/31.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/32.jpg"
+		]
+	},
+	{
+		"id": 30,
+		"slug": "departamento-en-venta-alta-cordoba-cordoba",
+		"active": true,
+		"featured": true,
+		"operation": "Venta",
+		"type": "Departamento",
+		"locality": "Córdoba",
+		"barrio": "Alta Córdoba",
+		"direction": "Av. Roque Sáenz Peña 1391",
+		"description": "Departamento de categoría en venta en Alta Córdoba, 247 m² cubiertos, 5 dormitorios, 4 baños y balcón de 21 m² con orientación al frente oeste.\n\nUbicado en Av. Roque Sáenz Peña esquina Campillo, en uno de los barrios más consolidados de Córdoba Capital. Alta Córdoba combina excelente conectividad con el centro, amplia oferta de comercios, colegios, plazas y transporte público, siendo una de las zonas más buscadas por familias que priorizan calidad de vida urbana.\n\nEl departamento ocupa el piso 6 de un edificio con ascensor, recepción y seguridad. Amplios ventanales con vista panorámica, living-comedor, cocina, galería, lavadero y SUM con espacio verde. Cochera cubierta y baulera incluidas. Apto crédito.",
+		"price": 190000,
+		"toPrice": null,
+		"expensas": 800000,
+		"currency": "USD",
+		"expensasCurrency": "ARS",
+		"leaseMonths": null,
+		"publicated": "2026-15-04",
+		"position": {
+			"lat": -31.4007937,
+			"lng": -64.1820052
+		},
+		"characteristics": {
+			"superficie_total": 247,
+			"superficie_cubierta": 643,
+			"ambientes": 8,
+			"dormitorios": 5,
+			"banos": 4,
+			"cochera": 1,
+			"antiguedad": null
+		},
+		"detalles": ["Terraza", "Placards", "Desayunador", "Toilette", "Bálcon", "Lavadero", "Apto crédito", "Galería"],
+		"services": ["Agua corriente", "Línea telefónica", "Gas natural" , "Caldera", "Calefacción", "Luz", "Internet", "Salón de usos múltiples", "Ascensor", "Estacionamiento para visitantes", "Seguridad", "Recepción"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/01.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/02.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/03.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/04.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/05.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/06.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/07.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/08.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/09.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/10.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/11.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/12.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/13.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/14.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/15.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/16.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/17.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/18.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/19.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/20.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/21.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/22.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/23.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/24.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/25.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/26.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/27.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/28.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/29.webp",
+			"https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/30.webp"
+		]
+	},
+	{
+		"id": 31,
+		"slug": "lote-en-venta-puerto-de-aguila-la-estancia",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Lote",
+		"locality": "La Estancia",
+		"barrio": "Puerto del Águila",
+		"direction": "Pousada los gomes 3",
+		"description": "Lote en venta en Puerto del Águila, La Estancia, 1.500 m² de superficie triangular con ingreso por dos calles y todos los servicios incluidos.\n\nPuerto del Águila es un barrio privado ubicado en La Estancia, en plenas Sierras de Córdoba, ideal para quienes buscan construir en un entorno natural con infraestructura completa. El complejo cuenta con canchas de fútbol, vóley y tenis, dos piletas de uso común, gimnasio, sala de juegos, sauna, SUM y restaurante propio.\n\nEl lote dispone de agua, luz, cloacas, gas natural y fibra óptica. Su forma triangular con doble acceso lo hace versátil para distintos proyectos constructivos.",
+		"price": 40000,
+		"toPrice": null,
+		"expensas": null,
+		"currency": "USD",
+		"expensasCurrency": null,
+		"leaseMonths": null,
+		"publicated": "2026-15-04",
+		"position": {
+			"lat": -31.8371106,
+			"lng": -64.5593003
+		},
+		"characteristics": {
+			"superficie_total": 1500,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": ["Agua", "Luz", "Cloacas", "Fibra óptica", "Gas natural"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/01.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/02.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/03.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/04.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/05.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/06.jpg"
+		]
+	},
+	{
+		"id": 32,
+		"slug": "lote-en-venta-potrerillo-de-larreta-alta-gracia",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Lote",
+		"locality": "Alta Gracia",
+		"barrio": "Potrerillo de Larreta",
+		"direction": null,
+		"description": "Lote en venta en Potrerillo de Larreta, Alta Gracia, 2.890 m² con arroyo en el fondo, cancha de golf de 18 hoyos y todos los servicios.\n\nPotrerillo de Larreta es uno de los countries más exclusivos de las Sierras Chicas, a pocos minutos de Alta Gracia. Reconocido por su paisaje serrano, su campo de golf de 18 hoyos y dos restaurantes dentro del predio, combina naturaleza, deporte y confort en un solo lugar. Una de las opciones más buscadas para construir segunda residencia o inversión en la zona.\n\nEl lote cuenta con agua, luz, cloacas, gas natural y fibra óptica. El arroyo que corre por el fondo del terreno suma valor paisajístico y diferencial dentro del barrio.",
+		"price": 180000,
+		"toPrice": null,
+		"expensas": null,
+		"currency": "USD",
+		"expensasCurrency": null,
+		"leaseMonths": null,
+		"publicated": "2026-15-04",
+		"position": {
+			"lat": -31.6486672,
+			"lng": -64.4685983
+		},
+		"characteristics": {
+			"superficie_total": 2890,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": ["Agua", "Luz", "Cloacas", "Fibra óptica", "Gas natural"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/01.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/02.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/03.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/04.jpg",
+			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/05.jpg"
 		]
 	}
 ]

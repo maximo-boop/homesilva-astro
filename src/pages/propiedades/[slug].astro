@@ -291,7 +291,7 @@ const breadcrumbSchema = {
 					Precio {` ${p.toPrice ? 'desde ' : ''}${formatPrice(p.price, p.currency)}${p.toPrice ? ` hasta ${formatPrice(p.toPrice, p.currency)}` : ''}${p.operation === 'Alquiler' ? ' /mes' : ''}`}
 				</p>
 				
-				{p.expensas && (<p class="text-[#888] text-sm lg:hidden">Expensas ${p.expensas}</p>)}
+				{p.expensas && p.expensasCurrency && (<p class="text-[#888] text-sm lg:hidden">Expensas {formatPrice(p.expensas, p.expensasCurrency)}</p>)}
 			</section>
 
 			<section class="flex flex-col gap-10">
