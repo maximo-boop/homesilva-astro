@@ -148,7 +148,7 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 	return (
 		<section className="max-w-[1700px] mx-auto w-full flex flex-col gap-5">
 			<div className="px-5 lg:px-20 flex flex-col lg:flex-row gap-5 justify-between lg:items-center">
-				<h2>{visibleItems.length} propiedades encontradas</h2>
+				<h2>{mapItems.length} propiedades encontradas</h2>
 				
 				<div className="flex justify-between lg:flex-row gap-2">
 
