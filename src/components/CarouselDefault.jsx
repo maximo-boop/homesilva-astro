@@ -41,7 +41,7 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 						) : id === 1 ? (
 							<a href={url} aria-label={alt} key={i} className={`flex-[0_0_100%] relative ${customH? 'min-h-44 max-h-44' : 'min-h-40 max-h-40'}  overflow-hidden`}>
 								<img
-									src={item || "/example-1.webp"}
+									src={item}
 									alt={`${alt} - foto ${i+1}`}
 									loading={i===0 ? 'eager' : 'lazy'}
 									fetchPriority={i === 0 ? 'high' : 'auto'}
@@ -89,12 +89,11 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 											relative
 										">
 											<img 
-												src={sub.img || "/example-1.webp"}
-												alt={`${alt} - foto ${i+1}`}
+												src={sub.img}
+												alt={`Localidad de ${sub.locality}`}
 												width="150"
 												height="150"
-												loading={(i===0||i===1||i===2||i===3) ? 'eager' : 'lazy'}
-												fetchPriority={(i===0||i===1||i===2||i===3) ? 'high' : 'auto'}
+												loading='lazy'
 												className="bg-[#fafafa] h-full w-full group-hover:scale-[1.2] transition-scale duration-500 ease object-cover "
 											/>
 											<div className="absolute bg-[rgba(0,0,0,0.1)] w-full h-full" />
@@ -118,7 +117,6 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 				</div>
 			</div>
 
-			{/* botones */}
 			<div className={`${id===1 ? 'px-3 group-hover:opacity-100 hover:opacity-50 opacity-0 transition-opacity duration-500' : 'flex gap-4 mt-10 mx-auto w-fit' }`}>
 				{[1,2].map(n => (
 					<button 

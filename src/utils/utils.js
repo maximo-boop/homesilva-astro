@@ -80,11 +80,15 @@ export function buildTitle(p, withDirection = false) {
 		? `${p.barrio}, ${p.locality}`
 		: p.locality
 
+	const sup_total = p.characteristics.superficie_total || null
+	const sup_cubierta = p.characteristics.superficie_cubierta || null
+
 	if (p.type === 'Terreno' || p.type === 'Lote') {
-		return `${p.type} en ${p.operation} de ${p.characteristics.superficie_total}m² en ${location}`
+		return `${p.type} en ${p.operation}${sup_total ? ` de ${sup_total}m²` : ''} en ${location}`
 	}
 	if (p.type === 'Local' || p.type === 'Oficina') {
-		return `${p.type} en ${p.operation} de ${p.characteristics.superficie_cubierta}m² en ${location}`
+		const sup = sup_cubierta || sup_total
+		return `${p.type} en ${p.operation}${sup ? ` de ${sup}m²` : ''} en ${location}`
 	}
 	if (hasStructural) {
 		return `${p.type} con ${hasStructural.toLowerCase()} en ${p.operation.toLowerCase()} en ${location}`
@@ -92,8 +96,8 @@ export function buildTitle(p, withDirection = false) {
 	if (hasPremium) {
 		return `${p.type} en ${p.operation} con ${hasPremium.toLowerCase()} en ${location}`
 	}
-	if (p.characteristics.superficie_cubierta >= 150) {
-		return `${p.type} de ${p.characteristics.superficie_cubierta}m² en ${p.operation.toLowerCase()} en ${location}`
+	if (sup_cubierta >= 150) {
+		return `${p.type} de ${sup_cubierta}m² en ${p.operation.toLowerCase()} en ${location}`
 	}
 	if (p.characteristics.dormitorios) {
 		const dormLabel = p.characteristics.dormitorios === 1
@@ -101,7 +105,8 @@ export function buildTitle(p, withDirection = false) {
 			: `${p.characteristics.dormitorios} dormitorios`
 		return `${p.type} en ${p.operation} con ${dormLabel} en ${location}`
 	}
-	return `${p.type} en ${p.operation} de ${p.characteristics.superficie_total}m² en ${location}`
+	const supFallback = sup_cubierta || sup_total
+	return `${p.type} en ${p.operation}${supFallback ? ` de ${supFallback}m²` : ''} en ${location}`
 }
 export function buildDescription(p) {
 	const c = p.characteristics;

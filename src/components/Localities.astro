@@ -9,41 +9,79 @@ const locImages = {
 	"villa-carlos-paz": '/localities/cordoba.jpg',
 	"la-falda": '/localities/la-falda.jpg',
 	"valle-hermoso": '/localities/valle-hermoso.jpg',
-	"tanti": '/localities/tanti.jpg'
+	"tanti": '/localities/tanti.jpg',
+	"los-chanares": '/localities/sierras.webp'
 }
 
-const getCombinaciones = (props) => {
-	const set = new Set();
+const getCombinaciones = (props, maxPerLocality = 1, maxTotal = 8) => {
+	const localityCount = new Map()
+	const seen = new Set()
+	const combinaciones = []
 
-	props.forEach(p => {
-		if(!locImages[toSlug(p.locality.toLowerCase())]){ 
-			return
-		}
+	for (const p of props) {
+	const slug = toSlug(p.locality.toLowerCase())
 
-		const key = `${p.locality}|${p.type}|${p.operation}`
-		set.add(key)
+	if (!locImages[slug]) continue
+
+	const count = localityCount.get(p.locality) ?? 0
+	if (count >= maxPerLocality) continue
+
+	const key = `${p.locality}|${p.type}|${p.operation}`
+	if (seen.has(key)) continue
+
+	seen.add(key)
+	localityCount.set(p.locality, count + 1)
+	combinaciones.push({
+	locality: p.locality,
+	type: p.type,
+	operation: p.operation,
+	img: locImages[slug]
 	})
 
-	const combinaciones = [...set].map(item => {
-		const [locality, type, operation] = item.split('|');
-		return { locality, type, operation, img: locImages[toSlug(locality.toLowerCase())] };
-	})
-	const bloques = [];
-
-	for (let i =0; i<combinaciones.length; i+=2){
-		bloques.push(combinaciones.slice(i, i+2))
+	if (combinaciones.length >= maxTotal) break
 	}
-	return bloques;
+
+	// si quedaron pocas, relajamos el límite por localidad y completamos
+	if (combinaciones.length < 4) {
+	for (const p of props) {
+	const slug = toSlug(p.locality.toLowerCase())
+	if (!locImages[slug]) continue
+	const key = `${p.locality}|${p.type}|${p.operation}`
+	if (seen.has(key)) continue
+	seen.add(key)
+	combinaciones.push({ locality: p.locality, type: p.type, operation: p.operation, img: locImages[slug] })
+	if (combinaciones.length >= maxTotal) break
+	}
+	}
+
+	const bloques = []
+	for (let i = 0; i < combinaciones.length; i += 2) {
+	bloques.push(combinaciones.slice(i, i + 2))
+	}
+	return bloques
 }
 
-const localidades = getCombinaciones(propiedades)
+const TYPE_PRIORITY = ['Casa', 'Departamento', 'Duplex', 'Cabaña', 'Lote', 'Terreno', 'Local', 'Oficina']
+const OP_PRIORITY = ['Venta', 'Alquiler']
+
+const sorted = [...propiedades].sort((a, b) => {
+	const typeA = TYPE_PRIORITY.indexOf(a.type)
+	const typeB = TYPE_PRIORITY.indexOf(b.type)
+	if (typeA !== typeB) return (typeA === -1 ? 99 : typeA) - (typeB === -1 ? 99 : typeB)
+
+	const opA = OP_PRIORITY.indexOf(a.operation)
+	const opB = OP_PRIORITY.indexOf(b.operation)
+	return opA - opB
+})
+
+const localidades = getCombinaciones(sorted, 4, 8)
 const uniqueLocalities = [...new Set(propiedades.map(p => p.locality))]
 
 const localities = [
 	{
 		title: "Ver todas",
 		url: "/propiedades",
-		childrens: [...uniqueLocalities.map(l => ({ title: l, url: `/propiedades/${toSlug(l.toLowerCase())}` }))]
+		childrens: [...uniqueLocalities.slice(0, 6).map(l => ({ title: l, url: `/propiedades/${toSlug(l.toLowerCase())}` }))]
 	}
 ]
 ---
@@ -53,7 +91,7 @@ const localities = [
 	<h3 class="text-[#888] text-[18px] lg:text-2xl">Casas en Córdoba, departamentos en Nueva Córdoba, <br class="hidden">lotes en Zona Norte, inversiones en Villa Carlos Paz</h3>
 
 	<nav>
-		<ul class="flex gap-2 w-full">
+		<ul class="flex gap-2 w-full overflow-x-auto">
 			{localities.map(l => (
 				<Options item={l} styles />
 			))}

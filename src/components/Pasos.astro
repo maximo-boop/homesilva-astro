@@ -1,30 +1,24 @@
 ---
-
 const pasos = [
 	{
 		title: "La primera charla: entendemos tus necesidades",
-		description: "Nos reunimos personalmente o realizamos una llamada para entender a fondo qué tipo de propiedad estás buscando: casa, departamento, terreno o inversión inmobiliaria. Analizamos tu presupuesto, ubicación ideal y objetivos para definir una estrategia de búsqueda clara y eficiente.",
-		// que tipo de propeidad te interesa, en qué zona, cual es tu presupuesto y qué plazos manejas. Si eres propietarios, evaluamos tu inmueble, analizamos el mercado y definimos el mejor precio de venta. ",
-		url: '/pasos-1.png'
+		description: "Nos reunimos personalmente o por llamada para entender qué tipo de propiedad buscás: casa, departamento, terreno o inversión. Analizamos tu presupuesto, ubicación ideal y objetivos para definir una estrategia clara.",
+		url: '/pasos-1.webp'
 	},
 	{
 		title: "Búsqueda y selección: el match perfecto",
-		description: "Con tu perfil definido, activamos nuestra red inmobiliaria para encontrar las mejores propiedades disponibles. Filtramos las opciones según tus criterios para presentarte únicamente oportunidades reales que encajen con lo que buscas.",
-		// Te presentamos opciones que cumplen con tus criterios, asegurándonos de que cada elección sea un paso más cerca de encontrar tu lugar ideal.
-		// Te presentamos un catálogo de propiedades que realmente se ajustan a lo que necesitas. Ahorrándote tiempo y la frustración de ver inmuebles que no cumplen tus expectativas. Si eres vendedor, tu propiedad se promocionará de manera estratégica a compradores calificados.",
-		url: '/pasos-2.png'
+		description: "Con tu perfil definido, activamos nuestra red para encontrar las mejores opciones disponibles. Filtramos según tus criterios y te presentamos únicamente oportunidades reales que encajan con lo que buscás.",
+		url: '/pasos-2.webp'
 	},
 	{
 		title: "Las visitas: vive la Experiencia",
-		description: "Te acompañamos en cada visita para evaluar la propiedad con tranquilidad y resolver todas tus dudas. Si encuentras la opción ideal, te asesoramos durante todo el proceso hasta la firma y la entrega de llaves.",
-		// En este momento, la transaccion se formaliza y nuestra mision se completa. incluso despues de la firma, seguimos a tu disposicion para cualquier consulta.",
-		url: '/pasos-3.png'
+		description: "Te acompañamos en cada visita para evaluar la propiedad con tranquilidad y resolver tus dudas. Si encontrás la opción ideal, te asesoramos hasta la firma y la entrega de llaves.",
+		url: '/pasos-3.webp'
 	}
 ]
 
 ---
 
-	<!-- bg-gradient-to-b from-[#eee] from-0% via-white via-10% to-white -->
 <section class="relative
 	-mt-25
 	pt-40
@@ -52,7 +46,14 @@ const pasos = [
 					<p class="text-[#aaa] text-[18px] lg:text-xl" >{item.description}</p>
 				</div>
 				<div class="flex lg:items-center lg:justify-center w-full lg:max-w-[300px]">
-					<img src={item.url} height="300" width="300" alt={i===0 ? '' : i===1? '' : ''} class="w-full xl:max-w-[300px] h-[250px] object-cover rounded-[40px]" />
+					<img 
+						src={item.url} 
+						height="300" 
+						width="300" 
+						alt={i===0 ? 'Asesor inmobiliario en reunión con cliente' : i===1? 'Selección de propiedades en tablet o computadora' : 'Visita a propiedad con agente inmobiliario'} 
+						class="w-full xl:max-w-[300px] h-[250px] object-cover rounded-[40px]" 
+						loading="lazy"
+					/>
 				</div>
 			</li>
 		))}

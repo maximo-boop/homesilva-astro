@@ -21,18 +21,20 @@ export default function PropertyMap({ items, set }) {
 	const [Components, setComponents] = useState(null);
 
 	useEffect(() => {
+		let cancelled = false
 		Promise.all([import("react-leaflet"), import("leaflet")]).then(([mod, L]) => {
-			setComponents({
+			if (!cancelled) setComponents({
 				MapContainer: mod.MapContainer,
 				TileLayer: mod.TileLayer,
 				Marker: mod.Marker,
 				Popup: mod.Popup,
-				L: L.default,
+                		L: L.default
 			});
 		});
+
+		return () => { cancelled = true }
 	}, []);
 
-	// Solo propiedades dentro de Argentina
 	const localItems = useMemo(
 		() => items.filter(isInArgentina),
 		[items]
@@ -66,17 +68,16 @@ export default function PropertyMap({ items, set }) {
 		return { center: [medLat, medLng], zoom };
 	}, [localItems]);
 
-	if (!Components) return (
-		<div className="h-full w-full bg-gray-100 animate-pulse lg:rounded-[30px]" />
-	);
-
-	const { MapContainer, TileLayer, Marker, Popup, L } = Components;
-	const priceIcon = (p) => L.divIcon({
-		className: "",
-		html: `
-			<a 
-				href="/propiedades/${p.slug}" 
-				style="
+	const markers = useMemo(() => {
+		if (!Components) return []
+		const { L } = Components
+		return localItems.map(p => ({
+			p,
+			icon: L.divIcon({
+				className: "",
+				html: `<a 
+					href="/propiedades/${p.slug}" 
+					style="
 					padding: 6px 14px;
 					font-size: 0.875rem;
 					color: #1a1a1a;
@@ -88,16 +89,23 @@ export default function PropertyMap({ items, set }) {
 					text-decoration: none;
 					transition: color 0.2s;
 					width: fit-content;
-				"
-				onmouseover="this.style.color='#e48957'"
-	  			onmouseout="this.style.color='#1a1a1a'"
-			  >
-				${p.currency} ${p.price.toLocaleString("es-AR")}
-			</a>
-		`,
-		iconAnchor: [0, 0],
-	});
+					"
+					onmouseover="this.style.color='#e48957'"
+					onmouseout="this.style.color='#1a1a1a'"
+					>
+					${p.currency} ${p.price.toLocaleString("es-AR")}
+					</a>`,
+				iconAnchor: [0, 0],
+			})
+		}))
+	}, [localItems, Components])
 
+	if (!Components) return (
+		<div className="h-full w-full bg-gray-100 animate-pulse lg:rounded-[30px]" />
+	);
+
+	const { MapContainer, TileLayer, Marker } = Components;
+	
 	return (
 		<div className="relative h-full w-full">
 			<MapContainer
@@ -109,16 +117,16 @@ export default function PropertyMap({ items, set }) {
 				preferCanvas={true}
 			>
 				<TileLayer
-					attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+					subdomains="abcd"
+					attribution='&copy; CARTO'
 					url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
 				/>
 
-				{/* Solo renderiza markers de Argentina */}
-				{localItems.map((p) => (
+				{markers.map(({ p, icon }) => (
 					<Marker
 						key={p.id}
 						position={[p.position.lat, p.position.lng]}
-						icon={priceIcon(p)}
+						icon={icon}
 					/>
 				))}
 			</MapContainer>
