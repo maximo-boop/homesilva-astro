@@ -1355,5 +1355,297 @@
 			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/04.jpg",
 			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/05.jpg"
 		]
+	},
+	{
+		"id": 33,
+		"slug": "local-en-venta-be16-parque-docta",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Local",
+		"locality": "Córdoba",
+		"barrio": "BE16",
+		"direction": "Av. La Donosa",
+		"description": "Local/oficina en venta en Parque Docta, ingreso BE16 — Córdoba. Posesión inmediata. Se recibe lote en parte de pago o algunas cuotas. Rentabilidad del 7% anual! Zona de alto crecimiento sobre Av. La Donosa.",
+		"price": 68500,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-17",
+		"position": {
+			"lat": -31.4563016,
+			"lng": -64.3097952
+		},
+		"characteristics": {
+			"superficie_total": 0,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": 1,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": ["Luz", "Agua", "Internet"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/01.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/02.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/03.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/04.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/05.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/06.jpg",
+			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/07.jpg"
+		]
+	},
+	{
+		"id": 34,
+		"slug": "lote-en-venta-agua-del-penon-rio-ceballos",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Lote",
+		"locality": "Rio Ceballos",
+		"barrio": "Agua del Peñón",
+		"direction": "Av. El Vergel",
+		"description": "Lote de 360 m² en venta en Agua del Peñón, Río Ceballos. Entorno natural con vegetación serrana, a minutos del centro de Río Ceballos y del río. Ideal para construcción o inversión.",
+		"price": 10000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": -31.1706700,
+			"lng": -64.3351950
+		},
+		"characteristics": {
+			"superficie_total": 360,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": [""],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lote-en-agua-del-penon-rio-ceballos/01.jpg"
+		]
+	},
+	{
+		"id": 35,
+		"slug": "terreno-en-venta-parque-docta-cordoba",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Córdoba",
+		"barrio": "Parque Docta",
+		"direction": "a mts de Av. La Donosa",
+		"description": "Terreno de 420 m² en Parque Docta, Córdoba Capital. Apto duplex, posesión 2027. Sin obras previas. A metros de Av. La Donosa en uno de los barrios privados de mayor valorización de la ciudad.",
+		"price": 49800,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": -31.475972,
+			"lng": -64.303111
+		},
+		"characteristics": {
+			"superficie_total": 420,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": [""],
+		"images": [
+			"https://ik.imagekit.io/homesilva/terreno-en-parque-docta-cordoba-capital/01.jpg"
+		]
+	},
+	{
+		"id": 36,
+		"slug": "oficina-en-alquiler-parque-docta-be16",
+		"active": true,
+		"featured": false,
+		"operation": "Alquiler",
+		"type": "Oficina",
+		"locality": "Córdoba",
+		"barrio": "Parque Docta",
+		"direction": "Av. La Donosa",
+		"description": "Oficina en alquiler en el ingreso de Parque Docta, complejo BE16 — Córdoba. Sin amueblar, lista para equipar. $700.000/mes. Ideal profesionales y emprendimientos en zona de gran desarrollo.",
+		"price": 700000,
+		"toPrice": null,
+		"currency": "ARS",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": -31.475972,
+			"lng": -64.303111
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": null,
+			"ambientes": 1,
+			"dormitorios": null,
+			"banos": 1,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": ["Agua", "Luz", "Internet"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/oficina-en-parque-docta-cordoba/01.jpg"
+		]
+	},
+	{
+		"id": 37,
+		"slug": "campo-eventos-tanti-cerro-blanco-alquiler",
+		"active": true,
+		"featured": false,
+		"operation": "Alquiler",
+		"type": "Casa",
+		"locality": "Tanti",
+		"barrio": "Cerro Blanco",
+		"direction": "El Durazno",
+		"description": "Campo en alquiler en Tanti, Sierras de Córdoba. 10 hectáreas con arroyos, cascadas y entorno natural único. Ideal para eventos, retiros y experiencias. Gran potencial comercial. Precio a consultar.",
+		"price": 0,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": null,
+			"lng": null
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": null,
+			"ambientes": 10,
+			"dormitorios": null,
+			"banos": 1,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": ["Jardín"],
+		"services": ["Agua", "Luz", "Internet", "Gas"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-cerro-blanco-tanti/11.jpg"
+		]
+	},
+	{
+		"id": 38,
+		"slug": "casa-en-alquiler-valle-hermoso-villa-los-angeles",
+		"active": true,
+		"featured": false,
+		"operation": "Alquiler",
+		"type": "Casa",
+		"locality": "Valle Hermoso",
+		"barrio": "Villa Los Angeles",
+		"direction": "Santiago Derqui 600",
+		"description": "Casa en alquiler temporario en Valle Hermoso, Sierras de Córdoba amoblado. Cuenta con 2 dorm, cocina equipada, capacidad para 6 personas, comedor, baño, termotanque electrico, patio amplio con tres asadores, cochera para tres autos, WIFI. Dormitorio principal con dos cuchetas. A minutos del centro de Valle Hermoso.",
+		"price": 90000,
+		"toPrice": null,
+		"currency": "ARS",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": -31.1287994,
+			"lng": -64.4862686
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": null,
+			"ambientes": 3,
+			"dormitorios": 2,
+			"banos": 1,
+			"cochera": 3,
+			"antiguedad": null
+		},
+		"detalles": ["Cocina equipada", "Asador", "Galería"],
+		"services": ["Agua", "Luz", "Internet", "Gas"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/11.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/12.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-villa-los-angeles-valle-hermoso/13.jpg"
+		]
+	},
+	{
+		"id": 39,
+		"slug": "casa-en-alquiler-el-vallecito-valle-hermoso",
+		"active": true,
+		"featured": false,
+		"operation": "Alquiler",
+		"type": "Casa",
+		"locality": "Valle Hermoso",
+		"barrio": "El Vallecito",
+		"direction": "a mts de Av. San Martin",
+		"description": "Casa en alquiler en El Vallecito, Valle Hermoso amoblada. 2 dorm, baño, cochera doble, aire acondicionado y calefón a gas. Sin muebles $450.000/mes — amoblada $580.000/mes. Zona tranquila en las sierras.",
+		"price": 450000,
+		"toPrice": 580000,
+		"currency": "ARS",
+		"expensas": null,
+		"leaseMonths": null,
+		"publicated": "2026-04-18",
+		"position": {
+			"lat": -31.1110478,
+			"lng": -64.4856127
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": null,
+			"ambientes": 3,
+			"dormitorios": 2,
+			"banos": 1,
+			"cochera": 2,
+			"antiguedad": null
+		},
+		"detalles": [""],
+		"services": ["Agua", "Luz", "Internet", "Gas"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/11.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/12.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/13.jpg"
+		]
 	}
 ]

@@ -3,6 +3,7 @@
 // -->
 // id 7: => (son 300 lotes podemos partir a la mitad para el precio o es un caso especial)
 // id 7: => loteo en venta desde xm2 en [barrio]
+// "local-be16-parque-docta-venta", estructura slug para repetidos
 
 	{
 		"id": 25,
@@ -75,4 +76,7 @@
 		"images": [
 			"https://ik.imagekit.io/homesilva/cabaña-en-mapuches-casa-grande-23/01.jpg"
 		]
-	}, // check (sin ubicacion) 
+	}, // check (sin ubicacion)  
+	// ---faltan
+
+
