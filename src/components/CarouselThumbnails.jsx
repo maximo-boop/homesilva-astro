@@ -10,7 +10,7 @@ const LabelButtons = ({cat, i, emblaApi, selected}) => (
 		type="button"
 		aria-pressed={i === selected}
 		aria-label={`Ver los servicios para ${cat.label}es`}
-		className={`${i === selected ? "bg-white" : "cursor-pointer opacity-[.6]"} transition-bg transition-opacity duration-200 ease rounded-full focus:outline-none p-3 px-5 border-none`}
+		className={`${i === selected ? "bg-white" : "cursor-pointer text-[var(--text)]"} transition-bg transition-text duration-200 ease rounded-[16px] focus:outline-none p-3 px-5 border-none`}
 		onClick={() => emblaApi?.scrollTo(i)}
 	>
 		{cat.label}
@@ -49,11 +49,9 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 	}
 
 	const scrollPrev = useCallback(() => {
-		// if (!emblaApi.canScrollPrev()) return
 		if (emblaApi) emblaApi.scrollPrev()
 	}, [emblaApi])
 	const scrollNext = useCallback(() => {
-		// if (!emblaApi.canScrollNext()) return
 		if (emblaApi) emblaApi.scrollNext()
 	}, [emblaApi])
 
@@ -62,7 +60,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 
 			{/* thumbnails */}
 			<div ref={emblaThumbsRef}
-				className={`${id===0? 'mb-8 m-auto bg-[#0000000a] rounded-full w-fit text-[#000]' : 'overflow-hidden'}`}
+				className={`${id===0? 'mb-8 m-auto bg-[#00000008] rounded-[16px] w-fit' : 'overflow-hidden'}`}
 			>
 				<div className={`flex ${id===0 ? '' : 'gap-3'}`}>
 					{data.map((cat, i) => (
@@ -84,7 +82,6 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 									<img
 										src={cat}
 										loading='lazy'
-										fetchpriority='auto'
 										className="w-[100px] lg:w-[150px] h-full object-cover"
 										onError={() => handleImgError(i)}
 										alt={`${alt} - foto ${i+1}`}
@@ -119,10 +116,9 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 								<ul className={`${id===0?'grid-cols-1 lg:grid-cols-3':'grid-cols-3'} grid  gap-[1rem]`}>
 									{cat.services.map((service, idx) => (
 										<li className="cursor-pointer text-start p-6 bg-white overflow-hidden text-ellipsis rounded-[40px] flex flex-col gap-2 ml-[1rem]" key={idx}>
-
 											<span dangerouslySetInnerHTML={{ __html: service.icon }} />
-											<h3 className="font-[500] text-[18px] lg:text-[1.1rem]">{service.title}</h3>
-											<p className="text-[#aaa] text-[16px] lg:text-base">{service.description}</p>
+											<h3 className="font-[500] text-[1.1rem] lg:text-lg">{service.title}</h3>
+											<p className="text-[#aaa]">{service.description}</p>
 										</li>
 									))}
 								</ul>

@@ -94,7 +94,7 @@ const SearchProperties = () => {
 									<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
 								</div>
 
-								<p className="opacity-[.6] truncate max-w-[140px]">{form[item.operation] || "Seleccionar"}</p>
+								<p className="text-[var(--text)] truncate max-w-[140px]">{form[item.operation] || "Seleccionar"}</p>
 							</button>
 
 							<ul 
@@ -116,7 +116,7 @@ const SearchProperties = () => {
 					))
 				}
 
-				<button aria-label="Buscar propiedades" type="submit" className="cursor-pointer bg-[var(--cta)] items-center justify-center gap-2 px-[16px] py-[12px] text-white flex rounded-[16px]">
+				<button aria-label="Buscar propiedades" type="submit" className="cursor-pointer bg-[var(--cta)] items-center justify-center gap-2 px-[16px] py-[12px] text-white flex rounded-[18px]">
 					<span className="font-medium lg:hidden"> {/* span ?? */}
 						Buscar
 					</span>

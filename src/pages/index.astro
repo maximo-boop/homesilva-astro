@@ -19,14 +19,14 @@ import FAQ from '@/components/FAQ.astro';
 		<Localities />
 
 		<section class="pt-20 lg:pt-40 lg:pb-20 -mt-20 relative bg-white">
-			<div class="h-20 lg:h-40 w-full absolute top-0 left-0 bg-gradient-to-b from-[#fafafa] to-white"/>
+			<div class="h-20 lg:h-40 w-full absolute top-0 left-0 bg-gradient-to-b from-[#f3f3f3] to-white"/>
 
 			<div class="global-padding max-w-[1400px] mx-auto flex flex-col-reverse lg:items-center lg:flex-row lg:gap-10 gap-5">
 
 				<div class="flex-1 h-full flex flex-col gap-5">
 					<h2 class="font-medium text-[20px] lg:text-2xl">No solo publicamos propiedades. Diseñamos una estrategia para vender bien, con respaldo profesional.</h2>
-					<p class="text-gray-500 text-[18px] lg:text-lg">Cada operación es acompañada por Domingo Cayetano Silva, corredor inmobiliario y martillero matriculado. Lo que garantiza que cada etapa del proceso sea clara, ordenada y segura, tanto para quien vende como para quien compra.</p>
-					<p class="text-gray-500 text-[18px] lg:text-lg">No tercerizamos el seguimiento: vos siempre hablás directamente con el corredor a cargo de tu operación.</p>
+					<p class="text-[var(--text)] text-lg">Cada operación es acompañada por Domingo Cayetano Silva, corredor inmobiliario y martillero matriculado. Lo que garantiza que cada etapa del proceso sea clara, ordenada y segura, tanto para quien vende como para quien compra.</p>
+					<p class="text-[var(--text)] text-lg">No tercerizamos el seguimiento: vos siempre hablás directamente con el corredor a cargo de tu operación.</p>
 
 					<ul class="flex flex-wrap gap-5">
 						{["15+ años de experiencia", "Corredor matriculado", "Sin intermediarios"].map(t=> (
@@ -47,7 +47,7 @@ import FAQ from '@/components/FAQ.astro';
 						/>
 					</div>
 
-					<p class="text-[#888] text-base italic">"Especializado en la comercialización de todo tipo de inmuebles casas, terrenos, departamentos, cabañas, locales e inversiones y también en la administración de propiedades"</p>
+					<p class="text-[var(--text)] text-base italic">"Especializado en la comercialización de todo tipo de inmuebles casas, terrenos, departamentos, cabañas, locales e inversiones y también en la administración de propiedades"</p>
 				</article>
 
 			</div>
@@ -60,8 +60,8 @@ import FAQ from '@/components/FAQ.astro';
 					<img src="/fotos.png" class="w-full object-cover" height="80" width="550"  alt="Fotografías profesionales de propiedades en venta en Córdoba" loading="lazy" fetchpriority='auto' />
 				</div>
 				<div class="flex-1 flex flex-col gap-5 h-full">
-					<h2 class="font-medium text-[20px] lg:text-2xl">Fotografías y exposición de calidad</h2>
-					<p class="text-[#888] text-[18px] lg:text-lg">Trabajamos con un equipo de producción audiovisual completo, fotógrafos profesionales, reportajes con luz natural y edición de detalle. Producción de video inmobiliario con guión, locución profesional y montaje. Cada inmueble se presenta en los principales portales, redes sociales y nuestra red directa de compradores.</p>
+					<h2 class="font-medium text-xl lg:text-2xl">Fotografías y exposición de calidad</h2>
+					<p class="text-[var(--text)] text-lg">Trabajamos con un equipo de producción audiovisual completo, fotógrafos profesionales, reportajes con luz natural y edición de detalle. Producción de video inmobiliario con guión, locución profesional y montaje. Cada inmueble se presenta en los principales portales, redes sociales y nuestra red directa de compradores.</p>
 
 					<ul class="flex flex-wrap gap-5">
 						{["Fotografia HD", "Video Drone", "Tour Virtual 360°", "Reportaje Exterior"].map(t=> (
@@ -77,8 +77,8 @@ import FAQ from '@/components/FAQ.astro';
 					
 				<div class="flex-1 flex flex-col gap-5 h-full">
 					<h2 class="font-medium text-[20px] lg:text-2xl">Trabajamos con otras agencias y agentes para encontrar lo que buscás</h2>
-					<p class="text-[18px] lg:text-lg text-[#888]">Somos parte de una red activa de agencias y profesionales independientes. Si tu propiedad ideal no está en nuestra cartera, la encontramos y si la tuya necesita más visibilidad, la compartimos.</p>
-					<p class="text-[18px] lg:text-lg text-[#888]">Esta red nos permite agilizar búsquedas y ampliar la oferta disponible sin que tengas que recorrer diez agencias distintas. Una sola consulta, múltiples opciones reales.</p>
+					<p class="text-lg text-[var(--text)]">Somos parte de una red activa de agencias y profesionales independientes. Si tu propiedad ideal no está en nuestra cartera, la encontramos y si la tuya necesita más visibilidad, la compartimos.</p>
+					<p class="text-lg text-[var(--text)]">Esta red nos permite agilizar búsquedas y ampliar la oferta disponible sin que tengas que recorrer diez agencias distintas. Una sola consulta, múltiples opciones reales.</p>
 
 					<ul class="flex flex-wrap gap-5">
 						{["30+ agencias aliadas", "Freelancers asociados", "Cobertura en toda Córdoba"].map(t=> (
@@ -106,51 +106,16 @@ import FAQ from '@/components/FAQ.astro';
 				</div>
 
 				<div class="flex-1 flex flex-col gap-5 justify-center">
-					<h2 class="font-medium text-[20px] lg:text-2xl">¿Querés vender tu propiedad? Te asesoramos para hacerlo bien desde el inicio</h2>
-					<p class="text-[#888] text-[18px] lg:text-lg">Operamos en Córdoba hace más de 15 años. Conocemos Villa Giardino, La Falda, Carlos Paz y cada zona de las Sierras. Te decimos qué vale tu propiedad hoy, no lo que querés escuchar.</p>
-					<p class="text-[#888] text-[18px] lg:text-lg">Te acompañamos en cada etapa: valuación honesta, estrategia de precio, difusión en los canales correctos y negociación hasta el cierre. Sin sorpresas, sin vueltas.</p>
+					<h2 class="font-medium text-xl lg:text-2xl">¿Querés vender tu propiedad? Te asesoramos para hacerlo bien desde el inicio</h2>
+					<p class="text-[var(--text)] text-lg">Operamos en Córdoba hace más de 15 años. Conocemos Villa Giardino, La Falda, Carlos Paz y cada zona de las Sierras. Te decimos qué vale tu propiedad hoy, no lo que querés escuchar.</p>
+					<p class="text-[var(--text)] text-lg">Te acompañamos en cada etapa: valuación honesta, estrategia de precio, difusión en los canales correctos y negociación hasta el cierre. Sin sorpresas, sin vueltas.</p>
 		
-					<a href="/contacto" class="flex bg-black px-6 py-4 text-white w-fit rounded-[15px]">Solicitar asesoramiento</a>
+					<a href="/contacto" class="flex bg-black px-6 py-4 text-white w-fit rounded-[16px]">Solicitar asesoramiento</a>
 				</div>
 			</div>
 		</section>
-		<!-- 3 -->
-	<!-- 	<section class="pt-40 py-20 relative -mt-20 relative bg-white">
-			<div class="max-w-[1400px] mx-auto flex flex-col gap-10 global-padding">
-				<div class="">
-					<p class="text-[#aaa] text-lg lg:text-xl">Casos reales</p>
-					<h2 class="font-medium text-2xl">Lo que dicen quienes ya confiaron en nosotros</h2>
-				</div>
-
-				<div class="grid grid-cols-3 gap-10">
-					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
-						<h3 class="text-lg">Vendió piso en el centro . 2024</h3>
-						<p class="text-[#aaa]">"Llevábamos más de un año intentando vender por nuestra cuenta. En tres semanas con ellos tuvimos la firma. El trato, además. Fue excelente en todo momento"</p>
-					</article>
-
-					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
-						<h3 class="text-lg">Compró vivienda familiar . 2024</h3>
-						<p class="text-[#aaa]">"Busqué piso durante meses con otras agencias sin éxito. Aquí me escucharon de verdad y entendieron lo que necesitaba y encontraron exactamente lo que buscaba"</p>
-					</article>
-
-					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
-						<h3 class="text-lg">Venta de herencia . 2025</h3>
-						<p class="text-[#aaa]">"Heredamos una propiedad y no sabiamos por dónde empezar. Gestionaron todo: tasación, papeles, notaría. Nosotros solo tuvimos que firmar. Muy recomendables."</p>
-					</article>
-				</div>
-			</div>
-		</section> -->
 
 		<FAQ />
 	</main>
 </Layout>
 
-<!-- <script type="application/ld+json"> testimonios
-	{
-		"@context": "https://schema.org",
-		"@type": "Review",
-		"reviewBody": "Llevábamos más de un año intentando vender...",
-		"datePublished": "2024",
-		"reviewRating": { "@type": "Rating", "ratingValue": "5" }
-	}
-</script> -->

@@ -7,17 +7,14 @@ const propiedades = properties.filter(p => p.featured) || [];
 
 <section class="global-padding pt-20 py-20 relative -mt-20 overflow-hidden">
 
-	<div class="h-40 absolute top-0 left-0 w-full bg-gradient-to-b from-white to-[#fafafa]" />
+	<div class="h-40 absolute top-0 left-0 w-full bg-gradient-to-b from-white to-[#f3f3f3]" />
 
 	<div class="max-w-[1200px] mx-auto">
-		
-		<div class="flex justify-between items-end gap-5 mb-10">
-			<div class="flex flex-col flex-1 gap-1 lg:gap-2 z-5">
-				<span class="text-[#999] text-[18px] lg:text-xl">Explora</span>
-				<h2 class="text-[20px] lg:text-[2rem]">Nuestras propiedades más<br class="hidden lg:inline"> destacadas</h2>
+		<div class="flex mb-5 lg:mb-10">
+			<div class="flex flex-col flex-1 lg:gap-2 z-5">
+				<span class="text-xl lg:text-[var(--text)] lg:text-xl font-semibold">Explorá</span>
+				<h2 class="text-[var(--text)] lg:text-black text-lg lg:text-3xl">Nuestras propiedades más<br class="hidden lg:inline"> destacadas</h2>
 			</div>
-
-			<a href="/propiedades" aria-label="Ver todas las propiedades" class="bg-black py-3 px-6 rounded-[14px] z-5 text-white">Ver todas</a>
 		</div>
 
 		<Carousel client:visible data={propiedades} />

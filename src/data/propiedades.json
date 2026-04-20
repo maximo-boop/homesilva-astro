@@ -103,7 +103,7 @@
 			"dormitorios": null,
 			"banos": null
 		},
-		"detalles": ["", "", "", ""],
+		"detalles": [],
 		"services": ["Luz", "Agua"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/terreno-en-villa-valde-verde-tanti-01/01.jpg",
@@ -323,7 +323,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Luz", "Agua"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lote-en-santa-teresa-valle-hermoso-08/01.jpg",
@@ -527,7 +527,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Agua", "Luz", "Internet"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/terreno-en-general-pueyrredon-cordoba-13/01.jpg",
@@ -742,8 +742,8 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
-		"services": [""],
+		"detalles": [],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/local-en-paseo-san-francisco-cordoba-18/01.jpg",
 			"https://ik.imagekit.io/homesilva/local-en-paseo-san-francisco-cordoba-18/02.jpg",
@@ -779,7 +779,7 @@
 			"antiguedad": 66
 		},
 		"detalles": ["Patio"],
-		"services": [""],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/departamento-en-barrio-centro-cordoba-19/01.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-barrio-centro-cordoba-19/02.jpg",
@@ -1072,7 +1072,7 @@
 			"antiguedad": null
 		},
 		"detalles": ["Apto dúplex"],
-		"services": [""],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lote-en-solares-de-rancagua-cordoba/01.jpg"
 		]
@@ -1304,7 +1304,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Agua", "Luz", "Cloacas", "Fibra óptica", "Gas natural"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lote-en-puerto-del-aguila-la-estancia/01.jpg",
@@ -1346,7 +1346,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Agua", "Luz", "Cloacas", "Fibra óptica", "Gas natural"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lote-en-potrerillo-de-larreta-alta-gracia/01.jpg",
@@ -1386,7 +1386,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Luz", "Agua", "Internet"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/local-en-parque-docta-cordoba-capital/01.jpg",
@@ -1428,8 +1428,8 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
-		"services": [""],
+		"detalles": [],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lote-en-agua-del-penon-rio-ceballos/01.jpg"
 		]
@@ -1464,8 +1464,8 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
-		"services": [""],
+		"detalles": [],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/terreno-en-parque-docta-cordoba-capital/01.jpg"
 		]
@@ -1500,7 +1500,7 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Agua", "Luz", "Internet"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/oficina-en-parque-docta-cordoba/01.jpg"
@@ -1630,7 +1630,7 @@
 			"cochera": 2,
 			"antiguedad": null
 		},
-		"detalles": [""],
+		"detalles": [],
 		"services": ["Agua", "Luz", "Internet", "Gas"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/casa-en-el-vallecito-valle-hermoso/01.jpg",

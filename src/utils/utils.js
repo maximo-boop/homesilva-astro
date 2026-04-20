@@ -82,29 +82,33 @@ export function buildTitle(p, withDirection = false) {
 
 	const sup_total = p.characteristics.superficie_total || null
 	const sup_cubierta = p.characteristics.superficie_cubierta || null
+	const { dormitorios, ambientes, banos } = p.characteristics
+
+	const enrich = () => {
+		if (hasPremium)   return `con ${hasPremium.toLowerCase()}`
+		if (hasStructural) return `con ${hasStructural.toLowerCase()}`
+		if (dormitorios)  return `con ${dormitorios === 1 ? '1 dormitorio' : `${dormitorios} dormitorios`}`
+		if (ambientes)    return `de ${ambientes} ambiente${ambientes > 1 ? 's' : ''}`
+		if (banos)        return `con baño privado`
+		return null
+	}
 
 	if (p.type === 'Terreno' || p.type === 'Lote') {
 		return `${p.type} en ${p.operation}${sup_total ? ` de ${sup_total}m²` : ''} en ${location}`
 	}
 	if (p.type === 'Local' || p.type === 'Oficina') {
 		const sup = sup_cubierta || sup_total
-		return `${p.type} en ${p.operation}${sup ? ` de ${sup}m²` : ''} en ${location}`
+		if (sup) return `${p.type} en ${p.operation} de ${sup}m² en ${location}`
+		const extra = enrich()
+		return `${p.type} en ${p.operation}${extra ? ` ${extra}` : ''} en ${location}`
 	}
-	if (hasStructural) {
-		return `${p.type} con ${hasStructural.toLowerCase()} en ${p.operation.toLowerCase()} en ${location}`
-	}
-	if (hasPremium) {
-		return `${p.type} en ${p.operation} con ${hasPremium.toLowerCase()} en ${location}`
-	}
-	if (sup_cubierta >= 150) {
-		return `${p.type} de ${sup_cubierta}m² en ${p.operation.toLowerCase()} en ${location}`
-	}
-	if (p.characteristics.dormitorios) {
-		const dormLabel = p.characteristics.dormitorios === 1
-			? `1 dormitorio`
-			: `${p.characteristics.dormitorios} dormitorios`
-		return `${p.type} en ${p.operation} con ${dormLabel} en ${location}`
-	}
+	if (hasStructural) return `${p.type} con ${hasStructural.toLowerCase()} en ${p.operation.toLowerCase()} en ${location}`
+	if (hasPremium) return `${p.type} en ${p.operation} con ${hasPremium.toLowerCase()} en ${location}`
+	if (sup_cubierta >= 150) return `${p.type} de ${sup_cubierta}m² en ${p.operation.toLowerCase()} en ${location}`
+
+	const extra = enrich()	
+	if (extra) return `${p.type} en ${p.operation} ${extra} en ${location}`
+
 	const supFallback = sup_cubierta || sup_total
 	return `${p.type} en ${p.operation}${supFallback ? ` de ${supFallback}m²` : ''} en ${location}`
 }

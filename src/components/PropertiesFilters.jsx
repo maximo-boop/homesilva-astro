@@ -203,7 +203,7 @@ const PropertiesFilters = ({ items, itemsPP, titulo, params, totalP, currentURL,
 
 					<aside className={`${displayMap ? '' : 'hidden'} flex-1 fixed top-38 left-0 h-full w-full lg:sticky lg:top-45 lg:h-[70vh] `}>
 						<Suspense fallback={
-							<div className="w-full h-full bg-gray-100 rounded-[20px] flex items-center justify-center">
+							<div className="w-full h-full bg-[#eee] rounded-[20px] flex items-center justify-center">
 								<div className="flex flex-col items-center gap-2 text-gray-400">
 								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
 									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -1,7 +1,6 @@
 ---
 import SearchProperties from "./SearchProperties.jsx";
-// import { Image } from 'astro:assets';
-// import Search from "./Search.astro";
+
 const data = [
 	{
 		value: "1200+",
@@ -30,9 +29,9 @@ const data = [
 
 	<div class="bg-[var(--primaryColor)] flex flex-col lg:flex-row lg:gap-5 lg:rounded-[45px] max-w-[1200px] m-auto relative rounded-b-[55px]">
 
-		<div class="flex-1 flex flex-col gap-4 py-10 px-5 lg:px-0 lg:pl-20">
+		<div class="flex-1 flex flex-col gap-4 pt-10 pb-5 lg:py-10 px-5 lg:px-0 lg:pl-20">
 			<h1 class="text-center lg:text-start text-[2rem] lg:text-[2.3rem] font-extrabold leading-[2.7rem]">Encontrá tu próximo <br class="hidden lg:static">hogar en <span class="text-[#eeaa69ff]">Córdoba</span></h1>
-			<p class="text-center lg:text-start text-[16px] lg:text-lg text-[#888]">Venta y alquiler de casas, departamentos y terrenos <br class="hidden lg:static">exclusivos en las mejores zonas.</p>
+			<p class="text-center lg:text-start lg:text-lg text-[var(--text)]">Venta y alquiler de casas, departamentos y terrenos <br class="hidden lg:static">exclusivos en las mejores zonas.</p>
 
 			<SearchProperties client:load />
 			<a href="#asesoramiento" class="text-[16px] lg:text-base m-auto lg:m-0 flex items-center gap-2 group w-fit">
@@ -63,7 +62,7 @@ const data = [
 					<span set:html={item.icon} />
 				</div>
 				<span class="font-extrabold">{item.value}</span>
-				<p class="text-[#888] text-[15px] lg:text-base">{item.description}</p>
+				<p class="text-[var(--text)] text-[15px] lg:text-base">{item.description}</p>
 			</li>
 		))}
 	</ul>

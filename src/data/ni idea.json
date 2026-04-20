@@ -1,4 +1,39 @@
 // -->
+// <!-- 3 -->
+// 	<!-- 	<section class="pt-40 py-20 relative -mt-20 relative bg-white">
+// 			<div class="max-w-[1400px] mx-auto flex flex-col gap-10 global-padding">
+// 				<div class="">
+// 					<p class="text-[#aaa] text-lg lg:text-xl">Casos reales</p>
+// 					<h2 class="font-medium text-2xl">Lo que dicen quienes ya confiaron en nosotros</h2>
+// 				</div>
+
+// 				<div class="grid grid-cols-3 gap-10">
+// 					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
+// 						<h3 class="text-lg">Vendió piso en el centro . 2024</h3>
+// 						<p class="text-[#aaa]">"Llevábamos más de un año intentando vender por nuestra cuenta. En tres semanas con ellos tuvimos la firma. El trato, además. Fue excelente en todo momento"</p>
+// 					</article>
+
+// 					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
+// 						<h3 class="text-lg">Compró vivienda familiar . 2024</h3>
+// 						<p class="text-[#aaa]">"Busqué piso durante meses con otras agencias sin éxito. Aquí me escucharon de verdad y entendieron lo que necesitaba y encontraron exactamente lo que buscaba"</p>
+// 					</article>
+
+// 					<article class="border border-gray-200 py-6 px-4 flex flex-col gap-2">
+// 						<h3 class="text-lg">Venta de herencia . 2025</h3>
+// 						<p class="text-[#aaa]">"Heredamos una propiedad y no sabiamos por dónde empezar. Gestionaron todo: tasación, papeles, notaría. Nosotros solo tuvimos que firmar. Muy recomendables."</p>
+// 					</article>
+// 				</div>
+// 			</div>
+// 		</section> -->
+// 		<!-- <script type="application/ld+json"> testimonios
+// 	{
+// 		"@context": "https://schema.org",
+// 		"@type": "Review",
+// 		"reviewBody": "Llevábamos más de un año intentando vender...",
+// 		"datePublished": "2024",
+// 		"reviewRating": { "@type": "Rating", "ratingValue": "5" }
+// 	}
+// </script> -->
 // -->
 // -->
 // id 7: => (son 300 lotes podemos partir a la mitad para el precio o es un caso especial)

@@ -3,11 +3,12 @@
 :root {
 	--primaryColor: #fff5ebff;
 	--cta: #301411ff;
-	--fs-p: 1rem;
-	--fs-h1: 3rem;
-	--fs-h2: 2.25rem;	
-	--fs-h3: 1.875rem;	
-	--radius: 0.625rem;
+	--text: rgba(0,0,0,0.45);
+	--fs-p: 5rem;
+	--fs-h1: 5rem;
+	--fs-h2: 5rem;	
+	--fs-h3: 5rem;	
+	--radius: 55rem;
 }
 
 @font-face {

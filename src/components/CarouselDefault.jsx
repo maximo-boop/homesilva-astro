@@ -73,7 +73,6 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 										>
 
 										<div className="overflow-hidden 
-											h-full
 											min-w-[135px] 
 											max-w-[135px] 
 											min-h-[135px] 
@@ -123,7 +122,7 @@ const CarouselDefault = ({ data, id=0, url="#", startIndex, alt="", customH=fals
 						type="button"
 						aria-label={`${n===1? 'Retroceder' : 'Avanzar'} en el carousel`}
 						key={n}
-						className={`${n===1?'left-3':'right-3'} cursor-pointer focus:outline-none ${id===1||id===4 ? 'bg-white rounded-full p-2 absolute top-1/2 -translate-y-1/2' : 'bg-black p-3 text-white rounded-[12px]'}`} 
+						className={`${n===1?'left-3':'right-3'} cursor-pointer focus:outline-none ${id===1||id===4 ? 'bg-white rounded-full p-2 absolute top-1/2 -translate-y-1/2' : 'bg-black p-3 text-white rounded-[16px]'}`} 
 						onClick={n===1?scrollPrev:scrollNext}
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width={id===1? 20 : 25} height={id===1?20:25} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

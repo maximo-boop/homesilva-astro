@@ -26,7 +26,7 @@ const inputs = [
 	}
 ]
 
-const { titulo } = Astro.props
+const { titulo, url } = Astro.props
 const mensajePorDefecto = titulo 
 	? `Hola, me interesa esta propiedad y quisiera más información. Muchas gracias.`
 	: ''
@@ -34,7 +34,7 @@ const mensajePorDefecto = titulo
 
 <form action="https://formsubmit.co/consultas.brsilva@gmail.com" method="POST" class="flex flex-col gap-4 md:max-w-md w-full">
 
-	<input type="hidden" name="_next" value="https://homesilva.com.ar">
+	<input type="hidden" name="_next" value={url ? `https://homesilva.com.ar/propiedades/${url}` : "https://homesilva.com.ar"}>
 	{titulo && <input type="hidden" name="propiedad" value={titulo} />}
 
 	{inputs.map(item => (

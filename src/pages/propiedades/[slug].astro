@@ -249,7 +249,7 @@ const breadcrumbSchema = {
 
 	<main>
 		<nav class="flex justify-between items-center global-padding max-w-[1500px] mx-auto gap-2">
-			<ol class="bg-[#fafafa] overflow-x-auto flex items-center py-5 lg:py-8 gap-2 text-sm truncate">
+			<ol class="bg-[#f3f3f3] overflow-x-auto flex items-center py-5 lg:py-8 gap-2 text-sm truncate">
 				<li>
 					<a href="/">Inicio</a>
 				</li>
@@ -319,11 +319,11 @@ const breadcrumbSchema = {
 				</dl>
 			</section>
 
-			{p.detalles.length > 0 && (
+			{p.detalles.length && (
 				<section class="flex flex-col gap-10">
 					<h2 class="text-[20px] lg:text-2xl font-semibold">Detalles de la propiedad</h2>
 					<ul class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
-						{p.detalles.map(d => (
+						{p.detalles.map(d => d && (
 							<li>
 								{d.toLowerCase().includes('cochera') ? <Garage w={30} /> : 
 								(d.toLowerCase().includes('jardín')||d.toLowerCase().includes('patio')) ? <Garden w={30} /> : 
@@ -484,7 +484,7 @@ const breadcrumbSchema = {
 							</svg>
 						</label>
 					</div>
-					<Form titulo={`[${p.id}] ${buildTitle(p)}`} />
+					<Form titulo={`[${p.id}] ${buildTitle(p)}`} url={p.slug} />
 				</div>
 			</aside>
 		</div>
