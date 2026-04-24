@@ -68,6 +68,7 @@ export function formatPrice(price, currency){
 export function buildTitle(p, withDirection = false) {
 	const premiumFeatures = ['piscina', 'pileta', 'galpón', 'quincho', 'jardín']
 	const premiumStructural = ['departamento', 'duplex', 'dúplex', 'suite', 'loft', 'cabaña']
+	const isEstrenar = p.detalles?.some(s => s.toLowerCase().includes('estrenar'))
 
 	const hasPremium = p.detalles?.find(s =>
 		premiumFeatures.some(f => s.toLowerCase().includes(f))
@@ -101,6 +102,10 @@ export function buildTitle(p, withDirection = false) {
 		if (sup) return `${p.type} en ${p.operation} de ${sup}m² en ${location}`
 		const extra = enrich()
 		return `${p.type} en ${p.operation}${extra ? ` ${extra}` : ''} en ${location}`
+	}
+	if (isEstrenar) {
+	    const extra = enrich()
+	    return `${p.type} a estrenar en ${p.operation.toLowerCase()}${extra ? ` ${extra}` : ''} en ${location}`
 	}
 	if (hasStructural) return `${p.type} con ${hasStructural.toLowerCase()} en ${p.operation.toLowerCase()} en ${location}`
 	if (hasPremium) return `${p.type} en ${p.operation} con ${hasPremium.toLowerCase()} en ${location}`
