@@ -1701,7 +1701,7 @@
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
-		"type": "Lote",
+		"type": "Terreno",
 		"locality": "Empalme Tanti",
 		"barrio": "Cerro Soñado - Los Chañares",
 		"direction": "Los Chacares 1448",
@@ -1719,14 +1719,14 @@
 		"characteristics": {
 			"superficie_total": 1416,
 			"superficie_cubierta": 0,
-			"ambientes": 0,
-			"dormitorios": 0,
-			"banos": 0,
-			"cochera": 0,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
 			"antiguedad": null
 		},
 		"detalles": ["Lote irregular","Escritura Pública Posesoria"],
-		"services": [""],
+		"services": [],
 		"images": [
 			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/01.png",
 			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/02.png",
@@ -1737,8 +1737,7 @@
 			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/07.png",
 			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/08.png",
 			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/09.png",
-			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/10.png",
-			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/11.png"
+			"https://ik.imagekit.io/homesilva/lotes-apareados-en-cerro-sonado-empalme-tanti/10.png"
 		]
 	},
 	{
@@ -1835,7 +1834,7 @@
 	    "dormitorios": 2,
 	    "banos": 2,
 	    "cochera": 1,
-	    "antiguedad": null,
+	    "antiguedad": null
 	  },
 	  "detalles": ["Galería techada", "Asador", "Patio", "Cochera con pérgola", "Baño en suite", "Porcelanato", "Barrio privado", "Seguridad 24hs", "A estrenar", "Permite mascotas", "Quincho"],
 	  "services": ["Agua", "Luz", "Cable", "Teléfono", "Internet"],

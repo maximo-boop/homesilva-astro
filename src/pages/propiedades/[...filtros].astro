@@ -150,29 +150,33 @@ const operacionLabel = urlParams.operacion
 
 const tipoLabel = urlParams.tipo 
 	? toSingular(urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1))
-	: 'Propiedades en Venta y Alquiler en Córdoba y Sierras'
+	: null
 
 const localidadLabel = urlParams.localidad
 	? propiedades.find(p => toSlug(p.locality) === urlParams.localidad)?.locality
 	: null
-const titulo = [tipoLabel, operacionLabel, localidadLabel]
-	.filter(Boolean)
-	.join(' en ') || 'Propiedades en Córdoba'
+
+const REGION = 'Córdoba y las Sierras'
+
+const titulo = (() => {
+  const partes = [tipoLabel, operacionLabel, localidadLabel].filter(Boolean)
+  
+  if (partes.length === 0) return `Propiedades en ${REGION}`
+  
+  if (partes.length === 1) {
+    if (urlParams.tipo)  return `${tipoLabel} en Venta y Alquiler en ${REGION}`
+    if (operacionLabel)  return `Propiedades en ${operacionLabel} en ${REGION}`
+    if (localidadLabel)  return `Propiedades en Venta y Alquiler en ${localidadLabel}`
+  }
+
+  if (partes.length === 2) {
+    if (!operacionLabel) return `${tipoLabel} en Venta y Alquiler en ${localidadLabel}`
+    if (!localidadLabel) return `${partes.join(' en ')} en ${REGION}`
+  }
+
+  return partes.join(' en ')
+})()
 	
-const schema = {
-	"@context": "https://schema.org",
-	"@type": "ItemList",
-	"name": titulo,
-	"url": Astro.url.href,
-	"numberOfItems": items.length,
-	"itemListElement": itemsPP.map((p, i) => ({
-		"@type": "ListItem",
-		"position": (start + i + 1),
-		"url": `https://homesilva.com.ar/propiedades/${p.slug}`,
-		"name": buildTitle(p),
-		"image": p.images[0] || "https://homesilva.com.ar/og-default.jpg"
-	}))
-}
 const canonicalURL = page > 1
   ? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page].join('/')}`
   : `https://homesilva.com.ar/propiedades/${filtrosReales.join('/')}`
@@ -200,6 +204,43 @@ const description = (() => {
 	}
 	return `Propiedades en venta y alquiler en Córdoba. Casas, departamentos y terrenos en las mejores zonas con HomeSilva.`
 })()
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": titulo,
+  "description": description,
+  "url": Astro.url.href,
+  "numberOfItems": items.length,
+  "itemListElement": itemsPP.map((p, i) => ({
+    "@type": "ListItem",
+    "position": (start + i + 1),
+    "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
+    "item": {
+      "@type": "RealEstateListing",
+      "name": buildTitle(p),
+      "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
+      "image": p.images[0] || "https://homesilva.com.ar/og-default.jpg",
+      "price": p.price.toString(),
+      "priceCurrency": p.currency,
+      ...(p.characteristics?.superficie_cubierta && {
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": p.characteristics.superficie_cubierta,
+          "unitCode": "MTK"
+        }
+      }),
+      ...(p.characteristics?.dormitorios && {
+        "numberOfRooms": p.characteristics.dormitorios
+      }),
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": p.locality,
+        "addressRegion": "Córdoba",
+        "addressCountry": "AR"
+      }
+    }
+  }))
+}
 ---
 <Layout title={titulo} canonical={canonicalURL} description={description}>
 	<script 

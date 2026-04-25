@@ -58,6 +58,9 @@ function buildPropertySEOAndSchema(p) {
 
 	function buildOffersBlock() {
 		const specs = [];
+		const isNew = (p.detalles || []).some(d => 
+			d?.toLowerCase().includes('estrenar')
+		);
 
 		if (p.toPrice) {
 			specs.push({
@@ -86,6 +89,9 @@ function buildPropertySEOAndSchema(p) {
 				priceCurrency: p.currency
 			} : {}),
 			...(specs.length ? { priceSpecification: specs } : {}),
+			itemCondition: isNew 
+				? "https://schema.org/NewCondition" 
+				: "https://schema.org/UsedCondition",
 			priceValidUntil: priceValidUntil.toISOString().split("T")[0],
 			availability: p.active
 				? "https://schema.org/InStock"
@@ -100,18 +106,28 @@ function buildPropertySEOAndSchema(p) {
 	}
 
 	function buildFloorSizeField() {
-		if (c.superficie_total == null) return {};
+		const result = {};
 
-		return {
-			floorSize: {
+		if (c.superficie_cubierta != null) {
+			result.floorSize = {
 				"@type": "QuantitativeValue",
-				...(c.superficie_total_max != null
-					? { minValue: c.superficie_total, maxValue: c.superficie_total_max }
-					: { value: c.superficie_total }
-				),
+				value: c.superficie_cubierta,
 				unitCode: "MTK"
-			}
-		};
+			};
+		}
+
+		if (c.superficie_total != null) {
+			result.lotSize = {
+			"@type": "QuantitativeValue",
+			...(c.superficie_total_max != null
+			? { minValue: c.superficie_total, maxValue: c.superficie_total_max }
+			: { value: c.superficie_total }
+			),
+			unitCode: "MTK"
+			};
+		}
+
+		return result;
 	}
 
 	function buildAdditionalProperties() {
@@ -286,7 +302,7 @@ const breadcrumbSchema = {
 			
 			<section class="flex flex-col gap-2">
 				<h1 class="text-2xl lg:text-3xl font-semibold">{buildTitle(p)}</h1>
-				<h2 class="text-[#888] text-xl lg:text-2xl">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}, ${p.locality}`}</h2>
+				<p class="text-[#888] text-xl lg:text-2xl">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}, ${p.locality}`}</p>
 				<p class={`text-xl ${(p.toPrice||p.leaseMonths) ? '' : 'lg:hidden'}`}>
 					Precio {` ${p.toPrice ? 'desde ' : ''}${formatPrice(p.price, p.currency)}${p.toPrice ? ` hasta ${formatPrice(p.toPrice, p.currency)}` : ''}${p.operation === 'Alquiler' ? ' /mes' : ''}`}
 				</p>
@@ -319,7 +335,7 @@ const breadcrumbSchema = {
 				</dl>
 			</section>
 
-			{p.detalles.length && (
+			{p.detalles.length > 0 && (
 				<section class="flex flex-col gap-10">
 					<h2 class="text-[20px] lg:text-2xl font-semibold">Detalles de la propiedad</h2>
 					<ul class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
@@ -435,7 +451,7 @@ const breadcrumbSchema = {
 						<p class="text-2xl font-bold text-nowrap">{`${p.toPrice ? 'Desde ' : ''}${formatPrice(p.price, p.currency)}`}</p><p class="truncate text-[#888]">Precio</p>
 					</div>
 					{p.expensas && (<p class="text-[#888] text-sm">Expensas ${p.expensas}</p>)}
-					<h3 class="text-lg text-wrap">{`${p.type} en ${p.operation} en ${p.locality}`}</h3>
+					<h3 class="text-lg text-wrap">{buildTitle(p)}</h3>
 					<p class="text-[#888] text-wrap">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}`}</p>
 
 					<dl class="mt-2 flex flex-wrap gap-2">

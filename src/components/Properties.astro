@@ -1,11 +1,40 @@
 ---
 import Carousel from './CarouselDefault.jsx'
 import properties from '../data/propiedades.json'
+import {buildTitle} from '../utils/utils.js'
 
 const propiedades = properties.filter(p => p.featured) || [];
+const schemaDestacadas = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Propiedades Destacadas en Córdoba y las Sierras",
+  "url": "https://homesilva.com.ar",
+  "numberOfItems": propiedades.length,
+  "itemListElement": propiedades.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
+    "item": {
+      "@type": "RealEstateListing",
+      "name": buildTitle(p),
+      "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
+      "image": p.images[0] || "https://homesilva.com.ar/og-default.jpg",
+      "price": p.price.toString(),
+      "priceCurrency": p.currency,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": p.locality,
+        "addressRegion": "Córdoba",
+        "addressCountry": "AR"
+      }
+    }
+  }))
+}
 ---
 
 <section class="global-padding pt-20 py-20 relative -mt-20 overflow-hidden">
+
+	<script type="application/ld+json" set:html={JSON.stringify(schemaDestacadas)} />
 
 	<div class="h-40 absolute top-0 left-0 w-full bg-gradient-to-b from-white to-[#f3f3f3]" />
 

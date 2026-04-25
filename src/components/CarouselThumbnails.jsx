@@ -97,7 +97,7 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 
 			{id!== 0 && (
 				<div className="flex justify-between items-center">
-					<h2>Fotos</h2>
+					<h3>Fotos</h3>
 					<button 
 						type="button"
 						aria-label="Expandir las fotos actuales"
