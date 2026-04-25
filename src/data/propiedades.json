@@ -449,7 +449,12 @@
 		"services": ["Agua", "Luz", "Cloaca", "Internet"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/01.png",
-			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/02.png"
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/02.png",
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-zona-centro-valle-hermoso-11/07.jpg"
 		]
 	},
 	{
@@ -800,14 +805,14 @@
 		"type": "Terreno",
 		"locality": "Los Chañares",
 		"barrio": "El Zorro",
-		"direction": "A pocos minutos de la Ruta 38",
+		"direction": "A pocos minutos de la Ruta 28",
 		"description": "El Zorro es un paraje tranquilo dentro de Los Chañares. Una zona de baja densidad edilicia, paisajes abiertos y un silencio característico de la vida en las sierras, ideal para quienes buscan privacidad y contacto con la naturaleza.\n\nSe vende lote de 1.200 m² con derechos posesorios, servicios de agua y luz disponibles. Su amplia superficie permite desarrollar proyectos de diversa escala, desde una vivienda unifamiliar con jardín hasta un emprendimiento de turismo rural o descanso.\n\nUna opción atractiva para inversores o familias que buscan terrenos de gran superficie en las sierras de Córdoba a valores accesibles.",
 		"price": 13000,
 		"expensas": null,
 		"currency": "USD",
 		"publicated": "2026-10-04",
 		"position": {
-			"lat": -31.1230464,
+			"lat": -31.1243644,
 			"lng": -64.4907008
 		},
 		"characteristics": {
@@ -835,14 +840,14 @@
 		"type": "Terreno",
 		"locality": "Los Chañares",
 		"barrio": "El Zorro",
-		"direction": "A pocos minutos de la Ruta 38",
-		"description": "Ubicado en el tranquilo paraje El Zorro, en Los Chañares, sobre las Sierras Chicas de Córdoba, este lote de 600 m² ofrece una superficie equilibrada para construir una vivienda serrana cómoda sin los costos de mantenimiento de los terrenos más grandes. A pocos minutos de la Ruta 38, la conectividad con Valle Hermoso y Cosquín es directa.\n\nCuenta con servicios de agua y luz, y se transfiere con derechos posesorios. Una alternativa concreta para quienes buscan dar el primer paso en el mercado inmobiliario serrano con una inversión moderada.\n\nIdeal para construcción de casa de campo, refugio de fin de semana o inversión a largo plazo en una zona de creciente demanda.",
+		"direction": "A pocos minutos de la Ruta 28",
+		"description": "Ubicado en el tranquilo paraje El Zorro, en Los Chañares, sobre las Sierras Chicas de Córdoba, este lote de 600 m² ofrece una superficie equilibrada para construir una vivienda serrana cómoda sin los costos de mantenimiento de los terrenos más grandes. A pocos minutos de la Ruta 28, la conectividad con Valle Hermoso y Cosquín es directa.\n\nCuenta con servicios de agua y luz, y se transfiere con derechos posesorios. Una alternativa concreta para quienes buscan dar el primer paso en el mercado inmobiliario serrano con una inversión moderada.\n\nIdeal para construcción de casa de campo, refugio de fin de semana o inversión a largo plazo en una zona de creciente demanda.",
 		"price": 7000,
 		"expensas": null,
 		"currency": "USD",
 		"publicated": "2026-10-04",
 		"position": {
-			"lat": -31.1230464,
+			"lat": -31.1243644,
 			"lng": -64.4907008
 		},
 		"characteristics": {
