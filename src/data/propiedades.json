@@ -13,7 +13,7 @@
 		"price": 12000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -55,7 +55,7 @@
 		"price": 7000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -91,7 +91,7 @@
 		"price": 9000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.3742540, 
 			"lng": -64.5807030
@@ -127,7 +127,7 @@
 		"price": 10000000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.3669740,
 			"lng": -64.5662400
@@ -162,7 +162,7 @@
 		"price": 25000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.3707462,
 			"lng": -64.5527213
@@ -211,7 +211,7 @@
 		"price": 220000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.126304, 
 			"lng": -64.482596
@@ -223,10 +223,11 @@
 			"dormitorios": 22,
 			"banos": 18,
 			"cochera": 10,
-			"antiguedad": 55
+			"antiguedad": 55,
+			"superficie_descubierta": 1700
 		},
-		"detalles": ["Patio","Jardín", "Hall", "Cocina", "Aire acondicionado", "Calefacción", "Cochera descubierta", "Pileta", "Permite mascotas"],
-		"services": ["Lavadería"],
+		"detalles": ["Patio","Jardín arbolado", "Hall", "Cocina industrial","Horno pizzero","Heladera industrial", "Aire acondicionado", "Calefacción a gas", "Cochera semicubierta", "Pileta","Dos piscinas","Parrillero","Ingreso independiente","Terraza","Placard empotrado","Permite mascotas"],
+		"services": ["Lavadería", "Luz", "Agua", "Gas envasado", "Cable", "Teléfono"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/hotel-en-villa-los-angeles-valle-hermoso-06/01.jpg",
 			"https://ik.imagekit.io/homesilva/hotel-en-villa-los-angeles-valle-hermoso-06/02.jpg",
@@ -269,7 +270,7 @@
 		"price": 380000,
 		"currency": "ARS",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.4130343,
 			"lng": -64.1723662
@@ -309,7 +310,7 @@
 		"price": 12000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1153757,
 			"lng": -64.478353
@@ -349,7 +350,7 @@
 		"price": 23000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1153757,
 			"lng": -64.478353
@@ -390,7 +391,7 @@
 		"toPrice":  30000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.137023099999997,
 			"lng": -64.48517269999999
@@ -431,7 +432,7 @@
 		"price": 130000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1209181,
 			"lng": -64.4802152
@@ -471,7 +472,7 @@
 		"price": 60000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1292646,
 			"lng": -64.4828454
@@ -518,7 +519,7 @@
 		"price": 20000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.464707,
 			"lng": -64.147839
@@ -550,11 +551,11 @@
 		"locality": "Córdoba",
 		"barrio": "Patricios Oeste",
 		"direction": "Francisco de Alarcon 1826",
-		"description": "Se vende casa en B° Patricios Oeste en la calle Francisco de Alarcon 1826 Tiene un departamento en el fondo de 1 dormitorio, cocina, comedor y baño sin terminar. En la casa principal, tiene cocina, comedor, 1 dormitorio, baño, sala de estar, patio.",
+		"description": "Casa en venta en Barrio Patricios Oeste, Córdoba Capital. USD 50.000. Cuenta con living, cocina comedor, 1 dormitorio, baño completo y patio. Incluye departamento independiente en el fondo con cocina, comedor, 1 dormitorio y baño sin terminar, ideal para personalizar o rentar.\n\nPatricios Oeste es un barrio consolidado del sur de la ciudad, con buena conectividad y amplia oferta de servicios y transporte público.\n\nUna oportunidad concreta para vivienda propia con renta potencial o para inversión en una zona residencial de Córdoba Capital.",
 		"price": 50000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.3674339,
 			"lng": -64.1473682
@@ -592,11 +593,11 @@
 		"locality": "Córdoba",
 		"barrio": "Bellavista",
 		"direction": "Elpidio Gonzales 1548",
-		"description": "Se vende casa en B° Bellavista en la calle Elpidio Gonzales 1548. Consta de 2 plantas. Planta baja: living, 2 baños, cocina, comedor, garage para dos autos, patio. Planta alta: 3 habitaciones con placares empotrados en pared de 4x4 cada habitacion con un baño, tiene terraza y ático.",
+		"description": "Casa en venta en Barrio Bellavista, Córdoba Capital. USD 80.000. Dos plantas con 3 dormitorios, 5 baños, cochera para dos autos y terraza. Planta baja con living, cocina, comedor y patio. Planta alta con 3 habitaciones amplias con placares empotrados, baño propio y acceso a ático.\n\nBellavista es un barrio residencial tranquilo del sudoeste de la ciudad, bien conectado con el centro y con amplia oferta de comercios y servicios.\n\nIdeal para familia grande que busca espacio, comodidad y una distribución generosa en una zona consolidada de Córdoba.",
 		"price": 80000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.4305462,
 			"lng": -64.2022805
@@ -627,11 +628,11 @@
 		"locality": "Córdoba",
 		"barrio": "Sargento Cabral",
 		"direction": "Eduardo Marquina 3118",
-		"description": "Se vende casa en B° Sargento Cabral, cuenta con 3 habitaciones, cocina, comedor, baño, gas natural, teléfono, garage, living, 2 habitaciones en el fondo de 2.30 x 2.30, lavadero, jardín con reja perimetral. Trato abreviado.",
+		"description": "Casa en venta en Barrio Sargento Cabral, Córdoba Capital. USD 55.000. 3 dormitorios, cocina, comedor, living, baño, garage y 2 habitaciones adicionales en el fondo. Cuenta con jardín con reja perimetral, lavadero y gas natural. Trato abreviado.\n\nSargento Cabral es un barrio residencial consolidado del noroeste de la ciudad, con buena conectividad y servicios cotidianos a disposición.\n\nUna oportunidad accesible para vivienda propia o inversión en una zona tranquila de Córdoba Capital con todos los servicios disponibles.",
 		"price": 55000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.3765726,
 			"lng": -64.1927963
@@ -679,7 +680,7 @@
 		"price": 75000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.405644,
 			"lng": -64.223053
@@ -728,12 +729,12 @@
 		"locality": "Córdoba",
 		"barrio": "Paseo San Francisco",
 		"direction": "Av. Velez Sarsfield 156",
-		"description": "Oportunidad Única. Se vende local comercial de 9m2 en el Paseo San Francisco (ingreso por calle Belgrano). Cuenta con rejas para mayor seguridad, Escritura inmediata.",
+		"description": "Local comercial en venta en Paseo San Francisco, Córdoba Capital. USD 10.000. 9 m² con rejas de seguridad y escritura inmediata. Ingreso por calle Belgrano, sobre Av. Vélez Sarsfield 156. Expensas $32.000/mes.\n\nEl Paseo San Francisco es un centro comercial techado en pleno corazón de Córdoba, con alto tráfico peatonal y amplia variedad de rubros, ideal para emprendimientos, reventa o inversión con renta inmediata.\n\nUna entrada accesible al mercado comercial del centro de Córdoba con escritura lista para transferir.",
 		"price": 10000,
 		"expensas": 32000,
 		"currency": "USD",
 		"expensasCurrency": "ARS",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.416657,
 			"lng": -64.188041
@@ -769,7 +770,7 @@
 		"price": 55000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.4136983,
 			"lng": -64.1786497
@@ -810,7 +811,7 @@
 		"price": 13000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1243644,
 			"lng": -64.4907008
@@ -845,7 +846,7 @@
 		"price": 7000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.1243644,
 			"lng": -64.4907008
@@ -880,7 +881,7 @@
 		"price": 75000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.4707358,
 			"lng": -64.2227864
@@ -963,7 +964,7 @@
 		"currency": "ARS",
 		"expensas": null,
 		"leaseMonths": 3,
-		"publicated": "2026-10-04",
+		"publicated": "2026-04-10",
 		"position": {
 			"lat": -31.177408,
 			"lng": -64.4778757
@@ -1018,7 +1019,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-11-04",
+		"publicated": "2026-04-11",
 		"position": {
 			"lat": -31.4652287,
 			"lng": -64.2988842
@@ -1056,13 +1057,13 @@
 		"locality": "Córdoba",
 		"barrio": "Solares de Rancagua",
 		"direction": null,
-		"description": "Dos lotes apareados en Solares de Rencagua, barrio apto dúplex. Ubicado del otro lado de circunvalación, entrando por la Shell de Av. Rancagua.",
+		"description": "Dos lotes apareados en venta en Solares de Rancagua, Córdoba. 250 m² cada uno, aptos para construir dúplex, ubicados del otro lado de circunvalación con acceso directo por Av. Rancagua.\n\nUn loteo ideal para inversores o desarrolladores que buscan terrenos con perfil constructivo en un barrio en crecimiento al norte de la ciudad. La habilitación para dúplex permite maximizar el potencial del terreno y obtener mayor rentabilidad por m².\n\nAcceso sencillo desde la Shell de Av. Rancagua, con buena conectividad al centro de Córdoba y a las principales vías de la ciudad.",
 		"price": 30000,
 		"toPrice": null,
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-11-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.3520691,
 			"lng": -64.1455978
@@ -1098,7 +1099,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-11-04",
+		"publicated": "2026-04-11",
 		"position": {
 			"lat": -31.3893158,
 			"lng": -64.260784
@@ -1155,13 +1156,13 @@
 		"locality": "Miami, Florida",
 		"barrio": "Sunny Isles Beach",
 		"direction": "Collins 18001 Ave",
-		"description": "Departamento en venta de 66m2 en el International Trump Tower, edificio frente al mar de Sunny Isles Beach. Completamente amoblado y decorado. Posibilidad de alquiler a través del hotel con 80% de ocupación anual.",
+		"description": "Departamento en venta de 66m2 en el International Trump Tower, edificio frente al mar de Sunny Isles Beach. Completamente amoblado y decorado. Posibilidad de alquiler a través del hotel con 80% de ocupación anual.\n\nUbicado en el quinto piso del edificio, la unidad de 66 m² cuenta con balcón privado con vista directa al mar, donde el horizonte oceánico se convierte en el paisaje de cada mañana. El interior combina el confort de un hogar con el estándar de un hotel de lujo: cocina equipada con estufa de inducción, mininevera, microondas y cafetera, lavadora y secadora propias, baño con ducha y bañera separadas, escritorio de trabajo y una decoración completamente terminada lista para habitar o rentar desde el primer día.\n\nEl complejo ofrece una experiencia que va mucho más allá de las cuatro paredes del departamento. Los residentes y huéspedes acceden a playa privada con reposeras y sombrillas, piscinas frente al mar con jacuzzis al aire libre, el spa Aquanox de más de 700 m², gimnasio disponible las 24 horas, restaurante italiano Azzurro, Gili's Beach Club con cocina mediterránea, pool bar, café, canchas de tenis y deportivas, kids club, arcade, salones de reuniones y valet parking. Todo dentro del mismo edificio, con seguridad las 24 horas los 7 días de la semana.\n\nLa ubicación es otro diferencial: a 8 minutos del Aventura Mall, 13 minutos del aeropuerto de Fort Lauderdale, 20 minutos del aeropuerto internacional de Miami y a pasos a pie de restaurantes, tiendas y supermercados.\n\nLa unidad se entrega completamente amoblada y decorada, con posibilidad de incorporarse al programa de alquiler hotelero con hasta un 80% de ocupación anual, generando rentabilidad en dólares de manera pasiva y profesional.\n\nUna inversión con identidad propia en uno de los mercados inmobiliarios más dinámicos de Estados Unidos.",
 		"price": 299000,
 		"toPrice": null,
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-11-04",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": 25.9431972,
 			"lng": -80.1206128
@@ -1175,8 +1176,8 @@
 			"cochera": null,
 			"antiguedad": null
 		},
-		"detalles": ["Amoblado y decorado", "Posibilidad de alquiler"],
-		"services": ["Canchas de tenis", "Canchas de fútbol", "Piscinas frente al mar", "Bar", "Restaurante italiano", "Café", "Pool bar", "Gimnasio", "Sauna", "Valet parking", "Spa", "Reposeras y sombrillas en la playa", "Servicio de toallas", "Gran lobby", "Salones"],
+		"detalles": ["Amoblado y decorado","Balcón privado con vista al mar","Cocina equipada","Estufa de inducción","Mininevera","Microondas","Cafetera","Lavadora y secadora propias","Baño con ducha y bañera separadas","Escritorio de trabajo","Aire acondicionado","Acceso a playa privada","Piscinas frente al mar","Jacuzzi al aire libre","Kids club","Arcade","Posibilidad de alquiler hotelero"],
+		"services": ["Canchas de tenis", "Canchas de fútbol", "Piscinas frente al mar", "Bar", "Restaurante italiano Azzurro",  "Gili's Beach Club", "Café", "Pool bar", "Gimnasio 24hs", "Sauna", "Valet parking", "Spa Aquanox", "Reposeras y sombrillas en la playa", "Servicio de toallas", "Gran lobby", "Salones de reuniones", "Seguridad 24/7"],
 		"images": [
 			"https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/01.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/02.jpg",
@@ -1229,7 +1230,7 @@
 		"currency": "USD",
 		"expensasCurrency": "ARS",
 		"leaseMonths": null,
-		"publicated": "2026-15-04",
+		"publicated": "2026-04-15",
 		"position": {
 			"lat": -31.4007937,
 			"lng": -64.1820052
@@ -1295,7 +1296,7 @@
 		"currency": "USD",
 		"expensasCurrency": null,
 		"leaseMonths": null,
-		"publicated": "2026-15-04",
+		"publicated": "2026-04-15",
 		"position": {
 			"lat": -31.8371106,
 			"lng": -64.5593003
@@ -1337,7 +1338,7 @@
 		"currency": "USD",
 		"expensasCurrency": null,
 		"leaseMonths": null,
-		"publicated": "2026-15-04",
+		"publicated": "2026-04-15",
 		"position": {
 			"lat": -31.6486672,
 			"lng": -64.4685983
@@ -1413,7 +1414,7 @@
 		"locality": "Rio Ceballos",
 		"barrio": "Agua del Peñón",
 		"direction": "Av. El Vergel",
-		"description": "Lote de 360 m² en venta en Agua del Peñón, Río Ceballos. Entorno natural con vegetación serrana, a minutos del centro de Río Ceballos y del río. Ideal para construcción o inversión.",
+		"description": "Lote en venta en Agua del Peñón, Río Ceballos. 360 m² en pleno entorno serrano de las Sierras Chicas, rodeado de vegetación nativa, aire puro y el paisaje característico del Valle de Punilla norte.\n\nUna superficie ideal para construir una vivienda de fin de semana, casa de campo o primera vivienda serrana. Precio accesible para ingresar al mercado inmobiliario de una zona con creciente valorización y alta demanda.",
 		"price": 10000,
 		"toPrice": null,
 		"currency": "USD",
@@ -1449,13 +1450,13 @@
 		"locality": "Córdoba",
 		"barrio": "Parque Docta",
 		"direction": "a mts de Av. La Donosa",
-		"description": "Terreno de 420 m² en Parque Docta, Córdoba Capital. Apto duplex, posesión 2027. Sin obras previas. A metros de Av. La Donosa en uno de los barrios privados de mayor valorización de la ciudad.",
+		"description": "Terreno en venta en Parque Docta, Córdoba Capital. 420 m² apto dúplex a metros de Av. La Donosa, con posesión 2027 y sin obras previas.\n\nParque Docta es una urbanización privada con seguridad, espacios verdes y acceso directo desde circunvalación, en pleno crecimiento al oeste de la ciudad.\n\nIdeal para construir dúplex o vivienda propia en una zona de alta valorización y demanda creciente.",
 		"price": 49800,
 		"toPrice": null,
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-04-18",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.475972,
 			"lng": -64.303111
@@ -1485,13 +1486,13 @@
 		"locality": "Córdoba",
 		"barrio": "Parque Docta",
 		"direction": "Av. La Donosa",
-		"description": "Oficina en alquiler en el ingreso de Parque Docta, complejo BE16 — Córdoba. Sin amueblar, lista para equipar. $700.000/mes. Ideal profesionales y emprendimientos en zona de gran desarrollo.",
+		"description": "Oficina en alquiler en Parque Docta, Córdoba Capital. Sin amueblar y lista para equipar, ubicada en el complejo BE16 sobre Av. La Donosa. $700.000/mes con agua, luz e internet incluidos.\n\nParque Docta es una urbanización privada con seguridad y acceso directo desde circunvalación, en una de las zonas de mayor crecimiento comercial del oeste de la ciudad.\n\nIdeal para profesionales, estudios o emprendimientos que buscan presencia en un entorno moderno y bien conectado.",
 		"price": 700000,
 		"toPrice": null,
 		"currency": "ARS",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-04-18",
+		"publicated": "2026-04-27",
 		"position": {
 			"lat": -31.475972,
 			"lng": -64.303111
