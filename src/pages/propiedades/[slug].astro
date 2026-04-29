@@ -180,8 +180,8 @@ function buildPropertySEOAndSchema(p) {
 			"@type": "PostalAddress",
 			...maybe("streetAddress", p.barrio ? `${p.direction}, ${p.barrio}` : p.direction),
 			"addressLocality": p.locality,
-			"addressRegion": "Córdoba",
-			"addressCountry": "AR"
+			"addressRegion": p.region ?? "Córdoba",
+			"addressCountry": p.country ?? "AR"
 		},
 
 		...( p.position?.lat && p.position?.lng ? {

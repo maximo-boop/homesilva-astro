@@ -1235,6 +1235,8 @@
 			"lat": -31.4007937,
 			"lng": -64.1820052
 		},
+		"region": "FL",
+		"country": "US",
 		"characteristics": {
 			"superficie_total": 247,
 			"superficie_cubierta": 643,
