@@ -464,7 +464,7 @@
 	{
 		"id": 12,
 		"slug": "complejo-cabanas-en-venta-villa-los-angeles-valle-hermoso",
-		"title": "Complejo de Cabañas en Venta en Valle Hermoso con quincho, ideal para inversión turística",
+		"title": "Complejo de Cabañas en Venta con Quincho, Ideal para Inversión Turística en Valle Hermoso",
 		"active": true,
 		"featured": 5,
 		"operation": "Venta",
@@ -1155,6 +1155,7 @@
 	{
 		"id": 29,
 		"slug": "departamento-en-venta-trump-tower-miami",
+		"title": "Departamento en Trump Tower Miami | Frente al Mar, Amoblado",
 		"active": true,
 		"featured": 2,
 		"operation": "Venta",
@@ -1162,7 +1163,7 @@
 		"locality": "Miami, Florida",
 		"barrio": "Sunny Isles Beach",
 		"direction": "Collins 18001 Ave",
-		"description": "Departamento en venta de 66m2 en el International Trump Tower, edificio frente al mar de Sunny Isles Beach. Completamente amoblado y decorado. Posibilidad de alquiler a través del hotel con 80% de ocupación anual.\n\nUbicado en el quinto piso del edificio, la unidad de 66 m² cuenta con balcón privado con vista directa al mar, donde el horizonte oceánico se convierte en el paisaje de cada mañana. El interior combina el confort de un hogar con el estándar de un hotel de lujo: cocina equipada con estufa de inducción, mininevera, microondas y cafetera, lavadora y secadora propias, baño con ducha y bañera separadas, escritorio de trabajo y una decoración completamente terminada lista para habitar o rentar desde el primer día.\n\nEl complejo ofrece una experiencia que va mucho más allá de las cuatro paredes del departamento. Los residentes y huéspedes acceden a playa privada con reposeras y sombrillas, piscinas frente al mar con jacuzzis al aire libre, el spa Aquanox de más de 700 m², gimnasio disponible las 24 horas, restaurante italiano Azzurro, Gili's Beach Club con cocina mediterránea, pool bar, café, canchas de tenis y deportivas, kids club, arcade, salones de reuniones y valet parking. Todo dentro del mismo edificio, con seguridad las 24 horas los 7 días de la semana.\n\nLa ubicación es otro diferencial: a 8 minutos del Aventura Mall, 13 minutos del aeropuerto de Fort Lauderdale, 20 minutos del aeropuerto internacional de Miami y a pasos a pie de restaurantes, tiendas y supermercados.\n\nLa unidad se entrega completamente amoblada y decorada, con posibilidad de incorporarse al programa de alquiler hotelero con hasta un 80% de ocupación anual, generando rentabilidad en dólares de manera pasiva y profesional.\n\nUna inversión con identidad propia en uno de los mercados inmobiliarios más dinámicos de Estados Unidos.",
+		"description": "Depto de 66m² en Trump Tower Sunny Isles Beach, Miami. Frente al mar, completamente amoblado. Ideal inversión en dólares. Consultá en español. Posibilidad de alquiler a través del hotel con 80% de ocupación anual.\n\nUbicado en el quinto piso del edificio, la unidad de 66 m² cuenta con balcón privado con vista directa al mar, donde el horizonte oceánico se convierte en el paisaje de cada mañana. El interior combina el confort de un hogar con el estándar de un hotel de lujo: cocina equipada con estufa de inducción, mininevera, microondas y cafetera, lavadora y secadora propias, baño con ducha y bañera separadas, escritorio de trabajo y una decoración completamente terminada lista para habitar o rentar desde el primer día.\n\nEl complejo ofrece una experiencia que va mucho más allá de las cuatro paredes del departamento. Los residentes y huéspedes acceden a playa privada con reposeras y sombrillas, piscinas frente al mar con jacuzzis al aire libre, el spa Aquanox de más de 700 m², gimnasio disponible las 24 horas, restaurante italiano Azzurro, Gili's Beach Club con cocina mediterránea, pool bar, café, canchas de tenis y deportivas, kids club, arcade, salones de reuniones y valet parking. Todo dentro del mismo edificio, con seguridad las 24 horas los 7 días de la semana.\n\nLa ubicación es otro diferencial: a 8 minutos del Aventura Mall, 13 minutos del aeropuerto de Fort Lauderdale, 20 minutos del aeropuerto internacional de Miami y a pasos a pie de restaurantes, tiendas y supermercados.\n\nLa unidad se entrega completamente amoblada y decorada, con posibilidad de incorporarse al programa de alquiler hotelero con hasta un 80% de ocupación anual, generando rentabilidad en dólares de manera pasiva y profesional.\n\nUna inversión con identidad propia en uno de los mercados inmobiliarios más dinámicos de Estados Unidos.",
 		"price": 299000,
 		"toPrice": null,
 		"currency": "USD",
@@ -1923,5 +1924,46 @@
 	    "https://ik.imagekit.io/homesilva/duplex-en-docta-etapa-2-cordoba/17.jpg",
 	    "https://ik.imagekit.io/homesilva/duplex-en-docta-etapa-2-cordoba/18.jpg"
 	  ]
+	},
+	{
+		"id": 45,
+		"slug": "duplex-a-estrenar-en-venta-manantiales-cordoba",
+		"title": "Dúplex a estrenar con financiación propia, Campos de Manantiales, Córdoba",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Dúplex",
+		"locality": "Córdoba",
+		"barrio": "Manantiales II",
+		"direction": "Campos de Manantiales",
+		"description": "Dúplex a estrenar de 55m2, 1 dormitorio con escritorio en Campos de Manantiales, Córdoba Capital. Terreno de 150m2, 2 cocheras y buena calidad constructiva. Fecha de entrega agosto 2026. Financiación propia: USD 70.000 de entrega + 20 cuotas de USD 1.000. Consultar otras opciones de financiación.",
+		"price": 70000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-05",
+		"position": {
+			"lat": -31.4906010,
+			"lng": -64.2778100
+		},
+		"characteristics": {
+			"superficie_total": 150,
+			"superficie_cubierta": 55,
+			"ambientes": 2,
+			"dormitorios": 1,
+			"banos": 1,
+			"cochera": 2,
+			"antiguedad": "A estrenar"
+		},
+		"detalles": [],
+		"services": ["Agua corriente", "Cloaca", "Gas natural", "Electricidad", "Internet"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/01.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/02.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/03.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/04.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/05.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/06.jpg",
+			"https://ik.imagekit.io/homesilva/duplex-en-manantiales-cordoba/07.jpg"
+		]
 	}
 ]

@@ -160,7 +160,7 @@ function buildPropertySEOAndSchema(p) {
 	}
 
 	const seo = {
-		title: p.title || `${buildTitle(p, true)} | HomeSilva`,
+		title: `${p.title} | HomeSilva` || `${buildTitle(p, true)} | HomeSilva`,
 		description: p.description !== "---" ? p.description : buildDescription(p),
 		canonical: `https://homesilva.com.ar/propiedades/${p.slug}`,
 		ogImage: p.images[0] || "https://homesilva.com.ar/og-default.jpg"
@@ -338,7 +338,7 @@ const breadcrumbSchema = {
 			{p.detalles.length > 0 && (
 				<section class="flex flex-col gap-10">
 					<h2 class="text-[20px] lg:text-2xl font-semibold">Detalles de la propiedad</h2>
-					<ul class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
+					<ul class="grid lg:grid-cols-3 grid-cols-2 gap-y-5 lg:gap-y-10">
 						{p.detalles.map(d => d && (
 							<li>
 								{d.toLowerCase().includes('cochera') ? <Garage w={30} /> : 
