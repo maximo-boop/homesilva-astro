@@ -22,8 +22,8 @@ const Property = ({p, grid=true, displayMap=true, id=0}) => {
 		</div>
 
 		<a aria-label={`Ver ${p.type} en ${p.operation} en ${p.locality}`} href={url} className={`${grid ? 'flex flex-col gap-[5px] lg:gap-[8px] h-full' : (!displayMap ? 'flex-2 flex flex-col' : 'flex-1 flex flex-col')} p-5`}>
-			<h2 className={`${(grid||displayMap) ? 'text-md lg:text-[1rem]' :  'lg:text-2xl'} font-[500] line-clamp-2`}>{buildTitle(p)}</h2>
-			<h3 className={`${(grid||displayMap) ? 'text-sm' : 'text-sm lg:text-xl'} text-[.9rem] flex-1 text-[var(--text)]`}>{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}`}</h3>
+			<h2 className={`${(grid||displayMap) ? 'text-md lg:text-[1rem]' :  'lg:text-2xl'} font-[500] line-clamp-2`}>{p.title || buildTitle(p)}</h2>
+			<h3 className={`${(grid||displayMap) ? 'text-sm' : 'text-sm lg:text-xl'} text-[.9rem] flex-1 text-[var(--text)] line-clamp-2`}>{[p.barrio || p.direction, p.locality].filter(Boolean).join(', ')}</h3>
 
 			<dl className="flex flex-wrap gap-2">
 						{Object.entries(p.characteristics).map(([k, v], i) => {

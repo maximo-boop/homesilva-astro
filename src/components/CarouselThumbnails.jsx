@@ -17,7 +17,7 @@ const LabelButtons = ({cat, i, emblaApi, selected}) => (
 	</button>
 )
 
-export default function CarouselThumbnails({ data, id=0, alt='' }) {
+export default function CarouselThumbnails({ data, id=0, alt='', status }) {
 	
 	const [selected, setSelected] = useState(0);
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
@@ -175,6 +175,16 @@ export default function CarouselThumbnails({ data, id=0, alt='' }) {
 				</div>
 				)}
 
+				{id===1 && status && (
+					<div className="absolute top-5 left-5 lg:top-10 lg:left-10 z-10">
+						<span 	
+							className={`text-sm p-2 rounded-[12px] font-semibold lg:text-[1rem]
+							${status === "vendido" ? 'bg-[#300c] text-[#faa]' : 'bg-[#030c] text-[#afa]'} `}
+						>
+							{status === "vendido" ? "Vendido" : "Alquilado"}
+						</span>
+					</div>
+				)}
 				{id===1 && (
 					<div className="absolute bottom-5 right-5 lg:bottom-10 lg:right-10 flex items-center gap-5">
 							<p className="bg-[#000a] text-sm p-2 text-white rounded-[12px] flex items-center gap-2">

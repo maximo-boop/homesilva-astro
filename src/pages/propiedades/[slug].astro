@@ -10,7 +10,7 @@ import Form from '@/components/Formulario.astro'
 import { buildTitle, buildDescription, formatPrice, distance, toSlug, toPlural } from '@/utils/utils.js'
 
 import SupCubierta from '@/assets/icons/SupCubierta.astro'
-import SupTotal from '@/assets/icons/SupTotal.astro'
+import SupTotal from '@/assets/icons/SupTotal.astro'	
 import Bath from '@/assets/icons/Bath.astro'
 import Bed from '@/assets/icons/Bed.astro'
 import Widget from '@/assets/icons/Widget.astro'
@@ -160,7 +160,7 @@ function buildPropertySEOAndSchema(p) {
 	}
 
 	const seo = {
-		title: `${buildTitle(p, true)} | HomeSilva`,
+		title: p.title || `${buildTitle(p, true)} | HomeSilva`,
 		description: p.description !== "---" ? p.description : buildDescription(p),
 		canonical: `https://homesilva.com.ar/propiedades/${p.slug}`,
 		ogImage: p.images[0] || "https://homesilva.com.ar/og-default.jpg"
@@ -170,7 +170,7 @@ function buildPropertySEOAndSchema(p) {
 	const schema = {
 		"@context": "https://schema.org",
 		"@type": "RealEstateListing",
-		"name": buildTitle(p),
+		"name": p.title || buildTitle(p),
 		"description": seo.description,
 		"url": seo.canonical,
 		...(filteredImages.length ? { image: filteredImages } : {}),
@@ -283,7 +283,7 @@ const breadcrumbSchema = {
 				</li>
 			</ol>
 
-			<button aria-label={`Compartir propiedad ${buildTitle(p)}`} id="shared" class="bg-white cursor-pointer p-2 rounded-full border border-gray-200 flex items-center justify-center">
+			<button aria-label={`Compartir propiedad ${p.title || buildTitle(p)}`} id="shared" class="bg-white cursor-pointer p-2 rounded-full border border-gray-200 flex items-center justify-center">
 				<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 				<path d="M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1" />
@@ -297,22 +297,22 @@ const breadcrumbSchema = {
 			<article class="flex flex-col gap-10 flex-1">
 
 			<section class="max-w-screen lg:max-w-[calc(1200*0.71px)] overflow-x-hidden">
-				<Carousel client:load id={1} data={p.images} alt={buildTitle(p)} />
+				<Carousel client:load id={1} data={p.images} alt={p.title || buildTitle(p)} status={!p.active ? p.status : undefined} />
 			</section>
 			
 			<section class="flex flex-col gap-2">
-				<h1 class="text-2xl lg:text-3xl font-semibold">{buildTitle(p)}</h1>
-				<p class="text-[#888] text-xl lg:text-2xl">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}, ${p.locality}`}</p>
+				<h1 class="text-2xl lg:text-3xl font-semibold">{p.title || buildTitle(p)}</h1>
+				<p class="text-[var(--text)] text-xl lg:text-2xl">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}, ${p.locality}`}</p>
 				<p class={`text-xl ${(p.toPrice||p.leaseMonths) ? '' : 'lg:hidden'}`}>
 					Precio {` ${p.toPrice ? 'desde ' : ''}${formatPrice(p.price, p.currency)}${p.toPrice ? ` hasta ${formatPrice(p.toPrice, p.currency)}` : ''}${p.operation === 'Alquiler' ? ' /mes' : ''}`}
 				</p>
 				
-				{p.expensas && p.expensasCurrency && (<p class="text-[#888] text-sm lg:hidden">Expensas {formatPrice(p.expensas, p.expensasCurrency)}</p>)}
+				{p.expensas && p.expensasCurrency && (<p class="text-[var(--text)] text-sm lg:hidden">Expensas {formatPrice(p.expensas, p.expensasCurrency)}</p>)}
 			</section>
 
 			<section class="flex flex-col gap-10">
 				<h2 class="text-[20px] lg:text-2xl font-semibold">Características Principales</h2>
-				<dl class="grid lg:grid-cols-3 grid-cols-2 gap-y-10">
+				<dl class="grid lg:grid-cols-3 grid-cols-2 gap-y-5 lg:gap-y-10">
 					{Object.entries(p.characteristics).map(([k,v], i) => (v!==null &&
 						<div class="">
 							<dt class="capitalize">
@@ -327,7 +327,7 @@ const breadcrumbSchema = {
 								}
 								{k.includes('_') ? `${k.split('_').join(' ')}` : k.toLowerCase() === 'banos' ? 'Baños' : `${k}`} 
 							</dt>
-							<dd class="text-[#888]">
+							<dd class="text-[var(--text)]">
 								{`${i===0 || i ===1 ? `${v}m²` : `${v}`}`}
 							</dd>
 						</div>
@@ -359,7 +359,7 @@ const breadcrumbSchema = {
 				<input type="checkbox" id="desc-toggle" class="peer hidden">
     
 				<p 
-					class="text-[#888] line-clamp-8 peer-checked:line-clamp-none transition-all" 
+					class="text-[var(--text)] line-clamp-8 peer-checked:line-clamp-none transition-all" 
 					style="white-space: pre-line;"
 				>
 					{p.description !== '---' ? p.description : buildDescription(p)}
@@ -399,7 +399,7 @@ const breadcrumbSchema = {
 
 			<section class="flex flex-col gap-5">
 				<h2 class="text-[20px] lg:text-2xl font-semibold">Ubicación</h2>
-				<h3 class="text-[18px] lg:text-xl text-[#888]">{`${p.direction ? `${p.direction}, ` : ''}${p.locality}`}</h3>
+				<h3 class="text-[18px] lg:text-xl text-[var(--text)]">{[p.direction, p.barrio, p.locality].filter(Boolean).join(', ')}</h3>
 				
 				{p.position.lat && p.position.lng && (
 					<iframe
@@ -408,7 +408,7 @@ const breadcrumbSchema = {
 						height="300"
 						loading="lazy"
 						class="rounded-[30px] lg:h-[400px]"
-						title={`Ubicación de ${buildTitle(p)}`}
+						title={`Ubicación de ${p.title || buildTitle(p)}`}
 						tabindex="0"
 					/>
 				)}
@@ -448,11 +448,11 @@ const breadcrumbSchema = {
 					mb-4 border-b border-b-[#ddd] pb-4  lg:gap-1
 				">
 					<div class="flex justify-between items-center gap-2">
-						<p class="text-2xl font-bold text-nowrap">{`${p.toPrice ? 'Desde ' : ''}${formatPrice(p.price, p.currency)}`}</p><p class="truncate text-[#888]">Precio</p>
+						<p class="text-2xl font-bold text-nowrap">{`${p.toPrice ? 'Desde ' : ''}${formatPrice(p.price, p.currency)}`}</p><p class="truncate text-[var(--text)]">Precio</p>
 					</div>
-					{p.expensas && (<p class="text-[#888] text-sm">Expensas ${p.expensas}</p>)}
-					<h3 class="text-lg text-wrap">{buildTitle(p)}</h3>
-					<p class="text-[#888] text-wrap">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}`}</p>
+					{p.expensas && (<p class="text-[var(--text)] text-sm">Expensas ${p.expensas}</p>)}
+					<h3 class="text-lg text-wrap">{p.title || buildTitle(p)}</h3>
+					<p class="text-[var(--text)] text-wrap">{`${p.direction ? `${p.direction}, ` : ''}${p.barrio}`}</p>
 
 					<dl class="mt-2 flex flex-wrap gap-2">
 						{Object.entries(p.characteristics).map(([k, v], i) => {
@@ -500,7 +500,7 @@ const breadcrumbSchema = {
 							</svg>
 						</label>
 					</div>
-					<Form titulo={`[${p.id}] ${buildTitle(p)}`} url={p.slug} />
+					<Form titulo={`[${p.id}] ${p.title || buildTitle(p)}`} url={p.slug} />
 				</div>
 			</aside>
 		</div>

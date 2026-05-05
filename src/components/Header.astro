@@ -69,7 +69,7 @@ const links=[
 			{links.map((item,i) => (
 				!item.childrens ? (
 					<li>
-						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black text-white py-3 px-5": "hover:text-[#e48957] transition-text ease duration-200"} flex lg:inline`}>{item.title}</a>
+						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black font-medium text-white py-3 px-5": "hover:text-[#e48957] transition-text ease duration-200"} flex lg:inline`}>{item.title}</a>
 					</li>
 				) : (
 					<Options item={item} />

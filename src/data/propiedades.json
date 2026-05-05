@@ -9,7 +9,7 @@
 		"locality": "Tanti",
 		"barrio": "Villa Valde Verde",
 		"direction": "Tanticucho a 700mts rta28",
-		"description": "El barrio Villa Valde Verde se encuentra sobre el sector de Tanticucho, una zona tranquila y en crecimiento, a tan solo 700 metros de la Ruta 28, con fácil acceso y excelente conectividad con las localidades vecinas.\n\nSe vende terreno de 670,70 m² en pleno corazón de las sierras cordobesas, ideal para construir tu casa de campo, refugio de fin de semana o proyecto residencial. El lote cuenta con servicios de luz y agua disponibles, lo que representa una ventaja concreta al momento de comenzar la obra.\n\nUna oportunidad real para invertir en una zona serrana con proyección, rodeado de paisaje natural y a minutos de todos los servicios de Tanti y Cosquín.",
+		"description": "El barrio Villa Valde Verde se encuentra sobre el sector de Tanticucho, una zona tranquila y en crecimiento, a tan solo 700 metros de la Ruta 28, con fácil acceso y excelente conectividad con las localidades vecinas.\n\nSe vende terreno de 670,70 m² en pleno corazón de las sierras cordobesas, ideal para construir tu casa de campo, refugio de fin de semana o proyecto residencial. El lote cuenta con servicios de luz y agua disponibles, lo que representa una ventaja concreta al momento de comenzar la obra.\n\nUna oportunidad real para invertir en una zona serrana con proyección, rodeado de paisaje natural y a minutos de todos los servicios de Tanti y Cosquín.",	
 		"price": 12000000,
 		"currency": "ARS",
 		"expensas": null,
@@ -200,18 +200,19 @@
 	{
 		"id": 6,
 		"slug": "hotel-en-venta-villa-los-angeles-valle-hermoso",
+		"title": "Hotel en venta con 22 dormitorios y 2 piscinas sobre Ruta 38, Valle Hermoso",
 		"active": true,
-		"featured": false,
+		"featured": 3,
 		"operation": "Venta",
 		"type": "Hotel",
 		"locality": "Valle Hermoso",
 		"barrio": "Villa Los Angeles",
 		"direction": "Ruta 38 Kilometro 50",
-		"description": "Se vende hotel sobre ruta 38, excelente oportunidad de negocio con 22 Dormitorios, Baños, Cocheras descubiertas y patio con parrilla y piscina.",
+		"description": "Hotel en venta sobre Ruta 38 km 50, en Villa Los Ángeles, Valle Hermoso. Negocio hotelero en plena actividad con 30 años de trayectoria, ideal para inversión o continuidad operativa en uno de los corredores turísticos más consolidados de las Sierras Chicas.\n\nEl complejo cuenta con 2.600 m² de terreno total, 900 m² cubiertos y 1.700 m² descubiertos. Dispone de 22 habitaciones con baño privado, TV, ventilador de techo y calefacción a gas, más 2 departamentos independientes (uno de 2 dormitorios y otro de 3), con ingresos propios y terrazas. En planta baja: 3 habitaciones y un departamento de 2 dormitorios con placares empotrados. En planta alta: 4 habitaciones, un departamento con terraza compartida y vista al jardín, 7 habitaciones dobles y 2 departamentos adicionales de 3 ambientes.\n\nEl espacio de servicios incluye cocina industrial con horno pizzero y heladera industrial, sala de reuniones, comedor con salida al patio, lavandería, parrillero y cochera semicubierta para 10 vehículos. Las dos piscinas — una familiar y otra más pequeña — junto al jardín arbolado completan la propuesta de valor del establecimiento.\n\nServicios: electricidad, agua, gas envasado, cable y teléfono. Se acepta permuta por propiedades en Buenos Aires.\n\nUbicación estratégica: a 3 km de La Falda, 9 km de Villa Giardino, 32 km de Capilla del Monte y 45 km de Villa Carlos Paz. Entorno serrano con acceso a la Reserva Natural Vaquerías y el Cerro de la Cruz.",
 		"price": 220000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-04-27",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.126304, 
 			"lng": -64.482596
@@ -379,19 +380,20 @@
 	{
 		"id": 10, 
 		"slug": "lotes-en-venta-villa-yacohana-valle-hermoso",
+		"title": "Loteo Villa Yacohana, 300 lotes desde USD 10.000 con escritura en Valle Hermoso",
 		"active": true,
-		"featured": true,
+		"featured": 1,
 		"operation": "Venta",
 		"type": "Terreno",
 		"locality": "Valle Hermoso",
 		"barrio": "Villa Yacohana",
-		"direction": "Calle Mendoza ruta38",
+			"direction": "Calle Mendoza ruta38",
 		"description": "Ubicado en el barrio Villa Yacohana de Valle Hermoso, este loteo ofrece una excelente oportunidad para invertir en una de las zonas serranas con mayor proyección del Valle de Punilla. Con acceso directo desde Ruta 38, combina conectividad, entorno natural y crecimiento sostenido.\n\nEl desarrollo cuenta con aproximadamente 300 lotes disponibles, con superficies que van desde los 200 m² (10x20) hasta 600 m², adaptándose a distintos tipos de proyectos, desde viviendas familiares hasta casas de fin de semana o inversión a largo plazo.\n\nLos terrenos disponen de servicios de luz y agua, y se comercializan con escritura, brindando seguridad jurídica al momento de la compra.\n\nCon valores accesibles desde USD 10.000, este loteo representa una oportunidad concreta para quienes buscan ingresar al mercado inmobiliario serrano con financiación flexible y gran potencial de valorización.",
 		"price": 10000,
 		"toPrice":  30000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-04-10",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.137023099999997,
 			"lng": -64.48517269999999
@@ -421,6 +423,7 @@
 	{
 		"id": 11,
 		"slug": "casa-en-venta-zona-centro-valle-hermoso",
+		"title": "Casa esquina con piscina y dúplex lindero en centro de Valle Hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -432,7 +435,7 @@
 		"price": 130000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-04-10",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.1209181,
 			"lng": -64.4802152
@@ -461,8 +464,9 @@
 	{
 		"id": 12,
 		"slug": "complejo-cabanas-en-venta-villa-los-angeles-valle-hermoso",
+		"title": "Complejo de Cabañas en Venta en Valle Hermoso con quincho, ideal para inversión turística",
 		"active": true,
-		"featured": false,
+		"featured": 5,
 		"operation": "Venta",
 		"type": "Cabaña",
 		"locality": "Valle Hermoso",
@@ -472,7 +476,7 @@
 		"price": 60000,
 		"currency": "USD",
 		"expensas": null,
-		"publicated": "2026-04-10",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.1292646,
 			"lng": -64.4828454
@@ -870,8 +874,9 @@
 	{
 		"id": 22,
 		"slug": "casa-en-venta-villa-libertador-cordoba",
+		"title": "Casa apta uso comercial con depto. independiente en Villa Libertador",
 		"active": true,
-		"featured": true,
+		"featured": 8,
 		"operation": "Venta",
 		"type": "Casa",
 		"locality": "Córdoba",
@@ -881,7 +886,7 @@
 		"price": 75000,
 		"expensas": null,
 		"currency": "USD",
-		"publicated": "2026-04-10",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.4707358,
 			"lng": -64.2227864
@@ -952,7 +957,7 @@
 		"id": 23,
 		"slug": "cabanas-en-alquiler-casa-grande",
 		"active": true,
-		"featured": true,
+		"featured": false,
 		"operation": "Alquiler",
 		"type": "Cabaña",
 		"locality": "Casa Grande",
@@ -1006,8 +1011,9 @@
 	{
 		"id": 24,
 		"slug": "duplex-en-venta-nobu-town-cordoba",
+		"title": "Dúplex premium con piso radiante, domótica, entrega inmediata, NOBU Town",
 		"active": true,
-		"featured": true,
+		"featured": 4,
 		"operation": "Venta",
 		"type": "Duplex",
 		"locality": "Córdoba",
@@ -1019,7 +1025,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-04-11",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.4652287,
 			"lng": -64.2988842
@@ -1087,7 +1093,7 @@
 		"id": 28,
 		"slug": "departamento-en-venta-chateau-carreras-amenities",
 		"active": true,
-		"featured": true,
+		"featured": 7,
 		"operation": "Venta",
 		"type": "Departamento",
 		"locality": "Córdoba",
@@ -1144,13 +1150,13 @@
 			"https://ik.imagekit.io/homesilva/departamento-en-chateau-carreras-cordoba/26.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-chateau-carreras-cordoba/27.jpg",
 			"https://ik.imagekit.io/homesilva/departamento-en-chateau-carreras-cordoba/28.jpg"
-		]
+			]
 	},
 	{
 		"id": 29,
 		"slug": "departamento-en-venta-trump-tower-miami",
 		"active": true,
-		"featured": true,
+		"featured": 2,
 		"operation": "Venta",
 		"type": "Departamento",
 		"locality": "Miami, Florida",
@@ -1162,7 +1168,7 @@
 		"currency": "USD",
 		"expensas": null,
 		"leaseMonths": null,
-		"publicated": "2026-04-27",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": 25.9431972,
 			"lng": -80.1206128
@@ -1216,8 +1222,9 @@
 	{
 		"id": 30,
 		"slug": "departamento-en-venta-alta-cordoba-cordoba",
+		"title": "Departamento de 5 dorm. y 247m² en Alta Córdoba, apto crédito",
 		"active": true,
-		"featured": true,
+		"featured": 6,
 		"operation": "Venta",
 		"type": "Departamento",
 		"locality": "Córdoba",
@@ -1230,7 +1237,7 @@
 		"currency": "USD",
 		"expensasCurrency": "ARS",
 		"leaseMonths": null,
-		"publicated": "2026-04-15",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.4007937,
 			"lng": -64.1820052
@@ -1326,6 +1333,7 @@
 	{
 		"id": 32,
 		"slug": "lote-en-venta-potrerillo-de-larreta-alta-gracia",
+		"title": "Lote de 2.890m² con arroyo en Alta Gracia, country golf",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1340,7 +1348,7 @@
 		"currency": "USD",
 		"expensasCurrency": null,
 		"leaseMonths": null,
-		"publicated": "2026-04-15",
+		"publicated": "2026-05-04",
 		"position": {
 			"lat": -31.6486672,
 			"lng": -64.4685983
@@ -1611,7 +1619,8 @@
 	{
 		"id": 39,
 		"slug": "casa-en-alquiler-el-vallecito-valle-hermoso",
-		"active": true,
+		"active": false,
+		"status": "alquilado",
 		"featured": false,
 		"operation": "Alquiler",
 		"type": "Casa",

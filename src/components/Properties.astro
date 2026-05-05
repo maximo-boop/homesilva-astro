@@ -3,7 +3,7 @@ import Carousel from './CarouselDefault.jsx'
 import properties from '../data/propiedades.json'
 import {buildTitle} from '../utils/utils.js'
 
-const propiedades = properties.filter(p => p.featured) || [];
+const propiedades = properties.filter(p => p.featured).sort((a, b) => a.featured - b.featured) || [];
 const schemaDestacadas = {
   "@context": "https://schema.org",
   "@type": "ItemList",
