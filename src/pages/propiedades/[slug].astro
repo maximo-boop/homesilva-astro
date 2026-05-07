@@ -160,7 +160,7 @@ function buildPropertySEOAndSchema(p) {
 	}
 
 	const seo = {
-		title: `${p.title} | HomeSilva` || `${buildTitle(p, true)} | HomeSilva`,
+		title: p.title ? `${p.title} | HomeSilva` : `${buildTitle(p, true)} | HomeSilva`,
 		description: p.description !== "---" ? p.description : buildDescription(p),
 		canonical: `https://homesilva.com.ar/propiedades/${p.slug}`,
 		ogImage: p.images[0] || "https://homesilva.com.ar/og-default.jpg"
