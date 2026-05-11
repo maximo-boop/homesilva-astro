@@ -8,6 +8,8 @@ const PLURALES = {
 	'oficina': 'oficinas',
 	'hotel': 'hoteles',
 	'lote': 'lotes',
+	'duplex': 'duplex',
+	'dúplex': 'duplex',
 	'ph': 'ph'
 }
 const SINGULARES = Object.fromEntries(
@@ -23,7 +25,11 @@ export const toSlug = (str="") => {
 	.trim()
 }
 export function toPlural(str) {
-	return PLURALES[str] ?? str
+	const normalizada = str
+		.toLowerCase()
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+	return PLURALES[normalizada] ?? PLURALES[str] ?? str
 }
 export function toSingular(str) {
 	return SINGULARES[str] ?? str
@@ -67,7 +73,7 @@ export function formatPrice(price, currency){
 }
 export function buildTitle(p, withDirection = false) {
 	const premiumFeatures = ['piscina', 'pileta', 'galpón', 'quincho', 'jardín']
-	const premiumStructural = ['departamento', 'duplex', 'dúplex', 'suite', 'loft', 'cabaña']
+	const premiumStructural = ['departamento', 'duplex', 'suite', 'loft', 'cabaña']
 	const isEstrenar = p.detalles?.some(s => s.toLowerCase().includes('estrenar'))
 
 	const hasPremium = p.detalles?.find(s =>
