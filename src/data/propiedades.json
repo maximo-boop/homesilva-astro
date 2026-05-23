@@ -2012,5 +2012,98 @@
 			"https://ik.imagekit.io/homesilva/cuatro-casas-en-venta-huerta-grande/11.webp",
 			"https://ik.imagekit.io/homesilva/cuatro-casas-en-venta-huerta-grande/12.webp"
 		]
+	},
+	{
+		"id": 47,
+		"slug": "terreno-en-venta-mitimay-villa-del-prado-alta-gracia",
+		"title": "Terreno en venta en Alta Gracia con Luz, agua y posesión inmediata",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Alta Gracia",
+		"barrio": "Mitimay",
+		"direction": "Villa del Prado",
+		"description": "Terreno de 480 m² en Mitimay, Villa del Prado, al ingreso de Alta Gracia. Cuenta con luz y agua. Único dueño, se vende con boleto de compraventa y posesión. Sin esperas ni intermediarios, directo con el único dueño.\n\nEn una de las ciudades con mayor crecimiento residencial de la provincia, a menos de 40 km de Córdoba Capital por la ruta 5. La zona combina accesibilidad, servicios consolidados y una calidad de vida difícil de igualar en el cinturón cordobés — lo que la convierte en un destino sostenido para quienes buscan construir o invertir a largo plazo.\n\nUna oportunidad concreta para quien quiere ingresar al mercado inmobiliario de la región sin trámites complejos.",
+		"price": 12000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-21",
+		"position": {
+			"lat": -31.6131,
+			"lng": -64.3781
+		},
+		"characteristics": {
+			"superficie_total": 480,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": ["Boleto de compraventa", "Posesión incluida", "Único dueño"],
+		"services": ["Luz", "Agua"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/01.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/02.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/03.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/04.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/05.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/06.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/07.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/08.jpg",
+			"https://ik.imagekit.io/homesilva/terreno-en-venta-mitimay-alta-gracia/09.jpg"
+		]
+	},
+	{
+		"id": 48,
+		"slug": "dos-casas-y-terreno-en-venta-cosquin",
+		"title": "2 Casas con Terreno en venta a media cuadra del Río, Cosquín",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Cosquín",
+		"barrio": "Alto Mieres",
+		"direction": "Gutemberg 488",
+		"description": "La propiedad comprende dos terrenos y dos casas construidas que se comercializan en conjunto, ubicados en Barrio Alto Mieres, Cosquín, a media cuadra del Río Cosquín.\n\nEl primer terreno tiene una superficie de 432 m², cuenta con un tinglado apto para guardar autos o camiones y dispone de amplio espacio libre para seguir construyendo. Tiene escritura a nombre del titular.\n\nEl segundo terreno tiene construidas dos casas. La primera cuenta con un dormitorio, cocina-comedor, baño, cuartito y patio con asador. La segunda tiene dos dormitorios, cocina-comedor, baño y patio propio. Este terreno fue adquirido con escritura pero aún no se ha podido escriturar, por lo que actualmente posee boleto de compraventa.\n\nEl precio de venta es USD 35.000. Se acepta un vehículo como parte de pago, abonando el resto en efectivo.",
+		"price": 35000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-23",
+		"position": {
+			"lat": -31.2361418,
+			"lng": -64.4944302
+		},
+		"characteristics": {
+			"superficie_total": 432,
+			"superficie_cubierta": null,
+			"ambientes": 6,
+			"dormitorios": 3,
+			"banos": 2,
+			"cochera": 1,
+			"antiguedad": null
+		},
+		"detalles": ["Tinglado para autos o camiones", "Amplio terreno para construir"],
+		"services": ["Luz", "Agua"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/01.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/02.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/03.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/04.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/05.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/06.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/07.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/08.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/09.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/10.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/11.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/12.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/13.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/14.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/15.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/16.jpg"
+		]
 	}
 ]

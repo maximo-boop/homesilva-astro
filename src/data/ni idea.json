@@ -40,8 +40,7 @@
 // id 7: => loteo en venta desde xm2 en [barrio]
 // "local-be16-parque-docta-venta", estructura slug para repetidos
 
-	{
-		"id": 25,
+	{		"id": 25,
 		"slug": "lotes-en-venta-unquillo",
 		"active": true,
 		"featured": false,
