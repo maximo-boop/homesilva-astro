@@ -12,6 +12,10 @@ const PLURALES = {
 	'dúplex': 'duplex',
 	'ph': 'ph'
 }
+const PLURALES_DISPLAY = {
+  ...PLURALES,
+  'cabaña': 'cabañas',
+}
 const SINGULARES = Object.fromEntries(
 	Object.entries(PLURALES).map(([k, v]) => [v, k])
 )
@@ -30,6 +34,10 @@ export function toPlural(str) {
 		.normalize('NFD')
 		.replace(/[\u0300-\u036f]/g, '')
 	return PLURALES[normalizada] ?? PLURALES[str] ?? str
+}
+export function toPlurralLabel(str) {
+  const normalizada = str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  return PLURALES_DISPLAY[str.toLowerCase()] ?? PLURALES_DISPLAY[normalizada] ?? str
 }
 export function toSingular(str) {
 	return SINGULARES[str] ?? str

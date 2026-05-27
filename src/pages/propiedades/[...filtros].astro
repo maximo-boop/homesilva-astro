@@ -3,7 +3,7 @@ import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro'
 import propiedades from '../../data/propiedades.json'
 import PropertiesFilters from '@/components/PropertiesFilters.jsx'
-import {EXCHANGE_RATE, buildTitle, toSlug, toPlural, toSingular } from '@/utils/utils.js'
+import {EXCHANGE_RATE, buildTitle, toSlug, toPlural, toSingular, toPlurralLabel } from '@/utils/utils.js'
 import ButtonFilter from '@/components/ButtonFilter.astro'
 import ButtonQueryFilter from '@/components/ButtonQueryFilter.jsx'
 
@@ -147,35 +147,81 @@ const urlParams = {
 const operacionLabel = urlParams.operacion 
 	? urlParams.operacion.charAt(0).toUpperCase() + urlParams.operacion.slice(1)
 	: null
-
-const tipoLabel = urlParams.tipo 
-	? toSingular(urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1))
-	: null
-
+const tipoLabel = urlParams.tipo
+  ? items.find(p => toPlural(p.type.toLowerCase()) === urlParams.tipo)?.type 
+    ?? (urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1))
+  : null
 const localidadLabel = urlParams.localidad
 	? propiedades.find(p => toSlug(p.locality) === urlParams.localidad)?.locality
 	: null
 
 const REGION = 'Córdoba y las Sierras'
 
+// ------
+const count = items.length
+
+const tiposUnicos = Object.entries(
+	items.reduce((acc, p) => {
+		const t = p.type.toLowerCase()
+		acc[t] = (acc[t] || 0) + 1
+		return acc
+	}, {})
+)
+.sort((a, b) => b[1] - a[1])
+.map(([tipo]) => tipo)
+
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+const tiposStr = tiposUnicos.slice(0, 2)
+	.map(t => capitalize(toPlurralLabel(t)))
+	.join(', ')
+const precioMinUSD = Math.min(...items.map(p =>
+	p.currency === 'USD' ? p.price : Math.round(p.price / EXCHANGE_RATE.usdToArs)
+))
+
+const conFinanciacion = items.some(p =>
+	p.detalles?.includes('Financiación') || p.detalles?.includes('Apta crédito')
+)
+
+const barrios = [...new Set(items.map(p => p.barrio).filter(Boolean))].slice(0, 3)
+const tipoConteo = tipoLabel
+  ? (count === 1 ? tipoLabel : capitalize(toPlurralLabel(tipoLabel.toLowerCase())))
+  : null
+// ------	
+
 const titulo = (() => {
-  const partes = [tipoLabel, operacionLabel, localidadLabel].filter(Boolean)
-  
-  if (partes.length === 0) return `Propiedades en ${REGION}`
-  
-  if (partes.length === 1) {
-    if (urlParams.tipo)  return `${tipoLabel} en Venta y Alquiler en ${REGION}`
-    if (operacionLabel)  return `Propiedades en ${operacionLabel} en ${REGION}`
-    if (localidadLabel)  return `Propiedades en Venta y Alquiler en ${localidadLabel}`
-  }
+	const tipo = tipoConteo ?? 'Propiedades'
+	const operacion = operacionLabel ? `en ${operacionLabel}` : 'en Venta y Alquiler'
+	const lugar = localidadLabel ? `en ${localidadLabel}` : `en ${REGION}`
 
-  if (partes.length === 2) {
-    if (!operacionLabel) return `${tipoLabel} en Venta y Alquiler en ${localidadLabel}`
-    if (!localidadLabel) return `${partes.join(' en ')} en ${REGION}`
-  }
-
-  return partes.join(' en ')
+	return `${tipo} ${operacion} ${lugar}`
 })()
+
+const tituloSEO = (() => {
+	const sujeto = tipoConteo
+	? `${count} ${tipoConteo}`
+	: `${count} Propiedades`
+
+	const operacionPart = operacionLabel
+	? `en ${operacionLabel}`
+	: 'en Venta y Alquiler'
+
+	const lugarPart = localidadLabel
+	? `en ${localidadLabel}`
+	: `en ${REGION}`
+
+	const precioPart = (tipoLabel || operacionLabel) && precioMinUSD
+	? ` · Desde USD ${precioMinUSD.toLocaleString('es-AR')}`
+	: ''
+
+	const fallbackTipos = !tipoLabel
+	? ` · ${tiposStr} y más`
+	: ''
+
+	return `${sujeto} ${operacionPart} ${lugarPart}${precioPart || fallbackTipos} | HomeSilva`
+})()
+
 	
 const canonicalURL = page > 1
   ? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page].join('/')}`
@@ -190,19 +236,30 @@ const nextURL = page < totalP
 	: null
 
 const description = (() => {
-	if (tipoLabel && operacionLabel && localidadLabel) {
-	return `${tipoLabel}s en ${operacionLabel} en ${localidadLabel}. Encontrá las mejores opciones con HomeSilva, tu inmobiliaria en Córdoba.`
-	}
-	if (tipoLabel && operacionLabel) {
-	return `${tipoLabel}s en ${operacionLabel} en Córdoba. Consultá nuestra cartera de propiedades con HomeSilva.`
-	}
-	if (tipoLabel && localidadLabel) {
-	return `${tipoLabel}s en ${localidadLabel}, Córdoba. Encontrá tu próxima propiedad con HomeSilva.`
-	}
-	if (localidadLabel) {
-	return `Propiedades en ${localidadLabel}, Córdoba. Casas, departamentos y terrenos en venta y alquiler con HomeSilva.`
-	}
-	return `Propiedades en venta y alquiler en Córdoba. Casas, departamentos y terrenos en las mejores zonas con HomeSilva.`
+  const sujeto = tipoConteo 
+    ? `${count} ${tipoConteo}`
+    : `${count} propiedades`
+  
+  const lugar = localidadLabel ? `en ${localidadLabel}` : `en ${REGION}`
+  const tipos = !tipoLabel ? ` — ${tiposStr} y más.` : '.'
+  const barriosPart = barrios.length ? ` Barrios: ${barrios.join(', ')}.` : ''
+  const financiacion = conFinanciacion ? ' Financiación disponible.' : ''
+  const superficieItems = items.filter(p => {
+  const sup = p.type === 'Terreno'
+    ? p.characteristics?.superficie_total
+    : p.characteristics?.superficie_cubierta
+  return sup > 0 && !['Local', 'Oficina'].includes(p.type)
+})	
+
+  const superficies = superficieItems.length
+  ? ` Superficies desde ${Math.min(...superficieItems.map(p => 
+      p.type === 'Terreno' 
+        ? p.characteristics.superficie_total 
+        : p.characteristics.superficie_cubierta
+    ))} m².`
+  : ''		
+
+  return `${sujeto} ${lugar}${tipos}${barriosPart}${superficies}${financiacion} Corredor matriculado, trato directo.`
 })()
 const schema = {
   "@context": "https://schema.org",
@@ -242,7 +299,7 @@ const schema = {
   }))
 }
 ---
-<Layout title={titulo} canonical={canonicalURL} description={description}>
+<Layout title={tituloSEO} canonical={canonicalURL} description={description}>
 	<script 
 		type="application/ld+json" 
 		set:html={JSON.stringify(schema)} 
