@@ -66,8 +66,8 @@ export function setQuerys(clave, valor) {
 	window.dispatchEvent(new Event('filterschange'))
 }
 export const EXCHANGE_RATE = {
-	usdToArs: 1390,
-	updatedAt: '2026-04-08'
+	usdToArs: 1409.569,
+	updatedAt: '2026-05-28'
 }
 export const toPesos = (price, currency) => {
 	return currency === 'USD'

@@ -2126,5 +2126,390 @@
 			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/15.jpg",
 			"https://ik.imagekit.io/homesilva/dos-casas-y-terreno-en-venta-cosquin/16.jpg"
 		]
+	},
+	{
+		"id": 49,
+		"slug": "casa-y-cabanas-en-venta-villa-giardino",
+		"title": "Casa y 2 Cabañas en venta a una cuadra de la Ruta 38, Villa Giardino",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Villa Giardino",
+		"barrio": "Independencia",
+		"direction": "Paraguay 46",
+		"description": "La propiedad comprende una casa moderna y dos cabañas de madera sobre una superficie total de 1.350 m², ubicadas en Barrio Independencia, Villa Giardino, a una cuadra de la Ruta 38.\n\nLa casa tiene 88 m² cubiertos, construcción con bloques cerámicos, y cuenta con cochera-galería, living-comedor, cocina amplia, tres dormitorios y un baño. Incluye además un cuarto de herramientas de 5,80 m². Está situada sobre un lote de 675 m².\n\nLas dos cabañas, de 36 m² cubiertos cada una, son de construcción en madera con detalles a terminar. Cada una cuenta con cocina-comedor, pasillo, baño y dormitorio, sobre un terreno plano de 675 m². El conjunto dispone de dos piletas —una redonda de 3 m de diámetro y otra rectangular de 3,50 × 3 m— con cascada, bomba, filtro y luces.\n\nLos terrenos tienen salida a dos calles. Escritura al día.",
+		"price": 95000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.043999,
+			"lng": -64.501683
+		},
+		"characteristics": {
+			"superficie_total": 1350,
+			"superficie_cubierta": 162.2,
+			"ambientes": 9,
+			"dormitorios": 4,
+			"banos": 3,
+			"cochera": 1,
+			"antiguedad": 3
+		},
+		"detalles": [
+			"Dos cabañas de madera con detalles a terminar",
+			"Dos piletas con cascada, bomba, filtro y luces",
+			"Salida a dos calles",
+			"A una cuadra de Ruta 38",
+			"Apto mascotas",
+			"Alarma",
+			"Calefacción"
+		],
+		"services": ["Luz", "Gas Natural", "Cable", "Internet", "Electricidad"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/11.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/12.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/13.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/14.jpg",
+			"https://ik.imagekit.io/homesilva/casa-y-cabanas-en-venta-villa-giardino/15.jpg"
+		]
+	},
+	{
+		"id": 50,
+		"slug": "casa-a-estrenar-en-venta-villa-giardino",
+		"title": "Casa a Estrenar en venta con vistas a las Sierras, Villa Giardino",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Villa Giardino",
+		"barrio": "La Higuerita",
+		"direction": "Cura Brochero",
+		"description": "Excelente propiedad a la venta ubicada en exclusivo barrio residencial de Villa Giardino a pocas cuadrad de la ruta 38. La casa cuenta con 118 m² distribuidos en dos plantas: planta baja con amplio living, cocina-comedor y baño; planta alta con tres dormitorios y baño a terminar.\n\nTerreno de 362 m² con hermosas vistas a las sierras y muy buen entorno. Escritura y planos aprobados.",
+		"price": 75000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.022099,
+			"lng": -64.501067
+		},
+		"characteristics": {
+			"superficie_total": 362,
+			"superficie_cubierta": 118,
+			"ambientes": 4,
+			"dormitorios": 3,
+			"banos": 2,
+			"cochera": null,
+			"antiguedad": "A estrenar"
+		},
+		"detalles": [
+			"Dos plantas",
+			"Vistas a las sierras",
+			"Escritura y planos aprobados",
+			"Baño en planta alta a terminar"
+		],
+		"services": [""],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/11.jpg",
+			"https://ik.imagekit.io/homesilva/casa-a-estrenar-en-venta-villa-giardino/12.jpg"
+		]
+	},
+	{
+		"id": 51,
+		"slug": "dos-casas-en-venta-villa-giardino",
+		"title": "2 Casas en venta con vistas a las Sierras, Villa Giardino",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Villa Giardino",
+		"barrio": "Costanera Portecelo",
+		"direction": "Armonía 300",
+		"description": "Propiedad compuesta por dos casas construidas con materiales de primera calidad, ubicadas en un lote de 1.116 m² en Villa Giardino, a dos cuadras de la Ruta Nacional 38, sobre un entorno totalmente verde y natural con vistas increíbles a las sierras cordobesas. Ideal para generar rentas mensuales, uso familiar o cualquier otro destino.\n\nLa casa principal, ubicada al frente del terreno, cuenta con hall de ingreso de gran luminosidad, living-comedor acogedor, cocina-comedor con todos sus muebles y mesada lateral que puede usarse como desayunador, tres dormitorios amplios con buena ventilación e iluminación, y baño de diseño moderno con bañadera. En el exterior, garage con techo de chapa e inmenso parque ideal para actividades recreativas, piscina o mejoras.\n\nLa casa secundaria, ubicada en la parte trasera, puede funcionar como departamento independiente. Cuenta con cocina-comedor de diseño simple y eficaz, dos dormitorios y un baño.\n\nTítulo perfecto. Apta para crédito bancario.",
+		"price": 107000,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.054766,
+			"lng": -64.501902
+		},
+		"characteristics": {
+			"superficie_total": 1116,
+			"superficie_cubierta": null,
+			"ambientes": 16,
+			"dormitorios": 5,
+			"banos": 2,
+			"cochera": 1,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Dos casas independientes en un mismo lote",
+			"Ideal para renta o uso familiar",
+			"Parque amplio con potencial para piscina",
+			"Título perfecto, apta para crédito bancario",
+			"Apto mascotas",
+			"Apta crédito"
+		],
+		"services": ["Agua Corriente", "Luz", "Teléfono", "Cable", "Internet", "Cloaca"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/01.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/02.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/03.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/04.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/05.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/06.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/07.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/08.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/09.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/10.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/11.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/12.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/13.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/14.jpg",
+			"https://ik.imagekit.io/homesilva/dos-casas-en-venta-villa-giardino/15.jpg"
+		]
+	},
+	{
+		"id": 52,
+		"slug": "casa-en-venta-balcon-de-punilla-villa-giardino",
+		"title": "Casa en venta en esquina con terreno amplio, Villa Giardino",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Villa Giardino",
+		"barrio": "Balcón de Punilla",
+		"direction": "Agua de Oro s/n",
+		"description": "La propiedad se encuentra ubicada sobre calle Agua de Oro en el barrio Balcón de Punilla, Villa Giardino. Cuenta con 50 m² cubiertos que comprenden un dormitorio, cocina-comedor y baño, sobre un terreno en esquina de 532 m² con vista y muy buen entorno.\n\nDispone de planos aprobados para dos plantas; lo construido actualmente corresponde a la planta baja, dejando margen para ampliar. Todos los servicios: agua corriente, alumbrado público y recolección de residuos. Escritura al día.",
+		"price": 32500,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.047428,
+			"lng": -64.478949
+		},
+		"characteristics": {
+			"superficie_total": 532,
+			"superficie_cubierta": 50,
+			"ambientes": 1,
+			"dormitorios": 1,
+			"banos": 1,
+			"cochera": null,
+			"antiguedad": 15
+		},
+		"detalles": [
+			"Terreno en esquina",
+			"Planos aprobados para dos plantas",
+			"Amplio potencial de construcción",
+			"Escritura al día"
+		],
+		"services": ["Agua", "Luz"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-en-balcon-de-punilla-villa-giardino/10.jpg"
+		]
+	},
+	{
+		"id": 53,
+		"slug": "lote-en-venta-villa-los-angeles-valle-hermoso-480m2",
+		"title": "Lote de 480 m² en venta en Villa Los Ángeles, Valle Hermoso",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Valle Hermoso",
+		"barrio": "Villa Los Ángeles",
+		"direction": "Ameghino s/n",
+		"description": "Lote de 480 m² en venta en el barrio Villa Los Ángeles, Valle Hermoso, a 100 metros de la Ruta Nacional 38. Terreno perimetrado, con escritura y todos los servicios: agua corriente, luz, gas, internet y cloaca.\n\nUbicación estratégica en una de las zonas residenciales de mayor crecimiento del Valle de Punilla, con fácil acceso y excelente entorno natural. Ideal para construir tu casa o realizar una inversión segura en la sierra cordobesa.",
+		"price": 12000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.125877,
+			"lng": -64.485447
+		},
+		"characteristics": {
+			"superficie_total": 480,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Perimetrado",
+			"Escritura al día",
+			"A 100 m de la Ruta 38"
+		],
+		"services": ["Agua", "Luz", "Gas", "Internet", "Cloaca"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/01.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/02.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/03.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/04.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/05.jpeg"
+		]
+	},
+	{
+		"id": 54,
+		"slug": "lote-en-venta-villa-los-angeles-valle-hermoso-840m2",
+		"title": "Lote de 840 m² en venta en Villa Los Ángeles, Valle Hermoso",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Valle Hermoso",
+		"barrio": "Villa Los Ángeles",
+		"direction": "Ameghino s/n",
+		"description": "Lote de 840 m² en venta en el barrio Villa Los Ángeles, Valle Hermoso, a 100 metros de la Ruta Nacional 38. Terreno perimetrado, con escritura y todos los servicios: agua corriente, luz, gas, internet y cloaca.\n\nAmplias dimensiones ideales para un proyecto familiar o de inversión en una de las zonas de mayor demanda del Valle de Punilla. Entorno natural, tranquilo y con excelente accesibilidad.",
+		"price": 21000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.125877,
+			"lng": -64.485447
+		},
+		"characteristics": {
+			"superficie_total": 840,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Perimetrado",
+			"Escritura al día",
+			"A 100 m de la Ruta 38"
+		],
+		"services": ["Agua", "Luz", "Gas", "Internet", "Cloaca"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/01.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/02.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/03.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/04.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/05.jpeg"
+		]
+	},
+	{
+		"id": 55,
+		"slug": "lote-en-venta-villa-los-angeles-valle-hermoso-600m2",
+		"title": "Lote de 600 m² en venta en Villa Los Ángeles, Valle Hermoso",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Valle Hermoso",
+		"barrio": "Villa Los Ángeles",
+		"direction": "Ameghino s/n",
+		"description": "Lote de 600 m² en venta en el barrio Villa Los Ángeles, Valle Hermoso, a 100 metros de la Ruta Nacional 38. Terreno perimetrado, con escritura y todos los servicios: agua corriente, luz, gas, internet y cloaca.\n\nPropuesta equilibrada en superficie y precio, en una zona residencial consolidada de las sierras de Córdoba. Excelente oportunidad para construir o invertir con seguridad jurídica.",
+		"price": 15000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.125877,
+			"lng": -64.485447
+		},
+		"characteristics": {
+			"superficie_total": 600,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Perimetrado",
+			"Escritura al día",
+			"A 100 m de la Ruta 38"
+		],
+		"services": ["Agua", "Luz", "Gas", "Internet", "Cloaca"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/01.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/02.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/03.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/04.jpeg",
+			"https://ik.imagekit.io/homesilva/lotes-en-villa-los-angeles-valle-hermoso-480m2-840m2/05.jpeg"
+		]
+	},
+	{
+		"id": 56,
+		"slug": "lote-en-venta-villa-los-angeles-valle-hermoso-1200m2",
+		"title": "Lote de 1.200 m² en venta en Villa Los Ángeles, Valle Hermoso",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Valle Hermoso",
+		"barrio": "Villa Los Ángeles",
+		"direction": "Ameghino s/n",
+		"description": "Lote de 1.200 m² en venta en el barrio Villa Los Ángeles, Valle Hermoso, a 100 metros de la Ruta Nacional 38. Terreno perimetrado, con escritura y todos los servicios: agua corriente, luz, gas, internet y cloaca.\n\nUna de las superficies más generosas disponibles en la zona, con amplio potencial para proyectos residenciales, turísticos o de inversión. Entorno serrano de primer nivel en el corazón del Valle de Punilla.",
+		"price": 30000,
+		"toPrice": null,
+		"currency": "USD",
+		"publicated": "2026-05-28",
+		"position": {
+			"lat": -31.125877,
+			"lng": -64.485447
+		},
+		"characteristics": {
+			"superficie_total": 1200,
+			"superficie_cubierta": null,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Perimetrado",
+			"Escritura al día",
+			"A 100 m de la Ruta 38"
+		],
+		"services": ["Agua", "Luz", "Gas", "Internet", "Cloaca"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/01.jpeg",
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/02.jpeg",
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/03.jpeg",
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/04.jpeg",
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/05.jpeg",
+			"https://ik.imagekit.io/homesilva/lote-en-villa-los-angeles-valle-hermoso-1200m2/06.jpeg"
+		]
 	}
 ]
