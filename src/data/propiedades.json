@@ -1593,6 +1593,7 @@
 	{
 		"id": 38,
 		"slug": "casa-en-alquiler-valle-hermoso-villa-los-angeles",
+		"title": "Casa para 6 Personas con Patio y 3 Asadores en Valle Hermoso, Sierras de Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -2649,5 +2650,215 @@
 			"https://ik.imagekit.io/homesilva/casa-con-piscina-departamento-en-la-calera/43.webp",
 			"https://ik.imagekit.io/homesilva/casa-con-piscina-departamento-en-la-calera/44.webp"
 		]
-	}	
+	},
+	{
+		"id": 59,
+		"slug": "lote-con-proyecto-en-venta-valle-del-golf-malagueno",
+		"title": "Lote con Proyecto Aprobado en Valle del Golf, Malagueño",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Malagueño",
+		"barrio": "Valle del Golf",
+		"direction": "Ruta Provincial C45 s/n",
+		"description": "Lote N° 17, Manzana 29, ubicado en Valle Golf Club, Malagueño. El terreno cuenta con platea construida de 246 m² con los mejores materiales, cerco perimetral y proyecto aprobado.\n\nValle Golf Club es uno de los emprendimientos más exclusivos de las sierras de Córdoba, con campo de golf de 27 hoyos diseñado por Nicklaus Design — la empresa de la leyenda Jack Nicklaus — siendo una de las primeras canchas de Sudamérica con ese sello. El campo cuenta con un driving de 380 yardas y recorridos de hasta 7.200 yardas combinando dos canchas.\n\nUna oportunidad única para construir en un entorno serrano de primer nivel con toda la infraestructura del club.",
+		"price": 55000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": 250000,
+		"publicated": "2026-06-06",
+		"position": {
+			"lat": -31.481397,
+			"lng": -64.4272
+		},
+		"characteristics": {
+			"superficie_total": 788,
+			"superficie_cubierta": 788,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": "En construcción"
+		},
+		"detalles": [
+			"Platea construida de 246 m²",
+			"Proyecto aprobado",
+			"Cerco perimetral",
+			"Campo de golf Nicklaus Design 27 hoyos"
+		],
+		"services": ["Encargado", "Vigilancia"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/01.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/02.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/03.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/04.webp",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/05.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/06.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/07.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/08.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/09.jpg",
+			"https://ik.imagekit.io/homesilva/lote-con-proyecto-en-valle-del-golf-malagueno/10.jpg"
+		]
+	},
+	{
+		"id": 60,
+		"slug": "quinta-con-cancha-de-tenis-y-pileta-en-venta-tanti",
+		"title": "Quinta con Cancha de Tenis, Pileta y Casa de Caseros en venta, Tanti",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Tanti",
+		"barrio": "Santa María de Punilla",
+		"direction": "Calle Pública s/n",
+		"description": "Excelente quinta en Tanti, cerca del Río Dulce. La propiedad cuenta con 500 m² cubiertos sobre un terreno de 3.800 m² y dispone de: living-comedor, cocina-comedor, 6 dormitorios, 5 baños, sala de juegos amplia, quincho totalmente equipado, cancha de tenis, pileta y parque con frutales.\n\nIncluye además casa de caseros independiente con 2 dormitorios, baño, living-comedor y cocina-comedor. Cochera para 6 vehículos.\n\nIdeal para emprendimiento de cabañas o uso familiar. Apta para crédito bancario. Se acepta canje de departamentos en Villa Carlos Paz o Córdoba Capital.",
+		"price": 210000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"publicated": "2026-06-01",
+		"position": {
+			"lat": -31.361412,
+			"lng": -64.582919
+		},
+		"characteristics": {
+			"superficie_total": 3800,
+			"superficie_cubierta": 500,
+			"ambientes": 10,
+			"dormitorios": 6,
+			"banos": 6,
+			"cochera": 6,
+			"antiguedad": 30
+		},
+		"detalles": [
+			"Cancha de tenis",
+			"Pileta",
+			"Quincho equipado",
+			"Parrilla",
+			"Parque con frutales",
+			"Casa de caseros independiente",
+			"Sala de juegos",
+			"Apta para crédito bancario",
+			"Se acepta canje de departamentos",
+			"Calefacción"
+		],
+		"services": [],
+		"images": [
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/01.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/02.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/03.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/04.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/05.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/06.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/07.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/08.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/09.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/10.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/11.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/12.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/13.jpg",
+			"https://ik.imagekit.io/homesilva/quinta-con-cancha-de-tenis-y-pileta-en-tanti/14.jpg"
+		]
+	},
+	{
+		"id": 61,
+		"slug": "tres-lotes-contiguos-en-venta-salsipuedes",
+		"title": "3 Lotes Contiguos en venta en entorno serrano, Salsipuedes",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Terreno",
+		"locality": "Salsipuedes",
+		"barrio": "Villa Silvina",
+		"direction": "villa silvina sector a (5113)",
+		"description": "Se venden tres lotes contiguos en Salsipuedes, en un entorno de sierras y naturaleza. Los lotes miden 387 m², 381 m² y 388 m² respectivamente, sumando un total de 1.156 m². Papeles al día e impuestos al día.\n\nIdeal para construir una casa amplia o desarrollar un emprendimiento de cabañas en una zona serrana de gran crecimiento.",
+		"price": 10000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"publicated": "2026-06-06",
+		"position": {
+			"lat": -31.149352,
+			"lng": -64.284081
+		},
+		"characteristics": {
+			"superficie_total": 1156,
+			"superficie_cubierta": 1156,
+			"ambientes": null,
+			"dormitorios": null,
+			"banos": null,
+			"cochera": null,
+			"antiguedad": null
+		},
+		"detalles": [
+			"Tres lotes contiguos",
+			"Papeles e impuestos al día",
+			"Ideal para cabañas o vivienda amplia"
+		],
+		"services": [],
+		"images": [
+			"https://ik.imagekit.io/homesilva/tres-lotes-contiguos-en-venta-salsipuedes/01.jpeg",
+			"https://ik.imagekit.io/homesilva/tres-lotes-contiguos-en-venta-salsipuedes/02.jpeg",
+			"https://ik.imagekit.io/homesilva/tres-lotes-contiguos-en-venta-salsipuedes/03.jpg"
+		]
+	},
+	{
+		"id": 62,
+		"slug": "departamentos-en-venta-veneto-boulevard-nueva-cordoba",
+		"title": "Departamentos en venta en Veneto Boulevard, Nueva Córdoba",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Departamento",
+		"locality": "Córdoba Capital",
+		"barrio": "Nueva Córdoba",
+		"direction": "Bv. San Juan 768",
+		"description": "Veneto Boulevard es un emprendimiento de 14 pisos desarrollado por Constructora del Valle S.A. sobre el Boulevard San Juan 768, en el corazón de Nueva Córdoba, a 2 minutos de Patio Olmos y del Teatro Libertador, a 3 minutos del Nuevo Centro Shopping y a 8 minutos de Ciudad Universitaria.\n\nOfrece unidades de 1 y 2 dormitorios con balcón y cochera, distribuidas en plantas tipo con 9 unidades por piso. Las superficies van desde 32 m² (microvivienda) hasta 100 m² en los pisos superiores con amplias terrazas.\n\nEspecificaciones constructivas de primer nivel: porcelanato rectificado 60x60, muebles bajo y sobre mesada de arquitectura moderna, terminaciones en yeso con moldura, aberturas de aluminio, puertas de vidrio de seguridad con cerradura magnética, instalación eléctrica con circuitos diferenciados, AA/CC y cocina eléctrica, calefacción central con calderas de primera marca y sistema de paneles solares para agua sanitaria.\n\nAmenities: cocheras subterráneas (2 subsuelos, 28 autos), sistema de seguridad por cámaras, bicicletero y estacionamiento de motos, rooftop y local comercial en planta baja.\n\nFinanciación flexible hasta 48 cuotas con entrega inicial de USD 22.000. Comisión inmobiliaria: 3%.",
+		"price": 55900,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"publicated": "2026-06-01",
+		"position": {
+			"lat": -31.4200986,
+			"lng": -64.1888673
+		},
+		"characteristics": {
+			"superficie_total": null,
+			"superficie_cubierta": 32,
+			"ambientes": null,
+			"dormitorios": 1,
+			"banos": 1,
+			"cochera": 1,
+			"antiguedad": 0
+		},
+		"detalles": [
+			"Unidades de 1 y 2 dormitorios",
+			"Balcón en todas las unidades",
+			"Cocheras subterráneas",
+			"Rooftop",
+			"Calefacción central",
+			"Paneles solares para agua sanitaria",
+			"Sistema de seguridad por cámaras",
+			"Bicicletero y estacionamiento de motos",
+			"Financiación hasta 48 cuotas",
+			"Apto crédito bancario",
+			"A estrenar"
+		],
+		"services": ["Luz", "Gas", "Agua", "Internet"],
+		"images": [
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/01.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/02.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/03.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/04.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/05.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/06.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/07.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/08.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/09.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/10.webp",
+			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/11.webp"
+		]
+	}
 ]
