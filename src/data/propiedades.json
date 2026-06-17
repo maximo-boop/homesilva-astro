@@ -2,6 +2,7 @@
 	{
 		"id": 1,
 		"slug": "terreno-en-venta-villa-valde-verde-tanti",
+		"title": "Terreno en Venta en B° Villa Valde Verde, Tanti – 670 m² con Servicios",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -44,6 +45,7 @@
 	{
 		"id": 2,
 		"slug": "terreno-en-venta-villa-valde-verde-tanti-2",
+		"title": "Terreno en Venta en B° Villa Valde Verde, Tanti – 517 m² con Servicios",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -80,6 +82,7 @@
 	{
 		"id": 3,
 		"slug": "terreno-en-venta-villa-valde-verde-tanti-3",
+		"title": "Terreno en Venta en B° Villa Valde Verde, Tanti – 831 m² con Servicios",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -116,6 +119,7 @@
 	{
 		"id": 4,
 		"slug": "terreno-en-venta-los-chanares-tanti",
+		"title": "Terreno en Venta en Los Chañares, Tanti – 831 m² con Luz y Agua",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -151,6 +155,7 @@
 	{
 		"id": 5,
 		"slug": "lote-en-venta-cerro-sonado-los-chanares",
+		"title": "Lote en Venta con Escritura en Cerro Soñado, Los Chañares – 1.500 m²",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -260,6 +265,7 @@
 	{
 		"id": 7,
 		"slug": "hostel-en-alquiler-general-paz-cordoba",
+		"title": "Hostel en Alquiler con 10 Dormitorios y Amenities – Barrio General Paz, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -300,6 +306,7 @@
 	{
 		"id": 8,
 		"slug": "lote-en-venta-santa-teresa-valle-hermoso",
+		"title": "Lote en Venta en Esquina con Servicios – Santa Teresa, Valle Hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -340,6 +347,7 @@
 	{
 		"id": 9,
 		"slug": "lote-edificado-en-venta-santa-teresa-valle-hermoso",
+		"title": "Lote Edificado en Venta en Esquina – Santa Teresa, Valle Hermoso",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -533,6 +541,7 @@
 	{
 		"id": 13,
 		"slug": "terreno-en-venta-general-pueyrredon-cordoba",
+		"title": "Terreno en Venta en Córdoba Capital – 250 m² sobre Camino 60 Cuadras",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -569,6 +578,7 @@
 	{
 		"id": 14,
 		"slug": "casa-en-venta-patricios-oeste-cordoba",
+		"title": "Casa en Venta con Depto. Independiente – Patricios Oeste, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -611,6 +621,7 @@
 	{
 		"id": 15,
 		"slug": "casa-en-venta-bellavista-cordoba",
+		"title": "Casa en Venta de 3 Dormitorios y 5 Baños – Barrio Bellavista, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -646,6 +657,7 @@
 	{
 		"id": 16,
 		"slug": "casa-en-venta-sargento-cabral-cordoba",
+		"title": "Casa en Venta con 3 Dormitorios y Jardín – Sargento Cabral, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -694,6 +706,7 @@
 	{
 		"id": 17,
 		"slug": "casa-en-venta-alto-alberdi-cordoba",
+		"title": "Casa en Venta con 2 Dormitorios y Terraza – Alto Alberdi, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -747,6 +760,7 @@
 	{
 		"id": 18,
 		"slug": "local-en-venta-paseo-san-francisco-cordoba",
+		"title": "Local Comercial en Venta en Paseo San Francisco – Córdoba Centro, 9 m²",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -784,6 +798,7 @@
 	{
 		"id": 19,
 		"slug": "departamento-en-venta-barrio-centro-cordoba",
+		"title": "Departamento en Venta con Patio y Balcón – Barrio Centro, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -825,6 +840,7 @@
 	{
 		"id": 20,
 		"slug": "lote-en-venta-el-zorro-los-chanares",
+		"title": "Lote en Venta de 1.200 m2 con Servicios en El Zorro, Los Chañares",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -860,6 +876,7 @@
 	{
 		"id": 21,
 		"slug": "lote-en-venta-el-zorro-los-chanares-2",
+		"title": "Lote en Venta de 600 m2 con Servicios en El Zorro, Los Chañares",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -895,7 +912,7 @@
 	{
 		"id": 22,
 		"slug": "casa-en-venta-villa-libertador-cordoba",
-		"title": "Casa apta uso comercial con depto. independiente en Villa Libertador",
+		"title": "Casa en Venta Apta Uso Comercial con Depto. Independiente – Villa Libertador",
 		"active": true,
 		"featured": 8,
 		"operation": "Venta",
@@ -977,6 +994,7 @@
 	{
 		"id": 23,
 		"slug": "cabanas-en-alquiler-casa-grande",
+		"title": "Complejo de Cabañas en Alquiler con 2 dormitorios cerca de Cosquín y La Falda – Casa Grande",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -1077,6 +1095,7 @@
 	{
 		"id": 26,
 		"slug": "lotes-en-venta-solares-de-rancagua",
+		"title": "Lotes en Venta de 250 m2 Aptos Dúplex – Solares de Rancagua, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1113,6 +1132,7 @@
 	{
 		"id": 28,
 		"slug": "departamento-en-venta-chateau-carreras-amenities",
+		"title": "Departamento en Venta con Pileta y Amenities Premium – Harmonie Chateau Carreras, Córdoba",
 		"active": true,
 		"featured": 7,
 		"operation": "Venta",
@@ -1313,6 +1333,7 @@
 	{
 		"id": 31,
 		"slug": "lote-en-venta-puerto-de-aguila-la-estancia",
+		"title": "Lote en Venta de 1.500 m2 en Barrio Privado Puerto del Águila, La Estancia",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1397,6 +1418,7 @@
 	{
 		"id": 33,
 		"slug": "local-en-venta-be16-parque-docta",
+		"title": "Local/Oficina en Venta con Renta del 7% – Parque Docta BE16, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1439,6 +1461,7 @@
 	{
 		"id": 34,
 		"slug": "lote-en-venta-agua-del-penon-rio-ceballos",
+		"title": "Lote en Venta de 360 m2 en Sierras – Agua del Peñón, Río Ceballos",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1475,6 +1498,7 @@
 	{
 		"id": 35,
 		"slug": "terreno-en-venta-parque-docta-cordoba",
+		"title": "Terreno en Venta de 420m2 Apto Dúplex – Parque Docta, Córdoba",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1511,6 +1535,7 @@
 	{
 		"id": 36,
 		"slug": "oficina-en-alquiler-parque-docta-be16",
+		"title": "Oficina en Alquiler 1 Ambiente en Parque Docta BE16 – Córdoba, Servicios Incluidos",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -1547,6 +1572,7 @@
 	{
 		"id": 37,
 		"slug": "campo-eventos-tanti-cerro-blanco-alquiler",
+		"title": "Campo en Alquiler para Eventos y Retiros con Arroyos – Cerro Blanco, Tanti",
 		"active": true,
 		"featured": false,
 		"operation": "Alquiler",
@@ -1642,6 +1668,7 @@
 	{
 		"id": 39,
 		"slug": "casa-en-alquiler-el-vallecito-valle-hermoso",
+		"title": "Casa en Alquiler Amoblada con Cochera Doble – El Vallecito, Valle Hermoso",
 		"active": false,
 		"status": "alquilado",
 		"featured": false,
@@ -1739,6 +1766,7 @@
 	{
 		"id": 41,
 		"slug": "lotes-apareados-en-venta-cerro-sonado-empalme-tanti",
+		"title": "Dos Lotes Contiguos en Venta – Cerro Soñado, Empalme Tanti – 1.416 m²",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -1784,6 +1812,7 @@
 	{
 	    "id": 42,
 	    "slug": "duplex-en-venta-docta-avenida-parque-docta",
+	    "title": "Dúplex a Estrenar en Venta con Patio y Terraza – Docta Avenida, Parque Docta",
 	    "active": true,
 	    "featured": false,
 	    "operation": "Venta",
@@ -1850,6 +1879,7 @@
 	{
 	  "id": 43,
 	  "slug": "duplex-en-venta-san-ignacio-village-cordoba",
+	  "title": "Dúplex a Estrenar en Venta en Barrio Privado – San Ignacio Village, Córdoba",
 	  "active": true,
 	  "featured": false,
 	  "operation": "Venta",
@@ -1898,6 +1928,7 @@
 	{
 	  "id": 44,
 	  "slug": "duplex-en-venta-docta-etapa-2-cordoba",
+	  "title": "Dúplex Premium en Venta con Losa Radiante y Asador – DOCTA Etapa II, Córdoba",
 	  "active": true,
 	  "featured": false,
 	  "operation": "Venta",
@@ -2294,7 +2325,7 @@
 	{
 		"id": 52,
 		"slug": "casa-en-venta-balcon-de-punilla-villa-giardino",
-		"title": "Casa en venta en esquina con terreno amplio, Villa Giardino",
+		"title": "Casa en Venta en Esquina con 532m2 de Terreno – Balcón de Punilla, Villa Giardino",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -2559,7 +2590,7 @@
 	{
 		"id": 58,
 		"slug": "casa-con-piscina-departamento-en-venta-la-calera",
-		"title": "Casa con Piscina + Departamento en La Calera",
+		"title": "Casa con Piscina y Departamento en Venta | La Calera – Cerro Santo",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -2859,6 +2890,67 @@
 			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/09.webp",
 			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/10.webp",
 			"https://ik.imagekit.io/homesilva/departamentos-en-venta-veneto-boulevard-nueva-cordoba/11.webp"
+		]
+	},
+	{
+		"id": 63,
+		"slug": "casa-dos-dormitorios-venta-villa-giardino-portecelo",
+		"title": "Casa en Venta dos dorm. con Jardín a Estrenar – B° Portecelo, Villa Giardino",
+		"active": true,
+		"featured": false,
+		"operation": "Venta",
+		"type": "Casa",
+		"locality": "Villa Giardino",
+		"barrio": "Portecelo",
+		"direction": "LINCOL al 300",
+		"description": "¡Oportunidad en Villa Giardino! Casa Funcional con Jardín\n\nPresentamos esta excelente propiedad ideal tanto para vivienda permanente como para inversión de fin de semana. Ubicada en un entorno tranquilo y natural, la casa destaca por su solidez y excelente distribución de espacios.\n\nLuminoso sector de cocina-comedor integrado, diseñado para el aprovechamiento del espacio. 2 habitaciones cómodas con buena ventilación natural. 1 baño completo. Amplio jardín perimetral con césped, ideal para futuras ampliaciones. Frente cerrado con rejas.\n\nSuperficie de 307 m² de lote total con 73 m² cubiertos.",
+		"price": 48000,
+		"toPrice": null,
+		"currency": "USD",
+		"expensas": null,
+		"publicated": "2026-06-17",
+		"position": {
+			"lat": -31.0481863,
+			"lng": -64.5112534
+		},
+		"characteristics": {
+			"superficie_total": 307,
+			"superficie_cubierta": 73,
+			"ambientes": 2,
+			"dormitorios": 2,
+			"banos": 1,
+			"cochera": null,
+			"antiguedad": "A Estrenar"
+		},
+		"detalles": [
+			"Jardín",
+			"Rejas",
+			"A estrenar",
+			"Orientación norte",
+			"Situación habitada"
+		],
+		"services": [
+			"Agua corriente",
+			"Luz",
+			"Internet",
+			"Cable",
+			"Teléfono"
+		],
+		"images": [
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/01.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/02.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/03.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/04.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/05.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/06.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/07.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/08.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/09.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/10.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/11.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/12.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/13.jpg",
+			"https://ik.imagekit.io/homesilva/casa-dos-dormitorios-villa-giardino-portecelo/14.jpg"
 		]
 	}
 ]
