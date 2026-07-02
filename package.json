@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "12",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.1",
     "@fontsource-variable/inter": "^5.2.8",
@@ -23,5 +26,8 @@
     "react-dom": "^19.2.3",
     "react-leaflet": "^5.0.0",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "wrangler": "^4.81.1"
   }
 }
