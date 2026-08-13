@@ -205,7 +205,7 @@
 	{
 		"id": 6,
 		"slug": "hotel-en-venta-villa-los-angeles-valle-hermoso",
-		"title": "Hotel en venta con 22 dormitorios y 2 piscinas sobre Ruta 38, Valle Hermoso",
+		"title": "Hotel en Venta en Valle Hermoso sobre Ruta 38 – 22 Habitaciones y Piscinas",
 		"active": true,
 		"featured": 3,
 		"operation": "Venta",
@@ -347,7 +347,7 @@
 	{
 		"id": 9,
 		"slug": "lote-edificado-en-venta-santa-teresa-valle-hermoso",
-		"title": "Lote Edificado en Venta en Esquina – Santa Teresa, Valle Hermoso",
+		"title": "Lote Edificado en Venta en Valle Hermoso – Barrio Santa Teresa",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -431,7 +431,7 @@
 	{
 		"id": 11,
 		"slug": "casa-en-venta-zona-centro-valle-hermoso",
-		"title": "Casa esquina con piscina y dúplex lindero en centro de Valle Hermoso",
+		"title": "Casa en Venta en Valle Hermoso con Piscina y Dúplex Independiente",
 		"active": true,
 		"featured": false,
 		"operation": "Venta",
@@ -472,7 +472,7 @@
 	{
 		"id": 12,
 		"slug": "complejo-cabanas-en-venta-villa-los-angeles-valle-hermoso",
-		"title": "Complejo de Cabañas en Venta con Quincho, Ideal para Inversión Turística en Valle Hermoso",
+		"title": "Complejo de Cabañas en Venta en Valle Hermoso – Ideal Inversión Turística",
 		"active": true,
 		"featured": 5,
 		"operation": "Venta",
@@ -1133,7 +1133,7 @@
 		"id": 28,
 		"slug": "departamento-en-venta-chateau-carreras-amenities",
 		"title": "Departamento en Venta con Pileta y Amenities Premium – Harmonie Chateau Carreras, Córdoba",
-		"active": true,
+		"active": false,
 		"featured": 7,
 		"operation": "Venta",
 		"type": "Departamento",
