@@ -34,6 +34,9 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
+	    css: {
+	      transformer: "lightningcss"
+	    },
 		resolve: {
 			alias: {
 				'@': path.resolve('./src')

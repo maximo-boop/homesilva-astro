@@ -1,0 +1,203 @@
+---
+import "@/styles/global.css";
+
+---
+
+<body class="bg-white text-black antialiased">
+
+  <!-- NAV -->
+  <nav class="px-10 lg:px-32 py-6 flex justify-between items-center border-b border-black/8 sticky top-0 bg-white z-50">
+    <p class="font-semibold text-[.95rem] tracking-tight">Maximo Silva</p>
+    <div class="hidden lg:flex items-center gap-10 text-[.85rem] text-black/50">
+      <a href="#work" class="hover:text-black transition-colors">Work</a>
+      <a href="#concepts" class="hover:text-black transition-colors">Concepts</a>
+      <a href="#about" class="hover:text-black transition-colors">About</a>
+      <a href="#contact" class="bg-black text-white px-5 py-2 text-[.85rem] font-medium hover:bg-black/80 transition-colors">Let's talk</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="bg-[#f2f2f2] px-10 lg:px-32 pt-20 pb-24 border-b border-black/8">
+    <div class="max-w-[900px]">
+      <p class="text-[.85rem] text-black/40 uppercase tracking-widest mb-4">Freelance Web Developer — Córdoba, Argentina</p>
+      <h1 class="text-[2.4rem] lg:text-[3.8rem] font-semibold leading-[1.1] tracking-tight mb-6">
+        I build websites<br/>businesses actually use.
+      </h1>
+      <p class="text-[1.1rem] text-black/60 max-w-[520px] leading-relaxed mb-10">
+        5+ years turning briefs into fast, clean, conversion-focused sites. Astro, React, Tailwind. Remote, worldwide.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="#work" class="bg-black text-white px-7 py-3 font-medium text-[.9rem] hover:bg-black/80 transition-colors">See my work</a>
+        <a href="#contact" class="text-[.9rem] font-medium text-black/50 hover:text-black transition-colors">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="px-10 lg:px-32 border-b border-black/8 py-6 grid grid-cols-3 lg:grid-cols-3 gap-5">
+    <div>
+      <p class="font-bold text-[1.5rem]">5+</p>
+      <p class="text-[.8rem] text-black/40">Years of experience</p>
+    </div>
+    <div>
+      <p class="font-bold text-[1.5rem]">20+</p>
+      <p class="text-[.8rem] text-black/40">Projects delivered</p>
+    </div>
+    <div>
+      <p class="font-bold text-[1.5rem]">3</p>
+      <p class="text-[.8rem] text-black/40">Countries served</p>
+    </div>
+  </div>
+
+  <!-- REAL WORK -->
+  <section id="work" class="px-10 lg:px-32 py-20 lg:py-28 border-b border-black/8">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <p class="text-[.8rem] text-black/40 uppercase tracking-widest mb-2">Selected work</p>
+        <h2 class="text-[1.8rem] lg:text-[2.6rem] font-semibold tracking-tight">Real projects,<br/>real results.</h2>
+      </div>
+      <p class="text-[.85rem] text-black/40 hidden lg:block max-w-[260px] text-right">Each built from scratch. No templates, no page builders.</p>
+    </div>
+
+    <!-- Featured project -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-0 border border-black/10 mb-5">
+      <div class="card-placeholder aspect-video lg:aspect-auto min-h-[280px]"></div>
+      <div class="p-8 lg:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-black/10">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-[.7rem] uppercase tracking-widest text-black/40">Flooring — E-commerce</span>
+          </div>
+          <h3 class="font-semibold text-[1.2rem] mb-3">Plus Solution Flooring Corp</h3>
+          <p class="text-[.9rem] text-black/60 leading-relaxed mb-6">Full-stack site with e-commerce, Firebase auth, Strapi CMS, Stripe payments, AI floor visualizer and seller dashboard. Built in Astro + React.</p>
+          <div class="flex flex-wrap gap-2">
+            {["Astro", "React", "Firebase", "Stripe", "Strapi", "Tailwind"].map(tag => `<span class="text-[.7rem] border border-black/15 px-2 py-1 text-black/50">${tag}</span>`).join('')}
+          </div>
+        </div>
+        <a href="https://plussolutionflooring.com" target="_blank" class="mt-6 text-[.85rem] font-medium hover:underline">View live site →</a>
+      </div>
+    </div>
+
+    <!-- 3 col grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[
+        { label: "Real Estate", title: "Real Estate Template", desc: "Astro + Tailwind template for real estate agencies. Property listings, contact forms, responsive." },
+        { label: "CRM Tool", title: "Prospect", desc: "Personal prospecting CRM built in React + Vite. Cold outreach tracking via WhatsApp and email." },
+        { label: "Portfolio", title: "MaximoWebs", desc: "Personal portfolio and landing site. Minimalist design, fast load, conversion focused." },
+      ].map(p => `
+        <article class="border border-black/10 group cursor-pointer hover:border-black/30 transition-colors">
+          <div class="card-placeholder aspect-video"></div>
+          <div class="p-6">
+            <p class="text-[.7rem] uppercase tracking-widest text-black/30 mb-2">${p.label}</p>
+            <h3 class="font-semibold mb-2">${p.title}</h3>
+            <p class="text-[.85rem] text-black/50 leading-relaxed">${p.desc}</p>
+          </div>
+        </article>
+      `).join('')}
+    </div>
+  </section>
+
+  <!-- CONCEPTS -->
+  <section id="concepts" class="px-10 lg:px-32 py-20 lg:py-28 border-b border-black/8 bg-[#fafafa]">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <p class="text-[.8rem] text-black/40 uppercase tracking-widest mb-2">Visual concepts</p>
+        <h2 class="text-[1.8rem] lg:text-[2.6rem] font-semibold tracking-tight">Proposals that<br/>show how I think.</h2>
+      </div>
+      <p class="text-[.85rem] text-black/40 hidden lg:block max-w-[260px] text-right">Designs presented to clients. Built to pitch, worth keeping.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[1,2,3,4,5,6].map(i => `
+        <article class="border border-black/10 group cursor-pointer hover:border-black/30 transition-colors bg-white">
+          <div class="card-placeholder aspect-video"></div>
+          <div class="p-5">
+            <p class="text-[.7rem] uppercase tracking-widest text-black/30 mb-1">Visual concept ${i}</p>
+            <h3 class="font-semibold text-[.95rem]">Concept title</h3>
+          </div>
+        </article>
+      `).join('')}
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="px-10 lg:px-32 py-20 lg:py-28 border-b border-black/8">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
+      <div>
+        <p class="text-[.8rem] text-black/40 uppercase tracking-widest mb-2">Stack</p>
+        <h2 class="text-[1.8rem] lg:text-[2.2rem] font-semibold tracking-tight">Tools I reach<br/>for by default.</h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-0 border border-black/10">
+        {[
+          { cat: "Frontend", items: "Astro, React, Tailwind CSS" },
+          { cat: "Backend / CMS", items: "Strapi, Firebase, Firestore" },
+          { cat: "Payments", items: "Stripe, PayPal" },
+          { cat: "Auth", items: "Firebase Auth" },
+          { cat: "Hosting", items: "Vercel, Cloudflare Pages" },
+          { cat: "Language", items: "JavaScript (no TS)" },
+        ].map((s, i) => `
+          <div class="p-5 border-r border-b border-black/10 last:border-r-0">
+            <p class="text-[.7rem] uppercase tracking-widest text-black/30 mb-1">${s.cat}</p>
+            <p class="text-[.85rem] font-medium">${s.items}</p>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="px-10 lg:px-32 py-20 lg:py-28 border-b border-black/8 bg-[#f2f2f2]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-[.8rem] text-black/40 uppercase tracking-widest mb-2">About</p>
+        <h2 class="text-[1.8rem] lg:text-[2.6rem] font-semibold tracking-tight mb-6">Freelance developer<br/>based in Córdoba.</h2>
+        <p class="text-[.95rem] text-black/60 leading-relaxed mb-4">I've spent 5+ years building websites for service businesses — flooring companies, real estate agencies, and startups across Argentina, Latin America, and the United States.</p>
+        <p class="text-[.95rem] text-black/60 leading-relaxed mb-8">I work remotely, I prefer async, and I care about the details that most developers skip: performance, SEO, accessibility, and copy that actually converts.</p>
+        <a href="#contact" class="text-[.9rem] font-medium hover:underline">Work with me →</a>
+      </div>
+      <div class="card-placeholder aspect-square max-w-[400px]"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="px-10 lg:px-32 py-20 lg:py-28">
+    <div class="max-w-[600px]">
+      <p class="text-[.8rem] text-black/40 uppercase tracking-widest mb-2">Contact</p>
+      <h2 class="text-[1.8rem] lg:text-[2.6rem] font-semibold tracking-tight mb-4">Have a project<br/>in mind?</h2>
+      <p class="text-[.95rem] text-black/50 mb-10">I'm open to new projects. Send me a message and I'll get back to you within one business day.</p>
+      <div class="grid gap-3">
+        <a href="mailto:maximo@maximowebs.com" class="flex items-center justify-between border border-black/10 px-6 py-4 hover:border-black/40 transition-colors group">
+          <span class="text-[.9rem] font-medium">maximo@maximowebs.com</span>
+          <span class="text-black/30 group-hover:text-black transition-colors">→</span>
+        </a>
+        <a href="https://wa.me/5493517062465" target="_blank" class="flex items-center justify-between border border-black/10 px-6 py-4 hover:border-black/40 transition-colors group">
+          <span class="text-[.9rem] font-medium">WhatsApp</span>
+          <span class="text-black/30 group-hover:text-black transition-colors">→</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="flex items-center justify-between border border-black/10 px-6 py-4 hover:border-black/40 transition-colors group">
+          <span class="text-[.9rem] font-medium">LinkedIn</span>
+          <span class="text-black/30 group-hover:text-black transition-colors">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-10 lg:px-32 py-6 border-t border-black/8 flex justify-between items-center">
+    <p class="text-[.8rem] text-black/30">© 2026 Maximo Silva</p>
+    <p class="text-[.8rem] text-black/30">Córdoba, Argentina</p>
+  </footer>
+</body>
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .card-placeholder {
+      background: #e8e8e8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #e0e0e0 25%, #ebebeb 50%, #e0e0e0 75%);
+    }
+  </style>
