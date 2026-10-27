@@ -14,13 +14,21 @@
        id="swatch180"><stop
          style="stop-color:#9faee5;stop-opacity:1;"
          offset="0"
-         id="stop180" /></linearGradient></defs><rect
+         id="stop180" /></linearGradient><style
+       id="style1">.cls-1{stroke-width:0px;}</style></defs><rect
      style="fill:#f5f4f4;fill-opacity:1;stroke-width:0.0381385;stroke-linecap:square"
      id="rect102-6"
      width="12.7"
      height="12.7"
      x="2.7105054e-20"
-     y="-9.5828227e-08" /><path
-     d="m 9.1237187,9.3564187 h -5.549 v -3.59565 l 2.801,-2.28861 2.748,2.13033 z m -0.604,-0.60576 v -2.71854 l -2.166,-1.6823 -2.16,1.6823 v 2.71854 z"
+     y="1.516296e-05" /><path
+     d="M 10.219719,10.574314 H 2.4807187 V 5.5464034 l 3.894,-3.20009 3.8450003,2.97885 z M 9.3767187,9.7271034 v -3.80117 l -3.022,-2.35235 -3.017,2.35235 v 3.80117 z"
      id="path56-8"
-     style="fill:#6f8a6f;fill-opacity:1;stroke:#4a5d4a;stroke-width:0.925067;stroke-dasharray:none;stroke-opacity:1" /></svg>
+     style="fill:#6f8a6f;fill-opacity:1;stroke:#4a5d4a;stroke-width:1.581;stroke-dasharray:none;stroke-opacity:1"
+     clip-path="none" /><style
+     id="style1-2">
+        path { fill: #000; }
+        @media (prefers-color-scheme: dark) {
+            path { fill: #FFF; }
+        }
+    </style></svg>

@@ -17,7 +17,7 @@ export default function SortSelect() {
 	}, [])
 
 	return (
-		<label className="flex items-center gap-2 bg-[var(--paper)] px-4 py-2">
+		<label className="flex items-center gap-2 bg-[var(--paper)] px-4 py-3">
 			<span className="hidden text-[var(--textop)] sm:inline">Ordenar</span>
 			<select
 				value={value}

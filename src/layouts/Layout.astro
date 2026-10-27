@@ -20,7 +20,7 @@ const siteSchema = {
 			name: "HomeSilva",
 			url: SITE,
 			logo: `${SITE}/logo.png`,
-			image: `${SITE}/og-default.jpg`,
+			image: `${SITE}/og-default.png`,
 			telephone: "+5493517062465",
 			email: "consultas.brsilva@gmail.com",
 			description: "Servicios inmobiliarios de compra y venta de propiedades en Córdoba y Sierras de Córdoba.",
@@ -91,13 +91,15 @@ const siteSchema = {
 		<meta name="author" content="HomeSilva" />
 		<title>{title || 'Compra y venta de propiedades en Córdoba y Las Sierras | HomeSilva'}</title>
 		<meta name="description" content={description || "Comprá, vendé o alquilá propiedades en Córdoba y Sierras con respaldo profesional. Casas, departamentos, terrenos y cabañas en Valle Hermoso, La Falda, Carlos Paz y más. Corredor matriculado, 15+ años de experiencia."} />
-		<link rel="icon" type="image/svg+xml" href="https://homesilva.com.ar/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		
 		<link rel="canonical" href={canonical || Astro.url.href} />
 		<meta name="generator" content={Astro.generator} />
 		<!-- Open Graph -->
 		<meta property="og:title" content={title || 'Compra y venta de propiedades en Córdoba y Las Sierras | HomeSilva'} />
 		<meta property="og:description" content={description || "Ofrecemos servicios inmobiliarios personalizados de compra y venta de propiedades en la Provincia de Córdoba. Contáctanos para encontrar tu propiedad ideal."} />
-		<meta property="og:image" content={image || 'https://homesilva.com.ar/og-default.jpg'} />
+		<meta property="og:image" content={image || 'https://homesilva.com.ar/og-default.png'} />
 		<meta property="og:type" content='website' />
 		<meta property="og:url" content={canonical || Astro.url.href} />
 		<meta property="og:locale" content="es_AR" />

@@ -247,3 +247,89 @@ export const priceLabel = (p) => {
   const base = `${p.toPrice ? 'Desde ' : ''}${formatPrice(p.price, p.currency)}`
   return p.operation === 'Alquiler' ? `${base} /mes` : base
 }
+export function buildZones(
+  propiedades,
+  featured,
+  { limit = 6, maxTypes = 3, images = {}, fallbackImage = "/localities/default.jpg", exclude = [] } = {}
+) {
+  // Stock agrupado por localidad
+  const grupos = new Map();
+  propiedades
+    .filter((p) => p.active !== false)
+    .forEach((p) => {
+      const slug = toSlug(p.locality);
+      if (exclude.includes(slug)) return;
+      const g = grupos.get(slug) ?? { name: p.locality, items: [] };
+      g.items.push(p);
+      grupos.set(slug, g);
+    });
+
+  const build = (slug, name) => {
+    const g = grupos.get(slug);
+    if (!g) return null; // sin stock, no aparece
+
+    const porTipo = new Map();
+    g.items.forEach((p) => {
+      const t = p.type.toLowerCase();
+      porTipo.set(t, (porTipo.get(t) ?? 0) + 1);
+    });
+
+    const types = [...porTipo.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, maxTypes)
+      .map(([t]) => ({
+        label: capitalize(toPlurralLabel(t)),
+        href: `/propiedades/${toPlural(t)}/${slug}`,
+      }));
+
+		const image = images[slug] ?? g.items.find((p) => p.images?.[0])?.images[0] ?? fallbackImage;
+		return { slug, name, image, count: g.items.length, href: `/propiedades/${slug}`, types };
+	};
+
+  // 1. Destacadas, en el orden del JSON
+  const destacadas = featured.map((z) => build(z.slug, z.name)).filter(Boolean);
+
+  // 2. El resto, por cantidad de propiedades
+  const usadas = new Set(featured.map((z) => z.slug));
+  const resto = [...grupos.keys()]
+    .filter((slug) => !usadas.has(slug))
+    .map((slug) => build(slug, grupos.get(slug).name))
+    .sort((a, b) => b.count - a.count);
+
+  return [...destacadas, ...resto].slice(0, limit);
+}
+// Combinaciones reales operación|tipo|localidad con stock, y las opciones del buscador
+export function buildSearchIndex(propiedades, { exclude = [] } = {}) {
+  const combos = new Set();
+  const types = new Map();
+  const locations = new Map();
+
+  const bump = (map, value, label) => {
+    const e = map.get(value) ?? { value, label, count: 0 };
+    e.count++;
+    map.set(value, e);
+  };
+
+  propiedades
+    .filter((p) => p.active !== false)
+    .forEach((p) => {
+      const op = p.operation.toLowerCase();
+      const type = toPlural(p.type.toLowerCase());
+      const loc = toSlug(p.locality);
+      if (exclude.includes(loc)) return;
+
+      combos.add(`${op}|${type}|${loc}`);
+      bump(types, type, capitalize(toPlurralLabel(p.type.toLowerCase())));
+      bump(locations, loc, p.locality);
+    });
+
+  const byCount = (m) =>
+    [...m.values()].sort((a, b) => b.count - a.count).map(({ value, label }) => ({ value, label }));
+
+  return {
+    combos: [...combos],
+    operations: [...new Set([...combos].map((c) => c.split("|")[0]))],
+    types: byCount(types),
+    locations: byCount(locations),
+  };
+}

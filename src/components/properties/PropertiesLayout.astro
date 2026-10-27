@@ -37,7 +37,7 @@ const { filters=[], urlParams={}, ...listing } = Astro.props;
     <!-- Botones de mobile y de mapa -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <label for="filters-toggle" class="cursor-pointer bg-white px-4 py-2 lg:hidden">
+        <label for="filters-toggle" class="cursor-pointer bg-[var(--paper)] px-4 py-3 lg:hidden">
           Filtros
         </label>
 
@@ -45,7 +45,7 @@ const { filters=[], urlParams={}, ...listing } = Astro.props;
           type="button"
           data-map-toggle
           aria-controls="map-panel"
-          class="cursor-pointer bg-white p-3 transition-opacity hover:opacity-70"
+          class="cursor-pointer bg-[var(--paper)] p-3 transition-opacity hover:opacity-70"
         >
           <svg class="hidden lg:inline max-lg:group-data-[map=on]/shell:inline lg:group-data-[map=off]/shell:hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14 19.5l-5 -2.5l-6 3v-13l6 -3l6 3l6 -3v9" /><path d="M9 4v13" /><path d="M15 7v6.5" /><path d="M22 22l-5 -5" /><path d="M17 22l5 -5" /></svg>
           <svg class="inline lg:hidden max-lg:group-data-[map=on]/shell:hidden lg:group-data-[map=off]/shell:inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" /><path d="M9 4v13" /><path d="M15 7v13" /></svg>

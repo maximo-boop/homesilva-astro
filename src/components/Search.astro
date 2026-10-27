@@ -1,36 +1,27 @@
 ---
-const {
-  labels,
-  types = [
-    { value: "casas", label: "Casas" },
-    { value: "terrenos", label: "Terrenos" },
-    { value: "cabanas", label: "Cabañas" },
-    { value: "departamentos", label: "Departamentos" },
-  ],
-  locations = [
-    { value: "valle-hermoso", label: "Valle Hermoso" },
-    { value: "la-falda", label: "La Falda" },
-    { value: "huerta-grande", label: "Huerta Grande" },
-    { value: "villa-giardino", label: "Villa Giardino" },
-    { value: "tanti", label: "Tanti" },
-    { value: "cordoba", label: "Córdoba" },
-  ],
-} = Astro.props;
+import propiedades from "@/data/propiedades.json";
+import { buildSearchIndex } from "@/scripts/utils.js";
+
+const { labels } = Astro.props;
+const any = labels.any ?? "Cualquiera";
+
+const index = buildSearchIndex(propiedades, { exclude: ["miami-florida"] });
 
 const operations = [
   { value: "venta", label: labels.operations.buy },
   { value: "alquiler", label: labels.operations.rent },
-];
+].filter((op) => index.operations.includes(op.value));
 
 const fields = [
-  { name: "type", ...labels.propertyType, options: types },
-  { name: "location", ...labels.location, options: locations },
+  { name: "type", ...labels.propertyType, options: index.types },
+  { name: "location", ...labels.location, options: index.locations },
 ];
 ---
 
 <form
   data-search
-  action="/propiedades"
+  data-combos={JSON.stringify(index.combos)}
+  action="/propiedades/venta"
   method="get"
   class="flex flex-col text-[var(--bg)] mt-10 text-[.9rem] font-medium"
 >
@@ -56,12 +47,12 @@ const fields = [
   </fieldset>
 
   <!-- PANEL -->
-  <div class="flex w-full flex-col gap-6 bg-[var(--text)] pl-8 pr-8 md:gap-0 md:pr-0 md:w-fit md:flex-row md:items-center md:gap-0">
+  <div class="flex w-full flex-col gap-6 bg-[var(--text)] pt-10 md:pt-0 md:pl-8 md:gap-0 md:w-fit md:flex-row md:items-center md:gap-0">
 
-    <div class="flex flex-col gap-6 md:flex-row md:gap-18">
+    <div class="flex flex-col px-5 md:px-0 gap-6 md:flex-row md:gap-18">
       {
         fields.map((field) => (
-          <div data-field class="relative">
+          <div data-field data-name={field.name} data-placeholder={field.placeholder} class="relative">
             <button
               type="button"
               data-trigger
@@ -107,7 +98,7 @@ const fields = [
     <button
       type="submit"
       aria-label={labels.submit}
-      class="bg-[#314131] hover:bg-[#4a5d4a] inline-flex w-full text-[var(--bg)] items-center justify-center md:w-24 h-24 lg:ml-8"
+      class="bg-[#314131] hover:bg-[#4a5d4a] inline-flex w-full text-[var(--bg)] items-center justify-center md:w-24 h-24 md:ml-8"
     >
       <svg
 
@@ -229,86 +220,129 @@ const fields = [
 </style>
 
 <script>
-  document.querySelectorAll("[data-search]").forEach((form) => {
-    const fields = [...form.querySelectorAll("[data-field]")];
+  document.querySelectorAll<HTMLFormElement>("[data-search]").forEach((form) => {
+    const fields = [...form.querySelectorAll<HTMLElement>("[data-field]")];
+    const combos = JSON.parse(form.dataset.combos!).map((c: string) => c.split("|"));
+    const COL: Record<string, number> = { operation: 0, type: 1, location: 2 };
 
-    const menuOf = (field) => field.querySelector("[data-menu]");
-    const triggerOf = (field) => field.querySelector("[data-trigger]");
-    const isOpen = (field) => field.hasAttribute("data-open");
+    const menuOf = (f: HTMLElement) => f.querySelector("[data-menu]")!;
+    const triggerOf = (f: HTMLElement) => f.querySelector<HTMLElement>("[data-trigger]")!;
+    const isOpen = (f: HTMLElement) => f.hasAttribute("data-open");
 
-    const close = (field, returnFocus = false) => {
-      field.removeAttribute("data-open");
-      triggerOf(field).setAttribute("aria-expanded", "false");
-      if (returnFocus) triggerOf(field).focus();
+    // ── Menús ────────────────────────────────────────
+    const close = (f: HTMLElement, returnFocus = false) => {
+      f.removeAttribute("data-open");
+      triggerOf(f).setAttribute("aria-expanded", "false");
+      if (returnFocus) triggerOf(f).focus();
     };
 
-    const open = (field, fromKeyboard) => {
-      fields.forEach((f) => f !== field && close(f));
-      field.setAttribute("data-open", "");
-      triggerOf(field).setAttribute("aria-expanded", "true");
+    const open = (f: HTMLElement, fromKeyboard: boolean) => {
+      fields.forEach((o) => o !== f && close(o));
+      f.setAttribute("data-open", "");
+      triggerOf(f).setAttribute("aria-expanded", "true");
 
-      // Con teclado, el foco entra a la lista (a la opción elegida o a la primera)
       if (fromKeyboard) {
         const target =
-          menuOf(field).querySelector('[aria-current="true"]') ||
-          menuOf(field).querySelector("[data-option]");
+          menuOf(f).querySelector<HTMLElement>('[aria-current="true"]') ||
+          menuOf(f).querySelector<HTMLElement>("[data-option]:not(:disabled)");
         target?.focus();
       }
     };
 
-    fields.forEach((field) => {
-      const trigger = triggerOf(field);
-      const menu = menuOf(field);
-      const input = field.querySelector('input[type="hidden"]');
-      const value = field.querySelector("[data-value]");
-      const options = field.querySelectorAll("[data-option]");
+    // ── Datos ────────────────────────────────────────
+    const state = () => Object.fromEntries(new FormData(form)) as Record<string, string>;
 
-      trigger.addEventListener("click", (e) => {
-        // e.detail === 0: el click vino del teclado
-        isOpen(field) ? close(field) : open(field, e.detail === 0);
+    // ¿Hay al menos una propiedad que cumpla estos valores?
+    const exists = (sel: Record<string, string>) =>
+      combos.some((c: string[]) => Object.entries(sel).every(([k, v]) => !v || c[COL[k]] === v));
+
+    const setValue = (f: HTMLElement, value: string, text = "") => {
+      f.querySelector<HTMLInputElement>('input[type="hidden"]')!.value = value;
+
+      const label = f.querySelector<HTMLElement>("[data-value]")!;
+      label.textContent = value ? text : f.dataset.placeholder!;
+      label.classList.toggle("text-[var(--bg)]/50", !value);
+      label.classList.toggle("text-[var(--bg)]", !!value);
+
+      f.querySelectorAll<HTMLElement>("[data-option]").forEach((o) =>
+        value && o.dataset.option === value
+          ? o.setAttribute("aria-current", "true")
+          : o.removeAttribute("aria-current")
+      );
+    };
+
+    // Limpia lo que quedó sin resultados y bloquea las opciones que no llevan a ninguna propiedad
+    const refresh = () => {
+      const s = state();
+
+      // Cada campo debe tener resultados con la operación elegida
+      fields.forEach((f) => {
+        const name = f.dataset.name!;
+        if (s[name] && !exists({ operation: s.operation, [name]: s[name] })) {
+          setValue(f, "");
+          s[name] = "";
+        }
       });
 
-      options.forEach((option) => {
-        option.addEventListener("click", () => {
-          input.value = option.dataset.option;
-          value.textContent = option.textContent.trim();
-          value.classList.replace("text-[var(--bg)]/50", "text-[var(--bg)]");
+      // Tipo y localidad pueden existir por separado pero no juntos
+      if (!exists(s)) {
+        setValue(fields.find((f) => f.dataset.name === "location")!, "");
+        s.location = "";
+      }
 
-          options.forEach((o) => o.removeAttribute("aria-current"));
-          option.setAttribute("aria-current", "true");
-
-          close(field, true);
+      fields.forEach((f) => {
+        const name = f.dataset.name!;
+        f.querySelectorAll<HTMLButtonElement>("[data-option]").forEach((o) => {
+          const v = o.dataset.option!;
+          o.disabled = !exists({ ...s, [name]: v });
         });
       });
+    };
 
-      // Flechas para moverse por la lista
-      menu.addEventListener("keydown", (e) => {
-        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    // ── Eventos ──────────────────────────────────────
+    fields.forEach((f) => {
+      const options = f.querySelectorAll<HTMLButtonElement>("[data-option]");
+
+      triggerOf(f).addEventListener("click", (e) => {
+        isOpen(f) ? close(f) : open(f, e.detail === 0); // detail 0: vino del teclado
+      });
+
+      options.forEach((o) =>
+        o.addEventListener("click", () => {
+          const selected = o.getAttribute("aria-current") === "true";
+          setValue(f, selected ? "" : o.dataset.option!, o.textContent!.trim());
+          refresh();
+          close(f, true);
+        })
+      );
+
+      menuOf(f).addEventListener("keydown", (e) => {
+        const key = (e as KeyboardEvent).key;
+        if (key !== "ArrowDown" && key !== "ArrowUp") return;
         e.preventDefault();
 
-        const items = [...options];
-        const i = items.indexOf(document.activeElement);
+        const items = [...options].filter((o) => !o.disabled);
+        const i = items.indexOf(document.activeElement as HTMLButtonElement);
         const next =
-          e.key === "ArrowDown"
-            ? items[i + 1] ?? items[0]
-            : items[i - 1] ?? items[items.length - 1];
+          key === "ArrowDown" ? items[i + 1] ?? items[0] : items[i - 1] ?? items[items.length - 1];
         next.focus();
       });
 
-      // Tab hacia afuera cierra el menú
-      field.addEventListener("focusout", (e) => {
-        if (e.relatedTarget && !field.contains(e.relatedTarget)) close(field);
+      f.addEventListener("focusout", (e) => {
+        if (e.relatedTarget && !f.contains(e.relatedTarget as Node)) close(f);
       });
     });
 
-    // Click fuera cierra
+    form.querySelectorAll('input[name="operation"]').forEach((r) =>
+      r.addEventListener("change", refresh)
+    );
+
     document.addEventListener("pointerdown", (e) => {
       fields.forEach((f) => {
-        if (!f.contains(e.target) || e.target === f) close(f);
+        if (!f.contains(e.target as Node) || e.target === f) close(f);
       });
     });
 
-    // Esc cierra y devuelve el foco al botón
     form.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
       const openField = fields.find(isOpen);
@@ -317,15 +351,13 @@ const fields = [
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const data = new FormData(form);
-      const segments = [
-        data.get("operation"),
-        data.get("type"),
-        data.get("location"),
-      ].filter(Boolean);
-
-      window.location.href = `/propiedades/${segments.join("/")}`;
+      const s = state();
+      const path = exists(s)
+        ? [s.operation, s.type, s.location].filter(Boolean)
+        : [s.operation];
+      location.assign(`/propiedades/${path.join("/")}`);
     });
+
+    refresh();
   });
 </script>

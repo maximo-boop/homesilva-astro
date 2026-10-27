@@ -2,12 +2,12 @@
 const { t } = Astro.props;
 ---
 
-<section data-process class="w-full text-[var(--text)]">
+<section data-process class="w-full mt-20 md:mt-0 text-[var(--text)]">
   <div class="mx-auto w-full max-w-[1400px]">
 
     <!-- TÍTULO -->
     <div class="flex flex-col">
-      <h2 class="reveal max-w-2xl text-[clamp(3.25rem,9vw,7.5rem)] font-medium leading-none tracking-tighter">
+      <h2 class="reveal max-w-2xl text-[clamp(4rem,9vw,7.5rem)] font-medium leading-none tracking-tighter">
         {t.title}
       </h2>
 
@@ -21,7 +21,7 @@ const { t } = Astro.props;
       )}
     </div>
 
-    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-x-6">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-x-6 mt-5 md:mt-0">
 
       <!-- IMAGEN: queda fija y crece con el scroll -->
       <div class="lg:col-span-5">

@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import data from "../data/es.json";
+import propiedades from "../data/propiedades.json";
 
 import Layout from '@/layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
@@ -13,27 +14,16 @@ import Process from "../components/Process.astro";
 import Appraisal from "../components/Appraisal.astro";
 import Faq from "../components/Faq.astro";
 
-const sample = {
-  href: "/propiedades",
-  imageAlt: "Terreno en Valle Hermoso",
-  operation: "Venta",
-  type: "Terreno",
-  location: "Valle Hermoso",
-  title: "Lote en esquina",
-  features: ["450 m²", "Escritura", "Servicios"],
-  price: "USD 45.000",
+import { buildZones } from "@/scripts/utils.js";
+
+const zones = {
+  ...data.zones,
+  items: buildZones(propiedades, data.zones.featured, {
+    limit: 6,
+    images: data.zones.images,
+    exclude: ["miami-florida"],
+  })
 };
-const items = Array.from({ length: 6 }, (_, i) => ({
-  ...sample,
-  title: `${sample.title} ${i + 1}`,
-  image: 
-    i===0 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/13097405/photo_1791459069673777274_30433576_medium.webp'
-    : i===1 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/12173724/photo_1791399506521707667_27790911_medium.webp'
-    : i===2 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/13128487/photo_1791860669771656439_41486926_medium.webp'
-    : i===3 ? 'https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/01.jpg'
-    : i===4 ? 'https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/01.webp'
-    :'https://ik.imagekit.io/homesilva/departamento-en-chateau-carreras-cordoba/01.jpg'
-}));
 ---
 
 <Layout>
@@ -43,9 +33,9 @@ const items = Array.from({ length: 6 }, (_, i) => ({
       <Stats t={data.stats} />
     </div>
     <div class="bg-[var(--bg3)] flex flex-col gap-30 p-5 lg:p-12 lg:pt-25 lg:pb-30">
-  		<FeaturedProperties t={{ ...data.featured, items }} />
+  		<FeaturedProperties t={data.featured} />
       <Services t={data.services} />
-      <Zones t={data.zones} />
+      <Zones t={zones} />
       <About t={data.about} />
     </div>
     <div class="flex flex-col gap-25 p-5 lg:p-12 lg:pt-30">

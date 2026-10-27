@@ -87,52 +87,15 @@
     "description": "Casas, terrenos, cabañas y departamentos en Valle Hermoso, La Falda y localidades vecinas, además de Córdoba capital. Elegí una zona para ver lo que hay disponible hoy.",
     "prev": "Zonas anteriores",
     "next": "Zonas siguientes",
-    "items": [
-      { "name": "Valle Hermoso", "count": "12 propiedades", "href": "/zonas/valle-hermoso", "image": "/localities/valle-hermoso.jpg", "imageAlt": "Valle Hermoso","types": [
-        { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-        { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-        { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-      ]  },
-      { "name": "Córdoba Capital", "count": "9 propiedades", "href": "/zonas/la-falda", "image": "/localities/cordoba.jpg", "imageAlt": "La Falda","types": [
-          { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-          { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-          { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-        ] },
-      { "name": "La Falda", "count": "7 propiedades", "href": "/zonas/huerta-grande", "image": "/localities/la-falda.jpg", "imageAlt": "Huerta Grande","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "La Cumbre", "count": "5 propiedades", "href": "/zonas/la-cumbre", "image": "/localities/valle-hermoso.jpg", "imageAlt": "La Cumbre","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "Cosquín", "count": "8 propiedades", "href": "/zonas/cosquin", "image": "/localities/cordoba.jpg", "imageAlt": "Cosquín","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "Capilla Monte", "count": "6 propiedades", "href": "/zonas/capilla-del-monte", "image": "/localities/cordoba.jpg", "imageAlt": "Capilla del Monte","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "Villa Carlos Paz", "count": "10 propiedades", "href": "/zonas/villa-carlos-paz", "image": "/localities/la-falda.jpg", "imageAlt": "Villa Carlos Paz","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "Córdoba Capital", "count": "14 propiedades", "href": "/zonas/cordoba", "image": "/localities/valle-hermoso.jpg", "imageAlt": "Córdoba Capital","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] },
-      { "name": "Cabana", "count": "4 propiedades", "href": "/zonas/cabana", "image": "/localities/cordoba.jpg", "imageAlt": "Cabana","types": [
-  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
-  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
-  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
-] }
+    "images": {
+      "valle-hermoso": "/localities/valle-hermoso.jpg",
+      "cordoba": "/localities/cordoba.jpg",
+      "la-falda": "/localities/la-falda.jpg"
+    },
+    "featured": [
+      { "slug": "valle-hermoso", "name": "Valle Hermoso", "image": "/localities/valle-hermoso.jpg" },
+      { "slug": "cordoba", "name": "Córdoba capital", "image": "/localities/cordoba.jpg" },
+      { "slug": "la-falda", "name": "La Falda", "image": "/localities/la-falda.jpg" }
     ]
   },
   "about": {
@@ -256,11 +219,10 @@
   "contact": {
     "title": "Contacto",
     "address": "Valle Hermoso, Córdoba",
-    "whatsapp": { "label": "WhatsApp", "number": "549XXXXXXXXXX" },
-    "email": "contacto@ejemplo.com.ar",
+    "whatsapp": { "label": "WhatsApp", "number": "5493517062465" },
+    "email": "consultas.brsilva@gmail.com",
     "social": [
-      { "label": "Instagram", "href": "https://www.instagram.com/" },
-      { "label": "Facebook", "href": "https://www.facebook.com/" }
+      
     ]
   },
   "license": "Domingo Cayetano Silva · Corredor público y martillero · M.P. 045879 · 054237 · 013508",
@@ -287,7 +249,7 @@
       "email": { "label": "Email" },
       "address": { "label": "Oficina" }
     },
-    "image": { "src": "/living.png", "alt": "" },
+    "image": { "src": "/living.webp", "alt": "" },
     "form": {
       "interest": {
         "label": "¿Qué querés hacer?",
