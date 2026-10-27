@@ -1,0 +1,12 @@
+---
+import MapView from "./MapView.jsx";
+
+const { items } = Astro.props;
+---
+
+<div
+  id="map-panel"
+  class="isolate hidden h-64 overflow-hidden bg-[var(--paper)] lg:block lg:h-72 max-lg:group-data-[map=on]/shell:block lg:group-data-[map=off]/shell:hidden"
+>
+  <MapView client:visible items={items} />
+</div>

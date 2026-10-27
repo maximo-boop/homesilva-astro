@@ -1,0 +1,331 @@
+---
+const {
+  labels,
+  types = [
+    { value: "casas", label: "Casas" },
+    { value: "terrenos", label: "Terrenos" },
+    { value: "cabanas", label: "Cabañas" },
+    { value: "departamentos", label: "Departamentos" },
+  ],
+  locations = [
+    { value: "valle-hermoso", label: "Valle Hermoso" },
+    { value: "la-falda", label: "La Falda" },
+    { value: "huerta-grande", label: "Huerta Grande" },
+    { value: "villa-giardino", label: "Villa Giardino" },
+    { value: "tanti", label: "Tanti" },
+    { value: "cordoba", label: "Córdoba" },
+  ],
+} = Astro.props;
+
+const operations = [
+  { value: "venta", label: labels.operations.buy },
+  { value: "alquiler", label: labels.operations.rent },
+];
+
+const fields = [
+  { name: "type", ...labels.propertyType, options: types },
+  { name: "location", ...labels.location, options: locations },
+];
+---
+
+<form
+  data-search
+  action="/propiedades"
+  method="get"
+  class="flex flex-col text-[var(--bg)] mt-10 text-[.9rem] font-medium"
+>
+  <!-- OPERACIÓN -->
+  <fieldset class="flex">
+    <legend class="sr-only">{labels.operations.label}</legend>
+    {
+      operations.map((op, i) => (
+        <label class="cursor-pointer">
+          <input
+            type="radio"
+            name="operation"
+            value={op.value}
+            checked={i === 0}
+            class="peer sr-only"
+          />
+          <span class="block font-medium w-30 p-3 px-4 text-center bg-[var(--bg)] text-[var(--textop)] peer-checked:bg-[var(--text)] peer-checked:text-[var(--bg)] peer-focus-visible:outline peer-focus-visible:outline-offset-2">
+            {op.label}
+          </span>
+        </label>
+      ))
+    }
+  </fieldset>
+
+  <!-- PANEL -->
+  <div class="flex w-full flex-col gap-6 bg-[var(--text)] pl-8 pr-8 md:gap-0 md:pr-0 md:w-fit md:flex-row md:items-center md:gap-0">
+
+    <div class="flex flex-col gap-6 md:flex-row md:gap-18">
+      {
+        fields.map((field) => (
+          <div data-field class="relative">
+            <button
+              type="button"
+              data-trigger
+              aria-expanded="false"
+              aria-controls={`${field.name}-menu`}
+              class="flex flex-col items-start w-full md:w-auto"
+            >
+              <span class="flex w-full items-center justify-between gap-4 md:w-auto md:justify-start">
+                {field.label}
+                <svg data-chevron aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+              </span>
+              <span data-value class="mt-[1px] text-[var(--bg)]/50">
+                {field.placeholder}
+              </span>
+            </button>
+
+            <input type="hidden" name={field.name} value="" />
+
+            <ul
+              id={`${field.name}-menu`}
+              data-menu
+              class="absolute left-0 top-full z-20 mt-3 max-h-64 min-w-56 overflow-y-auto bg-[var(--text)] md:mt-6"
+            >
+              {field.options.map((o) => (
+                <li class="m-2">
+                  <button
+                    type="button"
+                    data-option={o.value}
+                    class="block w-full hover:bg-[var(--textop)] px-5 py-3 text-left text-[var(--bg)]/50 hover:text-[var(--bg)] focus-visible:text-[var(--bg)] aria-[current=true]:bg-[var(--textop)] aria-[current=true]:text-[var(--bg)]"
+                  >
+                    {o.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- <div aria-hidden="true" class="hidden h-9 bg-[#f5f4f444] ml-14 w-[1.8px] md:block"></div> -->
+
+    <button
+      type="submit"
+      aria-label={labels.submit}
+      class="bg-[#314131] hover:bg-[#4a5d4a] inline-flex w-full text-[var(--bg)] items-center justify-center md:w-24 h-24 lg:ml-8"
+    >
+      <svg
+
+       width="26"
+       height="26"
+       viewBox="0 0 17.88525 17.885246"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="1.8"
+       version="1.1"
+       id="svg3"
+       xmlns="http://www.w3.org/2000/svg"
+       xmlns:svg="http://www.w3.org/2000/svg">
+      <defs
+         id="defs3" />
+      <g
+         id="g4"
+         transform="translate(-1.837012,-1.8370151)">
+        <g
+           id="g3">
+          <g
+             id="g6"
+             transform="translate(-0.162988,-0.16298802)">
+            <g
+               id="g5">
+              <path
+                 d="M 3,10 A 7,7 0 1 0 17,10 7,7 0 1 0 3,10"
+                 id="path2" />
+              <path
+                 d="M 18.88525,18.88525 15,15"
+                 id="path3" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+
+    </button>
+  </div>
+</form>
+{
+  labels.quick?.items?.length > 0 && (
+    <nav aria-label={labels.quick.label} class="mt-5">
+      <ul class="flex flex-wrap gap-2">
+        {labels.quick.items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="group hover:bg-[#314131] bg-[var(--bg)] inline-flex items-center gap-2 px-4 py-3 text-[.9rem] font-medium text-[var(--text2)] transition-colors hover:text-[var(--bg)] focus-visible:bg-[var(--text)] focus-visible:text-[var(--bg)]"
+            >
+              {item.label}
+              <svg xmlns="http://www.w3.org/2000/svg" class=" group-hover:translate-x-1 transition-translate duration-200" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style>
+  button {
+    cursor: pointer;
+  }
+  /* Menú: cierra con fade + leve desplazamiento hacia arriba */
+  [data-menu] {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear 0.2s; /* se oculta recién al terminar el fade */
+  }
+
+  [data-open] [data-menu] {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+      visibility 0s; /* aparece al instante, así el foco por teclado funciona */
+  }
+
+  /* Mobile: el desplegable se abre como modal centrado */
+  @media (max-width: 767px) {
+    [data-menu] {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      z-index: 210;
+      height: fit-content;
+      width: min(90vw, 26rem);
+      max-height: 70dvh;
+    }
+
+    /* Fondo oscuro detrás del menú abierto */
+    [data-open]::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgb(0 0 0 / 0.6);
+    }
+
+    /* La página de atrás no scrollea mientras está abierto */
+    :global(body:has([data-search] [data-open])) {
+      overflow: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-menu] {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll("[data-search]").forEach((form) => {
+    const fields = [...form.querySelectorAll("[data-field]")];
+
+    const menuOf = (field) => field.querySelector("[data-menu]");
+    const triggerOf = (field) => field.querySelector("[data-trigger]");
+    const isOpen = (field) => field.hasAttribute("data-open");
+
+    const close = (field, returnFocus = false) => {
+      field.removeAttribute("data-open");
+      triggerOf(field).setAttribute("aria-expanded", "false");
+      if (returnFocus) triggerOf(field).focus();
+    };
+
+    const open = (field, fromKeyboard) => {
+      fields.forEach((f) => f !== field && close(f));
+      field.setAttribute("data-open", "");
+      triggerOf(field).setAttribute("aria-expanded", "true");
+
+      // Con teclado, el foco entra a la lista (a la opción elegida o a la primera)
+      if (fromKeyboard) {
+        const target =
+          menuOf(field).querySelector('[aria-current="true"]') ||
+          menuOf(field).querySelector("[data-option]");
+        target?.focus();
+      }
+    };
+
+    fields.forEach((field) => {
+      const trigger = triggerOf(field);
+      const menu = menuOf(field);
+      const input = field.querySelector('input[type="hidden"]');
+      const value = field.querySelector("[data-value]");
+      const options = field.querySelectorAll("[data-option]");
+
+      trigger.addEventListener("click", (e) => {
+        // e.detail === 0: el click vino del teclado
+        isOpen(field) ? close(field) : open(field, e.detail === 0);
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          input.value = option.dataset.option;
+          value.textContent = option.textContent.trim();
+          value.classList.replace("text-[var(--bg)]/50", "text-[var(--bg)]");
+
+          options.forEach((o) => o.removeAttribute("aria-current"));
+          option.setAttribute("aria-current", "true");
+
+          close(field, true);
+        });
+      });
+
+      // Flechas para moverse por la lista
+      menu.addEventListener("keydown", (e) => {
+        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+        e.preventDefault();
+
+        const items = [...options];
+        const i = items.indexOf(document.activeElement);
+        const next =
+          e.key === "ArrowDown"
+            ? items[i + 1] ?? items[0]
+            : items[i - 1] ?? items[items.length - 1];
+        next.focus();
+      });
+
+      // Tab hacia afuera cierra el menú
+      field.addEventListener("focusout", (e) => {
+        if (e.relatedTarget && !field.contains(e.relatedTarget)) close(field);
+      });
+    });
+
+    // Click fuera cierra
+    document.addEventListener("pointerdown", (e) => {
+      fields.forEach((f) => {
+        if (!f.contains(e.target) || e.target === f) close(f);
+      });
+    });
+
+    // Esc cierra y devuelve el foco al botón
+    form.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const openField = fields.find(isOpen);
+      if (openField) close(openField, true);
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const segments = [
+        data.get("operation"),
+        data.get("type"),
+        data.get("location"),
+      ].filter(Boolean);
+
+      window.location.href = `/propiedades/${segments.join("/")}`;
+    });
+  });
+</script>

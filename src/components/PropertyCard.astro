@@ -1,0 +1,83 @@
+---
+const { item, priority = false } = Astro.props;
+import { formatPrice, getArea, getFeatures, priceLabel } from '../scripts/utils.js'
+
+const href = `/propiedades/${item.slug}`
+const place = [item.barrio, item.locality].filter(Boolean).join(', ')
+const area = getArea(item)
+const features = getFeatures(item)
+const isLand = ['Terreno', 'Lote'].includes(item.type)
+
+// Precio por m² solo en terrenos: en casas la superficie cargada suele ser la del lote
+const perM2 =
+  item.operation === 'Venta' && isLand && area && item.price
+    ? formatPrice(Math.round(item.price / area), item.currency)
+    : null
+
+const expensas = item.expensas
+  ? formatPrice(item.expensas, item.expensasCurrency || 'ARS')
+  : null
+
+const alt = `${item.type} en ${item.operation.toLowerCase()} en ${place}`
+---
+
+<article aria-labelledby={`titulo-${item.id}`} class="h-full">
+  <a href={href} class="group flex flex-col h-full hover:shadow-[2px_2px_15px_rgba(0,0,0,0.08)] transition-shadow">
+    <div class="flex relative overflow-hidden bg-[var(--card)]">
+      <img
+        src={item.images?.[0]}
+        alt={alt}
+        width="600"
+        height="280"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+        class="h-60 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+      />
+
+      <span class="
+        absolute left-4 top-4 px-3 py-1 text-[.9rem] font-medium [-webkit-text-stroke:0.02em_currentColor]
+        text-[var(--moss-pale)] bg-[#4a5d4a]
+      ">
+        {item.operation}
+      </span>
+
+      <span
+        aria-hidden="true"
+        class="
+          absolute right-4 top-4 flex h-9 w-9 -translate-x-2 translate-y-2 items-center justify-center opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100
+          bg-[var(--bg)] text-[var(--text2)]
+        "
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
+      </span>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-1 bg-[#fafafa] p-5 text-[var(--green)]">
+      <h2 id={`titulo-${item.id}`} class="line-clamp-2">
+        {item.title}
+      </h2>
+
+      <p class="flex flex-wrap items-baseline gap-x-3 text-[#4a5d4a]">
+        <span class="text-xl font-medium [-webkit-text-stroke:0.02em_currentColor]">
+          {priceLabel(item)}
+        </span>
+        {perM2 && <span class="text-[.8rem] opacity-50">{perM2}/m²</span>}
+      </p>
+
+      {expensas && <p class="text-xs opacity-50">Expensas {expensas}</p>}
+
+      <p class="text-[.9rem] opacity-50">
+        {item.type}{place && ` · ${place}`}
+      </p>
+
+      {features.length > 0 && (
+        <ul class="flex flex-wrap gap-x-2 text-[.9rem]">
+          {features.map((f, i) => (
+            <li>{i > 0 && '· '}{f}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </a>
+</article>

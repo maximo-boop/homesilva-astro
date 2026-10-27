@@ -1,0 +1,9 @@
+---
+import Listing from "./Listing.jsx";
+
+const { titulo, description, items, itemsPP, basePath, currentP, totalP } = Astro.props;
+---
+
+<section class="flex flex-col gap-5">
+  <Listing client:load items={items} itemsPP={itemsPP} basePath={basePath} currentP={currentP} totalP={totalP} />
+</section>

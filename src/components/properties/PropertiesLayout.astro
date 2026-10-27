@@ -1,0 +1,94 @@
+---
+import FiltersAside from "./Aside.astro";
+import MapPanel from "./MapPanel.astro";
+import ListingPanel from "./ListingPanel.astro";
+import ButtonFilter from "./ButtonFilter.astro";
+import QueryFilters from "./QueryFilters.jsx";
+import SortSelect from "./SortSelect.jsx";
+
+const { filters=[], urlParams={}, ...listing } = Astro.props;
+---
+
+<div
+  data-shell
+  class="group/shell mx-auto grid w-full max-w-[1700px] gap-5 px-5 pb-20 lg:grid-cols-[clamp(16rem,24%,22rem)_minmax(0,1fr)]"
+>
+  <!-- Interruptor del cajón de filtros (mobile) -->
+  <input type="checkbox" id="filters-toggle" class="peer/filters sr-only" aria-label="Mostrar filtros" />
+  <label
+    for="filters-toggle"
+    aria-hidden="true"
+    class="fixed inset-0 z-[110] hidden bg-black/40 peer-checked/filters:block lg:hidden"
+  ></label>
+
+  <!-- Columna 1 -->
+  <FiltersAside>
+    <div class="flex flex-col gap-8">
+      {filters.map((f) => <ButtonFilter item={f} urlParams={urlParams} />)}
+      <QueryFilters client:load defaultCurrency={urlParams.operacion === "alquiler" ? "ars" : "usd"} />
+    </div>
+  </FiltersAside>
+  
+
+  <!-- Columna 2 -->
+  <div class="flex min-w-0 flex-col gap-5">
+    <MapPanel items={listing.items} />
+
+    <!-- Botones de mobile y de mapa -->
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <label for="filters-toggle" class="cursor-pointer bg-white px-4 py-2 lg:hidden">
+          Filtros
+        </label>
+
+        <button
+          type="button"
+          data-map-toggle
+          aria-controls="map-panel"
+          class="cursor-pointer bg-white p-3 transition-opacity hover:opacity-70"
+        >
+          <svg class="hidden lg:inline max-lg:group-data-[map=on]/shell:inline lg:group-data-[map=off]/shell:hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14 19.5l-5 -2.5l-6 3v-13l6 -3l6 3l6 -3v9" /><path d="M9 4v13" /><path d="M15 7v6.5" /><path d="M22 22l-5 -5" /><path d="M17 22l5 -5" /></svg>
+          <svg class="inline lg:hidden max-lg:group-data-[map=on]/shell:hidden lg:group-data-[map=off]/shell:inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" /><path d="M9 4v13" /><path d="M15 7v13" /></svg>
+
+          <span class="sr-only">
+            <span class="hidden lg:inline max-lg:group-data-[map=on]/shell:inline lg:group-data-[map=off]/shell:hidden">Ocultar mapa</span>
+            <span class="inline lg:hidden max-lg:group-data-[map=on]/shell:hidden lg:group-data-[map=off]/shell:inline">Mostrar mapa</span>
+          </span>
+        </button>
+      </div>
+
+      <SortSelect client:load />
+    </div>
+
+    <ListingPanel {...listing} />
+  </div>
+</div>
+
+<script>
+  const shell = document.querySelector<HTMLElement>("[data-shell]");
+  const btn = shell?.querySelector<HTMLButtonElement>("[data-map-toggle]");
+  const desktop = matchMedia("(min-width: 1024px)");
+
+  const STORE = "map-state";
+  const read = () => { try { return sessionStorage.getItem(STORE); } catch { return null; } };
+  const write = (v: string) => { try { sessionStorage.setItem(STORE, v); } catch {} };
+
+  // Recupera lo que el usuario eligió en la página anterior
+  const saved = read();
+  if (saved === "on" || saved === "off") shell!.dataset.map = saved;
+
+  // Sin atributo = valor por defecto (visible en desktop, oculto en mobile)
+  const visible = () =>
+    desktop.matches ? shell!.dataset.map !== "off" : shell!.dataset.map === "on";
+
+  const sync = () => btn?.setAttribute("aria-expanded", String(visible()));
+
+  btn?.addEventListener("click", () => {
+    shell!.dataset.map = visible() ? "off" : "on";
+    write(shell!.dataset.map);
+    sync();
+  });
+
+  desktop.addEventListener("change", sync);
+  sync();
+</script>

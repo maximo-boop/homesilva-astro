@@ -1,0 +1,114 @@
+---
+const { t } = Astro.props;
+---
+
+<section data-carousel class="mt-15 mb-30 text-[var(--text)]">
+  <!-- HEADER -->
+  <div class="mb-10 flex flex-col justify-between gap-4">
+    <p class="reveal text-5xl lg:max-w-2xl font-medium leading-none tracking-tight md:text-9xl" aria-hidden="true">
+      {t.display}
+    </p>
+    <div class="reveal lg:ml-auto" style="--d: 150ms">
+      <h2 class="max-w-xl text-lg">{t.title}</h2>
+      {t.description && (
+        <p class="max-w-xl text-lg leading-relaxed text-[var(--text2)]/70">{t.description}</p>
+      )}
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 [--h:16rem] lg:grid-cols-3 lg:[--h:28rem]">
+    <!-- TRACK -->
+    <ul
+      data-carousel-track
+      class="grid snap-x snap-mandatory auto-cols-[85%] grid-flow-col gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] sm:auto-cols-[calc((100%-1.25rem)/2)] lg:col-span-2 [&::-webkit-scrollbar]:hidden"
+    >
+      {t.items.map((item, i) => (
+        <li
+          style={`--d: ${i < 2 ? 200 + i * 140 : 0}ms`}
+          class="reveal group relative isolate flex h-[var(--h)] snap-start flex-col justify-end overflow-hidden bg-[#e3e3e2] p-5"
+        >
+          <!-- Capas de fondo (z negativo dentro del isolate) -->
+          <img
+            src={item.image}
+            alt=""
+            width="800"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 -z-30 h-full w-full object-cover transition-[scale] duration-[1800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] [transition-delay:var(--d,0ms)] motion-safe:[.js_&]:scale-[1.15] motion-safe:[.js_.in_&]:scale-100"
+          />
+          <div aria-hidden="true" class="absolute inset-0 -z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 -z-10 bg-[var(--moss)] transition-[clip-path] duration-700 ease-[cubic-bezier(0.7,0,0.2,1)] [clip-path:circle(0%_at_100%_0)] group-hover:[clip-path:circle(150%_at_100%_0)]"
+          ></div>
+
+          <span
+            aria-hidden="true"
+            class="absolute right-5 top-5 text-white opacity-0 transition duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
+          </span>
+
+          <div class="flex flex-col gap-4">
+            <h3 class="text-3xl font-medium tracking-tight text-white md:text-6xl">
+              <a href={item.href} class="after:absolute after:inset-0">{item.name}</a>
+            </h3>
+
+            <ul class="relative flex flex-wrap gap-2">
+              {item.types.map((type) => (
+                <li>
+                  <a
+                    href={type.href}
+                    class="block bg-white/80 px-3 py-1.5 text-[.9rem] transition-colors duration-300 group-hover:bg-[var(--bg)]/15 group-hover:text-[var(--bg)] hover:bg-[var(--bg)]! hover:text-[var(--moss)]!"
+                  >
+                    {type.label}<span class="sr-only"> en {item.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <!-- COLUMNA FIJA -->
+    <div class="flex h-[var(--h)] flex-col gap-5">
+      <a
+        href={t.cta.href}
+        style="--d: 480ms"
+        class="reveal group relative flex flex-1 flex-col justify-end overflow-hidden bg-[var(--text)] p-5 text-[var(--bg)]"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 bg-[var(--moss)] transition-[clip-path] duration-700 ease-[cubic-bezier(0.7,0,0.2,1)] [clip-path:circle(0%_at_100%_0)] group-hover:[clip-path:circle(150%_at_100%_0)]"
+        ></div>
+        <span
+          aria-hidden="true"
+          class="absolute right-5 top-5 transition duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
+        </span>
+        <p class="relative text-xl font-medium md:text-6xl">{t.cta.label}</p>
+      </a>
+
+      <div class="reveal flex flex-1 gap-5" style="--d: 700ms">
+        {[
+          { attr: "data-carousel-prev", label: t.prev, icon: "←" },
+          { attr: "data-carousel-next", label: t.next, icon: "→" },
+        ].map(({ attr, label, icon }) => (
+          <button
+            type="button"
+            {...{ [attr]: "" }}
+            aria-label={label}
+            class="flex flex-1 cursor-pointer items-center justify-center bg-[#e3e3e2] text-2xl transition-colors hover:bg-[var(--moss)] hover:text-[var(--bg)] disabled:pointer-events-none disabled:opacity-30"
+          >{icon}</button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "../scripts/carousel.js";
+</script>

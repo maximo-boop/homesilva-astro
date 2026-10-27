@@ -1,0 +1,257 @@
+---
+const { images = [], alt = "", status } = Astro.props;
+
+const list = images.filter(Boolean);
+const n = list.length;
+const shown = Math.min(n, 5); // desktop muestra hasta 5; mobile y visor, todas
+
+// Para pedir tamaños a ImageKit: (url, w) => `${url}?tr=w-${w},q-80`
+const ik = (url, w) => url;
+---
+
+{n > 0 && (
+	<>
+		<div class="gallery" data-count={shown}>
+			<div class="gallery-grid" data-gallery-track>
+				{list.map((src, i) => (
+					<button
+						type="button"
+						class="cell"
+						data-gallery-open
+						data-index={i}
+						aria-label={`Ampliar foto ${i + 1} de ${n}`}
+					>
+						<img
+							src={ik(src, i === 0 ? 1600 : 800)}
+							alt={`${alt} - foto ${i + 1}`}
+							width="1600"
+							height="900"
+							loading={i === 0 ? "eager" : "lazy"}
+							fetchpriority={i === 0 ? "high" : "auto"}
+							decoding="async"
+						/>
+					</button>
+				))}
+			</div>
+
+			{status && <span class="badge">{status === "vendido" ? "Vendido" : "Alquilado"}</span>}
+
+			{n > 1 && <p class="count" data-gallery-count>1 / {n}</p>}
+
+			{n > 1 && (
+				<button type="button" class="open-all" data-gallery-open data-index="0">
+					Ver las {n} fotos
+				</button>
+			)}
+		</div>
+
+		<dialog class="lightbox" id="gallery-dialog" aria-label={`Fotos de ${alt}`}>
+			<div class="lb-track" data-lightbox-track>
+				{list.map((src, i) => (
+					<div class="lb-slide">
+						<img src={ik(src, 1800)} alt={`${alt} - foto ${i + 1}`} loading="lazy" decoding="async" />
+					</div>
+				))}
+			</div>
+
+			<p class="lb-count" data-lightbox-count>1 / {n}</p>
+
+			<button type="button" class="lb-btn lb-close" data-lightbox-close aria-label="Cerrar visor de fotos">
+				Cerrar
+			</button>
+
+			{n > 1 && (
+				<>
+					<button type="button" class="lb-btn lb-prev" data-lightbox-step="-1" aria-label="Foto anterior">
+						<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6l6 6" /></svg>
+					</button>
+					<button type="button" class="lb-btn lb-next" data-lightbox-step="1" aria-label="Foto siguiente">
+						<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6l-6 6" /></svg>
+					</button>
+				</>
+			)}
+		</dialog>
+	</>
+)}
+
+<style>
+	.gallery {
+		/* Pegá acá los valores que elegiste */
+		--gallery-h: 80vh; /* alto de toda la sección en desktop */
+		--gallery-ratio-mobile: 4 / 5; /* proporción de cada foto en mobile */
+		--gap: 4px;
+		position: relative;
+	}
+
+	/* Mobile: carrusel con swipe */
+	.gallery-grid {
+		display: flex;
+		gap: var(--gap);
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+	}
+	.gallery-grid::-webkit-scrollbar { display: none; }
+
+	.cell {
+		flex: 0 0 90%;
+		aspect-ratio: var(--gallery-ratio-mobile);
+		scroll-snap-align: start;
+		position: relative;
+		overflow: hidden;
+		padding: 0;
+		border: 0;
+		background: var(--card);
+		cursor: zoom-in;
+	}
+	.cell img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 500ms ease-out;
+	}
+	.cell:hover img { transform: scale(1.03); }
+
+	.badge {
+		position: absolute; top: 1rem; left: 1rem; z-index: 2; pointer-events: none;
+		padding: .25rem .75rem; font-size: .9rem; font-weight: 500;
+		background: var(--green); color: var(--bg);
+	}
+	.count {
+		position: absolute; right: .75rem; bottom: .75rem; z-index: 2; pointer-events: none;
+		padding: .25rem .75rem; font-size: .8rem;
+		background: var(--green); color: var(--bg);
+	}
+	.open-all {
+		display: none;
+		position: absolute; right: 1rem; bottom: 1rem; z-index: 2;
+		padding: .5rem 1rem; font-size: .9rem; cursor: pointer; border: 0;
+		background: var(--bg); color: var(--green); transition: opacity 200ms;
+	}
+	.open-all:hover { opacity: .8; }
+
+	/* Desktop: 1 grande + hasta 4 chicas, según cuántas fotos haya */
+	@media (min-width: 1024px) {
+		.gallery-grid {
+			display: grid;
+			overflow: visible;
+			scroll-snap-type: none;
+			height: var(--gallery-h);
+			grid-template-columns: 3fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		.cell { aspect-ratio: auto; min-width: 0; min-height: 0; }
+		.cell:nth-child(n + 6) { display: none; }
+		.cell:first-child { grid-row: span 2; }
+
+		.count { display: none; }
+		.open-all { display: block; }
+
+		.gallery[data-count="1"] .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+		.gallery[data-count="1"] .cell:first-child { grid-row: auto; }
+
+		.gallery[data-count="2"] .gallery-grid { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr; }
+		.gallery[data-count="2"] .cell:first-child { grid-row: auto; }
+
+		.gallery[data-count="3"] .gallery-grid { grid-template-columns: 3fr 1fr; }
+
+		/* con 4 fotos, la segunda ocupa todo el ancho de la fila de arriba */
+		.gallery[data-count="4"] .cell:nth-child(2) { grid-column: span 2; }
+	}
+
+	/* Visor */
+	.lightbox {
+		margin: 0; padding: 0; border: 0;
+		width: 100dvw; height: 100dvh; max-width: none; max-height: none;
+		background: #000; color: #fff;
+	}
+	.lightbox::backdrop { background: #000; }
+	.lb-track {
+		display: flex; height: 100%;
+		overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+	}
+	.lb-track::-webkit-scrollbar { display: none; }
+	.lb-slide {
+		flex: 0 0 100%; height: 100%; scroll-snap-align: center;
+		display: flex; align-items: center; justify-content: center; padding: 1rem;
+	}
+	.lb-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+	.lb-count { position: absolute; top: 1rem; left: 1rem; font-size: .9rem; pointer-events: none; }
+	.lb-btn {
+		position: absolute; z-index: 2; cursor: pointer; border: 0;
+		background: var(--bg); color: var(--green); transition: opacity 200ms;
+	}
+	.lb-btn:hover { opacity: .8; }
+	.lb-close { top: 1rem; right: 1rem; padding: .5rem 1rem; font-size: .9rem; }
+	.lb-prev, .lb-next { display: none; top: 50%; transform: translateY(-50%); width: 3rem; height: 3rem; align-items: center; justify-content: center; }
+	.lb-prev { left: 1rem; }
+	.lb-next { right: 1rem; }
+
+	@media (min-width: 1024px) {
+		.lb-slide { padding: 3.5rem; }
+		.lb-prev, .lb-next { display: flex; }
+	}
+</style>
+
+<script>
+	const dialog = document.getElementById("gallery-dialog") as HTMLDialogElement | null;
+
+	if (dialog) {
+		const track = dialog.querySelector<HTMLElement>("[data-lightbox-track]")!;
+		const count = dialog.querySelector<HTMLElement>("[data-lightbox-count]")!;
+		const total = track.children.length;
+		const current = () => Math.round(track.scrollLeft / track.clientWidth);
+		const go = (i: number, smooth = true) =>
+			track.scrollTo({
+				left: Math.max(0, Math.min(total - 1, i)) * track.clientWidth,
+				behavior: smooth ? "smooth" : "instant",
+			});
+
+		const open = (i: number) => {
+			document.documentElement.style.overflow = "hidden";
+			dialog.showModal();
+			go(i, false);
+			count.textContent = `${i + 1} / ${total}`;
+		};
+
+		document.querySelectorAll<HTMLElement>("[data-gallery-open]").forEach((el) =>
+			el.addEventListener("click", () => open(Number(el.dataset.index)))
+		);
+
+		dialog.querySelector("[data-lightbox-close]")?.addEventListener("click", () => dialog.close());
+		dialog.querySelectorAll<HTMLElement>("[data-lightbox-step]").forEach((el) =>
+			el.addEventListener("click", () => go(current() + Number(el.dataset.lightboxStep)))
+		);
+
+		// Clic fuera de la foto cierra
+		track.addEventListener("click", (e) => {
+			if (!(e.target as HTMLElement).closest("img")) dialog.close();
+		});
+
+		track.addEventListener(
+			"scroll",
+			() => (count.textContent = `${current() + 1} / ${total}`),
+			{ passive: true }
+		);
+
+		dialog.addEventListener("keydown", (e) => {
+			if (e.key === "ArrowRight") go(current() + 1);
+			if (e.key === "ArrowLeft") go(current() - 1);
+		});
+
+		// Esc también dispara "close"
+		dialog.addEventListener("close", () => (document.documentElement.style.overflow = ""));
+	}
+
+	// Contador del carrusel mobile
+	const gTrack = document.querySelector<HTMLElement>("[data-gallery-track]");
+	const gCount = document.querySelector<HTMLElement>("[data-gallery-count]");
+	gTrack?.addEventListener(
+		"scroll",
+		() => {
+			if (gCount) gCount.textContent = `${Math.round(gTrack.scrollLeft / gTrack.clientWidth) + 1} / ${gTrack.children.length}`;
+		},
+		{ passive: true }
+	);
+</script>

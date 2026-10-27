@@ -1,0 +1,80 @@
+---
+const {t} = Astro.props
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: Astro.currentLocale ?? "en",
+  mainEntity: t.items.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+<section class="md:px-8 text-[var(--text)]">
+
+  <div class="max-w-5xl mx-auto">
+
+    <!-- HEADER -->
+    <div class="text-center">
+      <h2 class="mt-5 text-5xl max-w-2xl mx-auto md:text-6xl lg:text-7xl tracking-tight leading-[1] font-medium">
+        {t.title}
+      </h2>
+
+      <p class="mt-8 mx-auto max-w-2xl text-base md:text-lg leading-relaxed opacity-60">
+        {t.intro}
+      </p>
+
+    </div>
+
+
+    <!-- FAQ -->
+    <div class="mt-10 flex flex-col">
+
+      {
+        t.items.map((faq) => (
+          <details
+            class="group transition-colors duration-300 bg-[var(--bg)]
+                   hover:bg-[var(--card)] open:bg-[var(--card)]"
+          >
+
+            <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer px-6 py-6 md:px-8 md:py-7">
+
+              <div class="flex items-center justify-between gap-8">
+
+                <h3 class="text-lg md:text-xl lg:text-2xl tracking-tight">
+                  {faq.question}
+                </h3>
+
+                <span
+                  class="shrink-0 text-2xl font-light opacity-40
+                         transition-transform duration-300
+                         group-open:rotate-45"
+                >
+                  +
+                </span>
+
+              </div>
+
+            </summary>
+
+            <div class="px-6 pb-7 md:px-8 md:pb-8">
+
+              <p class="max-w-2xl text-sm md:text-base leading-relaxed opacity-60">
+                {faq.answer}
+              </p>
+
+            </div>
+
+          </details>
+        ))
+      }
+
+    </div>
+
+  </div>
+
+</section>

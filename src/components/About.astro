@@ -1,0 +1,63 @@
+---
+
+const { t } = Astro.props;
+const words = t.statement.split(" ");
+const half = Math.ceil(words.length / 2);
+---
+
+<section class="grid w-full grid-cols-1 bg-[var(--moss-dark)] text-[var(--bg)] lg:min-h-190 lg:grid-cols-2">
+  <div data-reveal="mask" class="relative aspect-[4/5] overflow-hidden bg-[var(--moss)] lg:aspect-auto">
+    <img
+      src={t.image.src}
+      alt={t.image.alt}
+      width="800"
+      height="1000"
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+  <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+</div>
+
+  <div class="flex flex-col justify-between gap-8 px-6 py-8 md:px-10">
+    <!-- La primera mitad se enciende, la segunda queda apagada -->
+    <p
+      data-words
+      class="group/words text-[clamp(2rem,3.6vw,4rem)] font-medium leading-[1.05] tracking-[-0.03em]"
+    >
+      {words.map((w, i) => (
+        <>
+          <span
+            class:list={[
+              "transition-opacity duration-[1200ms] ease-in-out motion-reduce:transition-none",
+              "group-data-[state=hidden]/words:opacity-30",
+              i < half && "group-data-[state=shown]/words:opacity-100",
+              i >= half && "group-data-[state=shown]/words:opacity-30",
+            ]}
+            style={i < half ? `transition-delay: ${i * 90}ms` : undefined}
+          >{w}</span>{" "}
+        </>
+      ))}
+    </p>
+
+    <div class="flex flex-col gap-6">
+      <p class="reveal max-w-md text-base leading-[1.6] text-[var(--moss-text)]">{t.body}</p>
+
+      {t.license && (
+        <p class="reveal max-w-md text-xs uppercase leading-relaxed tracking-[0.15em] text-[var(--moss-text)]/70">
+          {t.license}
+        </p>
+      )}
+
+      {t.cta && (
+        <a
+          href={t.cta.href}
+          class="group mt-2 flex w-fit items-center gap-2 text-[var(--moss-text)] transition-colors hover:text-[var(--bg)]"
+        >
+          {t.cta.label}
+          <span aria-hidden="true" class="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+        </a>
+      )}
+    </div>
+  </div>
+</section>

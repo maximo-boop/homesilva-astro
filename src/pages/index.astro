@@ -1,121 +1,58 @@
 ---
 import "@/styles/global.css";
+import data from "../data/es.json";
+
 import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/Hero.astro';
-import Properties from '@/components/Properties.astro';
-import Services from '@/components/Services.astro';
-import Pasos from '@/components/Pasos.astro';
-import Localities from '@/components/Localities.astro';
-import WhyChoose from '@/components/WhyChoose.astro';
-import FAQ from '@/components/FAQ.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import FeaturedProperties from "../components/FeaturedProperties.astro";
+import Services from "../components/Services.astro";
+import Zones from "../components/Zones.astro";
+import About from "../components/About.astro";
+import Process from "../components/Process.astro";
+import Appraisal from "../components/Appraisal.astro";
+import Faq from "../components/Faq.astro";
+
+const sample = {
+  href: "/propiedades",
+  imageAlt: "Terreno en Valle Hermoso",
+  operation: "Venta",
+  type: "Terreno",
+  location: "Valle Hermoso",
+  title: "Lote en esquina",
+  features: ["450 m²", "Escritura", "Servicios"],
+  price: "USD 45.000",
+};
+const items = Array.from({ length: 6 }, (_, i) => ({
+  ...sample,
+  title: `${sample.title} ${i + 1}`,
+  image: 
+    i===0 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/13097405/photo_1791459069673777274_30433576_medium.webp'
+    : i===1 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/12173724/photo_1791399506521707667_27790911_medium.webp'
+    : i===2 ? 'https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/13128487/photo_1791860669771656439_41486926_medium.webp'
+    : i===3 ? 'https://ik.imagekit.io/homesilva/departamento-en-sunny-isles-miami-florida/01.jpg'
+    : i===4 ? 'https://ik.imagekit.io/homesilva/departamento-en-alta-cordoba-cordoba/01.webp'
+    :'https://ik.imagekit.io/homesilva/departamento-en-chateau-carreras-cordoba/01.jpg'
+}));
 ---
 
 <Layout>
-	<main>
-		<Hero />
-		<Properties />
-		<Services />
-		<Pasos />
-		<Localities />
-
-		<section class="pt-20 lg:pt-40 lg:pb-20 -mt-20 relative bg-white">
-			<div class="h-20 lg:h-40 w-full absolute top-0 left-0 bg-gradient-to-b from-[#f3f3f3] to-white"/>
-
-			<div class="global-padding max-w-[1400px] mx-auto flex flex-col-reverse lg:items-center lg:flex-row lg:gap-10 gap-5">
-
-				<div class="flex-1 h-full flex flex-col gap-5">
-					<h2 class="font-medium text-[20px] lg:text-2xl">No solo publicamos propiedades. Diseñamos una estrategia para vender bien, con respaldo profesional.</h2>
-					<p class="text-[var(--text)] text-lg">Cada operación es acompañada por Domingo Cayetano Silva, corredor inmobiliario y martillero matriculado. Lo que garantiza que cada etapa del proceso sea clara, ordenada y segura, tanto para quien vende como para quien compra.</p>
-					<p class="text-[var(--text)] text-lg">No tercerizamos el seguimiento: vos siempre hablás directamente con el corredor a cargo de tu operación.</p>
-
-					<ul class="flex flex-wrap gap-5">
-						{["15+ años de experiencia", "Corredor matriculado", "Sin intermediarios"].map(t=> (
-							<li class="py-2 px-4 font-medium bg-[var(--primaryColor)] text-[var(--cta)] w-fit rounded-[12px]">{t}</li>
-						))}
-					</ul>
-
-				</div>
-
-				<article class="flex-1 flex flex-col min-h-80 items-center gap-5 justify-center text-center">
-					<div class="bg-gray-200 h-70 w-70 rounded-[40px] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.1)]">
-						<img 
-							src="/domingo-cayetano-silva-corredor-inmobiliario-cordoba.webp" 
-							alt="Domingo Cayetano Silva Corredor Inmobiliario en Córdoba Las Sierras"
-							class="object-cover object-top w-full h-full"
-							width="300"
-							height="300"
-						/>
-					</div>
-
-					<p class="text-[var(--text)] text-base italic">"Especializado en la comercialización de todo tipo de inmuebles casas, terrenos, departamentos, cabañas, locales e inversiones y también en la administración de propiedades"</p>
-				</article>
-
-			</div>
-		</section>
-
-		<section class="lg:py-10 bg-white">
-
-			<div class="max-w-[1400px] mx-auto global-padding flex flex-col lg:flex-row lg:items-center lg:gap-10 ">
-				<div class="flex-1 flex min-h-80 w-full">
-					<img src="/fotos.webp" class="w-full object-cover" height="80" width="550"  alt="Fotografías profesionales de propiedades en venta en Córdoba" loading="lazy" fetchpriority='auto' />
-				</div>
-				<div class="flex-1 flex flex-col gap-5 h-full">
-					<h2 class="font-medium text-xl lg:text-2xl">Fotografías y exposición de calidad</h2>
-					<p class="text-[var(--text)] text-lg">Trabajamos con un equipo de producción audiovisual completo, fotógrafos profesionales, reportajes con luz natural y edición de detalle. Producción de video inmobiliario con guión, locución profesional y montaje. Cada inmueble se presenta en los principales portales, redes sociales y nuestra red directa de compradores.</p>
-
-					<ul class="flex flex-wrap gap-5">
-						{["Fotografia HD", "Video Drone", "Tour Virtual 360°", "Reportaje Exterior"].map(t=> (
-							<li class="py-2 px-4 font-medium bg-[var(--primaryColor)] text-[var(--cta)] w-fit rounded-[12px]">{t}</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</section>
-		<section class="py-10 bg-white">
-
-			<div class="global-padding max-w-[1400px] mx-auto flex flex-col-reverse lg:flex-row lg:items-center lg:gap-10 ">
-					
-				<div class="flex-1 flex flex-col gap-5 h-full">
-					<h2 class="font-medium text-[20px] lg:text-2xl">Trabajamos con otras agencias y agentes para encontrar lo que buscás</h2>
-					<p class="text-lg text-[var(--text)]">Somos parte de una red activa de agencias y profesionales independientes. Si tu propiedad ideal no está en nuestra cartera, la encontramos y si la tuya necesita más visibilidad, la compartimos.</p>
-					<p class="text-lg text-[var(--text)]">Esta red nos permite agilizar búsquedas y ampliar la oferta disponible sin que tengas que recorrer diez agencias distintas. Una sola consulta, múltiples opciones reales.</p>
-
-					<ul class="flex flex-wrap gap-5">
-						{["30+ agencias aliadas", "Freelancers asociados", "Cobertura en toda Córdoba"].map(t=> (
-							<li class="py-2 px-4 font-medium bg-[var(--primaryColor)] text-[var(--cta)] w-fit rounded-[12px]">{t}</li>
-						))}
-					</ul>
-				</div>
-
-				<div class="flex-1 flex min-h-80 w-full">
-					<img src="/map.png" class="w-full object-cover -ml-5 lg:-ml-0" height="80" width="550" alt="Mapa de cobertura inmobiliaria en Córdoba Capital y Sierras" loading="lazy" fetchpriority='auto' />
-				</div>
-			</div>
-		</section>
-		<section id="asesoramiento" class="py-10 pt-5 lg:py-20 bg-white">
-
-			<div class="max-w-[1400px] mx-auto global-padding flex flex-col lg:flex-row gap-5 lg:gap-10 ">
-				<div class="flex-1 flex">
-					<img 
-						src="/family.webp" 
-						alt="Familia recibiendo asesoramiento inmobiliario en Córdoba" 
-						class="rounded-[40px] object-cover h-[250px] lg:min-h-80  lg:h-auto w-full lg:max-w-md"
-						loading="lazy" fetchpriority='auto'
-						height="80" width="550"
-					>
-				</div>
-
-				<div class="flex-1 flex flex-col gap-5 justify-center">
-					<h2 class="font-medium text-xl lg:text-2xl">¿Querés vender tu propiedad? Te asesoramos para hacerlo bien desde el inicio</h2>
-					<p class="text-[var(--text)] text-lg">Operamos en Córdoba hace más de 15 años. Conocemos Villa Giardino, La Falda, Carlos Paz y cada zona de las Sierras. Te decimos qué vale tu propiedad hoy, no lo que querés escuchar.</p>
-					<p class="text-[var(--text)] text-lg">Te acompañamos en cada etapa: valuación honesta, estrategia de precio, difusión en los canales correctos y negociación hasta el cierre. Sin sorpresas, sin vueltas.</p>
-		
-					<a href="/contacto" class="flex bg-black px-6 py-4 text-white w-fit rounded-[16px]">Solicitar asesoramiento</a>
-				</div>
-			</div>
-		</section>
-
-		<FAQ />
+	<main class="flex flex-col ">
+    <div class="flex flex-col gap-15 p-5 lg:p-12 pt-0 lg:pt-0 lg:pb-25">
+  		<Hero t={data.hero} />
+      <Stats t={data.stats} />
+    </div>
+    <div class="bg-[var(--bg3)] flex flex-col gap-30 p-5 lg:p-12 lg:pt-25 lg:pb-30">
+  		<FeaturedProperties t={{ ...data.featured, items }} />
+      <Services t={data.services} />
+      <Zones t={data.zones} />
+      <About t={data.about} />
+    </div>
+    <div class="flex flex-col gap-25 p-5 lg:p-12 lg:pt-30">
+      <Process t={data.process} />
+      <Appraisal t={data.appraisal} />
+      <Faq t={data.faq} />
+    </div>
 	</main>
 </Layout>
 

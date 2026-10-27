@@ -1,0 +1,26 @@
+<aside
+  class="
+    bg-[var(--paper)] p-5
+
+    lg:sticky lg:self-start lg:overflow-y-auto
+    lg:top-[var(--sticky-top)]
+    lg:max-h-[calc(100dvh-var(--sticky-top)-1.25rem)]
+    lg:transition-[top,max-height] lg:duration-300 motion-reduce:lg:transition-none
+
+    max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:z-[120] max-lg:w-[85%] max-lg:max-w-xs
+    max-lg:-translate-x-full max-lg:overflow-y-auto
+    max-lg:transition-transform max-lg:duration-300 motion-reduce:max-lg:transition-none
+    max-lg:peer-checked/filters:translate-x-0
+  "
+>
+  <!-- Cabecera del cajón (solo mobile) -->
+  <div class="mb-6 flex items-center justify-between lg:hidden">
+    <span class="font-medium">Filtros</span>
+    <label for="filters-toggle" class="cursor-pointer">Cerrar</label>
+  </div>
+
+  <!-- BORRAR: etiqueta provisoria -->
+  <p class="text-sm text-[var(--textop)] mb-5 uppercase">Filtros</p>
+
+  <slot />
+</aside>

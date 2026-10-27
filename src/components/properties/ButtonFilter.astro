@@ -1,0 +1,73 @@
+---
+import propiedades from "../../data/propiedades.json";
+import { toSlug, toPlural, matches } from "../../scripts/utils.js";
+
+const { item, urlParams } = Astro.props;
+
+const keyOf = {
+	operacion: (o) => o.toLowerCase(),
+	tipo: (o) => toPlural(o.toLowerCase()),
+	localidad: (o) => toSlug(o.toLowerCase()),
+}[item.slug];
+
+function build(value) {
+	const next = { ...urlParams };
+	if (next[item.slug] === value) delete next[item.slug];
+	else next[item.slug] = value;
+	const parts = [next.operacion, next.tipo, next.localidad].filter(Boolean);
+	return { parts, href: "/propiedades" + (parts.length ? "/" + parts.join("/") : "") };
+}
+
+const options = item.options.map((label) => {
+	const key = keyOf(label);
+	const { parts, href } = build(key);
+	return {
+		label,
+		href,
+		active: urlParams[item.slug] === key,
+		exists: parts.length === 0 || propiedades.some((p) => matches(p, parts)),
+	};
+});
+---
+
+<div class="flex flex-col gap-3">
+	<h3 class="font-medium text-[var(--green)]">{item.title}</h3>
+	<ul class="flex flex-wrap gap-2">
+		{options.map((o) => (
+			<li>
+				{o.exists ? (
+					<a
+						href={o.href}
+						data-keep-query
+						aria-current={o.active ? "true" : undefined}
+						class:list={[
+							"inline-flex px-3 py-1.5 text-[.9rem] capitalize transition-colors duration-200",
+							o.active
+								? "bg-[var(--green)] text-[var(--bg)]"
+								: "bg-[var(--bg)] text-[var(--text2)] hover:bg-[var(--moss-pale)]",
+						]}
+					>
+						{o.label}
+					</a>
+				) : (
+					<span
+						aria-disabled="true"
+						class="inline-flex cursor-not-allowed bg-[var(--bg)] px-3 py-1.5 text-[.9rem] capitalize text-[var(--text2)] opacity-30"
+					>
+						{o.label}
+					</span>
+				)}
+			</li>
+		))}
+	</ul>
+</div>
+
+<script>
+	// Conserva ?habitaciones=, ?banos=, etc. al cambiar operación, tipo o localidad
+	const qs = location.search;
+	if (qs) {
+		document
+			.querySelectorAll<HTMLAnchorElement>("a[data-keep-query]")
+			.forEach((a) => (a.href += qs));
+	}
+</script>

@@ -1,0 +1,115 @@
+---
+const { t } = Astro.props;
+---
+
+<section data-process class="w-full text-[var(--text)]">
+  <div class="mx-auto w-full max-w-[1400px]">
+
+    <!-- TÍTULO -->
+    <div class="flex flex-col">
+      <h2 class="reveal max-w-2xl text-[clamp(3.25rem,9vw,7.5rem)] font-medium leading-none tracking-tighter">
+        {t.title}
+      </h2>
+
+      {t.description && (
+        <p
+          style="--d: 150ms"
+          class="reveal ml-auto mt-8 max-w-md text-base leading-relaxed text-[var(--text2)] md:text-lg"
+        >
+          {t.description}
+        </p>
+      )}
+    </div>
+
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-x-6">
+
+      <!-- IMAGEN: queda fija y crece con el scroll -->
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
+          <div
+            data-frame
+            class="aspect-[4/5] w-full overflow-hidden bg-[var(--card)] [--g:1] lg:max-h-[80vh] lg:[scale:var(--g)]"
+          >
+            <img
+              src={t.image.src}
+              alt={t.image.alt}
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- PASOS -->
+      <ol data-steps class="list-none lg:col-span-6 lg:col-start-7">
+        {t.items.map((item, i) => (
+          <li class="flex min-h-[55vh] flex-col justify-center last:min-h-[40vh] lg:min-h-[70vh] lg:last:min-h-[40vh]">
+            <span class="reveal mb-4 text-2xl font-medium text-[var(--moss)]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            <h3 class="reveal text-[clamp(2.75rem,6vw,6.5rem)] font-medium leading-[0.95] tracking-tighter">
+              {item.title}
+            </h3>
+
+            <p style="--d: 150ms" class="reveal mt-5 max-w-[34ch] text-base leading-relaxed text-[var(--textop)]">
+              {item.text}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduce) {
+    const desktop = matchMedia("(min-width: 1024px)");
+    const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
+    const MIN = 0.55; // tamaño inicial de la imagen (1 = completa)
+
+    document.querySelectorAll("[data-process]").forEach((root) => {
+      const steps = root.querySelector("[data-steps]");
+      const frame = root.querySelector("[data-frame]");
+      let ticking = false;
+
+      const update = () => {
+        ticking = false;
+
+        if (!desktop.matches) {
+          frame.style.setProperty("--g", "1");
+          return;
+        }
+
+        const vh = innerHeight;
+        const { top, height } = steps.getBoundingClientRect();
+
+        // 0 cuando asoma el primer paso, 1 cuando termina la lista
+        const progress = clamp((vh * 0.6 - top) / (height + vh * 0.1), 0, 1);
+
+        // Llega al tamaño completo cuando el 4.º paso queda en el centro
+        const grow = clamp(progress / 0.85, 0, 1);
+        const eased = grow * grow * (3 - 2 * grow);
+
+        frame.style.setProperty("--g", (MIN + (1 - MIN) * eased).toFixed(3));
+      };
+
+      addEventListener(
+        "scroll",
+        () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(update);
+        },
+        { passive: true }
+      );
+      addEventListener("resize", update);
+      update();
+    });
+  }
+</script>

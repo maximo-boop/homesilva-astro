@@ -1,81 +1,110 @@
 ---
 const inputs = [
-	{
-		label: "Nombre y Apellido",
-		name: "nombre",
-		type: "text",
-		required: true
-	},
-	{
-		label: "Correo electrónico",
-		name: "email",
-		type: "email",
-		required: false
-	},
-	{
-		label: "Télefono / WhatsApp",
-		name: "telefono",
-		type: "tel",
-		required: true
-	},
-	{
-		label: "Mensaje",
-		name: "mensaje",
-		type: "textarea",
-		required: false
-	}
-]
+	{ label: "Nombre y Apellido", name: "nombre", type: "text", autocomplete: "name", required: true },
+	{ label: "Correo electrónico", name: "email", type: "email", autocomplete: "email", required: false },
+	{ label: "Teléfono / WhatsApp", name: "telefono", type: "tel", autocomplete: "tel", required: true },
+	{ label: "Mensaje", name: "mensaje", type: "textarea", required: false },
+];
 
-const { titulo, url } = Astro.props
-const mensajePorDefecto = titulo 
+const { titulo, url, interest, slug=false } = Astro.props;
+const mensajePorDefecto = titulo
 	? `Hola, me interesa esta propiedad y quisiera más información. Muchas gracias.`
-	: ''
+	: "";
 ---
 
-<form action="https://formsubmit.co/consultas.brsilva@gmail.com" method="POST" class="flex flex-col gap-4 md:max-w-md w-full">
+<form action="https://formsubmit.co/consultas.brsilva@gmail.com" method="POST" class="flex w-full flex-col gap-4 md:max-w-md">
 
-	<input type="hidden" name="_next" value={url ? `https://homesilva.com.ar/propiedades/${url}` : "https://homesilva.com.ar"}>
+	<input type="hidden" name="_next" value={url ? `https://homesilva.com.ar/propiedades/${url}` : "https://homesilva.com.ar"} />
+	<input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
 	{titulo && <input type="hidden" name="propiedad" value={titulo} />}
+	{titulo && <input type="hidden" name="_subject" value={`Consulta: ${titulo}`} />}
 
-	{inputs.map(item => (
-		<div key={item.name} class="flex flex-col gap-1 relative">
+	{
+		interest && (
+			<fieldset class="m-0 mb-2 p-0">
+				<legend class="mb-3 text-sm font-medium">{interest.label}</legend>
+				<div class="flex flex-wrap gap-2">
+					{interest.options.map((option) => (
+						<label class="cursor-pointer">
+							<input type="radio" name="interes" value={option} required class="peer sr-only" />
+							<span class="chip block px-4 py-3 text-[.9rem] font-medium transition-colors">{option}</span>
+						</label>
+					))}
+				</div>
+			</fieldset>
+		)
+	}
+
+	{inputs.map((item) => (
+		<div class="relative flex flex-col gap-1">
 			{item.type !== "textarea" ? (
-				<input 
-					type={item.type} 
-					autocomplete={item.type}
-					id={item.name} 
-					name={item.name} 
+				<input
+					type={item.type}
+					autocomplete={item.autocomplete}
+					id={item.name}
+					name={item.name}
 					required={item.required}
 					placeholder=" "
-					class={`${titulo ? 'pt-[1.3rem] pb-[.3rem] text-sm' : 'pt-7 pb-2'} peer bg-white w-full focus:outline-none px-4 border border-[#ddd] `}
+					class={`${slug ? 'border-b border-[var(--text)]/10' : 'px-4'} ${titulo ? "pt-[1.3rem] pb-[.3rem] text-sm" : "pt-7 pb-2"} bg-[var(--card)] field peer w-full`}
 				/>
 			) : (
-				<textarea 
-					name={item.name} 
-					id={item.name} 
-					required={item.required} 
+				<textarea
+					name={item.name}
+					id={item.name}
+					required={item.required}
 					placeholder="Mensaje"
 					rows={4}
-					class={`${titulo ? 'pt-[.8rem] pb-[.25rem] text-sm' : 'pt-4 pb-2'} px-4 peer bg-white min-h-[100px] max-h-[100px] w-full focus:outline-none border border-[#ddd]`}
+					class={`${slug ? '' : 'px-4'} ${titulo ? "pt-[.8rem] pb-[.25rem] text-sm" : "pt-4 pb-2"}  bg-[var(--card)] field peer max-h-[100px] min-h-[100px] w-full resize-none`}
 				>{mensajePorDefecto}</textarea>
 			)}
 
-			<label 
-				for={item.name} 
-				class={`${
-					item.type === 'textarea' ? 'sr-only'
-					: 'top-[50%] -translate-y-[50%] peer-focus:top-[30%] peer-not-placeholder-shown:top-[30%]'}
-					absolute left-4  text-sm text-gray-500 transition-all duration-200
-					peer-focus:text-xs
-					peer-focus:text-black
+			<label
+				for={item.name}
+				class={`
+					${slug ? 'left-0' : 'left-4'}
+					${item.type === "textarea"
+						? "sr-only"
+						: "top-[50%] -translate-y-[50%] peer-focus:top-[30%] peer-not-placeholder-shown:top-[30%]"
+					}
+					pointer-events-none absolute  text-sm text-[var(--textop)] transition-all duration-200
+					peer-focus:text-xs peer-focus:text-[var(--text)]
 					peer-not-placeholder-shown:text-xs
-					pointer-events-none
 				`}
 			>{item.label}</label>
 		</div>
 	))}
 
-	<button type="submit" class='cursor-pointer bg-black text-white p-3 rounded-[12px]'>Enviar consulta</button>
-	<p class={`${titulo ? 'text-xs' : 'text-sm'} text-wrap text-gray-400 w-full`}>Al enviar tu consulta, estás aceptando los <a href="/terminos-y-condiciones" class="text-[#2e6ff1aa]">"Terminos y Condiciones"</a> y <a href="/politica-de-privacidad" class="text-[#2e6ff1aa]">"Política de privacidad"</a> de HomeSilva.</p>
+	<button type="submit" class="w-full cursor-pointer bg-[var(--text)] p-4 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-80">
+		Enviar consulta
+	</button>
+
+	<p class={`${titulo ? "text-xs" : "text-sm"} w-full text-wrap text-[var(--textop)]`}>
+		Al enviar tu consulta, estás aceptando los <a href="/terminos-y-condiciones" class="underline underline-offset-4">Términos y Condiciones</a> y la <a href="/politica-de-privacidad" class="underline underline-offset-4">Política de privacidad</a> de HomeSilva.
+	</p>
 
 </form>
+
+<style>
+	/* Campos rellenos, sin bordes 
+		background: var(--card);
+	*/
+	.field {
+		color: var(--text);
+		border-radius: 0;
+	}
+
+	.field:focus-visible,
+	input:focus-visible + .chip {
+		outline: 2px solid var(--text);
+		outline-offset: 2px;
+	}
+
+	.chip {
+		background: var(--card);
+	}
+
+	input:checked + .chip {
+		background: var(--text);
+		color: var(--bg);
+	}
+</style>

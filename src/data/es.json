@@ -1,0 +1,379 @@
+{
+
+  "hero": {
+    "eyebrow": "Las Sierras",
+    "title": "Propiedades en Valle Hermoso, La Falda y alrededores.",
+    "description": "Casas, terrenos, cabañas y oportunidades de inversion, con el respaldo de un corredor matriculado. También en Córdoba capital.",
+    "cta": {
+      "label": "Quiero vender mi propiedad",
+      "href": "/vender"
+    },
+    "image": {
+      "src": "/images/hero/hero.webp",
+      "alt": "Ilustración de una casa entre las sierras de Córdoba"
+    },
+    "search": {
+      "operations": {
+        "label": "Operación",
+        "buy": "Comprar",
+        "rent": "Alquilar"
+      },
+      "quick": {
+        "label": "Búsquedas frecuentes",
+        "items": [
+          { "label": "Terrenos en las sierras", "href": "/propiedades/venta/terrenos/sierras" },
+          { "label": "Alquileres en las sierras", "href": "/propiedades/alquiler/sierras" },
+          { "label": "Casas en Córdoba", "href": "/propiedades/venta/casas/cordoba" }
+        ]
+      },
+      "location": { "label": "Localidad", "placeholder": "Seleccionar" },
+      "propertyType": { "label": "Tipo de propiedad", "placeholder": "Seleccionar" },
+      "submit": "Buscar",
+      "close": "Cerrar"
+    }
+  },
+  "stats": {
+    "items": [
+      { "value": "Desde 2010", "label": "Trabajando en el mercado inmobiliario de Córdoba" },
+      { "value": "3", "label": "Jurisdicciones con matrícula habilitante" },
+      { "value": "Público y judicial", "label": "Martillero y corredor matriculado" },
+      { "value": "Integral", "label": "De la publicación al cierre, con administración de propiedades" }
+    ]
+  },
+  "featured": {
+    "title": "Nuestras propiedades",
+    "prev": "Propiedad anterior",
+    "next": "Propiedad siguiente",
+    "cta": {
+      "label": "Ver todas",
+      "href": "/propiedades"
+    }
+  },
+  "services": {
+    "title": "Cómo te ayudamos",
+    "description": "Acompañamos cada paso de una operación inmobiliaria en las sierras de Córdoba, de la tasación a la escritura.",
+    "descriptionRest": " Cada servicio responde a una etapa distinta del camino, según si vendés, comprás o invertís.",
+    "items": [
+      {
+        "title": "Tasar",
+        "description": "Definimos el valor de tu propiedad a partir del mercado actual: comparamos inmuebles similares, la ubicación y las características de cada caso. El objetivo es un precio que genere interés real, ni por debajo de lo que vale ni tan alto que se quede sin consultas."
+      },
+      {
+        "title": "Vender",
+        "description": "Armamos una estrategia a medida de la propiedad: fotografía y material audiovisual profesional, difusión en portales, redes y en una red de colegas, y seguimiento de cada consulta. Negociamos y te acompañamos hasta concretar la operación."
+      },
+      {
+        "title": "Buscar",
+        "description": "Primero entendemos qué necesitás: zona, tipo de propiedad y presupuesto. Después te mostramos opciones reales, de nuestra cartera y de la red de colegas, con un conocimiento de las sierras que te ahorra visitas innecesarias."
+      },
+      {
+        "title": "Invertir",
+        "description": "Lotes, cabañas y propiedades con potencial en las sierras, analizados con números claros. Te ayudamos a evaluar cada oportunidad antes de decidir, con la mirada de quien conoce el mercado de la zona."
+      },
+      {
+        "title": "Escriturar",
+        "description": "Revisamos la documentación desde el principio y ordenamos lo que haga falta, incluso cuando la propiedad está en trámite o en proceso de sucesión. Así la operación llega a la escritura de forma clara y segura para ambas partes."
+      },
+      {
+        "title": "Administrar",
+        "description": "También nos ocupamos de la administración de propiedades, con seguimiento y trato directo con el corredor, para que no tengas que resolver el día a día."
+      }
+    ]
+  },
+  "zones": {
+    "cta": { "label": "Ver todas", "href": "/propiedades" },
+    "display": "Nuestras zonas",
+    "title": "Propiedades en las sierras de Córdoba",
+    "description": "Casas, terrenos, cabañas y departamentos en Valle Hermoso, La Falda y localidades vecinas, además de Córdoba capital. Elegí una zona para ver lo que hay disponible hoy.",
+    "prev": "Zonas anteriores",
+    "next": "Zonas siguientes",
+    "items": [
+      { "name": "Valle Hermoso", "count": "12 propiedades", "href": "/zonas/valle-hermoso", "image": "/localities/valle-hermoso.jpg", "imageAlt": "Valle Hermoso","types": [
+        { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+        { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+        { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+      ]  },
+      { "name": "Córdoba Capital", "count": "9 propiedades", "href": "/zonas/la-falda", "image": "/localities/cordoba.jpg", "imageAlt": "La Falda","types": [
+          { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+          { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+          { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+        ] },
+      { "name": "La Falda", "count": "7 propiedades", "href": "/zonas/huerta-grande", "image": "/localities/la-falda.jpg", "imageAlt": "Huerta Grande","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "La Cumbre", "count": "5 propiedades", "href": "/zonas/la-cumbre", "image": "/localities/valle-hermoso.jpg", "imageAlt": "La Cumbre","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "Cosquín", "count": "8 propiedades", "href": "/zonas/cosquin", "image": "/localities/cordoba.jpg", "imageAlt": "Cosquín","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "Capilla Monte", "count": "6 propiedades", "href": "/zonas/capilla-del-monte", "image": "/localities/cordoba.jpg", "imageAlt": "Capilla del Monte","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "Villa Carlos Paz", "count": "10 propiedades", "href": "/zonas/villa-carlos-paz", "image": "/localities/la-falda.jpg", "imageAlt": "Villa Carlos Paz","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "Córdoba Capital", "count": "14 propiedades", "href": "/zonas/cordoba", "image": "/localities/valle-hermoso.jpg", "imageAlt": "Córdoba Capital","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] },
+      { "name": "Cabana", "count": "4 propiedades", "href": "/zonas/cabana", "image": "/localities/cordoba.jpg", "imageAlt": "Cabana","types": [
+  { "label": "Casas", "href": "/propiedades/casas?zona=valle-hermoso" },
+  { "label": "Terrenos", "href": "/propiedades/terrenos?zona=valle-hermoso" },
+  { "label": "Deptos", "href": "/propiedades/departamentos?zona=valle-hermoso" }
+] }
+    ]
+  },
+  "about": {
+    "title": "Tu Corredor",
+    "statement": "Detrás de cada operación hay una persona a cargo, con matrícula y nombre propio.",
+    "body": "Domingo Cayetano Silva es corredor público y martillero matriculado, con habilitación en tres jurisdicciones. Trabaja desde Valle Hermoso en la comercialización de todo tipo de inmuebles y en la administración de propiedades, y conoce las sierras tanto como el mercado de Córdoba capital.",
+    "image": { "src": "/corredor.webp", "alt": "Domingo Silva en las sierras de Córdoba" },
+    "license": "Domingo Cayetano Silva · Corredor público y martillero · M.P. 045879 · 054237 · 013508"
+  },
+  "process": {
+    "title": "Cómo trabajamos",
+    "description": "Cuatro etapas, de la primera conversación a la escritura. Tanto si vendés como si comprás o invertís en las sierras, el camino es el mismo: claro desde el inicio y acompañado de principio a fin por el corredor.",
+    "image": { "src": "/steps.png", "alt": "Descripción de la imagen" },
+    "items": [
+      {
+        "title": "Conversamos",
+        "text": "Una primera charla, sin compromiso, para entender qué buscás o qué querés vender, en qué zona y en qué plazos. Si hay dudas con la documentación, las ordenamos desde acá."
+      },
+      {
+        "title": "Definimos",
+        "text": "Si vendés, tasamos con datos del mercado y revisamos el estado de la propiedad. Si comprás, afinamos zona, tipo y presupuesto. Los honorarios se acuerdan por adelantado, sin costos ocultos."
+      },
+      {
+        "title": "Mostramos",
+        "text": "Producimos fotos y video profesionales y difundimos la propiedad en portales, redes y entre colegas. Las consultas y las visitas pasan siempre por el corredor."
+      },
+      {
+        "title": "Cerramos",
+        "text": "Negociamos, ordenamos la documentación y llegamos a la escritura. El proceso completo suele llevar entre 30 y 90 días, y los honorarios se abonan una vez concretada la operación."
+      }
+    ]
+  },
+  "appraisal": {
+  "eyebrow": "Para propietarios",
+  "title": "¿Cuánto vale tu propiedad?",
+  "description": "Te decimos qué vale hoy, con datos reales de tu zona y un corredor que te acompaña hasta la venta.",
+  "points": [
+    {
+      "title": "Precio por m² de tu zona",
+      "text": "Valores de referencia de tu localidad."
+    },
+    {
+      "title": "Comparables reales",
+      "text": "Propiedades publicadas y vendidas cerca de la tuya."
+    },
+    {
+      "title": "Te contacta un corredor",
+      "text": "Afinamos el valor juntos, con una visita si hace falta."
+    }
+  ],
+  "cta": { "label": "Quiero tasar mi propiedad" },
+  "whatsapp": "5493517062465",
+  "message": "Hola, quiero tasar mi propiedad. Está ubicada en "
+},
+  "faq": {
+    "title": "Preguntas Frecuentes.",
+    "intro": "",
+    "items": [
+      {
+        "question": "¿Cómo es el proceso para vender una propiedad?",
+        "answer": "El proceso comienza con la tasación de la propiedad para definir un precio acorde al mercado, evitando que quede por debajo o por encima de su valor real. A partir de ahí, se trabaja la presentación (fotos, contenido y publicación) y se define una estrategia para generar interés y atraer consultas reales. Durante todo el proceso se realiza seguimiento de consultas y se acompaña hasta concretar la operación."
+      },
+      {
+        "question":"¿Cómo se define el precio de mi propiedad?",
+        "answer":"El precio se define en base al mercado actual, analizando propiedades similares, ubicación y características. No se trata solo de estimar un valor, sino de encontrar un punto que permita generar interés real y avanzar en la venta sin demoras."
+      },
+      {
+        "question":"¿Cuánto tiempo tarda en venderse una propiedad?",
+        "answer":"En promedio, una propiedad puede tardar alrededor de 90 días en venderse, siempre que el precio esté bien definido desde el inicio y la estrategia de publicación sea la adecuada. El tiempo puede variar según la ubicación, el tipo de propiedad y la demanda del mercado."
+      },
+      {
+        "question":"¿Qué necesito para publicar mi propiedad?",
+        "answer":"Para publicar una propiedad es importante contar con la información básica como ubicación, superficie y prestaciones. También es recomendable tener la documentación disponible, como el título de propiedad, aunque no es necesario tener todo resuelto desde el inicio. A partir de ahí, se analiza cada caso y se realiza un informe para verificar el estado de la propiedad, asegurando una operación clara y segura para el comprador."
+      },
+      {
+        "question":"¿Trabajan con exclusividad o puedo publicar con otras inmobiliarias?",
+        "answer":"Trabajamos de ambas formas: con exclusividad o con autorización de venta, según lo que mejor se adapte a cada propiedad. Con exclusividad, la propiedad se gestiona a través de un solo canal, lo que permite trabajar con una estrategia más clara y un seguimiento más ordenado. Con autorización, podés publicar la propiedad con otras inmobiliarias al mismo tiempo. Es una opción más flexible, aunque con menor control sobre cómo se presenta y se gestiona la publicación. En ambos casos, el objetivo es el mismo: lograr una venta bien trabajada y con consultas reales."
+      },
+      {
+        "question":"¿Qué incluye el servicio de comercialización?",
+        "answer":"El servicio incluye la definición de una estrategia acorde a la propiedad y al mercado, junto con la producción de contenido profesional para su correcta presentación. Se trabaja con fotógrafos y material audiovisual pensado para su difusión en portales y redes sociales, buscando destacar la propiedad y generar mayor interés. Además, la propiedad se difunde tanto en canales propios como en una red de colegas, ampliando el alcance y las posibilidades de encontrar un comprador."
+      },
+      {
+        "question":"¿Quién está detrás de las operaciones?",
+        "answer":"Las operaciones están a cargo de Domingo Cayetano Silva, corredor público y martillero matriculado con habilitación en tres jurisdicciones (M.P. 045879 · 054237 · 013508). Esto nos habilita a operar como martillero público y martillero judicial, garantizando un proceso claro y seguro en cada etapa. Nos especializamos en la comercialización de todo tipo de inmuebles, administración de propiedades y acompañamiento completo desde la publicación hasta el cierre."
+      },
+      {
+        "question":"¿Cobran comisión? ¿Cómo funciona?",
+        "answer":"Sí, se cobran honorarios por la intermediación en la operación, los cuales están regulados por la ley del Colegio de Corredores y Martilleros de la provincia de Córdoba (Ley 7191). El detalle de los honorarios se acuerdan previamente y se abona una vez concretada la operación. Se busca que todo sea claro desde el inicio, sin costos ocultos."
+      },
+      {
+        "question":"¿Puedo publicar mi propiedad si no tengo todos los papeles?",
+        "answer":"Sí, en muchos casos se puede avanzar aunque la documentación no esté completamente finalizada. Por ejemplo, si la propiedad está en proceso de sucesión o en trámite, se puede evaluar la situación y comenzar a trabajar la venta mientras se ordena la parte legal. Cada caso se analiza de forma particular, para asegurar que la operación pueda avanzar de manera segura y sin inconvenientes."
+      },
+      {
+        "question":"¿Cuánto tarda el proceso de compra?",
+        "answer":"El tiempo puede variar según cada operación, pero en general el proceso completo puede llevar entre 30 y 90 días. Depende de factores como la documentación, la forma de pago y los tiempos administrativos. Cuando todo está en orden, el proceso avanza de forma más ágil."
+      }
+    ]
+  },
+  "footer": {
+  "brand": "HomeSilva",
+  "description": "Inmobiliaria en las sierras de Córdoba. Compra, venta, alquiler y administración de propiedades en Valle Hermoso, La Falda y alrededores, con salida a Córdoba capital.",
+  "explore": {
+    "title": "Explorar",
+    "links": [
+      { "label": "Propiedades", "href": "/propiedades" },
+      { "label": "Tasar mi propiedad", "href": "/#tasar" },
+      { "label": "Preguntas frecuentes", "href": "/#faq" }
+    ]
+  },
+  "zones": {
+    "title": "Zonas",
+    "links": [
+      { "label": "Valle Hermoso", "href": "/zonas/valle-hermoso" },
+      { "label": "La Falda", "href": "/zonas/la-falda" },
+      { "label": "Huerta Grande", "href": "/zonas/huerta-grande" },
+      { "label": "Córdoba capital", "href": "/zonas/cordoba" }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "address": "Valle Hermoso, Córdoba",
+    "whatsapp": { "label": "WhatsApp", "number": "549XXXXXXXXXX" },
+    "email": "contacto@ejemplo.com.ar",
+    "social": [
+      { "label": "Instagram", "href": "https://www.instagram.com/" },
+      { "label": "Facebook", "href": "https://www.facebook.com/" }
+    ]
+  },
+  "license": "Domingo Cayetano Silva · Corredor público y martillero · M.P. 045879 · 054237 · 013508",
+  "copyright": "HomeSilva. Todos los derechos reservados.",
+  "legal": {
+    "privacy": "Política de privacidad",
+    "privacyHref": "/privacidad",
+    "terms": "Términos y condiciones",
+    "termsHref": "/terminos"
+  }
+},
+  "notFound": {
+    "title": "No encontramos esa página, pero tu próximo lugar en las sierras sigue acá.",
+    "description": "Puede que el enlace haya cambiado, que la propiedad ya no esté disponible o que se haya vendido. Mirá lo que hay hoy o escribinos y lo resolvemos.",
+    "cta": { "label": "Ver propiedades disponibles", "href": "/propiedades" },
+    "contact": { "label": "Hablar con el corredor", "href": "/contacto" },
+    "quickLabel": "Accesos rápidos"
+  },
+  "contactPage": {
+    "title": "Hablemos.",
+    "description": "Ya sea que busques tu próxima casa, quieras vender la tuya o invertir en las sierras, estamos acá para hacerlo fácil. Vas a hablar directamente con el corredor, sin intermediarios.",
+    "channels": {
+      "whatsapp": { "label": "WhatsApp", "cta": "Escribinos directo" },
+      "email": { "label": "Email" },
+      "address": { "label": "Oficina" }
+    },
+    "image": { "src": "/living.png", "alt": "" },
+    "form": {
+      "interest": {
+        "label": "¿Qué querés hacer?",
+        "options": ["Comprar", "Vender", "Alquilar", "Invertir", "Tasar mi propiedad"]
+      }
+    }
+  },
+
+  "privacy": {
+  "metaTitle": "Política de privacidad | HomeSilva",
+  "description": "Cómo HomeSilva recopila, usa y protege los datos personales de quienes usan este sitio.",
+  "title": "Política de privacidad",
+  "updated": "Última actualización: octubre de 2026",
+  "sections": [
+    {
+      "title": "Recopilación de datos personales",
+      "body": "Nuestra empresa recopila información personal, como nombres, direcciones de correo electrónico y números de teléfono, cuando los usuarios envían formularios o interactúan con el sitio. Esta información se utiliza para responder a consultas, brindar servicios y mejorar la experiencia del usuario."
+    },
+    {
+      "title": "Compartir datos",
+      "body": "El sitio no vende ni comparte datos personales de los usuarios con terceros con fines de marketing. Sin embargo, podemos compartir datos con proveedores de servicios que nos ayudan en operaciones comerciales, como procesamiento de pagos y análisis."
+    },
+    {
+      "title": "Almacenamiento en caché de datos",
+      "body": "Nuestra plataforma utiliza el almacenamiento en caché para mejorar la velocidad y la eficiencia del sitio web. Esto significa que ciertos datos, como imágenes y archivos, pueden almacenarse temporalmente en tu dispositivo o en servidores intermedios para facilitar un acceso más rápido a las páginas y recursos del sitio. El almacenamiento en caché no afecta la recopilación de datos personales ni la seguridad de la información proporcionada por los usuarios."
+    },
+    {
+      "title": "Seguridad de datos",
+      "body": "Nuestra plataforma toma medidas para proteger los datos personales de los usuarios. Sin embargo, no podemos garantizar la seguridad completa de la información transmitida a través de Internet."
+    },
+    {
+      "title": "Enlaces a sitios de terceros",
+      "body": "Nuestro sitio web podría contener enlaces a sitios web de terceros. Nuestra empresa no es responsable de las prácticas de privacidad de esos sitios. Te recomendamos revisar las políticas de privacidad de esos sitios antes de proporcionar información personal."
+    },
+    {
+      "title": "Acceso y control",
+      "body": "Los usuarios tienen el derecho de acceder, corregir y eliminar sus datos personales proporcionados a nuestra plataforma. Para solicitar cambios en tus datos, comunícate con nosotros a través de <a href=\"mailto:{email}\">{email}</a>."
+    },
+    {
+      "title": "Derechos del titular de los datos",
+      "body": "El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales. Más información en <a href=\"https://www.argentina.gob.ar/aaip\" target=\"_blank\" rel=\"noopener\">argentina.gob.ar/aaip</a>."
+    },
+    {
+      "title": "Aceptación de la política de privacidad",
+      "body": "Al utilizar este sitio, aceptas nuestra política de privacidad. Si no estás de acuerdo con esta política, te recomendamos que no utilices el sitio."
+    }
+  ]
+},
+  "terms": {
+  "metaTitle": "Términos y condiciones | HomeSilva",
+  "description": "Condiciones de uso del sitio web de HomeSilva: propiedad intelectual, uso adecuado, formularios y ley aplicable.",
+  "title": "Términos y condiciones",
+  "updated": "Última actualización: octubre de 2026",
+  "sections": [
+    {
+      "title": "Aceptación de los términos",
+      "body": "Al acceder y utilizar este sitio web, aceptas cumplir con los siguientes términos y condiciones de uso. Si no estás de acuerdo con alguno de estos términos, te recomendamos que no utilices este sitio."
+    },
+    {
+      "title": "Propiedad intelectual",
+      "body": "Todo el contenido presente en este sitio, incluyendo pero no limitado a textos, imágenes, gráficos, logotipos y videos, está protegido por derechos de propiedad intelectual y es propiedad exclusiva de nuestra empresa. Queda prohibida la reproducción, distribución o modificación de dicho contenido sin previa autorización."
+    },
+    {
+      "title": "Autorización",
+      "body": "Licencia y acreditación: nuestra empresa cuenta con las licencias y acreditaciones necesarias para operar como agencia inmobiliaria. Estamos registrados y cumplimos con todas las regulaciones y normativas aplicables en nuestra área de operación.<br><br>Acuerdos legales: antes de ofrecer cualquier propiedad en venta o alquiler, nos aseguramos de tener un acuerdo legal válido con el propietario que nos autoriza a actuar en su nombre. Estos acuerdos establecen los términos y condiciones de nuestra representación, así como nuestras responsabilidades y obligaciones como agencia inmobiliaria."
+    },
+    {
+      "title": "Uso del sitio y uso adecuado del contenido",
+      "body": "Estás autorizado a utilizar este sitio únicamente con fines legales y de acuerdo con estos términos y condiciones. Queda prohibido realizar acciones que puedan causar daño o interferir con el funcionamiento normal del sitio. Al utilizar el sitio, te comprometes a no usar el contenido o la plataforma para actividades ilegales, inmorales, difamatorias, abusivas o que puedan infringir los derechos de otros usuarios o terceros. Se prohíbe la distribución de contenido que viole leyes de propiedad intelectual o derechos de autor."
+    },
+    {
+      "title": "Modificaciones",
+      "body": "Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento sin previo aviso. Te recomendamos revisar regularmente esta página para estar al tanto de cualquier cambio."
+    },
+    {
+      "title": "Ley aplicable",
+      "body": "Estos términos y condiciones se rigen por las leyes de la República Argentina y, en particular, por las leyes de la Provincia de Córdoba. Cualquier disputa relacionada con el uso de este sitio se resolverá en los tribunales competentes de la Provincia de Córdoba, República Argentina."
+    },
+    {
+      "title": "Contacto",
+      "body": "Si tienes alguna pregunta, inquietud o consulta sobre estos términos y condiciones, puedes ponerte en contacto con nosotros a través de los medios de contacto proporcionados en la sección de <a href=\"/contacto\">información de contacto</a>."
+    },
+    {
+      "title": "Formularios y datos de usuario",
+      "body": "Al utilizar los formularios en este sitio para enviar información, consultas u otros datos, aceptas proporcionar información precisa, actualizada y completa. Te comprometes a no enviar datos falsos, fraudulentos o engañosos.<br><br>Nuestra empresa recopilará y almacenará los datos enviados a través de los formularios con el propósito de responder a consultas, proporcionar información o servicios solicitados y mejorar la experiencia del usuario en el sitio. La recopilación, uso y almacenamiento de los datos se rige por nuestra política de privacidad.<br><br>Al enviar tus datos, comprendes que la transmisión de información a través de Internet puede no ser completamente segura. Nuestra plataforma se esfuerza por proteger tus datos, pero no puede garantizar la seguridad absoluta de la información transmitida.<br><br>Al enviar datos a través de formularios en este sitio, aceptas que nuestra empresa pueda comunicarse contigo mediante los datos proporcionados, incluidos el correo electrónico y el número de teléfono, para responder a tus consultas o proporcionar información relacionada con tus solicitudes. Para obtener más información sobre cómo manejamos los datos de los usuarios, consulta la <a href=\"/privacidad\">política de privacidad</a>."
+    }
+  ]
+}
+}

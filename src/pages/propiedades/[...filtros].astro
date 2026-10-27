@@ -1,384 +1,221 @@
 ---
-import "../../styles/global.css";
-import Layout from '../../layouts/Layout.astro'
-import propiedades from '../../data/propiedades.json'
-import PropertiesFilters from '@/components/PropertiesFilters.jsx'
-import {EXCHANGE_RATE, buildTitle, toSlug, toPlural, toSingular, toPlurralLabel } from '@/utils/utils.js'
-import ButtonFilter from '@/components/ButtonFilter.astro'
-import ButtonQueryFilter from '@/components/ButtonQueryFilter.jsx'
+import Layout from "../../layouts/Layout.astro";
+import propiedades from "../../data/propiedades.json";
+import PropertiesLayout from "../../components/properties/PropertiesLayout.astro";
+import { EXCHANGE_RATE, buildTitle, toSlug, toPlural, matches, ITEMS_PER_PAGE } from "../../scripts/utils.js";
+import { buildListingMeta } from "../../scripts/listingMeta.js";
 
 export function getStaticPaths() {
 	const paths = new Set();
-	const paginadas = new Set();
-	const ITEMS_PER_PAGE = 12;
 
-	propiedades.forEach(p => {
+	propiedades.forEach((p) => {
 		const operacion = p.operation.toLowerCase();
 		const tipo = toPlural(p.type.toLowerCase());
 		const localidad = toSlug(p.locality);
 
-		paths.add(operacion);
-		paths.add(tipo);
-		paths.add(localidad);
-		// Dos segmentos
-		paths.add(`${operacion}/${tipo}`);
-		paths.add(`${operacion}/${localidad}`);
-		paths.add(`${tipo}/${localidad}`);
-		// Tres segmentos
-		paths.add(`${operacion}/${tipo}/${localidad}`);
+		[
+			operacion, tipo, localidad,
+			`${operacion}/${tipo}`, `${operacion}/${localidad}`, `${tipo}/${localidad}`,
+			`${operacion}/${tipo}/${localidad}`,
+		].forEach((path) => paths.add(path));
 	});
 
-	for (const path of paths) {
-		const segmentos = path.split("/");
+	// '' = raíz (/propiedades). Páginas 2, 3... de cada combinación
+	const paginadas = ["", ...paths].flatMap((path) => {
+		const segs = path ? path.split("/") : [];
+		const total = Math.ceil(propiedades.filter((p) => matches(p, segs)).length / ITEMS_PER_PAGE);
+		return Array.from({ length: Math.max(total - 1, 0) }, (_, i) =>
+			`${path ? path + "/" : ""}page/${i + 2}`
+		);
+	});
 
-		const count = propiedades.filter(p =>
-			segmentos.every(s =>
-			s === p.operation.toLowerCase() ||
-			s === toPlural(p.type.toLowerCase()) ||
-			s === toSlug(p.locality)
-			)
-		).length;
-
-		const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
-		for (let i = 2; i <= totalPages; i++) {
-			paginadas.add(`${path}/page/${i}`);
-		}
-	}
-
-	const totalPagesRaiz = Math.ceil(propiedades.length / ITEMS_PER_PAGE);
-	for (let i = 2; i <= totalPagesRaiz; i++) {
-		paginadas.add(`page/${i}`);
-	}
-
-	return [
-		{ params: { filtros: undefined } }, 
-		...[...paths].map(path => ({ params: { filtros: path } })),
-		...[...paginadas].map(path => ({ params: { filtros: path } }))
-	];
+	return [undefined, ...paths, ...paginadas].map((filtros) => ({ params: { filtros } }));
 }
 
+// ── URL ──────────────────────────────────────────
 const { filtros } = Astro.params;
 const segmentos = filtros?.split("/") ?? [];
 const pageIndex = segmentos.indexOf("page");
 const page = pageIndex !== -1 ? Number(segmentos[pageIndex + 1]) : 1;
-const filtrosReales = segmentos.filter((_, i) => pageIndex !== -1 ? (i !== pageIndex && i !== pageIndex + 1) : true);
+const filtrosReales = pageIndex !== -1 ? segmentos.slice(0, pageIndex) : segmentos;
 
-const items = propiedades.filter(p =>
-	filtrosReales.every(s =>
-		s === p.operation.toLowerCase() ||
-		s === toPlural(p.type.toLowerCase()) ||
-		s === toSlug(p.locality)
-	)
-);
-
-const ITEMS_PER_PAGE = 12;
+const items = propiedades.filter((p) => matches(p, filtrosReales));
 const start = (page - 1) * ITEMS_PER_PAGE;
-const itemsPP = items.slice(start, start+ITEMS_PER_PAGE);
+const itemsPP = items.slice(start, start + ITEMS_PER_PAGE);
 const totalP = Math.ceil(items.length / ITEMS_PER_PAGE);
 
+// ── Filtros ──────────────────────────────────────
+const uniq = (key) => [...new Set(propiedades.map((p) => p[key]))];
+
 const filters = [
-	{
-		id: 1,
-		title: "Operación",
-		slug: "operacion",
-		options: [...new Set(propiedades.map(p => p.operation))]
-	},
-	{
-		id: 2,
-		title: "Propiedad",
-		slug: "tipo",
-		options: [...new Set(propiedades.map(p => p.type))]
-	},
-	{
-		id: 3,
-		title: "Localidad",
-		slug: "localidad",
-		options: [...new Set(propiedades.map(p => p.locality))]
-	}
-]
+	{ id: 1, title: "Operación", slug: "operacion", options: uniq("operation") },
+	{ id: 2, title: "Propiedad", slug: "tipo", options: uniq("type") },
+	{ id: 3, title: "Localidad", slug: "localidad", options: uniq("locality") },
+];
+
+const ars = (n) => ({ label: `$${n.toLocaleString("es-AR")}`, value: n });
+const usd = (n) => ({ label: `U$D ${n.toLocaleString("es-AR")}`, value: n * EXCHANGE_RATE.usdToArs });
+const precios = [ars(50000), ars(100000), ars(500000), ars(1000000), usd(50000), usd(100000), usd(150000), usd(200000)];
+
 const queryFilters = [
-	{
-		id: 1,
-		title: "Habitaciones",
-		slug: "habitaciones",
-		options: [1,2,3,4,5]
-	},
-	{
-		id: 2,
-		title: "Baños",
-		slug: "banos",
-		options: [1,2,3,4]
-	},
-	{
-		id: 3,
-		title: "Precio máximo",
-		slug: 'precioMax',
-		options: [
-		{ label: '$50.000',     value: 50000 },
-		{ label: '$100.000',    value: 100000 },
-		{ label: '$500.000',    value: 500000 },
-		{ label: '$1.000.000',  value: 1000000 },
-		{ label: 'U$D 50.000',  value: 50000 * EXCHANGE_RATE.usdToArs },
-		{ label: 'U$D 100.000', value: 100000 * EXCHANGE_RATE.usdToArs },
-		{ label: 'U$D 150.000', value: 150000 * EXCHANGE_RATE.usdToArs },
-		{ label: 'U$D 200.000', value: 200000 * EXCHANGE_RATE.usdToArs },
-		]
-	},
-	{
-		id: 4,
-		title: "Precio mínimo",
-		slug: 'precioMin',
-		options: [
-		{ label: '$50.000',     value: 50000 },
-		{ label: '$100.000',    value: 100000 },
-		{ label: '$500.000',    value: 500000 },
-		{ label: '$1.000.000',  value: 1000000 },
-		{ label: 'U$D 50.000',  value: 50000 * EXCHANGE_RATE.usdToArs },
-		{ label: 'U$D 100.000', value: 100000 * EXCHANGE_RATE.usdToArs },
-		]
-	}
-]
+	{ id: 1, title: "Habitaciones", slug: "habitaciones", options: [1, 2, 3, 4, 5] },
+	{ id: 2, title: "Baños", slug: "banos", options: [1, 2, 3, 4] },
+	{ id: 3, title: "Precio máximo", slug: "precioMax", options: precios },
+	{ id: 4, title: "Precio mínimo", slug: "precioMin", options: precios.slice(0, 6) },
+];
+
 const urlParams = {
-	operacion: filtrosReales.find(s => filters[0].options.map(o => o.toLowerCase()).includes(s)),
-	tipo: filtrosReales.find(s => filters[1].options.map(o => toPlural(o.toLowerCase())).includes(s)),
-	localidad: filtrosReales.find(s => filters[2].options.map(o => toSlug(o.toLowerCase())).includes(s)),
-}
-// 
-const operacionLabel = urlParams.operacion 
+	operacion: filtrosReales.find((s) => filters[0].options.map((o) => o.toLowerCase()).includes(s)),
+	tipo: filtrosReales.find((s) => filters[1].options.map((o) => toPlural(o.toLowerCase())).includes(s)),
+	localidad: filtrosReales.find((s) => filters[2].options.map((o) => toSlug(o.toLowerCase())).includes(s)),
+};
+
+const operacionLabel = urlParams.operacion
 	? urlParams.operacion.charAt(0).toUpperCase() + urlParams.operacion.slice(1)
-	: null
+	: null;
 const tipoLabel = urlParams.tipo
-  ? items.find(p => toPlural(p.type.toLowerCase()) === urlParams.tipo)?.type 
-    ?? (urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1))
-  : null
+	? items.find((p) => toPlural(p.type.toLowerCase()) === urlParams.tipo)?.type ??
+	  urlParams.tipo.charAt(0).toUpperCase() + urlParams.tipo.slice(1)
+	: null;
 const localidadLabel = urlParams.localidad
-	? propiedades.find(p => toSlug(p.locality) === urlParams.localidad)?.locality
-	: null
+	? propiedades.find((p) => toSlug(p.locality) === urlParams.localidad)?.locality
+	: null;
 
-const REGION = 'Córdoba y las Sierras'
+// ── SEO ──────────────────────────────────────────
+const { titulo, tituloSEO: tituloBase, description } = buildListingMeta(items, {
+	operacionLabel, tipoLabel, localidadLabel,
+});
 
-// ------
-const count = items.length
+const tituloSEO = page > 1
+	? tituloBase.replace(" | HomeSilva", ` - Página ${page} | HomeSilva`)
+	: tituloBase;
+const descriptionSEO = page > 1 ? `${description} Página ${page}.` : description;
 
-const tiposUnicos = Object.entries(
-	items.reduce((acc, p) => {
-		const t = p.type.toLowerCase()
-		acc[t] = (acc[t] || 0) + 1
-		return acc
-	}, {})
-)
-.sort((a, b) => b[1] - a[1])
-.map(([tipo]) => tipo)
+const BASE = "https://homesilva.com.ar/propiedades";
+const unico = (fn) => {
+	const valores = new Set(items.map(fn));
+	return valores.size === 1 ? [...valores][0] : null;
+};
+const segsCanonicos = items.length
+	? [
+			urlParams.operacion ?? unico((p) => p.operation.toLowerCase()),
+			urlParams.tipo ?? unico((p) => toPlural(p.type.toLowerCase())),
+			urlParams.localidad ?? unico((p) => toSlug(p.locality)),
+	  ].filter(Boolean)
+	: filtrosReales;
+
+const urlFor = (n) => [BASE, ...segsCanonicos, ...(n > 1 ? ["page", n] : [])].join("/");
+
+const basePath = ["/propiedades", ...filtrosReales].join("/");
 
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+// Primer párrafo, cortado en una palabra entera
+const excerpt = (s = "", max = 140) => {
+	const t = s.split("\n")[0].trim();
+	return t.length <= max ? t : t.slice(0, max).replace(/\s+\S*$/, "") + "…";
+};
+// Solo lo que usan las cards y el mapa. Antes viajaban descripciones e imágenes completas.
+const toLite = (p) => ({
+	id: p.id, slug: p.slug, title: p.title, type: p.type, operation: p.operation,
+	locality: p.locality, barrio: p.barrio, direction: p.direction,
+	price: p.price, currency: p.currency, toPrice: p.toPrice,
+	publicated: p.publicated, position: p.position,
+	characteristics: p.characteristics,
+	expensas: p.expensas,
+	excerpt: excerpt(p.description),
+	images: p.images?.slice(0, 1) ?? [],
+});
 
-const tiposStr = tiposUnicos.slice(0, 2)
-	.map(t => capitalize(toPlurralLabel(t)))
-	.join(', ')
-const precioMinUSD = Math.min(...items.map(p =>
-	p.currency === 'USD' ? p.price : Math.round(p.price / EXCHANGE_RATE.usdToArs)
-))
+const canonicalURL = urlFor(page);
+const prevURL = page > 1 ? urlFor(page - 1) : null;
+const nextURL = page < totalP ? urlFor(page + 1) : null;
 
-const conFinanciacion = items.some(p =>
-	p.detalles?.includes('Financiación') || p.detalles?.includes('Apta crédito')
-)
+const SITE = "https://homesilva.com.ar";
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const barrios = [...new Set(items.map(p => p.barrio).filter(Boolean))].slice(0, 3)
-const tipoConteo = tipoLabel
-  ? (count === 1 ? tipoLabel : capitalize(toPlurralLabel(tipoLabel.toLowerCase())))
-  : null
-// ------	
+// Nombre legible de cada segmento de la URL
+const labelOf = (seg) =>
+	items.find((p) => p.operation.toLowerCase() === seg)?.operation ??
+	(items.find((p) => toPlural(p.type.toLowerCase()) === seg) && cap(seg)) ??
+	items.find((p) => toSlug(p.locality) === seg)?.locality ??
+	cap(seg);
 
-const titulo = (() => {
-	const tipo = tipoConteo ?? 'Propiedades'
-	const operacion = operacionLabel ? `en ${operacionLabel}` : 'en Venta y Alquiler'
-	const lugar = localidadLabel ? `en ${localidadLabel}` : `en ${REGION}`
+// Cada tramo apunta a una página que existe (getStaticPaths genera todos los prefijos)
+const crumbs = [
+	["Inicio", SITE],
+	["Propiedades", BASE],
+	...segsCanonicos.map((seg, i) => [labelOf(seg), [BASE, ...segsCanonicos.slice(0, i + 1)].join("/")]),
+];
 
-	return `${tipo} ${operacion} ${lugar}`
-})()
-
-const tituloSEO = (() => {
-	const sujeto = tipoConteo
-	? `${count} ${tipoConteo}`
-	: `${count} Propiedades`
-
-	const operacionPart = operacionLabel
-	? `en ${operacionLabel}`
-	: 'en Venta y Alquiler'
-
-	const lugarPart = localidadLabel
-	? `en ${localidadLabel}`
-	: `en ${REGION}`
-
-	const precioPart = (tipoLabel || operacionLabel) && precioMinUSD
-	? ` · Desde USD ${precioMinUSD.toLocaleString('es-AR')}`
-	: ''
-
-	const fallbackTipos = !tipoLabel
-	? ` · ${tiposStr} y más`
-	: ''
-
-	return `${sujeto} ${operacionPart} ${lugarPart}${precioPart || fallbackTipos} | HomeSilva`
-})()
-
-	
-const canonicalURL = page > 1
-  ? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page].join('/')}`
-  : `https://homesilva.com.ar/propiedades/${filtrosReales.join('/')}`
-const prevURL = page > 2
-	? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page - 1].join('/')}`
-	: page === 2
-	? `https://homesilva.com.ar/propiedades/${filtrosReales.join('/') || ''}`
-	: null
-const nextURL = page < totalP
-	? `https://homesilva.com.ar/propiedades/${[...filtrosReales, 'page', page + 1].join('/')}`
-	: null
-
-const description = (() => {
-  const sujeto = tipoConteo 
-    ? `${count} ${tipoConteo}`
-    : `${count} propiedades`
-  
-  const lugar = localidadLabel ? `en ${localidadLabel}` : `en ${REGION}`
-  const tipos = !tipoLabel ? ` — ${tiposStr} y más.` : '.'
-  const barriosPart = barrios.length ? ` Barrios: ${barrios.join(', ')}.` : ''
-  const financiacion = conFinanciacion ? ' Financiación disponible.' : ''
-  const superficieItems = items.filter(p => {
-  const sup = p.type === 'Terreno'
-    ? p.characteristics?.superficie_total
-    : p.characteristics?.superficie_cubierta
-  return sup > 0 && !['Local', 'Oficina'].includes(p.type)
-})	
-
-  const superficies = superficieItems.length
-  ? ` Superficies desde ${Math.min(...superficieItems.map(p => 
-      p.type === 'Terreno' 
-        ? p.characteristics.superficie_total 
-        : p.characteristics.superficie_cubierta
-    ))} m².`
-  : ''		
-
-  return `${sujeto} ${lugar}${tipos}${barriosPart}${superficies}${financiacion} Corredor matriculado, trato directo.`
-})()
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": titulo,
-  "description": description,
-  "url": Astro.url.href,
-  "numberOfItems": items.length,
-  "itemListElement": itemsPP.map((p, i) => ({
-    "@type": "ListItem",
-    "position": (start + i + 1),
-    "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
-    "item": {
-      "@type": "RealEstateListing",
-      "name": buildTitle(p),
-      "url": `https://homesilva.com.ar/propiedades/${p.slug}`,
-      "image": p.images[0] || "https://homesilva.com.ar/og-default.jpg",
-      "price": p.price.toString(),
-      "priceCurrency": p.currency,
-      ...(p.characteristics?.superficie_cubierta && {
-        "floorSize": {
-          "@type": "QuantitativeValue",
-          "value": p.characteristics.superficie_cubierta,
-          "unitCode": "MTK"
-        }
-      }),
-      ...(p.characteristics?.dormitorios && {
-        "numberOfRooms": p.characteristics.dormitorios
-      }),
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": p.locality,
-        "addressRegion": "Córdoba",
-        "addressCountry": "AR"
-      }
-    }
-  }))
-}
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "CollectionPage",
+			"@id": `${canonicalURL}#page`,
+			url: canonicalURL,
+			name: titulo,
+			description: descriptionSEO,
+			inLanguage: "es-AR",
+			isPartOf: { "@id": `${SITE}/#website` },
+			breadcrumb: { "@id": `${canonicalURL}#breadcrumb` },
+			mainEntity: { "@id": `${canonicalURL}#list` },
+		},
+		{
+			"@type": "ItemList",
+			"@id": `${canonicalURL}#list`,
+			numberOfItems: items.length,
+			itemListElement: itemsPP.map((p, i) => ({
+				"@type": "ListItem",
+				position: start + i + 1,
+				url: `${BASE}/${p.slug}`,
+				name: p.title || buildTitle(p),
+			})),
+		},
+		{
+			"@type": "BreadcrumbList",
+			"@id": `${canonicalURL}#breadcrumb`,
+			itemListElement: crumbs.map(([name, item], i) => ({
+				"@type": "ListItem",
+				position: i + 1,
+				name,
+				item,
+			})),
+		},
+	],
+};
 ---
-<Layout title={tituloSEO} canonical={canonicalURL} description={description}>
-	<script 
-		type="application/ld+json" 
-		set:html={JSON.stringify(schema)} 
-		slot="head" 
-	/>
+
+<Layout title={tituloSEO} canonical={canonicalURL} description={descriptionSEO} listing>
+	<script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
 	{prevURL && <link rel="prev" href={prevURL} slot="head" />}
 	{nextURL && <link rel="next" href={nextURL} slot="head" />}
 
-	<main class="flex flex-col gap-4 pb-20">
+	<main class="flex flex-col gap-4 pb-20 bg-[#EFEEEE]">
 
-		<section class="bg-[#fff] h-18 pt-2 sticky top-20 lg:top-22 z-10">
-			<div class="max-w-[1700px] px-5 md:px-16 lg:px-20 mx-auto h-12 mx-auto flex gap-2">
+		<div class="flex flex-col gap-2 mb-2 mt-5 px-5">
+		    <h1 class="max-w-2xl font-medium leading-[1.2] tracking-tight text-[var(--green)]">
+		      {titulo}
+		    </h1>
+		    <p id="count" aria-live="polite" class="text-[var(--textop)]">
+				{items.length} {items.length === 1 ? "propiedad" : "propiedades"}
+			</p>
+		</div>
 
-				<label class="border-gray-200 lg:hidden text-black py-3 px-4 border cursor-pointer hover:border-[#ffa361] duration-200 flex gap-2 focus:outline-none items-center bg-white rounded-full" for="filters">
-					Filtros
-
-					<svg xmlns="http://www.w3.org/2000/svg" class="" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-						<path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227" />
-					</svg>
-				</label>
-				<input type="checkbox" name="filters" id="filters" class="peer absolute opacity-0 event-pointer-none">
-
-				<div class="
-					peer-checked:flex flex-col gap-4
-					pt-22
-					pb-10
-					h-full fixed top-0 left-0 w-full
-					bg-white 
-					overflow-y-auto
-					hidden
-					px-5
-					md:px-16
-
-					lg:pb-0
-					lg:px-0
-					lg:flex
-					lg:overflow-y-visible
-					lg:static
-					lg:h-12
-					lg:pt-0
-					lg:flex-row 
-				">
-
-					<label class="ml-auto lg:hidden" for="filters">CERRAR</label>
-
-					{filters.map(f => (
-						<ButtonFilter
-							key={f.id}
-							item={f}
-							urlParams={urlParams}
-						/>
-					))}
-
-					{queryFilters.map(f => (
-						<ButtonQueryFilter 
-							client:load
-							key={f.id}
-							item={f}
-						/>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="max-w-[1700px] mx-auto flex w-full px-5 lg:px-20">
-			<h1>{titulo}</h1>
-		</section>
-
-		<PropertiesFilters 
-			client:load
-			titulo={titulo} 
-			params={segmentos}
-			items={items}
-			itemsPP={itemsPP}
-			currentURL={filtrosReales}
+		<PropertiesLayout
+			filters={filters}
+			urlParams={urlParams}
+			titulo={titulo}
+			description={description}
+			items={items.map(toLite)}
+			itemsPP={itemsPP.map(toLite)}
+			basePath={basePath}
 			currentP={page}
 			totalP={totalP}
 		/>
 
+		<p class="max-w-2xl mx-5 text-sm leading-relaxed text-[var(--text)] sm:text-base">
+	      {description}
+	    </p>
 	</main>
 </Layout>

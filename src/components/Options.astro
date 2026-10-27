@@ -1,27 +1,64 @@
 ---
-const {item, styles} = Astro.props
+const { item, styles, active } = Astro.props;
+const id = `submenu-${item.title}`;
+
+const fade = 'transition-[opacity,background-color] duration-200';
+const iconFade = 'transition-[opacity,transform] duration-200 group-hover:opacity-100';
+
+const ui = styles
+	? {
+			li: 'w-full flex items-center gap-2 lg:gap-4',
+			row: 'lg:overflow-hidden lg:gap-0 bg-[#ebeaea] w-full px-6 py-4 lg:p-0 text-nowrap lg:w-fit',
+			link: 'lg:py-4 lg:px-6 lg:hover:bg-[#f5f4f4] text-lg',
+			label: 'hidden',
+			wrap: 'flex lg:h-full',
+			list: 'flex text-nowrap gap-2 lg:gap-4',
+			child: 'text-lg lg:text-base bg-[#ebeaea] py-4 px-6 hover:bg-[#f5f4f4]',
+		}
+	: {
+			li: 'lg:flex',
+			row: '',
+			link: '',
+			label: '',
+			wrap: 'pt-2',
+			list: 'hidden flex-col bg-[#ebeaea] text-nowrap p-2 min-w-full top-full left-0 lg:absolute lg:shadow-[0_0_10px_rgba(0,0,0,0.05)]',
+			child: 'text-[.95rem] py-2 px-4 flex w-full text-start hover:bg-[#f5f4f4]',
+		};
 ---
-<li class={`relative menu z-10 ${styles ? 'w-full flex items-center gap-2 lg:gap-4': 'lg:flex'}`}>
-	<div class={`flex items-center justify-between gap-2 ${styles ? 'lg:overflow-hidden rounded-[16px] lg:gap-0 bg-white w-full px-6 py-4 lg:p-0 text-nowrap lg:w-fit' : ''}`}>
-		<a href={item.url} class={`${styles? 'lg:py-4 lg:px-6 lg:hover:bg-[#fcfcfc] text-lg' : 'hover:text-[#e48957] duration-200 ease'}`}>{item.title}</a>
-		<input 
-			id={item.title} 
-			type="checkbox" 
-			class="dropdown-toggle" 
+
+<li class={`text-[.95rem] relative menu z-10 ${ui.li}`}>
+	<div class={`flex group items-center justify-between gap-2 ${ui.row}`}>
+		<a
+			href={item.url}
+			aria-current={active ? 'page' : undefined}
+			class={`${fade} group-hover:opacity-100 ${active ? 'opacity-100' : 'opacity-50'} ${ui.link}`}
+		>{item.title}</a>
+
+		<input
+			id={item.title}
+			type="checkbox"
+			class="dropdown-toggle pointer-events-none absolute opacity-0"
 			aria-label={`Abrir submenú de ${item.title}`}
 		/>
-		<label for={item.title} class={`cursor-pointer w-full lg:w-fit ${styles?'hidden': ''}`} aria-haspopup='true' aria-controls={`submenu-${item.title}`}>
+		<label
+			for={item.title}
+			class={`cursor-pointer w-full lg:w-fit ${ui.label}`}
+			aria-haspopup="true"
+			aria-controls={id}
+		>
 			<span class="sr-only">Abrir submenú de {item.title}</span>
-			<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class='ml-auto' width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+			<svg 
+			xmlns="http://www.w3.org/2000/svg"
+			class={`ml-auto ${iconFade} ${active ? 'opacity-100' : 'opacity-50'}`}
+			focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ><path d="M6 9l6 6l6 -6" /></svg>
 		</label>
 	</div>
-	<div class={`${styles? 'flex lg:h-full' : 'pt-2 '}`}>
-		<ul id={`submenu-${item.title}`} 
-			class={`submenu rounded-[16px] ${styles ? 'flex text-nowrap gap-2 py-0 lg:gap-4' : 'lg:shadow-[0_0_10px_rgba(0,0,0,0.05)] lg:absolute top-full left-0 hidden flex-col bg-white text-nowrap py-2 min-w-full'}`}
-		>
-			{item.childrens.map(c => (
-				<li class="flex">
-					<a href={c.url} class={`${styles? 'text-lg lg:text-base bg-white text-base py-4 px-6 rounded-[16px] hover:bg-[#fcfcfc]' : 'hover:bg-[#fafafa] text-[16px] py-2 px-4 flex w-full text-start'}`}>{c.title}</a>
+
+	<div class={ui.wrap}>
+		<ul id={id} class={`submenu ${ui.list}`}>
+			{item.childrens.map((c, i) => (
+				<li class="flex" style={`animation-delay: ${i * 40}ms`}>
+					<a href={c.url} class={`${fade} opacity-50 hover:opacity-100 ${ui.child}`}>{c.title}</a>
 				</li>
 			))}
 		</ul>
@@ -29,32 +66,35 @@ const {item, styles} = Astro.props
 </li>
 
 <style>
-
-	input {
-		pointer-events: none;
-		opacity: 0;
-		position: absolute;
+	@keyframes submenu-in {
+		from { opacity: 0; transform: translateY(-8px); }
 	}
+	@keyframes submenu-item {
+		from { opacity: 0; transform: translateY(-4px); }
+	}
+
 	.menu:has(input:checked) .submenu,
 	.menu:hover .submenu {
 		display: flex;
 	}
 
-	li {
-		list-style: none;
+	@media (prefers-reduced-motion: no-preference) {
+		.menu:has(input:checked) .submenu,
+		.menu:hover .submenu {
+			animation: submenu-in 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+		}
+		.submenu li {
+			animation: submenu-item 250ms ease-out backwards;
+		}
 	}
-
 </style>
 
 <script>
 	document.addEventListener('click', (e) => {
-		const checked = document.querySelector('.dropdown-toggle:checked');
-		if (!checked) return;
-
-		document.querySelectorAll('.menu').forEach(menu => {
-			if (!menu.contains(e.target)) {
-				menu.querySelector('.dropdown-toggle').checked = false;
-			}
-		});
+		document
+			.querySelectorAll<HTMLInputElement>('.dropdown-toggle:checked')
+			.forEach((toggle) => {
+				if (!toggle.closest('.menu')?.contains(e.target as Node)) toggle.checked = false;
+			});
 	});
 </script>

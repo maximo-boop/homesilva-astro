@@ -1,6 +1,6 @@
 ---
-import Logo from '/public/logo.astro'
-import Options from '@/components/Options.astro'
+import Options from './Options.astro'
+import Logo from '../../public/logo.astro'
 
 const links=[
 	{
@@ -36,11 +36,20 @@ const links=[
 		url: "/contacto"
 	}
 ]
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const { listing = false } = Astro.props;
+const headerPadding = listing ? "px-5" : "px-12";
+
+const isActive = (item) =>
+	item.childrens
+		? path === item.url || path.startsWith(item.url + "/")
+		: path === item.url;
 ---
 
-<header class="global-padding header sticky top-0 py-6 bg-white h-20 lg:h-22 z-100">
+<header id="header" class={`${headerPadding}  header sticky top-0 py-4 bg-[var(--bg)] z-100 transition-transform duration-300`}>
 
-	<nav class="lg:flex lg:items-center max-w-[1200px] mx-auto">
+	<nav class="lg:flex lg:items-center">
 
 		<!--LOGO -->
 		<div class="flex justify-between items-center flex-1">
@@ -56,25 +65,35 @@ const links=[
 			>
 			<label for="menu-toggle" class="hamburger">
 				<span class="sr-only">Menú</span>
-				<svg id='close' class="hidden" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+				<svg id='close' class="hidden" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.8">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 					<path d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
 				</svg>
-				<svg id='open' xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+				<svg id='open' xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
 			</label>
 		</div>
 
 		<!-- Navigation -->
-		<ul class="hidden nav flex flex-col lg:flex-row bg-white gap-6 lg:gap-10 mt-10 lg:mt-0 lg:items-center">
-			{links.map((item,i) => (
-				!item.childrens ? (
-					<li>
-						<a href={item.url} class={`${i===4 ? "rounded-[10px] bg-black font-medium text-white py-3 px-5": "hover:text-[#e48957] transition-text ease duration-200"} flex lg:inline`}>{item.title}</a>
-					</li>
-				) : (
-					<Options item={item} />
-				)
-			))}
+		<ul class="hidden nav flex flex-col lg:flex-row gap-6 lg:gap-8 mt-10 lg:mt-0 lg:items-center">
+			{links.map((item, i) => (
+	!item.childrens ? (
+		<li>
+			<a
+				href={item.url}
+				aria-current={isActive(item) ? "page" : undefined}
+				class={`${
+					i === 4
+						? "bg-[#4a5d4a] hover:bg-[#314131] font-medium text-[var(--bg)] py-5 px-7"
+						: `transition-opacity duration-200 ${isActive(item) ? "opacity-100" : "opacity-50 hover:opacity-100"}`
+				} flex lg:inline`}
+			>
+				{item.title}
+			</a>
+		</li>
+	) : (
+		<Options item={item} active={isActive(item)} />
+	)
+))}
 		</ul>
 	</nav>
 
@@ -113,3 +132,22 @@ const links=[
 	}
 
 </style>
+
+<script>
+	const header = document.querySelector("#header");
+	const toggle = document.querySelector<HTMLInputElement>("#menu-toggle");
+	const root = document.documentElement;
+	let last = 0;
+
+	addEventListener(
+		"scroll",
+		() => {
+			const y = scrollY;
+			const hide = y > last && y > 50 && !toggle?.checked;
+			header?.classList.toggle("-translate-y-full", hide);
+			root.classList.toggle("header-hidden", hide);
+			last = y;
+		},
+		{ passive: true }
+	);
+</script>

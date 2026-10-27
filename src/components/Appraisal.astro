@@ -1,0 +1,66 @@
+---
+/**
+ * t = {
+ *   eyebrow: string,
+ *   title: string,
+ *   description: string,
+ *   points: [{ title: string, text: string }],
+ *   cta: { label: string },
+ *   whatsapp: string,      // número con código de país, sin + ni espacios
+ *   message: string,       // mensaje prellenado
+ * }
+ */
+const { t } = Astro.props;
+
+const href = `https://wa.me/${t.whatsapp}?text=${encodeURIComponent(t.message)}`;
+---
+
+<section
+  id="tasar"
+  class="w-full scroll-mt-28 bg-[var(--text)] px-6 py-24 text-[var(--bg)] md:px-10"
+>
+  <div class="mx-auto w-full max-w-[1400px]">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-x-6">
+
+      <!-- TÍTULO -->
+      <div class="lg:col-span-6">
+        <p class="reveal text-xs uppercase tracking-[0.2em] text-neutral-400">{t.eyebrow}</p>
+        <h2
+          style="--d: 100ms"
+          class="reveal mt-6 text-[clamp(3rem,7vw,7.5rem)] font-medium leading-none tracking-tight"
+        >
+          {t.title}
+        </h2>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="flex flex-col gap-12 lg:col-span-5 lg:col-start-8">
+        <p style="--d: 150ms" class="reveal max-w-md text-base leading-relaxed text-neutral-400 md:text-lg">
+          {t.description}
+        </p>
+
+        <ul class="divide-y divide-[var(--bg)]/15 border-y border-[var(--bg)]/15">
+          {t.points.map((point, i) => (
+            <li class="reveal py-5" style={`--d: ${i * 100}ms`}>
+              <h3 class="text-xl font-medium tracking-tight md:text-2xl">{point.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-neutral-400">{point.text}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div class="reveal">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener"
+            class="group inline-flex items-center gap-3 bg-[var(--bg)] px-6 py-4 text-sm font-medium text-[var(--text)] transition-colors hover:bg-white"
+          >
+            {t.cta.label}
+            <span class="sr-only">(abre WhatsApp en una pestaña nueva)</span>
+            <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

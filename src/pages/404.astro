@@ -1,35 +1,75 @@
 ---
-import Layout from '@/layouts/Layout.astro'
+import Layout from "@/layouts/Layout.astro";
+import data from "../data/es.json";
 
-const enlaces = [
-	{title: "Casas en venta", a: "/propiedades/venta/casas"},
-	{title: "Terrenos", a: "/propiedades/terrenos"},
-	{title: "Alquileres", a: "/propiedades/alquileres"},
-	{title: "Córdoba Capital", a: "/propiedades/cordoba"},
-	{title: "Contactar a un asesor", a: "/contacto"}
-]
+const t = data.notFound;
+const links = data.hero.search.quick.items;
 ---
 
-<Layout>
-	<main class="bg-white pb-20 min-h-screen flex flex-col justify-center gap-5 global-padding">
-		<section class="text-center flex flex-col gap-5">
-			<img src="/404.webp" loading="eager" fetchpriority="high" width="450" hight="450" alt="Ilustración de error 404 con persona sosteniendo llaves en una propiedad" class="w-full lg:max-w-[450px] mx-auto object-contain" />
-			<h1 class="text-4xl font-bold">Página no encontrada, pero no te vayas. <br class="hidden lg:inline">Tu próximo hogar sigue aquí</h1>
-			<p class="text-lg text-gray-500">La propiedad que buscas puede haber cambiado de enlace, <br class="hidden lg:inline">estar fuera de catálogo o simplemente haberse vendido.</p>
-		</section>
+<Layout title="Página no encontrada | HomeSilva">
+  <main class="px-12 flex min-h-[70vh] flex-col justify-center py-20 text-[var(--text)]">
 
-		<a href="/propiedades" class="mx-auto flex w-fit bg-black text-white py-4 px-6 rounded-[12px]">Ver propiedades disponibles</a>
+    <!-- 404 gigante: decorativo -->
+    <p
+      aria-hidden="true"
+      class="reveal m-0 text-[clamp(8rem,30vw,26rem)] [-webkit-text-stroke:0.02em_currentColor] font-medium leading-[0.8] tracking-tighter"
+    >
+      404
+    </p>
 
-		<nav class="flex flex-col gap-5 w-fit mx-auto text-center">
-			<h3>Accesos rápidos</h3>
-			<ul class="flex gap-5 flex-wrap justify-center">
-				{enlaces.map(a => (
-					<li>
-						<a href={a.a} class="hover:bg-[#efefef] font-medium flex text-nowrap px-6 py-4 w-fit rounded-[12px] text-sm bg-[#f6f6f6]">{a.title}</a>
-					</li>
-				))}
-			</ul>
-		</nav>
+    <div class="mt-10 grid grid-cols-1 gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-x-6">
+      <div class="lg:col-span-7">
+        <h1
+          style="--d: 100ms"
+          class="reveal m-0 max-w-3xl text-[clamp(2rem,4vw,3.5rem)] font-medium leading-[1] tracking-tight"
+        >
+          {t.title}
+        </h1>
+      </div>
 
-	</main>
+      <div
+        style="--d: 200ms"
+        class="reveal flex flex-col gap-8 lg:col-span-4 lg:col-start-9"
+      >
+        <p class="m-0 max-w-md text-base leading-relaxed text-[var(--textop)]">
+          {t.description}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a
+            href={t.cta.href}
+            class="bg-[var(--text)] px-6 py-4 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-80"
+          >
+            {t.cta.label}
+          </a>
+          <a
+            href={t.contact.href}
+            class="text-sm underline underline-offset-4 transition-opacity hover:opacity-60"
+          >
+            {t.contact.label}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <nav aria-label={t.quickLabel} style="--d: 300ms" class="reveal mt-16">
+      <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="inline-flex items-center gap-2 bg-[var(--card)] px-4 py-3 text-[.9rem] font-medium transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)] focus-visible:bg-[var(--text)] focus-visible:text-[var(--bg)]"
+              >
+                {link.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+  </main>
 </Layout>

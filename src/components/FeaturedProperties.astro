@@ -1,0 +1,38 @@
+---
+import PropertyCard from "./PropertyCard.astro";
+import CarouselControls from "./CarouselControls.astro";
+import properties from "../data/propiedades.json";
+
+const { t } = Astro.props;
+
+const propiedades = properties
+  .filter((p) => p.featured)
+  .sort((a, b) => a.featured - b.featured);
+---
+
+<section
+  data-carousel
+  aria-roledescription="carrusel"
+  aria-label={t.title}
+  class="overflow-x-clip text-[var(--text2)]"
+>
+  <div class="reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+    <h2 class="max-w-2xl text-[var(--green)] [-webkit-text-stroke:0.01em_currentColor] text-6xl font-medium leading-[1.1] lg:text-[5rem]">{t.title}</h2>
+    <a href={t.cta.href} class="transition-opacity hover:opacity-70">{t.cta.label}</a>
+  </div>
+
+  <div data-reveal="diagonal" class="mt-10">
+    <ul
+      data-carousel-track
+      class="-mt-6 mb-4 flex snap-x snap-mandatory gap-[var(--gap)] overflow-x-auto overscroll-x-contain pt-6 pb-6 [--gap:1.25rem] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {propiedades.map((item) => (
+        <li class="shrink-0 grow-0 basis-[calc((100%-var(--gap))/1.2)] snap-start md:basis-[calc((100%-2*var(--gap))/2.5)] lg:basis-[calc((100%-3*var(--gap))/3.5)]">
+          <PropertyCard item={item} />
+        </li>
+      ))}
+    </ul>
+
+    <CarouselControls prev={t.prev} next={t.next} class="ml-auto w-fit" />
+  </div>
+</section>

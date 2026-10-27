@@ -1,37 +1,101 @@
 @import "tailwindcss";
 
+/* Cómo se anima (no oculta nada) */
+:is(.reveal, [data-reveal]) {
+  transition:
+    opacity var(--reveal-duration) ease var(--d, 0ms),
+    transform var(--reveal-duration) var(--reveal-ease) var(--d, 0ms),
+    clip-path var(--reveal-duration) var(--reveal-ease) var(--d, 0ms);
+}
+
+/* Estado inicial: solo lo pone el JS */
+:is(.reveal, [data-reveal])[data-state="hidden"] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+/* Variantes */
+[data-reveal="fade"][data-state="hidden"]  { transform: none; }
+[data-reveal="left"][data-state="hidden"]  { transform: translateX(calc(var(--reveal-distance) * -1)); }
+[data-reveal="scale"][data-state="hidden"] { transform: scale(0.95); }
+
+[data-reveal="diagonal"] {
+  transition:
+    opacity 1s ease var(--d, 0ms),
+    transform 2.4s var(--reveal-ease) var(--d, 0ms);
+}
+[data-reveal="diagonal"][data-state="hidden"] {
+  transform: translate(var(--reveal-x, 12vw), var(--reveal-y, 6rem));
+}
+
+[data-reveal="mask"] {
+  transition-duration: 1.4s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+[data-reveal="mask"][data-state="hidden"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+}
+[data-reveal="mask"][data-state="shown"] {
+  clip-path: inset(0);
+}
+
+:root.header-hidden {
+  --sticky-top: 0px;
+}
+
 :root {
-	--primaryColor: #fff5ebff;
-	--cta: #301411ff;
-	--text: rgba(0,0,0,0.45);
-	--fs-p: 5rem;
-	--fs-h1: 5rem;
-	--fs-h2: 5rem;	
-	--fs-h3: 5rem;	
-	--radius: 55rem;
+  --header-h: 4.8rem; /* 77px: logo 45 + py-4 */
+  --strip-h: 1.25rem;
+  --sticky-top: var(--header-h);
+  
+  --reveal-distance: 40px;
+  --reveal-duration: 1.2s;
+  --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --moss: #4a5d4a;
+  --moss-light: #5f7a5f;
+  --moss-dark: #3a4a3a;
+  --moss-pale: #dfe4dc;
+  --moss-text: #c9d6c4;
+
+  --paper: #fafafa;
+  --green: #18231d;
+  --green-limon: #f2ede4;
+  --bg3: #F3F0E9;
+  --bg4: #E7DFD2;
+
+  --bg: #f5f4f4;
+  --bg2: #edeae4;
+  --text: #0d0d0d;
+  --text2: #262626;
+  --textop: #26262688;
+  --card: #ebeaea;
 }
 
 @font-face {
-	font-family: 'Inter Variable';
-	src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Poppins";
+  src: url("/fonts/poppins-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-.leaflet-pane {
-	z-index: 0;
-}
-
-.global-padding {
-	@apply px-5 md:px-16 lg:px-24 xl:px-35;
-}
-
-@media (max-width: 768px) { /* mobile */
-	:root {
-		--fs-p: .8rem;
-		--fs-h1: 2.2rem;
-		--fs-h2: 1.8rem;
-		--fs-h3: 1.5rem;
-	}
+html {
+  font-family: "Poppins", sans-serif;
 }
