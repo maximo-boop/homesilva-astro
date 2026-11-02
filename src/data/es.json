@@ -1,5 +1,4 @@
 {
-
   "hero": {
     "eyebrow": "Las Sierras",
     "title": "Propiedades en Valle Hermoso, La Falda y alrededores.",
@@ -21,8 +20,8 @@
       "quick": {
         "label": "Búsquedas frecuentes",
         "items": [
-          { "label": "Terrenos en las sierras", "href": "/propiedades/venta/terrenos/sierras" },
-          { "label": "Alquileres en las sierras", "href": "/propiedades/alquiler/sierras" },
+          { "label": "Terrenos en las sierras", "href": "/propiedades/venta/terrenos" },
+          { "label": "Alquileres en las sierras", "href": "/propiedades/alquiler" },
           { "label": "Casas en Córdoba", "href": "/propiedades/venta/casas/cordoba" }
         ]
       },
