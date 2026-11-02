@@ -2,7 +2,7 @@
 const { t } = Astro.props;
 ---
 
-<section data-process class="w-full mt-20 md:mt-0 text-[var(--text)]">
+<section data-process class="w-full lg:mt-20 md:mt-0 text-[var(--text)]">
   <div class="mx-auto w-full max-w-[1400px]">
 
     <!-- TÍTULO -->
@@ -46,7 +46,7 @@ const { t } = Astro.props;
       <!-- PASOS -->
       <ol data-steps class="list-none lg:col-span-6 lg:col-start-7">
         {t.items.map((item, i) => (
-          <li class="flex min-h-[55vh] flex-col justify-center last:min-h-[40vh] lg:min-h-[70vh] lg:last:min-h-[40vh]">
+          <li class="flex last:mb-0 mb-15 md:mb-0 md:min-h-[55vh] flex-col justify-center last:min-h-[40vh] lg:min-h-[70vh] lg:last:min-h-[40vh]">
             <span class="reveal mb-4 text-2xl font-medium text-[var(--moss)]">
               {String(i + 1).padStart(2, "0")}
             </span>

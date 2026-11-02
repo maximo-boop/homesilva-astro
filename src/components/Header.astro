@@ -39,7 +39,7 @@ const links=[
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const { listing = false } = Astro.props;
-const headerPadding = listing ? "px-5" : "px-12";
+const headerPadding = listing ? "px-5" : "px-5 lg:px-12";
 
 const isActive = (item) =>
 	item.childrens

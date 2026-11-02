@@ -28,17 +28,17 @@ const zones = {
 
 <Layout>
 	<main class="flex flex-col ">
-    <div class="flex flex-col gap-15 p-5 lg:p-12 pt-0 lg:pt-0 lg:pb-25">
+    <div class="flex flex-col gap-15 p-5 lg:p-12 pt-0 lg:pt-0 lg:pb-25 pb-15">
   		<Hero t={data.hero} />
       <Stats t={data.stats} />
     </div>
-    <div class="bg-[var(--bg3)] flex flex-col gap-30 p-5 lg:p-12 lg:pt-25 lg:pb-30">
+    <div class="bg-[var(--bg3)] flex flex-col gap-15 lg:gap-30 p-5 lg:p-12 lg:pt-25 pt-15 pb-15 lg:pb-30">
   		<FeaturedProperties t={data.featured} />
       <Services t={data.services} />
       <Zones t={zones} />
       <About t={data.about} />
     </div>
-    <div class="flex flex-col gap-25 p-5 lg:p-12 lg:pt-30">
+    <div class="flex flex-col gap-25 p-5 lg:p-12 pt-15 lg:pt-30">
       <Process t={data.process} />
       <Appraisal t={data.appraisal} />
       <Faq t={data.faq} />
