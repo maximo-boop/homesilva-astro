@@ -23,7 +23,7 @@ const alt = `${item.type} en ${item.operation.toLowerCase()} en ${place}`
 
 <article aria-labelledby={`titulo-${item.id}`} class="h-full">
   <a href={href} class="group flex flex-col h-full hover:shadow-[2px_2px_15px_rgba(0,0,0,0.08)] transition-shadow">
-    <div class={`flex relative overflow-hidden ${c ? 'bg-[var(--bg)]' : 'bg-[var(--card)]'}`}>
+    <div class='flex relative overflow-hidden bg-[var(--card)]'>
       <img
         src={item.images?.[0]}
         alt={alt}
