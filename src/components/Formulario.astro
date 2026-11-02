@@ -16,6 +16,7 @@ const mensajePorDefecto = titulo
 
 	<input type="hidden" name="_next" value={url ? `https://homesilva.com.ar/propiedades/${url}` : "https://homesilva.com.ar"} />
 	<input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+	<input type="hidden" name="_captcha" value="false" />
 	{titulo && <input type="hidden" name="propiedad" value={titulo} />}
 	{titulo && <input type="hidden" name="_subject" value={`Consulta: ${titulo}`} />}
 
